@@ -80,7 +80,7 @@ File: `lib/contact/config.js` (identificativi e costanti), `http.js` (timeout, r
 | `phone` | contatto (0-1) | prefisso + numero, es. `+393331234567` |
 | `company` | contatto (0-1) | nome dell'azienda (campo obbligatorio del modulo HubSpot) |
 | `name` | azienda (0-2) | nome dell'azienda |
-| `settore_agria` | contatto (0-1) | `Hospitality`, `Cantina / Vitivinicolo`, `Frantoio / Olivicolo`, `Altro` |
+| `settore_agria` | azienda (0-2) | `Hospitality`, `Cantina / Vitivinicolo`, `Frantoio / Olivicolo`, `Altro` (campo obbligatorio del modulo HubSpot) |
 | `servizio_di_interesse_sito` | contatto (0-1) | uno dei cinque servizi |
 | `tempistica_progetto` | contatto (0-1) | una delle cinque tempistiche |
 | `message` | contatto (0-1) | messaggio, se presente |
@@ -107,7 +107,8 @@ Dopo ogni richiesta completata, email via Resend ai destinatari di `TEAM_NOTIFIC
 | Timeout o errore temporaneo nella creazione | Le creazioni (contatto, azienda, trattativa) non vengono ripetute alla cieca: prima si ricontrolla se il record esiste già, poi si ritenta una volta |
 | Errore temporaneo nelle letture e negli aggiornamenti (rete, timeout 8 s, 429, 5xx) | Una sola ripetizione |
 | Forms API: 404 su `api.hsforms.com` | Una ripetizione su `api-eu1.hsforms.com` |
-| Campo non presente nel modulo HubSpot | Una ripetizione senza quel campo, registrata |
+| Campo non presente nel modulo HubSpot, o campo obbligatorio che il sito conosce su un altro oggetto | La submission si corregge da sola (toglie il campo, oppure lo aggiunge sull'oggetto richiesto) e riprova, al massimo tre tentativi; ogni correzione è registrata (`form_fields_adjusted`) |
+| Campo obbligatorio che il sito non raccoglie | Submission registrata come fallita con il nome del campo; contatto, azienda, trattativa e notifica arrivano comunque |
 | Proprietà del contatto, dell'azienda o della trattativa rifiutata | Record salvato senza quella proprietà, registrato |
 | 403 ambito mancante | Registrati endpoint e ambiti richiesti; segnalazione al team |
 | Submission riuscita, trattativa o azienda fallite | Esito positivo per il visitatore; segnalazione al team con i dati della richiesta |
@@ -153,6 +154,8 @@ La documentazione ufficiale non è raggiungibile da questo ambiente: le verifich
 | Verifica | Esito |
 |---|---|
 | Terza prova reale (log) | reCAPTCHA 0.9, contatto, azienda, associazione, trattativa nella fase giusta, notifica a 2 destinatari; Forms API 400 `REQUIRED_FIELD` sul campo `company`, poi aggiunto alla submission |
+| Quarta e quinta prova reale (log) | Forms API 400 `REQUIRED_FIELD`: prima `company`, poi `0-2/settore_agria` (il modulo HubSpot vuole il settore sull'azienda). Entrambi corretti; CRM, trattativa e notifica riusciti in ogni prova |
+| Submission autocorrettiva (API simulate, regole del portale reale) | Modulo reale: 2xx al primo tentativo. Modulo con settore sul contatto: corretta da sola e 2xx. Campo obbligatorio sconosciuto: fallita con il nome del campo, lead comunque nel CRM. Contatto che torna con un'altra azienda: un'azienda e una trattativa per richiesta, ciascuna associata all'azienda inserita |
 | Azienda per nome (API simulate) | Email `@altra.it` con azienda "Cantina Agrodolce": creata "Cantina Agrodolce", non riusata l'azienda di quel dominio; "CANTINA agrodolce" riusa "Cantina Agrodolce"; Forms API 2xx con `company` |
 | `npm run build` | Riuscito, **174 pagine** (`/contatti`, `/api/contact` dinamico; `/contatti/prenota` rimossa) |
 | Token nel bundle | Build con token e chiave segreta di prova: nessuna traccia in `.next`; la chiave pubblica reCAPTCHA è solo nel codice della pagina contatti |

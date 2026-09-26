@@ -98,8 +98,10 @@ for (const { kind, email, azienda } of cases) {
   if (!contact) continue;
   const p = contact.properties || {};
   check(p.hubspot_owner_id === OWNER, 'Proprietario contatto Alessandro Poponi', p.hubspot_owner_id || 'vuoto');
-  if (azienda) check(p.company === azienda, 'Contatto company = azienda inserita', p.company || 'vuoto');
-  for (const prop of CONTACT_PROPS) {
+  // se il contatto ha inviato più richieste, le sue proprietà sono quelle dell'ultima
+  const latest = !azienda || p.company === azienda;
+  if (!latest) console.log(`       il contatto è stato aggiornato da una richiesta successiva (${p.company}): proprietà non confrontate`);
+  for (const prop of latest ? CONTACT_PROPS : []) {
     const value = p[prop];
     const expected = prop === 'tipo_richiesta_sito' ? EXPECTED_REQUEST[kind] : null;
     check(expected ? value === expected : !!value, `Contatto ${prop}`, value ? String(value).slice(0, 60) : 'vuoto');
@@ -108,7 +110,6 @@ for (const { kind, email, azienda } of cases) {
   const companies = await hs('GET', `/crm/v4/objects/contact/${contact.id}/associations/company?limit=20`);
   const companyIds = [...new Set((companies?.results || []).map((r) => String(r.toObjectId)))];
   check(companyIds.length > 0, 'Associazione contatto ↔ azienda', companyIds.join(', ') || 'nessuna');
-  check(companyIds.length <= 1, 'Una sola azienda associata al contatto', `${companyIds.length}`);
   if (companyIds.length) {
     const read = await hs('POST', '/crm/v3/objects/companies/batch/read', {
       properties: ['name', 'domain', 'hubspot_owner_id', 'settore_agria'],
@@ -116,7 +117,6 @@ for (const { kind, email, azienda } of cases) {
     });
     for (const c of read?.results || []) {
       console.log(`       azienda ${c.id}: ${c.properties?.name} · settore ${c.properties?.settore_agria || '—'}`);
-      if (azienda) check(c.properties?.name === azienda, '  nome azienda uguale a quello inserito', c.properties?.name);
       check(c.properties?.hubspot_owner_id === OWNER, `Proprietario azienda ${c.id}`, c.properties?.hubspot_owner_id || 'vuoto (azienda già esistente con proprietario?)');
     }
   }
@@ -131,10 +131,14 @@ for (const { kind, email, azienda } of cases) {
         })
       )?.results || []
     : [];
-  const fromSite = deals.filter((d) => d.properties?.dealname?.endsWith('— Opportunità da qualificare'));
+  const fromSiteAll = deals.filter((d) => d.properties?.dealname?.endsWith('— Opportunità da qualificare'));
+  // con --*-azienda si controlla solo la trattativa di quella richiesta
+  const fromSite = azienda ? fromSiteAll.filter((d) => d.properties.dealname === `${azienda} — Opportunità da qualificare`) : fromSiteAll;
+  if (azienda) console.log(`       trattative dal sito sul contatto: ${fromSiteAll.length}, di questa azienda: ${fromSite.length}`);
   const names = fromSite.map((d) => d.properties.dealname);
   const duplicates = names.filter((n, i) => names.indexOf(n) !== i);
   check(fromSite.length >= 1, 'Trattativa dal sito associata al contatto', `${fromSite.length} trovata/e`);
+  if (azienda) check(fromSite.length === 1, 'Una sola trattativa per questa richiesta', `${fromSite.length}`);
   check(duplicates.length === 0, 'Nessuna trattativa duplicata', duplicates.length ? `duplicati: ${[...new Set(duplicates)].join(', ')}` : 'una per azienda');
   for (const d of fromSite) {
     const dp = d.properties || {};
@@ -147,6 +151,11 @@ for (const { kind, email, azienda } of cases) {
     const dealCompanies = await hs('GET', `/crm/v4/objects/deal/${d.id}/associations/company?limit=10`);
     const linked = (dealCompanies?.results || []).map((r) => String(r.toObjectId));
     check(linked.some((id) => companyIds.includes(id)), '  associazione trattativa ↔ azienda', linked.join(', ') || 'nessuna');
+    if (azienda && linked.length) {
+      const named = await hs('POST', '/crm/v3/objects/companies/batch/read', { properties: ['name'], inputs: linked.map((id) => ({ id })) });
+      const names = (named?.results || []).map((c) => c.properties?.name);
+      check(names.includes(azienda), '  azienda della trattativa = azienda inserita', names.join(', '));
+    }
   }
 }
 
