@@ -65,7 +65,7 @@ export async function POST(request) {
   const str = (value) => (typeof value === 'string' ? value : '');
   const values = {
     settore: str(input.settore),
-    azienda: str(input.azienda).trim(),
+    azienda: str(input.azienda).replace(/\s+/g, ' ').trim(),
     servizio: str(input.servizio),
     tempistica: str(input.tempistica),
     messaggio: str(input.messaggio).trim(),

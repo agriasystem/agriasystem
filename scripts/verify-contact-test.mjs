@@ -11,6 +11,8 @@
 //    node scripts/verify-contact-test.mjs --info=email1@dominio.it --call=email2@dominio.it
 //  --info: email usata con "Ricevere maggiori informazioni"
 //  --call: email usata con "Fissare una videocall"
+//  Facoltativi: --info-azienda="Nome" e --call-azienda="Nome" per controllare
+//  che l'azienda associata sia esattamente quella inserita nel modulo.
 //
 //  Richiede HUBSPOT_PRIVATE_APP_TOKEN in .env.local (o nell'ambiente).
 // =====================================================================
@@ -45,9 +47,17 @@ if (!TOKEN) {
 }
 
 const args = Object.fromEntries(
-  process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')).filter(([k, v]) => k && v)
+  process.argv
+    .slice(2)
+    .map((a) => {
+      const [k, ...rest] = a.replace(/^--/, '').split('=');
+      return [k, rest.join('=')];
+    })
+    .filter(([k, v]) => k && v)
 );
-const cases = ['info', 'call'].filter((k) => args[k]).map((k) => ({ kind: k, email: args[k].trim().toLowerCase() }));
+const cases = ['info', 'call']
+  .filter((k) => args[k])
+  .map((k) => ({ kind: k, email: args[k].trim().toLowerCase(), azienda: args[`${k}-azienda`]?.trim() }));
 if (!cases.length) {
   console.error('Indica almeno --info=email oppure --call=email');
   process.exit(1);
@@ -76,7 +86,7 @@ function check(cond, label, detail = '') {
   console.log(`  [${ok(cond)}] ${label}${detail ? `: ${detail}` : ''}`);
 }
 
-for (const { kind, email } of cases) {
+for (const { kind, email, azienda } of cases) {
   console.log(`\n=== TEST ${kind === 'info' ? 'A · Ricevere maggiori informazioni' : 'B · Fissare una videocall'} (${email}) ===`);
   const contact = await hs(
     'GET',
@@ -88,6 +98,7 @@ for (const { kind, email } of cases) {
   if (!contact) continue;
   const p = contact.properties || {};
   check(p.hubspot_owner_id === OWNER, 'Proprietario contatto Alessandro Poponi', p.hubspot_owner_id || 'vuoto');
+  if (azienda) check(p.company === azienda, 'Contatto company = azienda inserita', p.company || 'vuoto');
   for (const prop of CONTACT_PROPS) {
     const value = p[prop];
     const expected = prop === 'tipo_richiesta_sito' ? EXPECTED_REQUEST[kind] : null;
@@ -97,13 +108,15 @@ for (const { kind, email } of cases) {
   const companies = await hs('GET', `/crm/v4/objects/contact/${contact.id}/associations/company?limit=20`);
   const companyIds = [...new Set((companies?.results || []).map((r) => String(r.toObjectId)))];
   check(companyIds.length > 0, 'Associazione contatto ↔ azienda', companyIds.join(', ') || 'nessuna');
+  check(companyIds.length <= 1, 'Una sola azienda associata al contatto', `${companyIds.length}`);
   if (companyIds.length) {
     const read = await hs('POST', '/crm/v3/objects/companies/batch/read', {
       properties: ['name', 'domain', 'hubspot_owner_id', 'settore_agria'],
       inputs: companyIds.map((id) => ({ id })),
     });
     for (const c of read?.results || []) {
-      console.log(`       azienda ${c.id}: ${c.properties?.name} · dominio ${c.properties?.domain || '—'} · settore ${c.properties?.settore_agria || '—'}`);
+      console.log(`       azienda ${c.id}: ${c.properties?.name} · settore ${c.properties?.settore_agria || '—'}`);
+      if (azienda) check(c.properties?.name === azienda, '  nome azienda uguale a quello inserito', c.properties?.name);
       check(c.properties?.hubspot_owner_id === OWNER, `Proprietario azienda ${c.id}`, c.properties?.hubspot_owner_id || 'vuoto (azienda già esistente con proprietario?)');
     }
   }

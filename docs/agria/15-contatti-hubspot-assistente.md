@@ -78,6 +78,7 @@ File: `lib/contact/config.js` (identificativi e costanti), `http.js` (timeout, r
 |---|---|---|
 | `firstname`, `lastname`, `email` | contatto (0-1) | dal modulo |
 | `phone` | contatto (0-1) | prefisso + numero, es. `+393331234567` |
+| `company` | contatto (0-1) | nome dell'azienda (campo obbligatorio del modulo HubSpot) |
 | `name` | azienda (0-2) | nome dell'azienda |
 | `settore_agria` | contatto (0-1) | `Hospitality`, `Cantina / Vitivinicolo`, `Frantoio / Olivicolo`, `Altro` |
 | `servizio_di_interesse_sito` | contatto (0-1) | uno dei cinque servizi |
@@ -90,7 +91,7 @@ File: `lib/contact/config.js` (identificativi e costanti), `http.js` (timeout, r
 ### CRM
 Proprietario di contatto, azienda e trattativa: **Alessandro Poponi, `37994989`**. Su un contatto o un'azienda già esistenti il proprietario si imposta solo se manca, per non riassegnare record di altri.
 - **Contatto:** `GET /crm/v3/objects/contacts/{email}?idProperty=email` → `PATCH` se esiste, altrimenti `POST`; un `409` (contatto appena creato dalla submission) porta all'aggiornamento del contatto esistente. Proprietà scritte via CRM, non solo dalla submission: email, nome, cognome, telefono, azienda, `servizio_di_interesse_sito`, `tempistica_progetto`, `tipo_richiesta_sito`, `message`, `hubspot_owner_id`.
-- **Azienda:** ricerca per dominio dell'email (esclusi i domini personali, es. gmail.com, libero.it) o per nome; se esiste si riusa, altrimenti si crea con `name`, `settore_agria`, `domain` e `hubspot_owner_id`.
+- **Azienda:** il nome inserito nel modulo è la fonte. Si cerca un'azienda con lo stesso nome normalizzato (minuscole, senza accenti, punteggiatura e spazi doppi: "Cantina  Agrodolce S.r.l." = "cantina agrodolce srl"); se esiste si riusa, altrimenti si crea con `name`, `settore_agria` e `hubspot_owner_id`. Il dominio dell'email **non** è un criterio di riutilizzo e non viene scritto sull'azienda: potrà servire solo se il modulo raccoglierà esplicitamente il sito aziendale.
 - **Associazione contatto-azienda:** `PUT /crm/v4/objects/contact/{id}/associations/default/company/{id}`.
 - **Trattativa:** `[AZIENDA] — Opportunità da qualificare`, pipeline `default`, `hubspot_owner_id` `37994989`, `fonte_lead_agria` = `Sito web`, `servizio_di_interesse` mappato (sito web → Digital Presence, E-commerce → Digital Commerce, AI → Digital Automation, Software → Software / Products, Non ancora definito → Non ancora definito). Fase secondo `tipo_richiesta_sito`: *Ricevere maggiori informazioni* → **Nuovo Lead `6062102776`**; *Fissare una videocall* → **Appuntamento da Fissare `6062103741`**. Associazioni nella creazione: contatto (tipo 3) e azienda principale (tipo 5).
 - **Nessun task** creato automaticamente.
@@ -151,6 +152,8 @@ La documentazione ufficiale non è raggiungibile da questo ambiente: le verifich
 
 | Verifica | Esito |
 |---|---|
+| Terza prova reale (log) | reCAPTCHA 0.9, contatto, azienda, associazione, trattativa nella fase giusta, notifica a 2 destinatari; Forms API 400 `REQUIRED_FIELD` sul campo `company`, poi aggiunto alla submission |
+| Azienda per nome (API simulate) | Email `@altra.it` con azienda "Cantina Agrodolce": creata "Cantina Agrodolce", non riusata l'azienda di quel dominio; "CANTINA agrodolce" riusa "Cantina Agrodolce"; Forms API 2xx con `company` |
 | `npm run build` | Riuscito, **174 pagine** (`/contatti`, `/api/contact` dinamico; `/contatti/prenota` rimossa) |
 | Token nel bundle | Build con token e chiave segreta di prova: nessuna traccia in `.next`; la chiave pubblica reCAPTCHA è solo nel codice della pagina contatti |
 | Segreti nei file tracciati | Nessuno; `.env.example` solo con i nomi |
@@ -186,6 +189,7 @@ node scripts/verify-contact-test.mjs --info=email-test-A --call=email-test-B
 ```
 
 ## 7. Da confermare
+- Impostazione HubSpot *associazione automatica delle aziende ai contatti per dominio email*: se attiva nel portale, HubSpot può associare di sua iniziativa il contatto all'azienda del dominio, indipendentemente dal sito. Da verificare in Impostazioni → Oggetti → Aziende.
 - Orari indicativi: *Lunedì-venerdì, 9:00-18:00*.
 - Tempo di risposta nelle domande: *di norma entro un giorno lavorativo*.
 - Etichetta della categoria cookie "Calendario prenotazioni (Calendly)": da aggiornare con le pagine legali.
