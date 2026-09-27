@@ -94,7 +94,7 @@ Proprietario di contatto, azienda e trattativa: **Alessandro Poponi, `37994989`*
 - **Azienda:** il nome inserito nel modulo è la fonte. Si cerca un'azienda con lo stesso nome normalizzato (minuscole, senza accenti, punteggiatura e spazi doppi: "Cantina  Agrodolce S.r.l." = "cantina agrodolce srl"); se esiste si riusa, altrimenti si crea con `name`, `settore_agria` e `hubspot_owner_id`. Il dominio dell'email **non** è un criterio di riutilizzo e non viene scritto sull'azienda: potrà servire solo se il modulo raccoglierà esplicitamente il sito aziendale.
 - **Associazione contatto-azienda:** `PUT /crm/v4/objects/contact/{id}/associations/default/company/{id}`.
 - **Trattativa:** `[AZIENDA] — Opportunità da qualificare`, pipeline `default`, `hubspot_owner_id` `37994989`, `fonte_lead_agria` = `Sito web`, `servizio_di_interesse` mappato (sito web → Digital Presence, E-commerce → Digital Commerce, AI → Digital Automation, Software → Software / Products, Non ancora definito → Non ancora definito). Fase secondo `tipo_richiesta_sito`: *Ricevere maggiori informazioni* → **Nuovo Lead `6062102776`**; *Fissare una videocall* → **Appuntamento da Fissare `6062103741`**. Associazioni nella creazione: contatto (tipo 3) e azienda principale (tipo 5).
-- **Nessun task** creato automaticamente.
+- **Task di controllo per Matteo** (`lib/contact/manager-task.js`): dopo la trattativa, solo per una richiesta nuova, un task *Nuovo lead sito — [AZIENDA]* assegnato a Matteo Garuzzo (`HUBSPOT_MANAGER_OWNER_ID`), scadenza oggi alle 18 ora italiana (23:59 se le 18 sono passate), stato *Non iniziato*, tipo *Da fare*. Testo: nome e cognome, azienda, email, telefono, servizio, tempistica, tipo richiesta (informazioni/videocall), nome della trattativa. Creato con `POST /crm/v3/objects/tasks` e associazioni nella stessa chiamata: contatto (tipo 204), azienda (tipo 192), trattativa (tipo 216). Trattativa, contatto e azienda restano ad Alessandro; nessun task per Alessandro. Un errore del task non ferma la richiesta né la notifica: viene registrato (`manager_task_failed`, con gli ambiti in caso di 403). Senza la variabile il task non viene creato (`manager_task_skipped`).
 
 ### Notifica interna
 Dopo ogni richiesta completata, email via Resend ai destinatari di `TEAM_NOTIFICATION_EMAIL` (più indirizzi separati da virgola), indipendente dalla notifica nativa HubSpot, con rispondi-a sull'email del visitatore. Contenuto: nome e cognome, azienda, email, telefono, settore, servizio richiesto, tempistica, tipo di richiesta, messaggio. Nessun token, segreto o dato tecnico. Se un passaggio in HubSpot non riesce, al posto della notifica parte una segnalazione con gli stessi dati e il passaggio da completare a mano. Un invio ripetuto dello stesso modulo, che riusa la trattativa, non manda una seconda email.
@@ -113,6 +113,7 @@ Dopo ogni richiesta completata, email via Resend ai destinatari di `TEAM_NOTIFIC
 | 403 ambito mancante | Registrati endpoint e ambiti richiesti; segnalazione al team |
 | Submission riuscita, trattativa o azienda fallite | Esito positivo per il visitatore; segnalazione al team con i dati della richiesta |
 | Submission e contatto entrambi falliti | Errore al visitatore, con rimando a email e WhatsApp |
+| Task per Matteo: doppio clic, invio ripetuto, timeout | Doppio clic: nessuna nuova chiamata. Invio ripetuto: la trattativa viene riusata e il task non si crea. Prima di creare il task si leggono i task associati alla trattativa: se ne esiste già uno con lo stesso titolo e lo stesso owner si riusa. Timeout o 5xx nella creazione: si ricontrolla prima di ritentare una volta |
 | reCAPTCHA fallito | *Non siamo riusciti a verificare la richiesta. Riprova tra qualche istante.* L'esito non viene ricordato: si può riprovare |
 
 **Registro:** una riga JSON per evento con identificativo della richiesta, passaggio, esito, codici e ambiti. Mai nomi, email, telefoni, messaggi o token (verificato nel registro dei test).
@@ -129,6 +130,7 @@ Dopo ogni richiesta completata, email via Resend ai destinatari di `TEAM_NOTIFIC
 | `RECAPTCHA_MIN_SCORE` | soglia del punteggio | No, predefinita 0.5 |
 | `RESEND_API_KEY`, `RESEND_FROM_EMAIL` | notifica al team di ogni richiesta e segnalazione di quelle non completate | Sì, per la notifica interna |
 | `TEAM_NOTIFICATION_EMAIL` | destinatari della notifica, più indirizzi separati da virgola | Sì, per la notifica interna |
+| `HUBSPOT_MANAGER_OWNER_ID` | ID owner HubSpot di Matteo Garuzzo per il task di controllo (non è un segreto; si ricava con `node scripts/hubspot-owners.mjs --set`, che lo scrive anche in `.env.local`) | Sì, per il task; se vuota nessun task |
 
 Portale, modulo, pipeline, fase, proprietario, regione e mappature restano costanti in `lib/contact/config.js`: non sono segreti. Hostname reCAPTCHA ammessi: `agriasystem.com`, `www.agriasystem.com`, `localhost`.
 
@@ -191,7 +193,10 @@ La documentazione ufficiale non è raggiungibile da questo ambiente: le verifich
 node scripts/verify-contact-test.mjs --info=email-test-A --call=email-test-B
 ```
 
+Lo script controlla anche che sulla trattativa ci sia un solo task *Nuovo lead sito — [AZIENDA]* con owner `HUBSPOT_MANAGER_OWNER_ID`.
+
 ## 7. Da confermare
+- Ambiti della Private App per il task: quelli richiesti dall'API Tasks per creare e leggere i task (non indicati nella copia della documentazione consultata) e, per lo script degli owner, `crm.objects.owners.read`. Se mancano, il registro riporta endpoint e ambito (`manager_task_failed`) e la richiesta va comunque a buon fine.
 - Impostazione HubSpot *associazione automatica delle aziende ai contatti per dominio email*: se attiva nel portale, HubSpot può associare di sua iniziativa il contatto all'azienda del dominio, indipendentemente dal sito. Da verificare in Impostazioni → Oggetti → Aziende.
 - Orari indicativi: *Lunedì-venerdì, 9:00-18:00*.
 - Tempo di risposta nelle domande: *di norma entro un giorno lavorativo*.

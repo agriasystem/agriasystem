@@ -5,7 +5,8 @@
 //  Legge da HubSpot, in sola lettura, i record creati da uno o più invii
 //  di prova e controlla: contatto, proprietà del contatto, azienda,
 //  associazioni, trattative (numero, fase, proprietario, fonte, servizio).
-//  Non scrive nulla, non crea task, non stampa il token.
+//  Controlla anche il task di controllo per Matteo (uno per trattativa,
+//  owner HUBSPOT_MANAGER_OWNER_ID). Non scrive nulla, non stampa il token.
 //
 //  Uso (dopo aver inviato il modulo dal browser):
 //    node scripts/verify-contact-test.mjs --info=email1@dominio.it --call=email2@dominio.it
@@ -41,6 +42,7 @@ function env(name) {
 }
 
 const TOKEN = env('HUBSPOT_PRIVATE_APP_TOKEN');
+const MANAGER = env('HUBSPOT_MANAGER_OWNER_ID');
 if (!TOKEN) {
   console.error('HUBSPOT_PRIVATE_APP_TOKEN mancante in .env.local');
   process.exit(1);
@@ -156,10 +158,20 @@ for (const { kind, email, azienda } of cases) {
       const names = (named?.results || []).map((c) => c.properties?.name);
       check(names.includes(azienda), '  azienda della trattativa = azienda inserita', names.join(', '));
     }
+    const taskLinks = await hs('GET', `/crm/v4/objects/deal/${d.id}/associations/task?limit=100`);
+    const taskIds = (taskLinks?.results || []).map((r) => ({ id: String(r.toObjectId) }));
+    const tasks = taskIds.length
+      ? (await hs('POST', '/crm/v3/objects/tasks/batch/read', { properties: ['hs_task_subject', 'hubspot_owner_id'], inputs: taskIds }))?.results || []
+      : [];
+    const company = dp.dealname.replace(/ — Opportunità da qualificare$/, '');
+    const managerTasks = tasks.filter((t) => t.properties?.hs_task_subject === `Nuovo lead sito — ${company}`);
+    check(managerTasks.length === 1, '  un solo task "Nuovo lead sito" sulla trattativa', `${managerTasks.length}`);
+    for (const t of managerTasks) {
+      check(!MANAGER || t.properties?.hubspot_owner_id === MANAGER, '  task assegnato a Matteo (HUBSPOT_MANAGER_OWNER_ID)', t.properties?.hubspot_owner_id || 'vuoto');
+    }
   }
 }
 
 console.log(`\n${failures === 0 ? 'Tutti i controlli superati.' : `${failures} controlli non superati.`}`);
 console.log('Resend: nel terminale di "npm run dev" cercare le righe con "team_notified" (recipients = numero di destinatari) e controllare le caselle.');
-console.log('Task: il codice non chiama mai le API dei task.');
 process.exitCode = failures ? 1 : 0;

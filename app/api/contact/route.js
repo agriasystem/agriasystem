@@ -13,6 +13,7 @@ import {
   upsertContact,
 } from '@/lib/contact/hubspot';
 import { alertTeam, notifyNewLead } from '@/lib/contact/notify';
+import { createManagerTask } from '@/lib/contact/manager-task';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -152,6 +153,9 @@ async function handleLead(lead, recaptchaToken, submissionId) {
     try {
       const deal = await createDeal(lead, { contactId, companyId, submissionId });
       repeated = deal.reused;
+      // task di controllo per Matteo: solo per una richiesta nuova (trattativa
+      // non riusata), dopo la trattativa; un errore non ferma la richiesta
+      if (!deal.reused) await createManagerTask(lead, { contactId, companyId, dealId: deal.id, submissionId });
     } catch (error) {
       report(error, submissionId, 'trattativa');
       problems.push('trattativa');
