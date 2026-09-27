@@ -13,9 +13,8 @@ const post = {
     keywords: ['degustazione vino vendite', 'aumentare vendite in cantina', 'tasting room conversione', 'enoturismo vendita diretta'],
     relatedSlugs: ['storytelling-vino-marketing-vendite', 'ecommerce-vino-margini-vendita-diretta'],
     relatedLinks: [
-      { href: '/servizi/consulenza-strategica', label: 'Servizio: Consulenza strategica' },
-      { href: '/portfolio/tasting-flow', label: 'Case study: Tasting Flow' },
-      { href: '/settori/wine-viticulture', label: 'Settore Wine & Viticulture' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/settori/cantine', label: 'Settore Cantine' },
     ],
     body: [
       {
@@ -51,7 +50,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve reinventare tutta l’accoglienza in una volta: basta scegliere un solo elemento — l’ordine di servizio, una frase di upsell durante l’assaggio, o un’email di follow-up — e testarlo per qualche settimana prima di aggiungerne altri.',
-          'Se vuoi capire dove la tua cantina perde più visitatori lungo il percorso, [prenota una call gratuita](/prenota-call): guardiamo insieme il flusso attuale e cosa ha senso cambiare per primo.',
+          'Se vuoi capire dove la tua cantina perde più visitatori lungo il percorso, [raccontaci come lavorate oggi](/contatti).',
         ],
       },
     ],

@@ -12,11 +12,7 @@ const post = {
     tags: ['Software', 'Agriturismo', 'CRM', 'Gestionale'],
     keywords: ['software per agriturismi', 'crm per agriturismi', 'gestionale agriturismi', 'pms agriturismi'],
     relatedSlugs: ['siti-web-per-agriturismi', 'software-per-cantine'],
-    relatedLinks: [
-      { href: '/software/hospitality', label: 'Software su misura per agriturismi' },
-      { href: '/software', label: 'Software su misura per l’agroalimentare' },
-      { href: '/portfolio/podere-la-vite', label: 'Case study concept: Podere La Vite' },
-    ],
+    relatedLinks: [],
     body: [
       {
         h2: 'Perché un software di sole prenotazioni non basta a un agriturismo',
@@ -51,13 +47,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'Nel caso concept di Podere La Vite — agriturismo toscano con 8 camere e ristorazione, esempio illustrativo nel nostro portfolio e non un cliente reale — le prenotazioni erano gestite manualmente per telefono, con un template generico che non comunicava l’esperienza reale della struttura.',
-          'La soluzione ha unito un booking engine collegato a Booking.com e Airbnb con automazioni WhatsApp per gli ospiti e un programma loyalty per chi torna, portando a un aumento del 35% nell’occupazione delle camere e del 50% nelle prenotazioni di cena dirette, oltre a un ingresso nel top 5% delle strutture su Booking.com.',
-        ],
-      },
-      {
         h2: 'Domande frequenti sul software per agriturismi',
         paragraphs: [
           '**Posso continuare a usare Booking.com e Airbnb insieme al gestionale?** Sì, la sincronizzazione con i principali canali evita l’overbooking mentre il canale diretto cresce.',
@@ -70,7 +59,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve sostituire tutti gli strumenti che usi oggi in un colpo solo. **Il punto di partenza più utile è capire quale area — prenotazioni, contatti o gestione del team — fa perdere più tempo oggi**, e partire da lì.',
-          'Progettiamo CRM e gestionali su misura per agriturismi che vogliono smettere di gestire il lavoro tra strumenti sparsi. [Scopri il software su misura per agriturismi →](/software/hospitality)',
+          'Progettiamo CRM e gestionali su misura per agriturismi che vogliono smettere di gestire il lavoro tra strumenti sparsi. [Parliamo del progetto](/contatti).',
         ],
       },
     ],

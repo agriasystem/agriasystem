@@ -24,18 +24,16 @@ const PAGE = {
 
 // La root page condivide il segmento con app/layout.jsx: il title.template
 // lì definito non si applica qui, quindi il <title> è esattamente PAGE.title.
-// pageMetadata aggiunge al titolo social il nome legacy (site.name): qui lo
-// sovrascriviamo. Nessuna immagine social finché non esiste un'immagine AGRIA:
-// l'openGraph della pagina sostituisce per intero quello del layout.
+// pageMetadata aggiunge al titolo social il nome del sito (site.name): qui lo
+// sovrascriviamo. Immagine social: quella predefinita di Agria (OG_IMAGE).
 const base = pageMetadata(PAGE);
-const { images: _ogImages, ...openGraph } = base.openGraph;
-const { images: _twitterImages, ...twitter } = base.twitter;
+const { openGraph, twitter } = base;
 
 export const metadata = {
   ...base,
   keywords: null,
   openGraph: { ...openGraph, title: PAGE.title, siteName: BRAND },
-  twitter: { ...twitter, card: 'summary', title: PAGE.title },
+  twitter: { ...twitter, title: PAGE.title },
 };
 
 // Dati di contatto e indirizzo invariati rispetto allo schema legacy; niente

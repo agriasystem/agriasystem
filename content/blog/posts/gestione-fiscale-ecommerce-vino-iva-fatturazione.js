@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Fatture e documenti fiscali su una scrivania accanto a un laptop',
     tags: ['E-commerce', 'Fiscalità', 'Wine Tech'],
     keywords: ['iva ecommerce vino', 'fatturazione vino online', 'fiscalità vendita vino estero', 'gestione fiscale cantina'],
-    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta', 'ecommerce-vino-vendite-dirette'],
+    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta'],
     relatedLinks: [
-      { href: '/servizi/ecommerce-shopify', label: 'Servizio: E-commerce Shopify performanti' },
-      { href: '/servizi/consulenza-strategica', label: 'Servizio: Consulenza strategica' },
-      { href: '/portfolio/podere-la-vite', label: 'Case study: Podere La Vite' },
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
     ],
     body: [
       {
@@ -50,7 +49,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Il primo passo realistico non è automatizzare tutto subito, ma partire dal punto più a rischio: di solito è il calcolo dell’IVA sulle spedizioni internazionali, o la fatturazione del wine club, se esiste.',
-          'Se vuoi capire come strutturare questa parte per il tuo e-commerce, [scopri il servizio e-commerce Shopify](/servizi/ecommerce-shopify) o [prenota una call gratuita](/prenota-call).',
+          'Se vuoi capire come strutturare questa parte per il tuo e-commerce, [scopri il servizio Digital Commerce](/servizi/digital-commerce) o [parliamo del progetto](/contatti).',
         ],
       },
     ],

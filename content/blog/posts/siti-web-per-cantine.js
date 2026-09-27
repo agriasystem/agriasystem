@@ -11,12 +11,11 @@ const post = {
     imageAlt: 'Sito web moderno per una cantina, con e-commerce e storytelling del vigneto',
     tags: ['Siti Web', 'Cantine', 'Web Design', 'E-commerce Vino'],
     keywords: ['siti web per cantine', 'siti web aziende vitivinicole', 'web design cantine', 'siti web cantine ecommerce'],
-    relatedSlugs: ['specialista-digitale-vs-web-agency-agroalimentare', 'ecommerce-vino-vendite-dirette'],
+    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta'],
     relatedLinks: [
-      { href: '/servizi/siti-web-contatti', label: 'Servizio: Siti web che generano contatti' },
-      { href: '/servizi/ecommerce-shopify', label: 'Servizio: E-commerce Shopify performanti' },
-      { href: '/settori/wine-viticulture', label: 'Settore Wine & Viticulture' },
-      { href: '/portfolio/tenuta-monteverdi', label: 'Case study concept: Tenuta Monteverdi' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
+      { href: '/settori/cantine', label: 'Settore Cantine' },
     ],
     body: [
       {
@@ -31,7 +30,7 @@ const post = {
         h2: 'Gli errori che affondano la maggior parte dei siti di cantine e frantoi',
         paragraphs: [
           'Il primo errore è pensare al sito come a una vetrina, non a un canale di vendita. Le bottiglie che si vendono bene offline avrebbero spesso un margine più alto vendute direttamente online, senza intermediari — ma solo se il sito permette davvero di comprare, e non si limita a un numero di telefono in fondo alla pagina.',
-          'Il secondo è affidarsi a un’agenzia generalista che non ha mai gestito un catalogo vino, una spedizione fragile o le domande che si fa davvero chi compra online — annata, provenienza, note di degustazione. Il sito verrà bello. Raramente venderà.',
+          'Il secondo è affidarsi a chi non ha mai gestito un catalogo vino, una spedizione fragile o le domande che si fa davvero chi compra online — annata, provenienza, note di degustazione. Il sito verrà bello. Raramente venderà.',
           'Il terzo è ignorare cosa succede dopo la prima visita. **Chi guarda il tuo sito la domenica sera, con un bicchiere in mano, il lunedì ha già altre dieci cose in testa**: senza un follow-up, anche solo una email ben scritta, quella visita si perde.',
           'Il quarto è scegliere la piattaforma più economica possibile, ignorando che un sito lento perde visitatori prima ancora che arrivino a vedere il catalogo. Il quinto è il fai-da-te senza le competenze per farlo bene: non è sbagliato in assoluto, ma richiede tempo e attenzione che chi gestisce una cantina spesso non ha.',
         ],
@@ -41,7 +40,6 @@ const post = {
         paragraphs: [
           'Un sito efficace per una cantina si costruisce attorno a poche funzioni essenziali, non a decine di pagine. Serve una prima schermata che comunichi in un colpo d’occhio cosa vendi e perché è diverso da un vino qualsiasi. Serve un catalogo con foto di qualità, annata, note di degustazione e prezzo visibile, perché chi compra vino online decide sulla base di dettagli che offline chiederebbe a voce.',
           'Serve anche una sezione che racconti il territorio e la storia della cantina, ma posizionata **dopo** aver mostrato cosa si vende, non prima: chi arriva da una ricerca su Google vuole prima capire se può comprare, poi eventualmente approfondire chi sei.',
-          'Nel caso concept di Tenuta Monteverdi — esempio illustrativo che trovi nel nostro portfolio, non un cliente reale — il problema di partenza era tipico: sito statico, nessun e-commerce, prenotazioni delle degustazioni gestite solo per telefono. La cantina perdeva vendite dirette senza nemmeno accorgersene, semplicemente perché non aveva un canale per intercettarle. La soluzione ha unito e-commerce, gestione delle degustazioni e un wine club ricorrente in un unico sistema, non funzionalità isolate.',
           '> Un sito che vende non è più pagine. È meno attrito tra "voglio questo vino" e "l’ho comprato".',
         ],
       },
@@ -62,9 +60,8 @@ const post = {
         ],
       },
       {
-        h2: 'Quanto costa un sito per una cantina e come valutare se si ripaga',
+        h2: 'Come valutare se un sito per una cantina si ripaga',
         paragraphs: [
-          'Il costo di un sito per cantina varia molto in base a cosa deve fare davvero: un sito vetrina con modulo di contatto costa meno di un e-commerce completo con wine club e gestione delle degustazioni integrata. Diffida di chi promette una cifra fissa prima di aver capito cosa ti serve, ed è ancora più prudente diffidare di chi promette percentuali di crescita garantite: nessuno può saperlo prima di conoscere il punto di partenza.',
           'Il modo corretto di valutare l’investimento non è una percentuale astratta, ma un confronto concreto: quanto vale oggi ogni vendita diretta che il tuo sito attuale non riesce a intercettare, e quante di quelle vendite un sito costruito per convertire potrebbe recuperare nei primi mesi. Un e-commerce ben fatto, un wine club ricorrente e una gestione automatica delle prenotazioni sono le tre leve che più spesso spostano davvero questo numero.',
           'Un sito economico che nessuno usa per comprare non è un risparmio: è un costo che si paga ogni mese, sotto forma di vendite che continuano a passare solo da distributori e intermediari.',
         ],
@@ -82,7 +79,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve rifare tutto insieme. **Il punto di partenza più utile è capire dove il sito attuale sta facendo perdere vendite**: nessun e-commerce, prenotazioni gestite solo per telefono, o semplicemente un sito troppo lento per chi lo visita da mobile.',
-          'Progettiamo siti ed e-commerce per cantine, frantoi e aziende vitivinicole pensati per vendere, non solo per essere belli. [Scopri il servizio →](/servizi/siti-web-contatti)',
+          'Progettiamo siti ed e-commerce per cantine, frantoi e aziende vitivinicole pensati per vendere, non solo per essere belli. [Scopri il servizio →](/servizi/digital-presence)',
         ],
       },
     ],

@@ -11,12 +11,10 @@ const post = {
     imageAlt: 'Bottiglie di olio extravergine pronte per la vendita online',
     tags: ['E-commerce', 'Olio', 'Frantoi', 'Shopify'],
     keywords: ['e-commerce per frantoi', 'e-commerce per oleifici', 'vendere olio online', 'e-commerce olio extravergine'],
-    relatedSlugs: ['software-frantoi-gestione-ordini-crm', 'ecommerce-vino-margini-vendita-diretta'],
+    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta'],
     relatedLinks: [
-      { href: '/servizi/ecommerce-shopify', label: 'Servizio: E-commerce Shopify performanti' },
-      { href: '/settori/oleifici-food-tech', label: 'Settore Oleifici & Food Tech' },
-      { href: '/software/frantoi', label: 'Software su misura per frantoi' },
-      { href: '/portfolio/frantoi-san-lorenzo', label: 'Case study concept: Frantoi San Lorenzo' },
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
+      { href: '/settori/frantoi', label: 'Settore Frantoi' },
     ],
     body: [
       {
@@ -51,17 +49,10 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'Nel caso concept di Frantoi San Lorenzo — oleificio storico in Umbria, esempio illustrativo nel nostro portfolio e non un cliente reale — l’80% del fatturato dipendeva da grossisti, con margini compressi e nessuna vendita diretta online.',
-          'La soluzione ha unito un e-commerce con abbonamento ricorrente all’olio, un catalogo che racconta il processo di raccolta e frangitura, tracciabilità di lotto tramite QR code e un’integrazione con un marketplace di settore, portando a un aumento del 200% nella vendita diretta rispetto al periodo pre-digitale e oltre 300 clienti regolari nell’abbonamento.',
-        ],
-      },
-      {
-        h2: 'Quale piattaforma scegliere e quanto costa',
+        h2: 'Quale piattaforma scegliere',
         paragraphs: [
           'Anche per l’olio vale lo stesso principio visto per il vino: una piattaforma e-commerce moderna converte meglio di un sito costruito su tecnologie datate, semplicemente perché è più veloce e più semplice da usare da mobile, dove avviene la maggior parte delle visite.',
-          'Il costo varia in base a cosa deve fare l’e-commerce: un catalogo semplice con checkout costa meno di uno con abbonamento ricorrente, tracciabilità di lotto e integrazione con un marketplace di settore. Diffida di chi promette una percentuale di crescita fissa prima di aver capito cosa ti serve davvero.',
+          'Diffida di chi promette una percentuale di crescita fissa prima di aver capito cosa ti serve davvero.',
         ],
       },
       {
@@ -77,7 +68,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve costruire tutto insieme. **Il primo passo è avere un catalogo con schede prodotto complete e un checkout che funziona bene da mobile**: è la base su cui poi si costruiscono assortimenti, abbonamento e tracciabilità.',
-          'Costruiamo e-commerce Shopify per frantoi e oleifici pensati per convertire, non solo per mostrare il catalogo. [Scopri il servizio →](/servizi/ecommerce-shopify)',
+          'Costruiamo e-commerce Shopify per frantoi e oleifici pensati per convertire, non solo per mostrare il catalogo. [Scopri il servizio →](/servizi/digital-commerce)',
         ],
       },
     ],

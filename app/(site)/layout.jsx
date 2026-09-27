@@ -37,16 +37,6 @@ export const metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.positioning,
-  keywords: [
-    'agribusiness',
-    'cantine',
-    'oleifici',
-    'agriturismi',
-    'e-commerce Shopify vino',
-    'wine hospitality',
-    'software su misura',
-    'Matteo Garuzzo',
-  ],
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description: site.positioning,
@@ -62,11 +52,6 @@ export const metadata = {
     images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
-  verification: {
-    other: {
-      'msvalidate.01': '10DEF08EE1EB623FF967CEF5E9B73684',
-    },
-  },
 };
 
 // Lo schema Organization vive nella homepage (app/(site)/page.jsx), non qui.

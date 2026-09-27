@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Vigneto storico che racconta la tradizione di una cantina familiare',
     tags: ['Storytelling', 'Marketing Vino', 'Content Marketing', 'Brand'],
     keywords: ['storytelling vino', 'marketing cantina', 'narrazione brand wine', 'content marketing vino', 'brand building agroalimentare'],
-    relatedSlugs: ['wine-club-revenue-ricorrente-fedelta', 'seo-locale-agroalimentare-google-maps'],
+    relatedSlugs: ['seo-locale-agroalimentare-google-maps'],
     relatedLinks: [
-      { href: '/servizi/consulenza-strategica', label: 'Servizio: Consulenza strategica' },
-      { href: '/chi-sono', label: 'Chi sono' },
-      { href: '/portfolio/tenuta-monteverdi', label: 'Case study: Tenuta Monteverdi' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/azienda', label: 'Azienda' },
     ],
     body: [
       {
@@ -116,15 +115,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio illustrativo',
-        paragraphs: [
-          'Per rendere concreto il ragionamento, può essere utile un caso concept ispirato a dinamiche osservate in diversi progetti reali di cantine familiari — è un esempio illustrativo, non riferito a un singolo cliente specifico.',
-          'Immaginiamo una cantina a conduzione familiare, arrivata alla terza generazione, con un catalogo di vini di buon livello ma un sito che si limitava a elencare le etichette con scheda tecnica e prezzo. Le vendite online erano modeste e concentrate quasi solo su chi già conosceva la cantina di persona, magari perché l’aveva visitata durante una vacanza in zona.',
-          'Il lavoro è partito da una raccolta di interviste informali con i tre membri della famiglia coinvolti nella produzione, da cui sono emersi elementi mai raccontati prima: la ragione specifica per cui il nonno aveva scelto quel terreno collinare invece di un appezzamento più pianeggiante e facile da lavorare, il motivo dietro la conversione al biologico avvenuta una decina d’anni prima, e un aneddoto ricorrente legato a una particolare vendemmia difficile che era diventata quasi un racconto di famiglia.',
-          'Questi elementi sono stati riorganizzati in una pagina "La nostra storia" più ricca, in brevi paragrafi di contesto aggiunti alle schede prodotto più rappresentative del catalogo, e in una serie di contenuti social distribuiti nel corso di alcuni mesi, ciascuno legato a uno dei temi emersi. Il risultato osservato in casi simili è stato un aumento del tempo medio trascorso sulle pagine prodotto e un numero maggiore di richieste dirette con riferimenti specifici alla storia raccontata — un segnale, per quanto qualitativo e non riducibile a una singola metrica, che la narrazione stava effettivamente influenzando la decisione d’acquisto.',
-        ],
-      },
-      {
         h2: 'Storytelling autentico contro marketing vuoto',
         paragraphs: [
           'Uno dei rischi più concreti, quando si inizia a lavorare sulla narrazione, è scivolare in un linguaggio che suona bene ma non dice nulla di specifico: "passione", "tradizione", "eccellenza" sono parole che compaiono ormai su quasi ogni sito di settore, e proprio per questo hanno smesso di comunicare qualcosa di distintivo.',
@@ -158,7 +148,7 @@ const post = {
         paragraphs: [
           'Non serve un ufficio marketing per iniziare: **basta mettere per iscritto le storie che già esistono in cantina**, partendo da quella delle origini, e trovare i punti del sito e dei canali social dove hanno più senso.',
           'Il passo successivo, una volta raccolto il materiale, è costruire una struttura che porti quella narrazione fino al momento della decisione d’acquisto — non solo su una pagina isolata del sito, ma nelle schede prodotto, nell’etichetta, nei contenuti ricorrenti sui social — mantenendo coerenza tra tutti i canali nel tempo.',
-          'Aiutiamo cantine a definire contenuti e narrazione di brand come parte della strategia digitale complessiva, collegando lo storytelling agli obiettivi concreti di vendita e non solo all’immagine. [Scopri Consulenza strategica →](/servizi/consulenza-strategica)',
+          'Aiutiamo cantine a definire contenuti e narrazione di brand come parte della strategia digitale complessiva, collegando lo storytelling agli obiettivi concreti di vendita e non solo all’immagine. [Scopri Digital Presence →](/servizi/digital-presence)',
         ],
       },
     ],

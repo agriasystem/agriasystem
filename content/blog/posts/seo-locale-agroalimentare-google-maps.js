@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Ricerca locale su Google Maps di attività agroalimentari nel territorio',
     tags: ['SEO', 'Local SEO', 'Google Maps', 'Agroalimentare'],
     keywords: ['SEO locale', 'Google Maps agroalimentare', 'farsi trovare Google territorio', 'SEO cantine', 'local search agroalimentare'],
-    relatedSlugs: ['seo-geo-farsi-trovare-ai', 'storytelling-vino-marketing-vendite'],
+    relatedSlugs: ['storytelling-vino-marketing-vendite'],
     relatedLinks: [
-      { href: '/servizi/siti-web-contatti', label: 'Servizio: Siti web che generano contatti' },
-      { href: '/geo', label: 'Dove lavoriamo in Italia' },
-      { href: '/metodo/strategia-di-settore', label: 'Metodo: Strategia di settore' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/azienda', label: 'L’azienda' },
     ],
     body: [
       {
@@ -140,15 +139,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'In un caso concept ispirato a progetti reali di SEO locale per l’agroalimentare (esempio illustrativo, non riferito a un singolo cliente), il punto di partenza era un profilo Google Business esistente ma mai curato attivamente: poche foto datate, nessuna risposta alle recensioni presenti, orari non aggiornati da tempo.',
-          'Il lavoro impostato ha previsto la revisione completa del profilo — descrizione, categorie, foto nuove e rappresentative degli spazi e dei prodotti — insieme a un processo semplice per chiedere recensioni dopo ogni visita, con un messaggio automatico inviato pochi giorni dopo l’acquisto o la degustazione.',
-          'In parallelo è stata verificata la coerenza dei dati su tutte le piattaforme in cui l’attività compariva, correggendo un numero di telefono ormai obsoleto rimasto su alcune directory dimenticate, e sono state aggiunte al sito alcune pagine con un chiaro riferimento al territorio, comprese indicazioni dettagliate per raggiungere la sede.',
-          'Il cambiamento più evidente, nei mesi successivi a questo tipo di intervento, non è quasi mai un singolo numero isolato, ma un insieme di segnali che si rafforzano a vicenda: più recensioni recenti, un profilo più completo, dati coerenti ovunque, e un sito che comunica con chiarezza il legame con il territorio — tutti elementi che, insieme, tendono a tradursi in una presenza più solida nelle ricerche locali nel tempo.',
-        ],
-      },
-      {
         h2: 'Errori comuni che indeboliscono la visibilità locale',
         paragraphs: [
           'Un profilo incompleto — poche foto, descrizione generica, orari non aggiornati — è l’errore più diffuso e più facile da correggere, eppure resta il più comune anche tra attività che hanno investito tempo e budget in altre forme di marketing digitale.',
@@ -172,7 +162,7 @@ const post = {
         paragraphs: [
           'Il primo passo, prima di qualunque altra ottimizzazione, è verificare che il profilo Google Business esista, sia verificato e completo. **È la base su cui si costruisce tutto il resto della visibilità locale.**',
           'Da lì, i passi successivi — recensioni raccolte con regolarità, dati coerenti su tutte le piattaforme, contenuti geolocalizzati sul sito — sono lavori progressivi, non un intervento da fare una volta sola e dimenticare: la visibilità locale si costruisce e si mantiene nel tempo, con piccole azioni costanti più che con un singolo grande sforzo iniziale.',
-          'Realizziamo siti e strategie SEO locale pensate per il territorio in cui operate, con un’attenzione specifica alle esigenze di chi, come una cantina, un frantoio o un agriturismo, deve essere trovato da chi è pronto a raggiungerlo di persona. [Scopri Siti web che generano contatti →](/servizi/siti-web-contatti)',
+          'Realizziamo siti e strategie SEO locale pensate per il territorio in cui operate, con un’attenzione specifica alle esigenze di chi, come una cantina, un frantoio o un agriturismo, deve essere trovato da chi è pronto a raggiungerlo di persona. [Scopri il servizio Digital Presence →](/servizi/digital-presence)',
         ],
       },
     ],

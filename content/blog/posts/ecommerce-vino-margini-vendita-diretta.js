@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Bottiglie di vino imballate per la spedizione da un e-commerce di vendita diretta',
     tags: ['E-commerce', 'Vino', 'Pricing', 'Vendita Diretta'],
     keywords: ['e-commerce vino margini', 'vendita diretta vino online', 'bypassare grossisti vino', 'pricing e-commerce cantina', 'Shopify vino'],
-    relatedSlugs: ['ecommerce-vino-vendite-dirette', 'wine-club-revenue-ricorrente-fedelta'],
+    relatedSlugs: [],
     relatedLinks: [
-      { href: '/servizi/ecommerce-shopify', label: 'Servizio: E-commerce Shopify performanti' },
-      { href: '/settori/wine-viticulture', label: 'Settore Wine & Viticulture' },
-      { href: '/portfolio/tenuta-monteverdi', label: 'Case study: Tenuta Monteverdi' },
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
+      { href: '/settori/cantine', label: 'Settore Cantine' },
     ],
     body: [
       {
@@ -89,14 +88,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'Nel case study concept di Tenuta Monteverdi (esempio illustrativo, non un cliente reale — lo trovi in portfolio) il punto di partenza era un sito statico senza alcun canale di vendita diretta: ogni bottiglia passava per un distributore, e la cantina non aveva alcun dato su chi comprava davvero il proprio vino.',
-          'La soluzione ha unito e-commerce Shopify, gestione stock e spedizioni pensata per il vino, e un wine club per trasformare acquisti singoli in relazioni continuative — non funzionalità isolate, ma un sistema pensato per portare il visitatore dalla prima visita all’acquisto ricorrente.',
-          'Il punto centrale di questo tipo di progetto non è mai la tecnologia in sé, ma la sequenza: prima si costruisce un catalogo che comunica valore, poi un checkout che non perde ordini per attrito, poi un meccanismo che trasforma il primo acquisto in una relazione — in quest’ordine, non al contrario.',
-        ],
-      },
-      {
         h2: 'Errori che azzerano il vantaggio di margine',
         paragraphs: [
           'Il primo errore è impostare il prezzo online identico al prezzo grossista più margine standard, senza considerare che il canale diretto ha costi diversi — a volte più bassi, a volte più alti a seconda del volume.',
@@ -158,7 +149,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Prima di costruire qualunque cosa, ha senso fare il conto vero: quanto guadagni oggi per bottiglia venduta al grossista, e quanto potresti guadagnare vendendola direttamente, al netto di spedizione, packaging e tempo di gestione. **Solo con quel numero in mano ha senso decidere quanto investire nell’e-commerce.**',
-          'Costruiamo e-commerce Shopify pensati per il vino — dalla gestione spedizioni al wine club ricorrente. [Scopri il servizio →](/servizi/ecommerce-shopify)',
+          'Costruiamo e-commerce Shopify pensati per il vino — dalla gestione spedizioni al wine club ricorrente. [Scopri il servizio →](/servizi/digital-commerce)',
         ],
       },
     ],

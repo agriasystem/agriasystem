@@ -11,12 +11,8 @@ const post = {
     imageAlt: 'Dashboard di una piattaforma software per la gestione di una cantina',
     tags: ['Software', 'CRM', 'Gestionale', 'Agribusiness'],
     keywords: ['software per cantine', 'software aziende vitivinicole', 'crm per cantine', 'gestionale cantine', 'software gestione cantina'],
-    relatedSlugs: ['software-frantoi-gestione-ordini-crm', 'agenti-ai-processo-commerciale'],
-    relatedLinks: [
-      { href: '/software/vitivinicolo', label: 'Software su misura per cantine' },
-      { href: '/software', label: 'Software su misura per l’agroalimentare' },
-      { href: '/portfolio/tasting-flow', label: 'Case study concept: Tasting Flow' },
-    ],
+    relatedSlugs: [],
+    relatedLinks: [],
     body: [
       {
         h2: 'Perché usare 4 o 5 strumenti diversi ti costa più di quanto pensi',
@@ -50,13 +46,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'Nel caso concept di Tasting Flow — software su misura sviluppato per la tasting room di una cantina toscana, esempio illustrativo nel nostro portfolio e non un cliente reale — il problema di partenza era la gestione manuale delle prenotazioni di degustazione su un foglio di calcolo, senza alcun follow-up dopo la visita.',
-          'La soluzione ha automatizzato prenotazioni, schede di degustazione per il sommelier e follow-up post-visita: il tipo di risultato che progettiamo quando prenotazioni e CRM lavorano insieme invece che su strumenti separati.',
-        ],
-      },
-      {
         h2: 'Domande frequenti sul software per cantine',
         paragraphs: [
           '**Quanto tempo serve per passare da un altro software?** Dipende da quanti dati vanno migrati; con un progetto su misura, il primo pezzo utilizzabile arriva in genere prima della fine del progetto, non solo alla consegna finale.',
@@ -69,7 +58,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve sostituire tutti gli strumenti che usi oggi in un colpo solo. **Il punto di partenza più utile è capire quale singola area — vendite, prenotazioni o gestione del team — fa perdere più tempo oggi**, e partire da lì.',
-          'Progettiamo CRM e gestionali su misura per cantine che vogliono smettere di gestire il lavoro tra strumenti sparsi. [Scopri il software su misura per cantine →](/software/vitivinicolo)',
+          'Progettiamo CRM e gestionali su misura per cantine che vogliono smettere di gestire il lavoro tra strumenti sparsi. [Parliamo del progetto](/contatti).',
         ],
       },
     ],

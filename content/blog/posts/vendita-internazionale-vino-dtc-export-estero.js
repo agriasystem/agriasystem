@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Scatole di vino pronte per la spedizione internazionale',
     tags: ['E-commerce', 'Export', 'Wine Tech'],
     keywords: ['vendere vino online estero', 'export diretto vino', 'dtc vino internazionale', 'spedire vino all’estero'],
-    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta', 'ecommerce-vino-vendite-dirette'],
+    relatedSlugs: ['ecommerce-vino-margini-vendita-diretta'],
     relatedLinks: [
-      { href: '/servizi/ecommerce-shopify', label: 'Servizio: E-commerce Shopify performanti' },
-      { href: '/servizi/consulenza-strategica', label: 'Servizio: Consulenza strategica' },
-      { href: '/portfolio/frantoi-san-lorenzo', label: 'Case study: Frantoi San Lorenzo' },
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
     ],
     body: [
       {
@@ -51,7 +50,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Il modo più sicuro per iniziare è scegliere un solo mercato test — spesso Germania, Svizzera o Regno Unito per un produttore italiano, per vicinanza logistica e domanda già esistente — e verificare margini e operatività reali prima di allargare ad altri paesi.',
-          'Se vuoi valutare se e come ha senso per la tua cantina, [prenota una call gratuita](/prenota-call).',
+          'Se vuoi valutare se e come ha senso per la tua cantina, [parliamo del progetto](/contatti).',
         ],
       },
     ],

@@ -11,11 +11,10 @@ const post = {
     imageAlt: 'Camera di un agriturismo pronta ad accogliere ospiti prenotati online',
     tags: ['Agriturismo', 'Booking Online', 'Gestione Prenotazioni', 'Farm Stay'],
     keywords: ['agriturismo booking online', 'prenotazioni agriturismo', 'sistema gestione agriturismo', 'farm stay online', 'agriturismo Italia'],
-    relatedSlugs: ['enoturismo-prenotazioni-online-vendite-dirette', 'chatbot-cantina-ai-customer-service'],
+    relatedSlugs: ['degustazioni-cantina-trasformare-visite-vendite', 'chatbot-cantina-ai-customer-service'],
     relatedLinks: [
-      { href: '/software/hospitality', label: 'Software su misura per agriturismi' },
-      { href: '/settori/wine-hospitality-agriturismi', label: 'Settore Wine Hospitality & Agriturismi' },
-      { href: '/portfolio/podere-la-vite', label: 'Case study: Podere La Vite' },
+      { href: '/blog/software-per-agriturismi', label: 'Software per agriturismi' },
+      { href: '/settori/hospitality', label: 'Settore Hospitality' },
     ],
     body: [
       {
@@ -153,15 +152,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'In un caso concept ispirato a progetti reali di agriturismo — come quello raccontato nel case study di Podere La Vite, esempio illustrativo che unisce booking, ristorazione e degustazioni in un’unica esperienza — il punto di partenza era simile a quello di molte strutture di dimensioni medie: prenotazioni gestite quasi solo per telefono, nessuna visibilità reale sulla disponibilità delle camere, servizi extra proposti solo all’arrivo.',
-          'La soluzione ha unito un motore di prenotazione integrato al sito, con calendario reale per le camere, possibilità di aggiungere cena e degustazioni già in fase di prenotazione, e comunicazioni automatiche prima e dopo il soggiorno.',
-          'Nell’esempio, l’effetto più immediato non è stato solo un aumento delle prenotazioni dirette, ma anche una riduzione sensibile del tempo speso al telefono a rispondere alle stesse domande su disponibilità e prezzi — tempo che il team ha potuto restituire alla cura dell’accoglienza.',
-          'L’altro elemento che ha fatto la differenza, nell’esempio concettuale, è stato proprio l’upsell integrato nella prenotazione: proporre cena e degustazioni nello stesso momento in cui l’ospite sceglieva la camera ha aumentato in modo evidente la quota di soggiorni che includevano anche la ristorazione, invece di lasciarla come decisione separata da prendere solo all’arrivo.',
-        ],
-      },
-      {
         h2: 'Misurare i risultati e migliorare nel tempo',
         paragraphs: [
           'Una volta attivo, un sistema di prenotazione diretto genera dati che prima semplicemente non esistevano: da dove arrivano le richieste, quanto tempo passa tra la prima visita al sito e la prenotazione effettiva, quali servizi extra vengono scelti più spesso.',
@@ -194,7 +184,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve sostituire tutti i canali esistenti: **il primo passo è offrire un modo diretto e semplice per prenotare sul proprio sito**, così da recuperare le richieste che oggi si perdono nell’attesa di una risposta manuale, e ridurre gradualmente la dipendenza dai portali esterni.',
-          'Realizziamo sistemi di booking per agriturismi, con gestione camere, servizi extra e comunicazioni automatiche pre e post soggiorno. [Scopri il software su misura per agriturismi →](/software/hospitality)',
+          'Realizziamo sistemi di booking per agriturismi, con gestione camere, servizi extra e comunicazioni automatiche pre e post soggiorno. [Scopri il settore Hospitality →](/settori/hospitality)',
         ],
       },
     ],

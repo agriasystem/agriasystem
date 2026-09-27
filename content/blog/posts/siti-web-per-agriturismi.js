@@ -11,12 +11,11 @@ const post = {
     imageAlt: 'Terrazza di un agriturismo tra le colline, tavolo apparecchiato all’aperto',
     tags: ['Agriturismo', 'Siti Web', 'Booking Online', 'Hospitality'],
     keywords: ['siti web per agriturismi', 'web design agriturismi', 'sito web agriturismo', 'prenotazioni online agriturismo'],
-    relatedSlugs: ['agriturismo-booking-online-prenotazioni', 'specialista-digitale-vs-web-agency-agroalimentare'],
+    relatedSlugs: ['agriturismo-booking-online-prenotazioni'],
     relatedLinks: [
-      { href: '/servizi/siti-web-contatti', label: 'Servizio: Siti web che generano contatti' },
-      { href: '/settori/wine-hospitality-agriturismi', label: 'Settore Wine Hospitality & Agriturismi' },
-      { href: '/software/hospitality', label: 'Software su misura per agriturismi' },
-      { href: '/portfolio/podere-la-vite', label: 'Case study concept: Podere La Vite' },
+      { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/settori/hospitality', label: 'Settore Hospitality' },
+      { href: '/blog/software-per-agriturismi', label: 'Software per agriturismi' },
     ],
     body: [
       {
@@ -49,7 +48,6 @@ const post = {
         paragraphs: [
           'Chi arriva sul sito la sera, magari da mobile, deve poter fare tutto senza uscire dal sito: vedere la disponibilità reale per le date che ha in mente, capire subito cosa è incluso nel prezzo, e prenotare in pochi passaggi.',
           'Dopo la prenotazione, una comunicazione automatica — non manuale — fa la differenza tra un ospite che arriva informato e uno che scrive dieci messaggi nei giorni prima: informazioni sul check-in, cosa portare, cosa aspettarsi dal soggiorno.',
-          'Nel caso concept di Podere La Vite — agriturismo toscano con 8 camere e ristorazione, esempio illustrativo nel nostro portfolio e non un cliente reale — il problema di partenza era un sito su template generico, con prenotazioni gestite solo per telefono. La soluzione ha unito un sito che racconta l’esperienza per sequenza (colazione, degustazione, cena, pernottamento) con un booking engine collegato anche a Booking.com e Airbnb, portando a un aumento del 35% nell’occupazione delle camere e del 50% nelle prenotazioni di cena dirette.',
         ],
       },
       {
@@ -60,9 +58,8 @@ const post = {
         ],
       },
       {
-        h2: 'Quanto costa un sito per agriturismo e come valutare se si ripaga',
+        h2: 'Come valutare se un sito per agriturismo si ripaga',
         paragraphs: [
-          'Anche qui il costo varia in base a cosa deve fare davvero: un sito vetrina con form di contatto costa meno di un sito con booking engine integrato, sincronizzazione con OTA come Booking.com e Airbnb, e vendita di esperienze. Diffida di chi promette una cifra fissa prima di aver capito cosa ti serve davvero, ed è ancora più prudente diffidare di chi promette percentuali di crescita garantite in anticipo.',
           'Il modo corretto di valutare l’investimento non è una percentuale astratta, ma un confronto concreto: quante richieste oggi si perdono perché non c’è modo di prenotare subito, e quanto valgono le notti che restano vuote per mancanza di visibilità online.',
           'Un sito che comunica bene l’esperienza ma non permette di prenotare direttamente lascia sul tavolo esattamente le prenotazioni che qualcuno decide di fare la sera, d’impulso — il momento in cui la decisione va colta, non rimandata a un’email il giorno dopo.',
         ],
@@ -80,7 +77,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve costruire tutto insieme. **Il primo passo è avere un booking diretto funzionante per le camere**, con calendario e prezzo visibili: è la base su cui poi si aggiungono esperienze, sincronizzazione con le OTA e comunicazione automatica.',
-          'Progettiamo siti per agriturismi pensati per trasformare chi naviga in chi prenota, non solo per mostrare belle foto. [Scopri il servizio →](/servizi/siti-web-contatti)',
+          'Progettiamo siti per agriturismi pensati per trasformare chi naviga in chi prenota, non solo per mostrare belle foto. [Scopri il servizio →](/servizi/digital-presence)',
         ],
       },
     ],

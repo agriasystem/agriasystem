@@ -11,11 +11,9 @@ const post = {
     imageAlt: 'Interfaccia di un chatbot AI che risponde a un cliente di una cantina',
     tags: ['Chatbot', 'AI', 'Customer Service', 'Automazione'],
     keywords: ['chatbot cantina', 'chatbot AI vino', 'automazione customer service vino', 'risposte automatiche clienti', 'chatbot e-commerce vino'],
-    relatedSlugs: ['software-frantoi-gestione-ordini-crm', 'agriturismo-booking-online-prenotazioni'],
+    relatedSlugs: ['agriturismo-booking-online-prenotazioni'],
     relatedLinks: [
-      { href: '/servizi/automazioni-ai', label: 'Servizio: Automazioni e AI' },
-      { href: '/software', label: 'Software su misura per l’agroalimentare' },
-      { href: '/portfolio/wine-club-pro', label: 'Case study: Wine Club Pro' },
+      { href: '/servizi/digital-automation', label: 'Servizio: Digital Automation' },
     ],
     body: [
       {
@@ -131,15 +129,6 @@ const post = {
         ],
       },
       {
-        h2: 'Un esempio dal settore',
-        paragraphs: [
-          'In un caso concept ispirato a progetti reali di cantine con e-commerce attivo (esempio illustrativo, non riferito a un singolo cliente), il punto di partenza era una casella di posta dell’assistenza clienti sommersa da domande ripetitive: disponibilità di specifiche annate, tempi di spedizione verso l’estero, stato di ordini già effettuati, informazioni sul wine club appena lanciato.',
-          'La soluzione ha previsto un agente AI conversazionale collegato al catalogo dell’e-commerce e al sistema di tracking delle spedizioni, impostato per rispondere direttamente alle domande più frequenti e per raccogliere i contatti qualificati sulle richieste più commerciali, passandole poi a una persona con il contesto già raccolto.',
-          'Nell’esempio, l’effetto più immediato non è stato un singolo numero isolato, ma un cambiamento nella distribuzione del lavoro: le domande ripetitive sono state assorbite in gran parte dal chatbot, mentre il team ha potuto concentrarsi sulle conversazioni commerciali più delicate e sui casi di assistenza che richiedevano davvero un giudizio umano, come reclami o richieste personalizzate.',
-          'Un elemento chiave del progetto concettuale è stato il tempo dedicato, nelle prime settimane, a rivedere le conversazioni reali gestite dal chatbot: alcune risposte iniziali si sono rivelate troppo generiche o imprecise su dettagli specifici del catalogo, e sono state corrette rapidamente prima che diventassero un problema diffuso. È un passaggio che, nell’esempio, ha fatto più differenza della configurazione tecnica iniziale.',
-        ],
-      },
-      {
         h2: 'Errori comuni da evitare',
         paragraphs: [
           'Il primo errore è impostare il chatbot su informazioni generiche o non aggiornate, invece che sui contenuti reali e attuali della cantina: un chatbot che propone un vino esaurito o cita un prezzo sbagliato genera più danno che beneficio, perché il cliente scopre l’errore proprio nel momento in cui si aspettava una risposta affidabile.',
@@ -162,7 +151,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve partire con tutti i casi d’uso insieme: **il modo più sicuro è scegliere quello che risolve il problema più urgente oggi** — spesso la qualificazione dei primi contatti o l’assistenza post-acquisto — e allargare da lì, man mano che il team verifica cosa funziona davvero nella pratica quotidiana.',
-          'Costruiamo agenti AI e chatbot su misura per l’agroalimentare, collegati al vostro catalogo e ai vostri processi reali, con un perimetro chiaro tra ciò che gestisce l’automazione e ciò che resta sempre affidato a una persona. [Scopri Automazioni e AI →](/servizi/automazioni-ai)',
+          'Costruiamo agenti AI e chatbot su misura per l’agroalimentare, collegati al vostro catalogo e ai vostri processi reali, con un perimetro chiaro tra ciò che gestisce l’automazione e ciò che resta sempre affidato a una persona. [Scopri Digital Automation →](/servizi/digital-automation)',
         ],
       },
     ],
