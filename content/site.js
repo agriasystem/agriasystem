@@ -2,16 +2,16 @@
 // schema Organization, pagina contatti, dati aziendali e pagine legali.
 export const site = {
   name: 'Agria System',
-  // titolare dell'attività (pagine legali e dati aziendali)
+  // titolare: libero professionista con partita IVA; Agria System è il marchio
+  // con cui opera (pagine legali e dati aziendali)
   founder: 'Matteo Garuzzo',
+  legalForm: 'libero professionista',
   vat: 'IT04006460549',
-  // TEMPORANEO: da sostituire con info@agriasystem.com appena la casella è attiva
-  email: 'agriasystemitalia@gmail.com',
-  // telefono generale, anche WhatsApp
+  // recapiti: email aziendale, email diretta di Matteo Garuzzo (in /contatti),
+  // telefono generale anche per WhatsApp
+  email: 'info@agriasystem.com',
+  directEmail: 'matteo.garuzzo@agriasystem.com',
   phone: '+39 366 344 5417',
-  // area commerciale (Alessandro Poponi), mostrata in /contatti
-  salesPhone: '+39 334 766 8669',
-  salesEmail: 'alessandro.poponi@agriasystem.com',
   location: 'Perugia, Italia',
   address: {
     street: 'Via Ponte Vecchio',

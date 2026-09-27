@@ -2,7 +2,7 @@
 
 **Data:** 2026-09-26
 **Branch:** `agria/redesign`
-**Stato:** fasi A, B e C completate. Invio reale verso HubSpot verificato in locale.
+**Stato:** fasi A, B e C completate. **Integrazione sito → HubSpot → Resend → task manageriale COMPLETATA e VALIDATA REALMENTE** (27 settembre 2026): test reale da localhost con reCAPTCHA (punteggio 0.9), Forms API, contatto, azienda, associazione, trattativa in Nuovo Lead assegnata ad Alessandro Poponi, task per Matteo Garuzzo (owner `99355637`, associato a contatto, azienda e trattativa, visibile nella sua Home HubSpot), notifica Resend a 2 destinatari, esito `done outcome=ok`. Logica da non modificare senza un errore oggettivo. I record di test in HubSpot si puliscono separatamente.
 **Natura del lavoro:** pagina `/contatti` con modulo nativo a passi, integrazione HubSpot lato server con creazione della trattativa, assistente con risposte curate su tutte le pagine. Nessun widget, script, stile o iframe del modulo HubSpot nel frontend; nessun token nel frontend; `main` non è stato toccato.
 
 ---

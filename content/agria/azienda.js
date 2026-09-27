@@ -141,12 +141,12 @@ export const howWeWork = {
 // dello schema Organization della homepage), passati dalla pagina.
 export const company = {
   label: 'Dati aziendali',
-  name: 'Agria System',
+  name: 'Matteo Garuzzo, libero professionista',
   claim: 'Agria System è il marchio con cui operiamo.',
   vat: 'IT04006460549',
   address: { street: 'Via Ponte Vecchio', postalCode: '06135', city: 'Perugia', province: 'PG', country: 'IT' },
   addressLine: 'Via Ponte Vecchio, 06135 Perugia',
-  labels: { name: 'Denominazione', address: 'Indirizzo', vat: 'P.IVA', email: 'Email', phone: 'Telefono' },
+  labels: { name: 'Titolare', address: 'Indirizzo', vat: 'P.IVA', email: 'Email', phone: 'Telefono' },
 };
 
 // 9. CTA finale

@@ -13,7 +13,13 @@ export const LAST_UPDATED = '2026-09-27';
 
 const ADDRESS = `${site.address.street}, ${site.address.postalCode} ${site.address.city} (${site.address.province})`;
 const MAIL = `[${site.email}](mailto:${site.email})`;
-const CONTROLLER = `${site.founder}, titolare dell'attività che opera con il marchio ${site.name}, P.IVA ${site.vat.replace(/^IT/, '')}, con sede in ${ADDRESS}`;
+const CONTROLLER = `${site.founder}, ${site.legalForm}, P.IVA ${site.vat.replace(/^IT/, '')}, con sede in ${ADDRESS}, che opera con il marchio ${site.name}`;
+
+// Infrastruttura verificata (27 settembre 2026). Se cambia la regione delle
+// funzioni su Vercel, aggiornare solo VERCEL_FUNCTIONS_REGION (e LAST_UPDATED).
+const VERCEL_FUNCTIONS_REGION = 'Francoforte, Germania (regione fra1)';
+const VERCEL_LOG_RETENTION = '1 giorno';
+const RESEND_REGION = 'Irlanda (regione eu-west-1)';
 
 const GOOGLE_PRIVACY = 'https://policies.google.com/privacy';
 const GARANTE = 'https://www.garanteprivacy.it';
@@ -77,10 +83,10 @@ export const legalPages = {
         h2: '5. Fornitori che trattano i dati per nostro conto',
         paragraphs: ['I dati sono trattati da persone autorizzate e da questi fornitori, nominati responsabili del trattamento dove previsto:'],
         list: [
-          '**Vercel Inc.** (Stati Uniti): ospita il sito e le funzioni che ricevono il modulo. Tratta dati di navigazione e, per il tempo dell\'invio, i dati del modulo.',
-          '**HubSpot** (HubSpot, Inc. e HubSpot Ireland Ltd.): CRM in cui registriamo contatti, aziende e richieste; il nostro account è ospitato nel data center europeo di HubSpot. Gestisce anche il calendario delle videocall.',
+          `**Vercel Inc.** (Stati Uniti): ospita il sito. Le funzioni che ricevono il modulo contatti girano a ${VERCEL_FUNCTIONS_REGION}; le pagine sono distribuite dalla rete di Vercel dal nodo più vicino al visitatore, che può trovarsi anche fuori dall'Unione europea. Tratta dati di navigazione e, per il tempo dell'invio, i dati del modulo.`,
+          '**HubSpot** (HubSpot, Inc. e HubSpot Ireland Ltd.): CRM e ricezione del modulo, in cui registriamo contatti, aziende e richieste; il nostro account è ospitato nel data center europeo di HubSpot (eu1). Gestisce anche il calendario delle videocall.',
           `**Google** (Google Ireland Limited e Google LLC): servizio reCAPTCHA per la sicurezza del modulo, secondo la [privacy policy di Google](${GOOGLE_PRIVACY}).`,
-          '**Resend** (Resend, Inc., Stati Uniti): invio delle email interne con cui il team riceve ogni nuova richiesta.',
+          `**Resend** (Resend, Inc., Stati Uniti): invio delle email interne con cui il team riceve ogni nuova richiesta, dalla regione ${RESEND_REGION}.`,
           '**Unsplash** (Unsplash Inc.): distribuisce alcune fotografie del sito e, per consegnarle, riceve l\'indirizzo IP e i dati tecnici del browser.',
         ],
         after: [
@@ -90,7 +96,8 @@ export const legalPages = {
       {
         h2: '6. Trasferimenti fuori dall\'Unione europea',
         paragraphs: [
-          'Alcuni fornitori hanno sede negli Stati Uniti o possono trattare dati anche fuori dall\'Unione europea. In questi casi il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea sul Data Privacy Framework UE-USA, per i fornitori certificati, oppure delle clausole contrattuali standard approvate dalla Commissione.',
+          'Vercel e Resend hanno sede negli Stati Uniti; HubSpot e Google appartengono a gruppi statunitensi. Anche quando i dati sono trattati in data center europei (funzioni di Vercel in Germania, invii di Resend in Irlanda, account HubSpot nel data center UE), questi fornitori possono accedervi dagli Stati Uniti, e la rete di distribuzione di Vercel può servire le pagine da nodi fuori dall\'Unione europea.',
+          'Questi trasferimenti avvengono sulla base della decisione di adeguatezza della Commissione europea sul Data Privacy Framework UE-USA, per i fornitori certificati, oppure delle clausole contrattuali standard approvate dalla Commissione.',
         ],
       },
       {
@@ -100,7 +107,7 @@ export const legalPages = {
           '**Clienti**: per la durata del rapporto e, dopo, per i termini previsti dalla legge (per la documentazione contabile e fiscale, di norma 10 anni).',
           '**Email interne di notifica**: con gli stessi tempi della richiesta a cui si riferiscono.',
           '**Indirizzo IP per il limite alle richieste**: solo in memoria, per 10 minuti.',
-          '**Registri tecnici del sito**: per il periodo di conservazione previsto dal servizio di hosting.',
+          `**Registri tecnici del sito** (log di Vercel): ${VERCEL_LOG_RETENTION}.`,
         ],
       },
       {
@@ -249,7 +256,7 @@ export const legalPages = {
       {
         h2: 'Titolare del sito',
         list: [
-          `**Titolare**: ${site.founder}`,
+          `**Titolare**: ${site.founder}, ${site.legalForm}`,
           `**Marchio**: ${site.name}`,
           `**P.IVA**: ${site.vat.replace(/^IT/, '')}`,
           `**Sede**: ${ADDRESS}, Italia`,
@@ -259,7 +266,7 @@ export const legalPages = {
       },
       {
         h2: 'Hosting',
-        paragraphs: ['Il sito è ospitato da Vercel Inc., Stati Uniti.'],
+        paragraphs: [`Il sito è ospitato da Vercel Inc. (Stati Uniti); le funzioni server girano a ${VERCEL_FUNCTIONS_REGION}.`],
       },
       {
         h2: 'Diritti',
