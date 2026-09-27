@@ -72,6 +72,8 @@ export default function ContattiPage() {
         {...channels}
         email={site.email}
         phone={site.phone}
+        salesPhone={site.salesPhone}
+        salesEmail={site.salesEmail}
         whatsapp={WHATSAPP}
       />
       {/* 4. Cosa succede dopo · scuro */}

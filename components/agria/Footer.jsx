@@ -38,7 +38,7 @@ const COLUMNS = [
   },
   {
     title: 'Legale',
-    links: [...LEGAL, { label: 'Crediti immagini', href: '/crediti-immagini' }],
+    links: [...LEGAL, { label: 'Note legali', href: '/note-legali' }, { label: 'Crediti fotografici', href: '/crediti-immagini' }],
     // pulsante gestito dal banner consenso esistente
     extra: (
       <button type="button" onClick={reopenConsentBanner} className={`text-left ${LINK_CLASS}`}>

@@ -5,8 +5,7 @@
 //  - pagine area (content/agria/servizi-aree.js): verticali del settore per
 //    Digital Presence, Commerce e Automation;
 //  - navigazione (components/agria/nav-data.js): descrizioni delle aree.
-//  Testi nuovi, da approvare: solo meta (title e description) e il titolo
-//  della griglia nell'indice /settori. Template: components/agria/sector/.
+//  Testi nuovi, da approvare: meta (title e description) e h1 dell'indice /settori. Template: components/agria/sector/.
 // =====================================================================
 
 import { closing, preview, sectors } from './home';
@@ -86,9 +85,9 @@ export const sectorsIndex = {
       'Agria System lavora con tre settori: strutture ricettive rurali, cantine e aziende vitivinicole, frantoi e aziende olivicole.',
     path: '/settori',
   },
-  hero: { eyebrow: sectors.eyebrow, title: sectors.title },
-  // titolo della griglia (nuovo, da approvare): evita di ripetere l'h1
-  cardsTitle: 'Hospitality, cantine, frantoi.',
+  // h1 (da approvare) e titolo della griglia (approvato, come in homepage)
+  hero: { eyebrow: sectors.eyebrow, title: 'Hospitality, cantine, frantoi.' },
+  cardsTitle: sectors.title,
   closing: { title: closing.title, text: closing.text },
   cta: CTA,
 };

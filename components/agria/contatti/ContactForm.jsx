@@ -145,10 +145,11 @@ export default function ContactForm({ moduleLabels = {} }) {
         : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
   }, []);
 
-  // reCAPTCHA si carica con la pagina: il punteggio tiene conto della visita
-  useEffect(() => {
+  // reCAPTCHA si carica solo quando il visitatore inizia a compilare il modulo
+  // (primo focus o prima interazione), non all'apertura della pagina
+  const startRecaptcha = () => {
     loadRecaptcha();
-  }, []);
+  };
 
   // arrivo dal configuratore della homepage: moduli scelti nel messaggio
   useEffect(() => {
@@ -281,7 +282,14 @@ export default function ContactForm({ moduleLabels = {} }) {
 
   return (
     <div className={styles.card}>
-      <form noValidate onSubmit={submit} aria-labelledby={fid('title')} data-direction={direction}>
+      <form
+        noValidate
+        onSubmit={submit}
+        onFocusCapture={startRecaptcha}
+        onPointerDownCapture={startRecaptcha}
+        aria-labelledby={fid('title')}
+        data-direction={direction}
+      >
         <div className={styles.head}>
           <h2 id={fid('title')} className="font-agria-sans text-agria-h3 text-agria-graphite">
             {copy.title}

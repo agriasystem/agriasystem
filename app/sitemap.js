@@ -1,118 +1,37 @@
-import { posts, sectors, caseStudies, metodoSteps, servizi, getAllTags } from '@/lib/data';
-import { regions } from '@/lib/geo-data';
+import { KEPT_POSTS } from '@/content/blog/kept';
+import { LAST_UPDATED } from '@/content/agria/legale';
+import { getPost } from '@/lib/data';
 import { SITE_URL } from '@/lib/seo';
 
-const base = SITE_URL;
+// Sitemap: solo indirizzi indicizzabili del sito Agria (migration map, regola 5).
+// Esclusi redirect, 410 e pagine noindex (/crediti-immagini). lastModified solo
+// dove è noto davvero (articoli e pagine legali).
+const PAGES = [
+  ['/', 1.0],
+  ['/servizi', 0.9],
+  ['/servizi/digital-presence', 0.9],
+  ['/servizi/digital-commerce', 0.9],
+  ['/servizi/digital-automation', 0.9],
+  ['/settori', 0.8],
+  ['/settori/hospitality', 0.8],
+  ['/settori/cantine', 0.8],
+  ['/settori/frantoi', 0.8],
+  ['/azienda', 0.7],
+  ['/contatti', 0.7],
+  ['/blog', 0.6],
+];
+
+const LEGAL = ['/privacy-policy', '/cookie-policy', '/termini-e-condizioni', '/note-legali'];
 
 export default function sitemap() {
-  const home = [{ url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 }];
-
-  const coreRoutes = ['/servizi', '/software', '/portfolio', '/blog', '/settori'].map(
-    (path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 })
-  );
-
-  // pagine delle tre aree AGRIA (Prompt 12); l'indice /servizi è già in coreRoutes
-  const agriaServiceRoutes = ['/servizi/digital-presence', '/servizi/digital-commerce', '/servizi/digital-automation'].map(
-    (path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 })
-  );
-
-  // pagina Azienda AGRIA (Prompt 14)
-  const agriaRoutes = ['/azienda'].map((path) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  const softwareSectorRoutes = ['/software/vitivinicolo', '/software/hospitality', '/software/frantoi'].map(
-    (path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 })
-  );
-
-  const secondaryRoutes = ['/chi-sono', '/servizi/wine-club', '/metodo', '/geo'].map((path) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  const utilityRoutes = ['/risorse', '/referral', '/prenota-call', '/contatti'].map((path) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
-
-  const legalRoutes = ['/privacy-policy', '/cookie-policy', '/termini-e-condizioni'].map((path) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'yearly',
-    priority: 0.2,
-  }));
-
-  const sectorRoutes = sectors.map((s) => ({
-    url: `${base}/settori/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  const caseStudyRoutes = caseStudies.map((c) => ({
-    url: `${base}/portfolio/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
-
-  const metodoRoutes = metodoSteps.map((s) => ({
-    url: `${base}/metodo/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.5,
-  }));
-
-  const servizioRoutes = servizi.map((s) => ({
-    url: `${base}/servizi/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  const postRoutes = posts.map((p) => ({
-    url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.updated || p.date),
-    changeFrequency: 'weekly',
-    priority: 0.6,
-  }));
-
-  const geoRoutes = regions.map((r) => ({
-    url: `${base}/geo/${r.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.5,
-  }));
-
-  const tagRoutes = getAllTags().map((t) => ({
-    url: `${base}/blog/tag/${t.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.3,
-  }));
-
-  return [
-    ...home,
-    ...coreRoutes,
-    ...agriaServiceRoutes,
-    ...agriaRoutes,
-    ...softwareSectorRoutes,
-    ...secondaryRoutes,
-    ...utilityRoutes,
-    ...legalRoutes,
-    ...sectorRoutes,
-    ...caseStudyRoutes,
-    ...metodoRoutes,
-    ...servizioRoutes,
-    ...postRoutes,
-    ...geoRoutes,
-    ...tagRoutes,
-  ];
+  const pages = PAGES.map(([path, priority]) => ({ url: `${SITE_URL}${path === '/' ? '' : path}`, priority }));
+  const posts = KEPT_POSTS.map((slug) => getPost(slug))
+    .filter(Boolean)
+    .map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.updated || post.date),
+      priority: 0.6,
+    }));
+  const legal = LEGAL.map((path) => ({ url: `${SITE_URL}${path}`, lastModified: new Date(LAST_UPDATED), priority: 0.2 }));
+  return [...pages, ...posts, ...legal];
 }

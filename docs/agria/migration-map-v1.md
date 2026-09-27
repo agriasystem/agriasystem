@@ -23,7 +23,6 @@ Non è solo un cambio di dominio: è migrazione di dominio (matteogaruzzo.com �
 | Cantine | /settori/cantine | /en/industries/wineries |
 | Frantoi | /settori/frantoi | /en/industries/olive-oil |
 | Azienda | /azienda | /en/company |
-| Conferma invio | /contatti/grazie | /en/contact/thank-you |
 | Versioni EN delle pagine core | /en, /en/services, /en/industries, /en/contact | — |
 
 **Storico — settori rinominati (Prompt 10, 24 settembre 2026).** Vino e Olio sono prodotti, non settori: diventano Cantine (EN: Wineries) e Frantoi (EN: Olive Oil Producers). Slug precedenti: /settori/vino → /settori/cantine, /settori/olio → /settori/frantoi, /en/industries/wine → /en/industries/wineries; /en/industries/olive-oil resta invariato. Le pagine vecchie non sono mai state pubblicate, quindi non serve nessun redirect; le destinazioni delle tabelle sotto sono già aggiornate.
@@ -50,8 +49,8 @@ Non è solo un cambio di dominio: è migrazione di dominio (matteogaruzzo.com �
 | /quiz | 3 / 0 | 301 | /contatti |
 | /proposta/[id] | noindex | DELETE | route rimossa |
 | /risorse | 3 / 0 | DELETE | — |
-| /referral | 1 / 0 | DELETE (proposta, decisione aperta) | — |
-| /crediti-immagini | 0 | Da decidere | Si mantiene solo se restano foto con attribuzione |
+| /referral | 1 / 0 | DELETE | — |
+| /crediti-immagini | 0 | KEEP + REWRITE | /crediti-immagini (noindex, generata dai crediti Unsplash) |
 | /geo e 16 regioni | 73 / 0 | DELETE | — |
 | /blog/tag/* (71) | 38 / 0 | DELETE | — |
 
@@ -159,6 +158,14 @@ Stesso slug, stesso intento di ricerca, contenuto riscritto nel tone of voice Ag
 | specialista-digitale-vs-web-agency-agroalimentare | 9 | Racconto freelance contro agenzia, incompatibile con il posizionamento |
 | scegliere-partner-digitale-checklist | 1 | Da riscrivere eventualmente in Fase 2 su un nuovo slug |
 | bandi-incentivi-digitalizzazione-agroalimentare | 1 | Contenuto datato, rischio di informazioni non più valide |
+
+## Decisioni del 27 settembre 2026
+
+- /contatti/grazie tolta dalla mappa: la conferma resta nel riquadro del modulo.
+- /referral e /risorse: DELETE (410). /crediti-immagini: KEEP, ricostruita in stile Agria.
+- I 13 articoli KEEP restano online allo stesso indirizzo nel layout Agria, con una pulizia minima, in attesa della riscrittura.
+- API legacy del quiz e della newsletter (/api/quiz/*, /api/newsletter/*): 410.
+- Applicazione: `lib/migration.js` (regole) e `middleware.js`; verifica con `node scripts/verify-migration.mjs`.
 
 ## Regole di applicazione
 

@@ -103,7 +103,15 @@ export const reassurance = [
 // 3. Altri modi per parlarci. Email e telefono da content/site.js.
 export const channels = {
   title: 'Altri modi per parlarci',
-  labels: { email: 'Email', phone: 'Telefono', whatsapp: 'WhatsApp', address: 'Sede', hours: 'Orari' },
+  labels: {
+    email: 'Email',
+    phone: 'Telefono',
+    whatsapp: 'WhatsApp',
+    salesPhone: 'Commerciale',
+    salesEmail: 'Email commerciale',
+    address: 'Sede',
+    hours: 'Orari',
+  },
   whatsappMessage: 'Buongiorno, vorrei parlare di un progetto con Agria System.',
   address: 'Via Ponte Vecchio, 06135 Perugia',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+06135+Perugia',

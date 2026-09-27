@@ -2,10 +2,10 @@ import LegalPage from '@/components/agria/legal/LegalPage';
 import { legalPages } from '@/content/agria/legale';
 import { agriaPageMetadata } from '@/lib/seo';
 
-const page = legalPages.cookie;
+const page = legalPages.notes;
 
 export const metadata = agriaPageMetadata(page.meta);
 
-export default function CookiePolicyPage() {
-  return <LegalPage page={page} id="cookie-policy" />;
+export default function NoteLegaliPage() {
+  return <LegalPage page={page} id="note-legali" />;
 }

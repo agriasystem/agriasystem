@@ -16,7 +16,7 @@ import serviziCredits from '@/public/images/servizi/CREDITS.json';
 // precedenti, limitati alle foto davvero pubblicate (pagine Agria e articoli
 // mantenuti). Parametri utm di Unsplash con il nome dell'applicazione Agria.
 const PAGE = {
-  title: 'Crediti immagini | Agria System',
+  title: 'Crediti fotografici | Agria System',
   description: 'Attribuzione dei fotografi Unsplash per le immagini pubblicate sul sito di Agria System.',
   path: '/crediti-immagini',
 };
@@ -59,8 +59,8 @@ export default function CreditiImmaginiPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(PAGE)) }} />
       <PageHero
         eyebrow="Attribuzione"
-        title="Crediti immagini"
-        lead="Molte fotografie del sito arrivano da Unsplash. Qui l'elenco dei fotografi, con il link a ogni foto."
+        title="Crediti fotografici"
+        lead="Le fotografie di questo sito provengono da Unsplash. Qui trovate autore e collegamento per ciascuna."
         titleId="crediti-title"
       />
       <Section background="white" aria-labelledby="crediti-title">

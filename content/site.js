@@ -5,9 +5,13 @@ export const site = {
   // titolare dell'attività (pagine legali e dati aziendali)
   founder: 'Matteo Garuzzo',
   vat: 'IT04006460549',
-  // DA CONFERMARE: email e telefono aziendali di Agria System (oggi quelli precedenti)
-  email: 'matteogaruzzo1@gmail.com',
+  // TEMPORANEO: da sostituire con info@agriasystem.com appena la casella è attiva
+  email: 'agriasystemitalia@gmail.com',
+  // telefono generale, anche WhatsApp
   phone: '+39 366 344 5417',
+  // area commerciale (Alessandro Poponi), mostrata in /contatti
+  salesPhone: '+39 334 766 8669',
+  salesEmail: 'alessandro.poponi@agriasystem.com',
   location: 'Perugia, Italia',
   address: {
     street: 'Via Ponte Vecchio',

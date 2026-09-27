@@ -10,11 +10,6 @@ import {
 
 const toggleableCategories = [
   {
-    key: 'booking',
-    label: 'Calendario prenotazioni',
-    body: 'Carica il widget Calendly nella pagina "Prenota una call". Senza consenso trovi comunque un pulsante per aprirlo quando vuoi.',
-  },
-  {
     key: 'analytics',
     label: 'Analytics',
     body: 'Al momento non utilizziamo alcuno strumento di analytics. Se in futuro lo attiveremo, te lo chiederemo qui.',
@@ -24,7 +19,7 @@ const toggleableCategories = [
 export default function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [choices, setChoices] = useState({ booking: false, analytics: false });
+  const [choices, setChoices] = useState({ analytics: false });
 
   useEffect(() => {
     if (!hasValidConsent()) setVisible(true);
@@ -66,14 +61,14 @@ export default function CookieConsentBanner() {
               </button>
               <button
                 type="button"
-                onClick={() => accept({ booking: false, analytics: false })}
+                onClick={() => accept({ analytics: false })}
                 className="btn-ghost text-sm py-2.5"
               >
                 Rifiuta
               </button>
               <button
                 type="button"
-                onClick={() => accept({ booking: true, analytics: true })}
+                onClick={() => accept({ analytics: true })}
                 className="btn-solid text-sm py-2.5"
               >
                 Accetta tutti
@@ -89,8 +84,8 @@ export default function CookieConsentBanner() {
                 <div>
                   <p className="text-sm font-semibold text-ink">Essenziali (sempre attivi)</p>
                   <p className="text-xs text-ink/60 mt-1">
-                    Necessari per far funzionare il sito: memorizzano solo questa scelta e, se stai facendo il
-                    quiz, le risposte date finora.
+                    Necessari per far funzionare il sito: memorizzano solo questa scelta e, per la durata della
+                    visita, se il pannello dell’assistente è aperto.
                   </p>
                 </div>
               </div>
@@ -118,14 +113,14 @@ export default function CookieConsentBanner() {
               </button>
               <button
                 type="button"
-                onClick={() => accept({ booking: false, analytics: false })}
+                onClick={() => accept({ analytics: false })}
                 className="btn-ghost text-sm py-2.5"
               >
                 Rifiuta tutto
               </button>
               <button
                 type="button"
-                onClick={() => accept({ booking: true, analytics: true })}
+                onClick={() => accept({ analytics: true })}
                 className="btn-ghost text-sm py-2.5"
               >
                 Accetta tutto
