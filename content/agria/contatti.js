@@ -78,7 +78,7 @@ export const form = {
   meetingsUrl: 'https://meetings-eu1.hubspot.com/alessandro-poponi',
   success: {
     title: 'Richiesta ricevuta',
-    text: 'Grazie per averci contattato. Abbiamo ricevuto la tua richiesta e Alessandro del team Agria ti ricontatterà a breve.',
+    text: 'Grazie per averci contattato. Abbiamo ricevuto la tua richiesta e il team Agria ti ricontatterà a breve.',
   },
 };
 
@@ -86,7 +86,7 @@ export const reassurance = [
   {
     icon: 'user-check',
     title: 'Risponde una persona',
-    text: 'La richiesta arriva ad Alessandro, che risponde personalmente.',
+    text: 'La richiesta arriva al nostro team commerciale, che risponde personalmente.',
   },
   {
     icon: 'check',
@@ -114,8 +114,7 @@ export const channels = {
   whatsappMessage: 'Buongiorno, vorrei parlare di un progetto con Agria System.',
   address: 'Via Ponte Vecchio, 06135 Perugia',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+06135+Perugia',
-  // orari indicativi: da confermare
-  hours: 'Lunedì-venerdì, 9:00-18:00',
+  hours: 'Lunedì-venerdì, 9-18',
 };
 
 // 4. Cosa succede dopo: quattro tappe che avanzano da sole
@@ -126,7 +125,7 @@ export const nextSteps = {
   play: 'Riprendi',
   steps: [
     { icon: 'inbox', title: 'Ricezione', text: 'La richiesta entra nel nostro sistema e viene assegnata.' },
-    { icon: 'phone', title: 'Prima risposta', text: 'Alessandro vi scrive o vi chiama per capire meglio.' },
+    { icon: 'phone', title: 'Prima risposta', text: 'Il nostro team commerciale vi scrive o vi chiama per capire meglio.' },
     { icon: 'search', title: 'Analisi', text: 'Guardiamo il vostro caso e prepariamo una valutazione.' },
     { icon: 'file-text', title: 'Proposta', text: 'Ricevete ambito, tempi e investimento definiti sul progetto.' },
   ],
@@ -138,7 +137,7 @@ export const faq = {
   items: [
     {
       q: 'In quanto tempo rispondete?',
-      a: 'Alessandro risponde personalmente, di norma entro un giorno lavorativo dalla richiesta.',
+      a: 'Il nostro team commerciale risponde personalmente, di norma entro un giorno lavorativo dalla richiesta.',
     },
     {
       q: 'Cosa serve per la prima call?',

@@ -16,10 +16,11 @@ const MAIL = `[${site.email}](mailto:${site.email})`;
 const CONTROLLER = `${site.founder}, ${site.legalForm}, P.IVA ${site.vat.replace(/^IT/, '')}, con sede in ${ADDRESS}, che opera con il marchio ${site.name}`;
 
 // Infrastruttura verificata (27 settembre 2026). Se cambia la regione delle
-// funzioni su Vercel, aggiornare solo VERCEL_FUNCTIONS_REGION (e LAST_UPDATED).
+// funzioni su Vercel, aggiornare VERCEL_FUNCTIONS_REGION, la frase sui
+// trasferimenti al punto 6 della privacy ("funzioni di Vercel in Germania") e LAST_UPDATED.
 const VERCEL_FUNCTIONS_REGION = 'Francoforte, Germania (regione fra1)';
 const VERCEL_LOG_RETENTION = '1 giorno';
-const RESEND_REGION = 'Irlanda (regione eu-west-1)';
+const RESEND_REGION = 'Irlanda (eu-west-1)';
 
 const GOOGLE_PRIVACY = 'https://policies.google.com/privacy';
 const GARANTE = 'https://www.garanteprivacy.it';
@@ -59,7 +60,7 @@ export const legalPages = {
           'pagina di provenienza e indirizzo IP',
         ],
         after2: [
-          '**Dati di sicurezza del modulo.** Quando iniziate a compilare il modulo, il servizio Google reCAPTCHA raccoglie dati tecnici del dispositivo e di interazione con la pagina, per distinguere le persone dai sistemi automatici (vedi il punto 5).',
+          '**Dati di sicurezza del modulo.** Alla prima interazione con il riquadro del modulo contatti, il servizio Google reCAPTCHA raccoglie dati tecnici del dispositivo e di interazione con la pagina, per distinguere le persone dai sistemi automatici (vedi il punto 5).',
           '**Dati che ci inviate per altri canali.** Email, telefonate e messaggi WhatsApp contengono i dati che scegliete di condividere. Se prenotate una videocall, i dati che inserite nel calendario (nome, email, orario scelto) sono raccolti tramite HubSpot.',
         ],
       },
@@ -86,6 +87,7 @@ export const legalPages = {
           `**Vercel Inc.** (Stati Uniti): ospita il sito. Le funzioni che ricevono il modulo contatti girano a ${VERCEL_FUNCTIONS_REGION}; le pagine sono distribuite dalla rete di Vercel dal nodo più vicino al visitatore, che può trovarsi anche fuori dall'Unione europea. Tratta dati di navigazione e, per il tempo dell'invio, i dati del modulo.`,
           '**HubSpot** (HubSpot, Inc. e HubSpot Ireland Ltd.): CRM e ricezione del modulo, in cui registriamo contatti, aziende e richieste; il nostro account è ospitato nel data center europeo di HubSpot (eu1). Gestisce anche il calendario delle videocall.',
           `**Google** (Google Ireland Limited e Google LLC): servizio reCAPTCHA per la sicurezza del modulo, secondo la [privacy policy di Google](${GOOGLE_PRIVACY}).`,
+          '**Google Workspace** (Google Ireland Limited): posta elettronica aziendale. Ospita le caselle @agriasystem.com, in cui riceviamo le email che ci inviate e le notifiche interne con i dati di ogni nuova richiesta dal modulo.',
           `**Resend** (Resend, Inc., Stati Uniti): invio delle email interne con cui il team riceve ogni nuova richiesta, dalla regione ${RESEND_REGION}.`,
           '**Unsplash** (Unsplash Inc.): distribuisce alcune fotografie del sito e, per consegnarle, riceve l\'indirizzo IP e i dati tecnici del browser.',
         ],
@@ -96,7 +98,7 @@ export const legalPages = {
       {
         h2: '6. Trasferimenti fuori dall\'Unione europea',
         paragraphs: [
-          'Vercel e Resend hanno sede negli Stati Uniti; HubSpot e Google appartengono a gruppi statunitensi. Anche quando i dati sono trattati in data center europei (funzioni di Vercel in Germania, invii di Resend in Irlanda, account HubSpot nel data center UE), questi fornitori possono accedervi dagli Stati Uniti, e la rete di distribuzione di Vercel può servire le pagine da nodi fuori dall\'Unione europea.',
+          'Vercel e Resend hanno sede negli Stati Uniti; HubSpot e Google appartengono a gruppi statunitensi. Anche quando i dati sono trattati in data center europei (funzioni di Vercel in Germania, invii di Resend in Irlanda, posta di Google Workspace, account HubSpot nel data center UE), questi fornitori possono accedervi dagli Stati Uniti, e la rete di distribuzione di Vercel può servire le pagine da nodi fuori dall\'Unione europea.',
           'Questi trasferimenti avvengono sulla base della decisione di adeguatezza della Commissione europea sul Data Privacy Framework UE-USA, per i fornitori certificati, oppure delle clausole contrattuali standard approvate dalla Commissione.',
         ],
       },
@@ -149,15 +151,15 @@ export const legalPages = {
       {
         h2: '2. Strumenti tecnici del sito',
         list: [
-          '**Scelta sui cookie**: la memoria **mg_cookie_consent_v1** (localStorage) conserva la vostra scelta nel banner per 90 giorni, poi il banner ricompare.',
-          '**Assistente**: la memoria di sessione (sessionStorage) ricorda se il pannello dell\'assistente è aperto; si cancella chiudendo il browser.',
+          '**Avviso sui cookie**: la memoria **mg_cookie_consent_v1** (localStorage) ricorda per 90 giorni che avete chiuso l\'avviso, poi l\'avviso ricompare.',
+          '**Assistente**: la memoria di sessione (sessionStorage) ricorda se il pannello dell\'assistente è aperto; si cancella chiudendo la scheda o la finestra.',
         ],
         after: ['Sono necessari al funzionamento del sito e non richiedono consenso.'],
       },
       {
         h2: '3. Sicurezza del modulo contatti: Google reCAPTCHA',
         paragraphs: [
-          `Quando iniziate a compilare il modulo contatti, e solo allora, il sito carica Google reCAPTCHA, che protegge il modulo da invii automatici. reCAPTCHA può leggere e impostare cookie di Google e raccoglie dati tecnici del dispositivo e di interazione con la pagina. Lo usiamo per la sicurezza del modulo, sulla base del nostro legittimo interesse; i dati sono trattati secondo la [privacy policy di Google](${GOOGLE_PRIVACY}). Se non compilate il modulo, reCAPTCHA non viene caricato.`,
+          `Alla prima interazione con il riquadro del modulo contatti (un clic o un campo selezionato), e solo allora, il sito carica Google reCAPTCHA, che protegge il modulo da invii automatici. reCAPTCHA può leggere e impostare cookie di Google e raccoglie dati tecnici del dispositivo e di interazione con la pagina. Lo usiamo per la sicurezza del modulo, sulla base del nostro legittimo interesse; i dati sono trattati secondo la [privacy policy di Google](${GOOGLE_PRIVACY}). Se non interagite con il modulo, reCAPTCHA non viene caricato.`,
         ],
       },
       {
@@ -171,13 +173,13 @@ export const legalPages = {
       {
         h2: '5. Statistiche e profilazione',
         paragraphs: [
-          'Il sito non usa strumenti di statistica, pixel pubblicitari o cookie di profilazione. Se in futuro ne attivassimo uno, lo faremo solo con il vostro consenso, tramite il banner.',
+          'Il sito non usa strumenti di statistica, pixel pubblicitari o cookie di profilazione. Se in futuro ne attivassimo uno, lo faremmo solo con il vostro consenso, tramite il banner.',
         ],
       },
       {
         h2: '6. Come gestire le preferenze',
         paragraphs: [
-          'Potete rivedere la scelta in qualsiasi momento dal collegamento "Preferenze cookie" in fondo a ogni pagina, e cancellare cookie e memorie dalle impostazioni del browser.',
+          'Potete riaprire l\'avviso in qualsiasi momento dal collegamento "Preferenze cookie" in fondo a ogni pagina, e cancellare cookie e memorie dalle impostazioni del browser.',
           `Titolare: ${CONTROLLER}. Contatti: ${MAIL}. Maggiori informazioni nella [privacy policy](/privacy-policy).`,
         ],
       },
@@ -247,7 +249,7 @@ export const legalPages = {
   notes: {
     meta: {
       title: 'Note legali | Agria System',
-      description: 'Dati del titolare del sito di Agria System: denominazione, partita IVA, sede e contatti.',
+      description: 'Dati del titolare del sito di Agria System: titolare, partita IVA, sede e contatti.',
       path: '/note-legali',
     },
     title: 'Note legali',

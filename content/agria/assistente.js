@@ -27,7 +27,7 @@ export const assistant = {
   ],
   suggestions: ['cosa-fate', 'settori', 'tempi', 'persona'],
   handoff: {
-    text: 'Potete scrivere direttamente ad Alessandro, che risponde personalmente:',
+    text: 'Potete scrivere direttamente su WhatsApp:',
     whatsapp: { label: 'Scrivi su WhatsApp', href: 'https://wa.me/393663445417' },
     whatsappMessage: 'Buongiorno, arrivo dal sito di Agria System e vorrei parlare di un progetto.',
     form: { label: 'Apri il form', href: '/contatti' },
@@ -83,7 +83,7 @@ export const answers = [
     question: 'Come si inizia?',
     keywords: ['come si inizia', 'come iniziare', 'come funziona', 'primo passo', 'iniziare', 'partire', 'processo', 'metodo', 'come lavorate', 'analisi', 'proposta', 'preventivo'],
     text: [
-      'Si parte da una prima analisi. Ci raccontate come lavorate oggi, Alessandro vi ricontatta, guardiamo il vostro caso e ricevete una proposta con ambito, tempi e investimento definiti.',
+      'Si parte da una prima analisi. Ci raccontate come lavorate oggi, il nostro team vi ricontatta, guardiamo il vostro caso e ricevete una proposta con ambito, tempi e investimento definiti.',
       'La prima analisi non comporta costi né impegni.',
     ],
     links: [{ label: 'Richiedi la prima analisi', href: '/contatti' }],
@@ -150,7 +150,7 @@ export const answers = [
     id: 'persona',
     question: 'Voglio parlare con qualcuno',
     keywords: ['parlare con', 'qualcuno', 'una persona', 'operatore', 'umano', 'contatt', 'chiama', 'sentirci', 'telefon', 'whatsapp', 'call', 'videocall', 'appuntamento', 'scrivervi', 'email', 'mail'],
-    text: ['Certo. Alessandro segue il primo contatto e risponde personalmente.'],
+    text: ['Certo. Il nostro team commerciale segue il primo contatto e risponde personalmente.'],
     handoff: true,
   },
   {

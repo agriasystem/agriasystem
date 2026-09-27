@@ -2,132 +2,57 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import {
-  CONSENT_REOPEN_EVENT,
-  hasValidConsent,
-  saveConsent,
-} from '@/lib/consent';
+import { CONSENT_REOPEN_EVENT, hasValidConsent, saveConsent } from '@/lib/consent';
 
-const toggleableCategories = [
-  {
-    key: 'analytics',
-    label: 'Analytics',
-    body: 'Al momento non utilizziamo alcuno strumento di analytics. Se in futuro lo attiveremo, te lo chiederemo qui.',
-  },
-];
-
+// Avviso cookie: il sito usa solo strumenti tecnici (nessuna statistica né
+// profilazione), quindi non ci sono categorie da scegliere. La presa visione
+// resta memorizzata 90 giorni (lib/consent.js); "Preferenze cookie" nel footer
+// riapre l'avviso. Se un giorno si aggiunge uno strumento facoltativo, qui
+// tornano le scelte e CONSENT_VERSION va incrementata.
 export default function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-  const [choices, setChoices] = useState({ analytics: false });
 
   useEffect(() => {
     if (!hasValidConsent()) setVisible(true);
-
-    function onReopen() {
-      setExpanded(true);
-      setVisible(true);
-    }
+    const onReopen = () => setVisible(true);
     window.addEventListener(CONSENT_REOPEN_EVENT, onReopen);
     return () => window.removeEventListener(CONSENT_REOPEN_EVENT, onReopen);
   }, []);
 
-  function accept(categories) {
-    saveConsent(categories);
-    setVisible(false);
-    setExpanded(false);
-  }
-
   if (!visible) return null;
 
+  function close() {
+    saveConsent({});
+    setVisible(false);
+  }
+
   return (
-    <div className="fixed bottom-0 inset-x-0 z-[60] bg-paper border-t border-line shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
-      <div className="max-w-edge mx-auto px-6 py-6">
-        {!expanded ? (
-          <div className="flex flex-col lg:flex-row lg:items-center gap-5">
-            <div className="flex-1">
-              <p className="font-semibold text-ink text-sm">Usiamo i cookie, con misura.</p>
-              <p className="mt-1 text-sm text-ink/65 leading-relaxed">
-                Solo quelli essenziali sono sempre attivi. Il resto lo scegli tu — leggi la{' '}
-                <Link href="/cookie-policy" className="underline hover:text-forest">
-                  Cookie Policy
-                </Link>
-                .
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3 shrink-0">
-              <button type="button" onClick={() => setExpanded(true)} className="btn-ghost text-sm py-2.5">
-                Personalizza
-              </button>
-              <button
-                type="button"
-                onClick={() => accept({ analytics: false })}
-                className="btn-ghost text-sm py-2.5"
-              >
-                Rifiuta
-              </button>
-              <button
-                type="button"
-                onClick={() => accept({ analytics: true })}
-                className="btn-solid text-sm py-2.5"
-              >
-                Accetta tutti
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <p className="font-semibold text-ink text-sm">Le tue preferenze cookie</p>
-            <div className="mt-4 space-y-3">
-              <div className="flex gap-3 items-start border border-line rounded-lg p-4 bg-paper-dim">
-                <input type="checkbox" checked disabled className="mt-1 w-4 h-4 accent-forest" />
-                <div>
-                  <p className="text-sm font-semibold text-ink">Essenziali (sempre attivi)</p>
-                  <p className="text-xs text-ink/60 mt-1">
-                    Necessari per far funzionare il sito: memorizzano solo questa scelta e, per la durata della
-                    visita, se il pannello dell’assistente è aperto.
-                  </p>
-                </div>
-              </div>
-              {toggleableCategories.map((c) => (
-                <label
-                  key={c.key}
-                  className="flex gap-3 items-start border border-line rounded-lg p-4 cursor-pointer hover:border-ink/30"
-                >
-                  <input
-                    type="checkbox"
-                    checked={choices[c.key]}
-                    onChange={(e) => setChoices((prev) => ({ ...prev, [c.key]: e.target.checked }))}
-                    className="mt-1 w-4 h-4 accent-forest"
-                  />
-                  <div>
-                    <p className="text-sm font-semibold text-ink">{c.label}</p>
-                    <p className="text-xs text-ink/60 mt-1">{c.body}</p>
-                  </div>
-                </label>
-              ))}
-            </div>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <button type="button" onClick={() => accept(choices)} className="btn-solid text-sm py-2.5">
-                Salva preferenze
-              </button>
-              <button
-                type="button"
-                onClick={() => accept({ analytics: false })}
-                className="btn-ghost text-sm py-2.5"
-              >
-                Rifiuta tutto
-              </button>
-              <button
-                type="button"
-                onClick={() => accept({ analytics: true })}
-                className="btn-ghost text-sm py-2.5"
-              >
-                Accetta tutto
-              </button>
-            </div>
-          </div>
-        )}
+    <div
+      role="region"
+      aria-label="Informativa sui cookie"
+      className="fixed inset-x-0 bottom-0 z-[60] border-t border-agria-border bg-agria-white shadow-[0_-8px_28px_rgb(var(--agria-graphite)/0.08)]"
+    >
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+        <p className="font-agria-sans text-agria-sm text-agria-graphite">
+          <span className="font-medium">Solo cookie tecnici.</span>{' '}
+          <span className="text-agria-grey">
+            Il sito non usa strumenti di statistica né di profilazione. Dettagli nella{' '}
+            <Link
+              href="/cookie-policy"
+              className="rounded-sm text-agria-green-dark underline underline-offset-4 hover:text-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark"
+            >
+              cookie policy
+            </Link>
+            .
+          </span>
+        </p>
+        <button
+          type="button"
+          onClick={close}
+          className="shrink-0 self-start rounded-full bg-agria-green-dark px-5 py-2.5 font-agria-sans text-agria-sm font-medium text-agria-white transition-colors hover:bg-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2 lg:self-auto"
+        >
+          Ho capito
+        </button>
       </div>
     </div>
   );

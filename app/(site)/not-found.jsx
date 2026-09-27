@@ -1,23 +1,35 @@
 import Link from 'next/link';
+import { Button, Container, Eyebrow, Heading, Section, Text } from '@/components/agria/ui';
 
+// Pagina 404 nel layout Agria (header e footer dal layout del gruppo). Lo
+// stato 404 lo imposta Next; noindex esplicito. Gli indirizzi senza pagina
+// arrivano qui tramite app/(site)/[...pagina]/page.jsx.
 export const metadata = {
-  title: 'Pagina Non Trovata - Errore 404',
-  description:
-    'La pagina che cercavi non esiste più o è stata spostata. Torna alla home, esplora i servizi o contattaci: siamo qui per aiutarti.',
-  robots: { index: false, follow: false },
+  title: { absolute: 'Pagina non trovata | Agria System' },
+  description: 'La pagina richiesta non esiste o è stata spostata.',
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <section className="max-w-edge mx-auto px-6 min-h-[70vh] flex flex-col justify-center">
-      <p className="eyebrow">Errore 404</p>
-      <h1 className="display text-6xl md:text-7xl mt-4">Pagina non trovata.</h1>
-      <p className="mt-4 text-ink/70 max-w-md">
-        Il link che hai seguito non porta da nessuna parte. Torniamo su qualcosa di utile.
-      </p>
-      <Link href="/" className="btn-solid mt-8 self-start">
-        Torna alla home →
-      </Link>
-    </section>
+    <Section background="white" className="flex min-h-[70vh] items-center pt-40">
+      <Container>
+        <Eyebrow as="p">Errore 404</Eyebrow>
+        <Heading level="h1" className="mt-5 max-w-[20ch]">
+          Questa pagina non esiste.
+        </Heading>
+        <Text size="lg" muted className="mt-5">
+          L’indirizzo potrebbe essere cambiato o non essere più attivo.
+        </Text>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button as={Link} href="/">
+            Vai alla homepage
+          </Button>
+          <Button as={Link} href="/contatti" variant="ghost">
+            Contattaci
+          </Button>
+        </div>
+      </Container>
+    </Section>
   );
 }

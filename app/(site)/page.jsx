@@ -13,10 +13,10 @@ import ClosingCta from '@/components/agria/home/ClosingCta';
 import { site } from '@/lib/data';
 import { pageMetadata, webPageSchema, SITE_URL } from '@/lib/seo';
 
-const BRAND = 'Agria';
+const BRAND = 'Agria System';
 
 const PAGE = {
-  title: 'Agria — sistemi digitali per hospitality, cantine e frantoi',
+  title: 'Agria System — sistemi digitali per hospitality, cantine e frantoi',
   description:
     'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. Progettiamo sistemi digitali integrati con gli strumenti che già usate.',
   path: '/',

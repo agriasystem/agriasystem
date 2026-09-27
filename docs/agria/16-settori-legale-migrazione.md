@@ -18,14 +18,19 @@
 | Dati del sito: recapiti Agria, titolare, immagine social | `content/site.js`, `scripts/og-image.mjs` |
 | reCAPTCHA caricato solo quando si inizia a compilare il modulo; banner cookie senza Calendly | `components/agria/contatti/ContactForm.jsx`, `components/CookieConsentBanner.jsx` |
 
+| Pagina 404 nel layout Agria (stato 404, noindex) per ogni indirizzo senza pagina | `app/(site)/not-found.jsx`, `app/(site)/[...pagina]/page.jsx` |
+| Favicon e manifest Agria in `public/` (via il monogramma MG) | `app/(site)/layout.jsx` |
+| Avviso cookie senza categorie (solo strumenti tecnici) | `components/CookieConsentBanner.jsx`, `lib/consent.js` |
+
 Route legacy rimosse (ora 301 o 410): chi-sono, metodo, prenota-call, quiz, proposta, risorse, referral, geo, portfolio, software, servizi legacy, settori legacy, tag del blog, API di quiz e newsletter. Supabase e Prisma non sono più usati da nessuna route (restano solo `lib/db.js`, `lib/supabase.js` e le dipendenze, da togliere in una pulizia successiva).
 
 ## 2. Dati legali e infrastruttura (verificati)
 
 - Titolare: Matteo Garuzzo, libero professionista, P.IVA 04006460549, Via Ponte Vecchio, 06135 Perugia; Agria System è il marchio con cui opera. Nessun REA, PEC o dato societario.
 - Recapiti: `info@agriasystem.com`, `matteo.garuzzo@agriasystem.com`, telefono e WhatsApp +39 366 344 5417. Nessun recapito Gmail o su matteogaruzzo.com.
+- Posta aziendale su Google Workspace (dichiarata nella privacy).
 - Vercel: funzioni in fra1 (Francoforte) dal primo deploy dopo il 27 settembre 2026, log conservati 1 giorno. Resend: Irlanda (eu-west-1). HubSpot: data center UE (eu1).
-- Se cambia la regione delle funzioni: aggiornare `VERCEL_FUNCTIONS_REGION` e `LAST_UPDATED` in `content/agria/legale.js`.
+- Se cambia la regione delle funzioni: aggiornare in `content/agria/legale.js` `VERCEL_FUNCTIONS_REGION`, la frase "funzioni di Vercel in Germania" al punto 6 della privacy e `LAST_UPDATED`.
 
 ## 3. Dopo il go-live
 
@@ -37,7 +42,6 @@ Route legacy rimosse (ora 301 o 410): chi-sono, metodo, prenota-call, quiz, prop
 
 ## 4. Da dove riprendere lo sviluppo
 
-1. Banner cookie nel design system Agria (oggi è l'ultimo elemento visibile ancora in stile legacy).
-2. Riscrittura dei 13 articoli nel tone of voice Agria (migration map, KEEP + REWRITE), a partire da `ecommerce-per-frantoi` e `software-per-agriturismi`.
-3. Versioni EN delle pagine core (fondamenta i18n già pronte).
-4. Pulizia del codice legacy non più raggiungibile (componenti, quiz, Supabase, Prisma e relative dipendenze).
+1. Riscrittura dei 13 articoli nel tone of voice Agria (migration map, KEEP + REWRITE), a partire da `ecommerce-per-frantoi` e `software-per-agriturismi`.
+2. Versioni EN delle pagine core (fondamenta i18n già pronte).
+3. Pulizia del codice legacy non più raggiungibile (componenti, quiz, Supabase, Prisma e relative dipendenze).
