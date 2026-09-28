@@ -1,19 +1,28 @@
+import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/agria/sections/PageHero';
 import ArticleCards from '@/components/agria/sections/ArticleCards';
 import FinalCta from '@/components/agria/service/FinalCta';
 import AgriaImage from '@/components/agria/media/AgriaImage';
-import { Container, Eyebrow, Heading, Reveal, Section } from '@/components/agria/ui';
+import { Container, Eyebrow, Heading, Reveal, Section, TextLink } from '@/components/agria/ui';
+import Link from 'next/link';
 import { closing } from '@/content/agria/home';
 import { KEPT_POSTS } from '@/content/blog/kept';
 import { getPost } from '@/lib/data';
 import { AGRIA_BRAND, SITE_URL, agriaPageMetadata, breadcrumbSchema } from '@/lib/seo';
 import { RICH_TEXT_AGRIA, isBlockquote, renderRichText, stripBlockquoteMarker } from '@/lib/richtext';
 
-// Articolo nel layout Agria (migration map: KEEP + REWRITE, in attesa della
-// riscrittura). Stesso indirizzo e stesso testo, ripulito dai riferimenti
-// legacy. Solo gli articoli mantenuti: gli altri sono reindirizzati o 410
-// (next.config.js), prima di arrivare qui.
+// Articolo nel layout Agria (migration map: KEEP + REWRITE). Solo gli articoli
+// mantenuti: gli altri sono reindirizzati o 410 (middleware.js).
+// Campi facoltativi del post, per gli articoli riscritti:
+// - description: meta description (altrimenti excerpt);
+// - midLink: { text, label, href } rimando a servizio o settore a metà articolo;
+// - cta: { title, text } CTA finale contestuale verso /contatti;
+// - updated: data dell'ultima revisione (dateModified e sitemap);
+// - notice: [stringhe] avvertenza mostrata prima dell'immagine e del corpo
+//   (per esempio: l'articolo non sostituisce un parere professionale).
+// I clic verso /contatti nella pagina inviano contact_click (con consenso):
+// data-analytics-article sul contenitore, location sul collegamento.
 const CTA = closing.cta;
 const DATE = { day: '2-digit', month: 'long', year: 'numeric' };
 const LABELS = {
@@ -46,15 +55,28 @@ export function generateMetadata({ params }) {
   if (!p) return {};
   const base = agriaPageMetadata({
     title: `${p.seoTitle || p.title} | ${AGRIA_BRAND}`,
-    description: p.excerpt,
+    description: p.description || p.excerpt,
     path: `/blog/${p.slug}`,
   });
   const image = p.featuredImage ? [{ url: p.featuredImage, width: 1200, height: 630, alt: p.imageAlt || p.title }] : base.openGraph.images;
   return {
     ...base,
-    openGraph: { ...base.openGraph, type: 'article', publishedTime: p.date, images: image },
+    openGraph: { ...base.openGraph, type: 'article', publishedTime: p.date, modifiedTime: p.updated || p.date, images: image },
     twitter: { ...base.twitter, images: image.map((i) => i.url) },
   };
+}
+
+// Rimando contestuale a metà articolo: una riga e un collegamento a servizio o
+// settore. Non è una CTA commerciale.
+function MidLink({ text, label, href }) {
+  return (
+    <aside className="rounded-agria-card border border-agria-border bg-agria-offwhite px-6 py-5">
+      <p className="font-agria-sans text-agria-md text-agria-graphite">{text}</p>
+      <TextLink as={Link} href={href} className="mt-3">
+        {label}
+      </TextLink>
+    </aside>
+  );
 }
 
 function Paragraph({ text }) {
@@ -83,9 +105,9 @@ export default function Post({ params }) {
   const jsonLd = [
     {
       '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
+      '@type': 'Article',
       headline: p.title,
-      description: p.excerpt,
+      description: p.description || p.excerpt,
       image: p.featuredImage ? `${SITE_URL}${p.featuredImage}` : undefined,
       datePublished: p.date,
       dateModified: p.updated || p.date,
@@ -107,6 +129,10 @@ export default function Post({ params }) {
     ]),
   ];
 
+  // rimando a metà articolo: dopo il blocco centrale del corpo
+  const midAfter = Math.ceil(p.body.length / 2) - 1;
+  const cta = p.cta || closing;
+
   const links = (p.relatedLinks || []).length ? [{ title: LABELS.links, items: p.relatedLinks.map((l) => ({ label: l.label, href: l.href })) }] : [];
 
   return (
@@ -115,6 +141,7 @@ export default function Post({ params }) {
         <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
       ))}
 
+      <div data-analytics-article={p.slug}>
       {/* 1. Hero · scuro */}
       <PageHero eyebrow={p.category} title={p.title} lead={p.excerpt} titleId="articolo-titolo" />
 
@@ -130,6 +157,16 @@ export default function Post({ params }) {
             )}
             {p.readingMinutes && <span>{LABELS.reading(p.readingMinutes)}</span>}
           </p>
+
+          {p.notice?.length > 0 && (
+            <aside role="note" className="mt-6 flex max-w-[80ch] flex-col gap-2 rounded-agria-card border-l-2 border-agria-green-dark bg-agria-offwhite px-6 py-5">
+              {p.notice.map((text, i) => (
+                <p key={i} className="font-agria-sans text-agria-md text-agria-graphite">
+                  {renderRichText(text, RICH_TEXT_AGRIA)}
+                </p>
+              ))}
+            </aside>
+          )}
 
           {p.featuredImage && (
             <div className="relative mt-6 aspect-[16/7] overflow-hidden rounded-agria-card">
@@ -161,20 +198,23 @@ export default function Post({ params }) {
             )}
 
             <article className="flex max-w-[68ch] flex-col gap-10">
-              {p.body.map((section, i) =>
-                typeof section === 'string' ? (
-                  <Paragraph key={i} text={section} />
-                ) : (
-                  <div key={section.h2} id={slugifyHeading(section.h2)} className="flex scroll-mt-28 flex-col gap-4">
-                    <Heading level="h3" as="h2" className="text-agria-h3">
-                      {section.h2}
-                    </Heading>
-                    {section.paragraphs.map((para, j) => (
-                      <Paragraph key={j} text={para} />
-                    ))}
-                  </div>
-                )
-              )}
+              {p.body.map((section, i) => (
+                <Fragment key={typeof section === 'string' ? i : section.h2}>
+                  {typeof section === 'string' ? (
+                    <Paragraph text={section} />
+                  ) : (
+                    <div id={slugifyHeading(section.h2)} className="flex scroll-mt-28 flex-col gap-4">
+                      <Heading level="h3" as="h2" className="text-agria-h3">
+                        {section.h2}
+                      </Heading>
+                      {section.paragraphs.map((para, j) => (
+                        <Paragraph key={j} text={para} />
+                      ))}
+                    </div>
+                  )}
+                  {i === midAfter && p.midLink && <MidLink {...p.midLink} />}
+                </Fragment>
+              ))}
             </article>
           </div>
         </Container>
@@ -202,11 +242,13 @@ export default function Post({ params }) {
       <FinalCta
         id="articolo-cta-titolo"
         sectionId="articolo-cta-finale"
-        title={closing.title}
-        text={closing.text}
+        title={cta.title}
+        text={cta.text}
         primary={CTA}
+        primaryProps={{ 'data-analytics-location': 'article_cta' }}
         links={links}
       />
+      </div>
     </>
   );
 }

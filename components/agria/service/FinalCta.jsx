@@ -7,7 +7,7 @@ const LINK =
 // CTA finale su fondo scuro con una o due CTA e, sotto, gli eventuali rimandi interni:
 // le altre aree con l'indice, e gli articoli del blog collegati.
 // links: [{ title, items: [{ label, href }] }]
-export default function FinalCta({ id, sectionId, title, text, primary, secondary, links = [] }) {
+export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, links = [] }) {
   return (
     <Section background="ink" id={sectionId} aria-labelledby={id} className="relative isolate overflow-hidden">
       <div
@@ -24,7 +24,7 @@ export default function FinalCta({ id, sectionId, title, text, primary, secondar
             {text}
           </Text>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button as={Link} href={primary.href} variant="bright">
+            <Button as={Link} href={primary.href} variant="bright" {...primaryProps}>
               {primary.label}
             </Button>
             {secondary && (
