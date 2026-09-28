@@ -4,12 +4,12 @@ import Icon from '@/components/agria/icons/Icon';
 const VALUE_LINK =
   'rounded underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2';
 
-// Dati aziendali: riquadro sobrio su fondo off-white con denominazione,
+// Dati aziendali: riquadro sobrio su fondo off-white con titolare (facoltativo),
 // indirizzo, P.IVA, email e telefono (lista di definizioni), più la formula
 // sul marchio. Nessuna interazione oltre i link.
 export default function CompanyData({ id, label, name, claim, vat, addressLine, labels, email, phone }) {
   const rows = [
-    { key: 'name', icon: 'badge-check', label: labels.name, value: name },
+    ...(name ? [{ key: 'name', icon: 'badge-check', label: labels.name, value: name }] : []),
     { key: 'address', icon: 'map-pin', label: labels.address, value: addressLine },
     { key: 'vat', icon: 'file-text', label: labels.vat, value: vat },
     { key: 'email', icon: 'mail', label: labels.email, value: email, href: `mailto:${email}` },

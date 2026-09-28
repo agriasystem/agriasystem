@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Container, Heading, Reveal, Section } from '@/components/agria/ui';
+import { Container, Eyebrow, Heading, Reveal, Section } from '@/components/agria/ui';
 import Icon from '@/components/agria/icons/Icon';
 import styles from './Azienda.module.css';
 
@@ -16,7 +16,7 @@ const ANCHOR = 0.72;
 // il titolo è grigio (contrasto conforme), poi grafite. Senza JavaScript la
 // linea è piena e tutti i passi sono accesi; con movimento ridotto non c'è
 // animazione legata allo scorrimento: tutto acceso subito.
-export default function ProcessTimeline({ id, title, steps }) {
+export default function ProcessTimeline({ id, eyebrow, title, steps }) {
   const listRef = useRef(null);
   const [lit, setLit] = useState(0); // passi accesi, dal primo
 
@@ -63,9 +63,12 @@ export default function ProcessTimeline({ id, title, steps }) {
     <Section background="white" aria-labelledby={id}>
       <Container className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-[clamp(32px,5vw,72px)]">
         <Reveal>
-          <Heading level="h2" id={id} className="max-w-[14ch] md:sticky md:top-32">
-            {title}
-          </Heading>
+          <div className="flex flex-col gap-4 md:sticky md:top-32">
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+            <Heading level="h2" id={id} className="max-w-[16ch]">
+              {title}
+            </Heading>
+          </div>
         </Reveal>
         <ol ref={listRef} className={styles.timeline}>
           {steps.map((step, index) => (

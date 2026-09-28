@@ -5,6 +5,7 @@ import TeamCards from '@/components/agria/azienda/TeamCards';
 import ResearchBand from '@/components/agria/azienda/ResearchBand';
 import TerritoryPhoto from '@/components/agria/azienda/TerritoryPhoto';
 import ProcessTimeline from '@/components/agria/azienda/ProcessTimeline';
+import MidCta from '@/components/agria/azienda/MidCta';
 import CompanyData from '@/components/agria/azienda/CompanyData';
 import FinalCta from '@/components/agria/service/FinalCta';
 import { site } from '@/lib/data';
@@ -22,8 +23,9 @@ import {
   closing,
 } from '@/content/agria/azienda';
 
-// Pagina Azienda AGRIA (Prompt 14). Nove sezioni con fondi scuro · bianco ·
-// sfumato · bianco · scuro · bianco con foto · bianco · off-white · scuro.
+// Pagina Azienda AGRIA (Prompt 14, copy definitivo Prompt 17). Nove sezioni con
+// fondi scuro · bianco · sfumato · bianco · bianco (percorso e CTA a metà pagina) ·
+// scuro · bianco con foto · off-white · scuro.
 // Interazioni proprie: fisarmonica orizzontale (principi), ritratti con scheda
 // che si apre (team), linea temporale verticale che si illumina allo
 // scorrimento (come si lavora con noi). Contenuti in content/agria/azienda.js.
@@ -85,12 +87,13 @@ export default function AziendaPage() {
       <PrinciplesAccordion id="azienda-principi" {...principles} />
       {/* 4. Team · bianco */}
       <TeamCards id="azienda-team" {...team} />
-      {/* 5. Ricerca e sviluppo · scuro */}
-      <ResearchBand id="azienda-ricerca" {...research} />
-      {/* 6. Territorio · bianco con fotografia */}
-      <TerritoryPhoto id="azienda-territorio" {...territory} />
-      {/* 7. Come si lavora con noi · bianco */}
+      {/* 5. Come si lavora con noi · bianco, poi la CTA a metà pagina */}
       <ProcessTimeline id="azienda-percorso" {...howWeWork} />
+      <MidCta cta={howWeWork.cta} />
+      {/* 6. Ricerca e sviluppo · scuro */}
+      <ResearchBand id="azienda-ricerca" {...research} />
+      {/* 7. Territorio · bianco con fotografia */}
+      <TerritoryPhoto id="azienda-territorio" {...territory} />
       {/* 8. Dati aziendali · off-white */}
       <CompanyData id="azienda-dati" {...company} email={site.email} phone={site.phone} />
       {/* 9. CTA finale · scuro */}

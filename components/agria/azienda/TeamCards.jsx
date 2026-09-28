@@ -1,4 +1,4 @@
-import { Container, Eyebrow, Reveal, Section, Text } from '@/components/agria/ui';
+import { Container, Eyebrow, Heading, Reveal, Section, Text } from '@/components/agria/ui';
 import { HoverGroup, ZoomImage } from '@/components/agria/motion';
 import Icon from '@/components/agria/icons/Icon';
 import styles from './Azienda.module.css';
@@ -17,14 +17,20 @@ function initials(name) {
 // riga di dettaglio, con il link a LinkedIn quando esiste. Solo CSS: la riga
 // resta nel documento (i lettori di schermo la leggono sempre), su touch e
 // senza JavaScript è sempre aperta. La card senza link è focalizzabile.
-export default function TeamCards({ id, label, linkLabel, people }) {
+export default function TeamCards({ id, label, title, intro, linkLabel, people }) {
   return (
     <Section background="white" aria-labelledby={id}>
       <Container>
-        <Reveal>
-          <Eyebrow as="h2" id={id}>
-            {label}
-          </Eyebrow>
+        <Reveal className="flex flex-col gap-4">
+          <Eyebrow>{label}</Eyebrow>
+          <Heading level="h2" id={id} className="max-w-[20ch]">
+            {title}
+          </Heading>
+          {intro && (
+            <Text size="lg" muted>
+              {intro}
+            </Text>
+          )}
         </Reveal>
         <HoverGroup as="ul" className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:mt-10 lg:grid-cols-3">
           {people.map((person, index) => (
