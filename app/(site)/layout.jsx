@@ -3,6 +3,7 @@ import { Poppins, Inter, IBM_Plex_Mono } from 'next/font/google';
 import Header from '@/components/agria/Header';
 import Footer from '@/components/agria/Footer';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import AnalyticsConsent from '@/components/agria/consent/AnalyticsConsent';
 import ConciergeSlot from '@/components/agria/ConciergeSlot';
 import Assistant from '@/components/agria/assistant/Assistant';
 import { site } from '@/lib/data';
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
           <Assistant />
         </ConciergeSlot>
         <CookieConsentBanner />
+        <AnalyticsConsent />
       </body>
     </html>
   );

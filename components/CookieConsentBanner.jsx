@@ -2,57 +2,77 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { CONSENT_REOPEN_EVENT, hasValidConsent, saveConsent } from '@/lib/consent';
+import { CONSENT_REOPEN_EVENT, getAnalyticsConsent, setAnalyticsConsent } from '@/lib/consent';
 
-// Avviso cookie: il sito usa solo strumenti tecnici (nessuna statistica né
-// profilazione), quindi non ci sono categorie da scegliere. La presa visione
-// resta memorizzata 90 giorni (lib/consent.js); "Preferenze cookie" nel footer
-// riapre l'avviso. Se un giorno si aggiunge uno strumento facoltativo, qui
-// tornano le scelte e CONSENT_VERSION va incrementata.
+const LINK =
+  'rounded-sm text-agria-green-dark underline underline-offset-4 hover:text-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark';
+// stesse dimensioni, stesso peso: nessuna scelta messa in evidenza
+const ACTION =
+  'rounded-full border border-agria-graphite bg-agria-white px-5 py-2.5 font-agria-sans text-agria-sm font-medium text-agria-graphite transition-colors hover:bg-agria-graphite hover:text-agria-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2';
+
+// Avviso cookie: strumenti tecnici sempre attivi, statistiche (GA4) solo con
+// consenso. Nessuna preselezione; finché non si sceglie, GA4 non si carica.
+// "Preferenze cookie" nel footer riapre l'avviso per cambiare la scelta.
 export default function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
+  const [current, setCurrent] = useState(null);
 
   useEffect(() => {
-    if (!hasValidConsent()) setVisible(true);
-    const onReopen = () => setVisible(true);
+    const choice = getAnalyticsConsent();
+    setCurrent(choice);
+    if (!choice) setVisible(true);
+    const onReopen = () => {
+      setCurrent(getAnalyticsConsent());
+      setVisible(true);
+    };
     window.addEventListener(CONSENT_REOPEN_EVENT, onReopen);
     return () => window.removeEventListener(CONSENT_REOPEN_EVENT, onReopen);
   }, []);
 
   if (!visible) return null;
 
-  function close() {
-    saveConsent({});
+  function choose(value) {
+    setAnalyticsConsent(value);
+    setCurrent(value);
     setVisible(false);
   }
 
   return (
     <div
       role="region"
-      aria-label="Informativa sui cookie"
+      aria-label="Preferenze cookie"
       className="fixed inset-x-0 bottom-0 z-[60] border-t border-agria-border bg-agria-white shadow-[0_-8px_28px_rgb(var(--agria-graphite)/0.08)]"
     >
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-        <p className="font-agria-sans text-agria-sm text-agria-graphite">
-          <span className="font-medium">Solo cookie tecnici.</span>{' '}
-          <span className="text-agria-grey">
-            Il sito non usa strumenti di statistica né di profilazione. Dettagli nella{' '}
-            <Link
-              href="/cookie-policy"
-              className="rounded-sm text-agria-green-dark underline underline-offset-4 hover:text-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark"
-            >
-              cookie policy
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <div className="font-agria-sans text-agria-sm text-agria-graphite">
+          <p>
+            Utilizziamo cookie tecnici necessari al funzionamento del sito e, previo consenso, strumenti statistici per
+            capire come viene utilizzato il sito e migliorarlo.
+          </p>
+          <p className="mt-1 text-agria-grey">
+            <Link href="/cookie-policy" className={LINK}>
+              Cookie policy
+            </Link>{' '}
+            ·{' '}
+            <Link href="/privacy-policy" className={LINK}>
+              Privacy policy
             </Link>
-            .
-          </span>
-        </p>
-        <button
-          type="button"
-          onClick={close}
-          className="shrink-0 self-start rounded-full bg-agria-green-dark px-5 py-2.5 font-agria-sans text-agria-sm font-medium text-agria-white transition-colors hover:bg-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2 lg:self-auto"
-        >
-          Ho capito
-        </button>
+            {current && (
+              <span>
+                {' '}
+                · Scelta attuale: statistiche {current === 'granted' ? 'accettate' : 'rifiutate'}
+              </span>
+            )}
+          </p>
+        </div>
+        <div className="flex shrink-0 flex-wrap gap-3">
+          <button type="button" onClick={() => choose('denied')} className={ACTION}>
+            Rifiuta
+          </button>
+          <button type="button" onClick={() => choose('granted')} className={ACTION}>
+            Accetta statistiche
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useId, useRef, useState } from 'react';
 import { Button, Input, Textarea } from '@/components/agria/ui';
 import Icon from '@/components/agria/icons/Icon';
-import { trackLead } from '@/lib/analytics';
+import { trackFormStart, trackLead } from '@/lib/analytics';
 import { form as copy } from '@/content/agria/contatti';
 import {
   EMPTY_VALUES,
@@ -147,8 +147,14 @@ export default function ContactForm({ moduleLabels = {} }) {
 
   // reCAPTCHA si carica solo quando il visitatore inizia a compilare il modulo
   // (primo focus o prima interazione), non all'apertura della pagina
+  // e, con il consenso alle statistiche, segna l'avvio della compilazione
+  const startedRef = useRef(false);
   const startRecaptcha = () => {
     loadRecaptcha();
+    if (!startedRef.current) {
+      startedRef.current = true;
+      trackFormStart();
+    }
   };
 
   // arrivo dal configuratore della homepage: moduli scelti nel messaggio
@@ -246,7 +252,8 @@ export default function ContactForm({ moduleLabels = {} }) {
         sendingRef.current = false;
         return;
       }
-      trackLead({ preference: values.preferenza, sector: values.settore, service: values.servizio });
+      // solo dopo la risposta positiva del server; nessun dato personale
+      trackLead({ preference: values.preferenza, service: values.servizio });
       if (data.next === 'calendario') {
         // calendario di Alessandro: giorno e ora li sceglie il visitatore
         window.location.assign(copy.meetingsUrl);

@@ -24,6 +24,7 @@ export default function ContactChannels({ id, title, labels, email, phone, direc
       label: labels.whatsapp,
       value: whatsapp.number,
       href: `${whatsapp.href}?text=${encodeURIComponent(whatsappMessage)}`,
+      analytics: 'whatsapp',
       external: true,
     },
     { key: 'address', icon: 'map-pin', label: labels.address, value: address, href: mapsHref, external: true },
@@ -64,6 +65,7 @@ export default function ContactChannels({ id, title, labels, email, phone, direc
                       href={item.href}
                       className={LINKED}
                       {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      {...(item.analytics ? { 'data-analytics': item.analytics, 'data-analytics-location': 'contatti' } : {})}
                     >
                       {body}
                     </a>

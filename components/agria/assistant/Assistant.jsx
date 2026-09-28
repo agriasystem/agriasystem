@@ -175,7 +175,14 @@ export default function Assistant() {
                   <div className={styles.handoff}>
                     <p>{assistant.handoff.text}</p>
                     <div className={styles.handoffActions}>
-                      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className={styles.primaryAction}>
+                      <a
+                        href={whatsappHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.primaryAction}
+                        data-analytics="whatsapp"
+                        data-analytics-location="assistente"
+                      >
                         <Icon name="chat" size={16} />
                         {assistant.handoff.whatsapp.label}
                       </a>
