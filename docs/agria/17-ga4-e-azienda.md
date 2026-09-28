@@ -63,7 +63,7 @@ Ritratti quadrati in bianco e nero, viso inquadrato in modo uniforme, `next/imag
 |---|---|---|
 | `matteo-garuzzo.jpg` | 2,4 MB, 3000×2000 | 69 KB, 1000×1000 |
 | `alessandro-poponi.jpg` | 2,7 MB, 2000×3000 | 82 KB, 1000×1000 |
-| `matteo-de-pilla.jpg` | 171 KB, png circolare 500×500 | 10 KB, 352×352 (quadrato interno al cerchio: meno nitido sugli schermi ad alta densità) |
+| `matteo-de-pilla.jpg` | 171 KB, png circolare 500×500 | 46 KB, 800×800: quadrato interno al cerchio (352 px) ingrandito con ricampionamento Lanczos, riduzione del rumore e nitidezza; resta un po' meno definito degli altri due |
 
 Eliminati i duplicati con spazi nel nome e il vecchio png.
 
