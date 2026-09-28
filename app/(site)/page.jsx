@@ -1,3 +1,4 @@
+import { SAME_AS } from '@/components/agria/social';
 import HomeHero from '@/components/agria/home/HomeHero';
 import FactStrip from '@/components/agria/home/FactStrip';
 import ProblemSwitch from '@/components/agria/home/ProblemSwitch';
@@ -45,6 +46,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/images/brand/agria-logo-centered.svg`,
   description: PAGE.description,
+  sameAs: SAME_AS,
   telephone: site.phone,
   email: site.email,
   address: {

@@ -1,3 +1,4 @@
+import { SAME_AS } from '@/components/agria/social';
 import PageHero from '@/components/agria/sections/PageHero';
 import ContactSection from '@/components/agria/contatti/ContactSection';
 import ContactChannels from '@/components/agria/contatti/ContactChannels';
@@ -29,6 +30,7 @@ const contactPageSchema = {
     '@type': 'Organization',
     name: AGRIA_BRAND,
     url: SITE_URL,
+    sameAs: SAME_AS,
     email: site.email,
     telephone: site.phone,
     address: {

@@ -101,7 +101,7 @@ export default function Footer() {
                       href={profile.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={profile.label}
+                      aria-label={`Agria System su ${profile.label} (si apre in una nuova scheda)`}
                       className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-agria-on-dark-muted transition-colors hover:border-white/40 hover:text-agria-on-dark ${FOCUS_RING}`}
                     >
                       <SocialIcon name={profile.key} />

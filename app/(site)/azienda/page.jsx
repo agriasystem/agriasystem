@@ -1,3 +1,4 @@
+import { SAME_AS } from '@/components/agria/social';
 import PageHero from '@/components/agria/sections/PageHero';
 import Positioning from '@/components/agria/azienda/Positioning';
 import PrinciplesAccordion from '@/components/agria/azienda/PrinciplesAccordion';
@@ -41,6 +42,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/images/brand/agria-logo-centered.svg`,
   description: meta.description,
+  sameAs: SAME_AS,
   telephone: site.phone,
   email: site.email,
   vatID: company.vat,
