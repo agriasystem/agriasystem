@@ -57,15 +57,15 @@ Trovati e aggiornati: `content/agria/azienda.js` (unica occorrenza visibile), `c
 
 ## 4. Fotografie del team
 
-Ritratti quadrati in bianco e nero, viso inquadrato in modo uniforme, `next/image`, `alt` con nome e ruolo, stesse card e stessa interazione.
+Servizio fotografico unico (tre ritratti verticali 3456×5184, 3,6 MB ciascuno), stesso taglio quadrato per tutti e tre (larghezza piena, dalla stessa altezza), 800×800, bianco e nero, JPEG ottimizzato. `next/image`, `alt` con nome e ruolo, stesse card e stessa interazione.
 
-| File | Originale | Pubblicato |
-|---|---|---|
-| `matteo-garuzzo.jpg` | 2,4 MB, 3000×2000 | 69 KB, 1000×1000 |
-| `alessandro-poponi.jpg` | 2,7 MB, 2000×3000 | 82 KB, 1000×1000 |
-| `matteo-de-pilla.jpg` | 171 KB, png circolare 500×500 | 46 KB, 800×800: quadrato interno al cerchio (352 px) ingrandito con ricampionamento Lanczos, riduzione del rumore e nitidezza; resta un po' meno definito degli altri due |
+| File | Peso |
+|---|---|
+| `matteo-garuzzo.jpg` | 70 KB |
+| `matteo-de-pilla.jpg` | 69 KB |
+| `alessandro-poponi.jpg` | 73 KB |
 
-Eliminati i duplicati con spazi nel nome e il vecchio png.
+Gli originali sono passati da un branch temporaneo (`foto-team-originali`, poi cancellato) e non sono nella storia di `agria/contenuti` né di `main`. Eliminati dal repository i duplicati con spazi nel nome e il vecchio png.
 
 ## 5. Pagina Azienda
 
