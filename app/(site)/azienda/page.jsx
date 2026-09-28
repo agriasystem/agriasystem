@@ -42,6 +42,8 @@ const organizationSchema = {
   telephone: site.phone,
   email: site.email,
   vatID: company.vat,
+  // persone del team con il loro ruolo (Person con jobTitle)
+  employee: team.people.map((person) => ({ '@type': 'Person', name: person.name, jobTitle: person.role })),
   address: {
     '@type': 'PostalAddress',
     streetAddress: company.address.street,

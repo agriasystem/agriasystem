@@ -9,7 +9,7 @@ export default function AuthorBox({ className = '' }) {
         <Image src="/images/team/matteo-garuzzo.jpg" alt={site.founder} fill className="object-cover" />
       </div>
       <h3 className="mt-4 text-base font-semibold text-ink text-center">{site.founder}</h3>
-      <p className="mt-1 text-xs font-semibold text-forest text-center">Web & AI Specialist</p>
+      <p className="mt-1 text-xs font-semibold text-forest text-center">CEO &amp; CTO</p>
       <p className="mt-3 text-sm text-ink/60 text-center leading-relaxed">
         Aiuto cantine, oleifici e agriturismi a scalare online. Siti, e-commerce e software su
         misura.

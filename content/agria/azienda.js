@@ -60,10 +60,8 @@ export const principles = {
 };
 
 // 4. Team: tre ritratti con scheda che si apre (components/agria/azienda/TeamCards.jsx)
-// photo: percorso di una foto (es. '/images/team/nome.jpg') oppure null → iniziali
-// su fondo tipografico. Le foto legacy in public/images/team non sono omogenee
-// (un ritaglio circolare in bianco e nero da 500 px, un'orizzontale, una
-// verticale): si attivano qui quando esiste un set coerente.
+// photo: percorso della foto (ritratti quadrati in bianco e nero in
+// public/images/team) oppure null → iniziali su fondo tipografico.
 // linkedin: URL del profilo oppure null (nessun link inventato).
 export const team = {
   label: 'Chi risponde dei progetti',
@@ -71,24 +69,24 @@ export const team = {
   people: [
     {
       name: 'Matteo Garuzzo',
-      role: 'Product e tecnologia',
+      role: 'CEO & CTO',
       detail: 'Architettura dei sistemi e direzione tecnica. Risponde delle scelte tecnologiche di ogni progetto.',
-      photo: null,
+      photo: '/images/team/matteo-garuzzo.jpg',
       // profilo già pubblicato nel sito legacy (content/site.js)
       linkedin: 'https://www.linkedin.com/in/matteogaruzzo',
     },
     {
       name: 'Matteo De Pilla',
-      role: 'Sviluppo e automazioni',
+      role: 'Co-Founder, Head of Engineering & AI',
       detail: 'Sviluppo web, e-commerce e automazioni dei processi. Risponde di quello che va in produzione.',
-      photo: null,
+      photo: '/images/team/matteo-de-pilla.jpg',
       linkedin: null,
     },
     {
       name: 'Alessandro Poponi',
-      role: 'Relazioni e progetti',
+      role: 'Co-Founder, Head of Sales & Business Development',
       detail: 'Primo contatto, analisi delle esigenze e rapporto con il cliente. Risponde di tempi e accordi.',
-      photo: null,
+      photo: '/images/team/alessandro-poponi.jpg',
       linkedin: null,
     },
   ],

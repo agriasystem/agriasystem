@@ -37,7 +37,7 @@ export default function TeamCards({ id, label, linkLabel, people }) {
                   {person.photo ? (
                     <ZoomImage
                       src={person.photo}
-                      alt={person.name}
+                      alt={`${person.name}, ${person.role}`}
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="aspect-square !rounded-none"
                     />
