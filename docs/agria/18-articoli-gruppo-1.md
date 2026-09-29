@@ -1,6 +1,6 @@
 # 18 · Social e riscrittura SEO dei primi cinque articoli
 
-Aggiornato al 28 settembre 2026. Branch `agria/contenuti`.
+Aggiornato al 29 settembre 2026. Branch `agria/contenuti`.
 
 ## Fase A: social (commit `40de394`)
 
@@ -165,9 +165,21 @@ Non toccati:
 
 Scansione dei testi: nessuna parola vietata, nessun nome di prodotto o concorrente, nessuna cifra, percentuale o prezzo, nessuna prima persona singolare.
 
+## Fase E: foto del gestionale cantina (29 settembre 2026)
+
+In cima a `/blog/software-per-cantine` c'era un grafico di analisi web con numeri in evidenza (`JKUTrJ4vK00`, Luke Chesser). Sostituito con una foto della pipeline Unsplash, eseguita in locale:
+
+- Voce `blog/software-per-cantine` in `scripts/images.config.json`: query "winery cellar", "wine barrels", "wine production", `require` cellar, barrel, winery.
+- Delle 36 candidate adatte ho escluso quelle senza cantina (vigneti, grappoli, calici) e quelle con numeri sulle botti, marchi impressi, etichette di bottiglie o cartelli leggibili.
+- Scelta `27G8PF-fjrs` di David Goldman (da "wine barrels"), controllata a piena risoluzione: nessun testo leggibile. ID fissato.
+- Alt: "Corridoio di una cantina tra file di barrique, con un grande tino di legno sullo sfondo", verificato sulla descrizione Unsplash ("a row of wine barrels in a wine cellar").
+- L'articolo prende URL, alt e credito dal manifest con `agriaImage`. Credito "Foto di David Goldman su Unsplash" sotto l'immagine. Open Graph e `Article.image` usano il ritaglio 1200×630 del CDN Unsplash.
+- In `/crediti-immagini` David Goldman sostituisce Luke Chesser.
+- Eliminati `public/images/blog/software-per-cantine.jpg` e le sue voci in `public/images/blog/CREDITS.json` e `scripts/fetch-blog-images.js`.
+
 ## Da decidere
 
 1. **Pagamento a scadenza per la ristorazione** (articolo frantoi): tolto.
 2. **Rilettura fiscale** dell'articolo sull'e-commerce di vino: in corso, a cura del titolare.
-3. **Immagini:** ho corretto il testo alternativo di quattro articoli su cinque perché descrivesse la foto reale (frantoi, gestionale agriturismo, gestionale cantina, sito agriturismo). La foto del gestionale cantina (grafico di analisi web con numeri in evidenza) va sostituita con una foto di cantina tramite la pipeline Unsplash. Da questo ambiente non è stato possibile: `api.unsplash.com` e `images.unsplash.com` non sono raggiungibili e la chiave Unsplash non è configurata.
+3. **Immagini:** ho corretto il testo alternativo di quattro articoli su cinque perché descrivesse la foto reale (frantoi, gestionale agriturismo, gestionale cantina, sito agriturismo). La foto del gestionale cantina (grafico di analisi web con numeri in evidenza) è stata sostituita il 29 settembre: vedi Fase E.
 4. **Categoria "Agribusiness AI"** di gestionale agriturismo e gestionale cantina: valutare "Software".

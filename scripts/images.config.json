@@ -92,6 +92,24 @@
         "olive"
       ],
       "id": "RD0iQoLCkPo"
+    },
+    {
+      "key": "blog/software-per-cantine",
+      "orientation": "landscape",
+      "destination": "blog",
+      "alt": "Corridoio di una cantina tra file di barrique, con un grande tino di legno sullo sfondo",
+      "exclude": [],
+      "queries": [
+        "winery cellar",
+        "wine barrels",
+        "wine production"
+      ],
+      "require": [
+        "cellar",
+        "barrel",
+        "winery"
+      ],
+      "id": "27G8PF-fjrs"
     }
   ]
 }

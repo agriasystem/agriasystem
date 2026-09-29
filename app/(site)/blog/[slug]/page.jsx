@@ -4,6 +4,7 @@ import PageHero from '@/components/agria/sections/PageHero';
 import ArticleCards from '@/components/agria/sections/ArticleCards';
 import FinalCta from '@/components/agria/service/FinalCta';
 import AgriaImage from '@/components/agria/media/AgriaImage';
+import PhotoCredit from '@/components/agria/media/PhotoCredit';
 import { Container, Eyebrow, Heading, Reveal, Section, TextLink } from '@/components/agria/ui';
 import Link from 'next/link';
 import { closing } from '@/content/agria/home';
@@ -44,6 +45,16 @@ function slugifyHeading(text) {
 
 const formatDate = (value) => new Date(value).toLocaleDateString('it-IT', DATE);
 
+// URL assoluto dell'immagine per Open Graph e JSON-LD: le foto della pipeline
+// Unsplash (hotlinking) le ritaglia il CDN a 1200×630, le foto locali sono
+// percorsi del sito.
+function shareImage(src) {
+  if (!src.startsWith('https://images.unsplash.com/')) return `${SITE_URL}${src}`;
+  const url = new URL(src);
+  Object.entries({ w: '1200', h: '630', fit: 'crop', q: '80', fm: 'jpg' }).forEach(([key, value]) => url.searchParams.set(key, value));
+  return url.toString();
+}
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -58,7 +69,7 @@ export function generateMetadata({ params }) {
     description: p.description || p.excerpt,
     path: `/blog/${p.slug}`,
   });
-  const image = p.featuredImage ? [{ url: p.featuredImage, width: 1200, height: 630, alt: p.imageAlt || p.title }] : base.openGraph.images;
+  const image = p.featuredImage ? [{ url: shareImage(p.featuredImage), width: 1200, height: 630, alt: p.imageAlt || p.title }] : base.openGraph.images;
   return {
     ...base,
     openGraph: { ...base.openGraph, type: 'article', publishedTime: p.date, modifiedTime: p.updated || p.date, images: image },
@@ -108,7 +119,7 @@ export default function Post({ params }) {
       '@type': 'Article',
       headline: p.title,
       description: p.description || p.excerpt,
-      image: p.featuredImage ? `${SITE_URL}${p.featuredImage}` : undefined,
+      image: p.featuredImage ? shareImage(p.featuredImage) : undefined,
       datePublished: p.date,
       dateModified: p.updated || p.date,
       author: { '@type': 'Organization', name: AGRIA_BRAND, url: SITE_URL },
@@ -169,9 +180,12 @@ export default function Post({ params }) {
           )}
 
           {p.featuredImage && (
-            <div className="relative mt-6 aspect-[16/7] overflow-hidden rounded-agria-card">
-              <AgriaImage src={p.featuredImage} alt={p.imageAlt || ''} fill priority sizes="(min-width: 1280px) 1200px, 100vw" className="object-cover" />
-            </div>
+            <figure className="m-0 mt-6">
+              <div className="relative aspect-[16/7] overflow-hidden rounded-agria-card">
+                <AgriaImage src={p.featuredImage} alt={p.imageAlt || ''} fill priority sizes="(min-width: 1280px) 1200px, 100vw" className="object-cover" />
+              </div>
+              <PhotoCredit as="figcaption" credit={p.imageCredit} className="mt-3" />
+            </figure>
           )}
 
           <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[220px_minmax(0,1fr)]">

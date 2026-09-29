@@ -1,3 +1,8 @@
+import { agriaImage } from '@/lib/agria-images';
+
+// foto della pipeline Unsplash (scripts/images.config.json): URL, alt e credito dal manifest
+const image = agriaImage('blog/software-per-cantine');
+
 const post = {
     slug: 'software-per-cantine',
     title: 'Software gestionale per cantine: cosa serve e cosa si può collegare',
@@ -10,8 +15,9 @@ const post = {
     updated: '2026-09-28',
     readingMinutes: 11,
     category: 'Agribusiness AI',
-    featuredImage: '/images/blog/software-per-cantine.jpg',
-    imageAlt: 'Grafici di analisi dei dati su uno schermo',
+    featuredImage: image.src,
+    imageAlt: image.alt,
+    imageCredit: image.credit,
     tags: ['Software', 'CRM', 'Gestionale', 'Agribusiness'],
     keywords: ['gestionale cantina', 'software cantine', 'software gestione cantina', 'gestionale per cantine'],
     relatedSlugs: ['degustazioni-cantina-trasformare-visite-vendite', 'vendita-internazionale-vino-dtc-export-estero'],

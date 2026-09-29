@@ -17,6 +17,7 @@ const WIDTH = 1200;
 const HEIGHT = 600;
 
 // slug = slug REALE in lib/data.js (verificato, non quello abbreviato del brief).
+// software-per-cantine usa la pipeline Agria (scripts/fetch-images.mjs).
 const articles = [
   {
     slug: 'agente-ai-reparto-commerciale',
@@ -107,11 +108,6 @@ const articles = [
     slug: 'ecommerce-per-cantine',
     query: 'wine cellar bottles rack dark',
     alt: 'Bottiglie di vino pronte per la spedizione da un e-commerce di cantina',
-  },
-  {
-    slug: 'software-per-cantine',
-    query: 'software dashboard analytics screen',
-    alt: 'Dashboard di una piattaforma software per la gestione di una cantina',
   },
   {
     slug: 'siti-web-per-agriturismi',

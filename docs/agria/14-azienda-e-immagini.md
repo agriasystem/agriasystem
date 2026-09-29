@@ -59,6 +59,7 @@ Richiede `UNSPLASH_ACCESS_KEY` in `.env.local`. Dopo l'esecuzione: committare `c
 | `settori/cantine` | `PUDQGDlM_V8` | Daniel Vogel | Card Cantine in homepage | Fondi di botti allineate in una cantina sotterranea |
 | `settori/frantoi` | `RD0iQoLCkPo` | John Cameron | Card Frantoi in homepage | Olive verdi raccolte, pronte per la molitura |
 | `azienda/territorio` | `zoJgZydvpRA` | Moira Nazzari | Azienda, "Dove lavoriamo" (query "perugia italy") | Veduta di un centro storico collinare con una torre dell'orologio |
+| `blog/software-per-cantine` | `27G8PF-fjrs` | David Goldman | Articolo `/blog/software-per-cantine`, in cima e nelle card (query "wine barrels", aggiunta il 29 settembre 2026) | Corridoio di una cantina tra file di barrique, con un grande tino di legno sullo sfondo |
 
 Tutti gli alt sono stati verificati sulla `unsplashDescription` del manifest e corretti dove non corrispondevano (automation, commerce, cantine, frantoi, hospitality, territorio). Tutte le foto hanno l'ID fissato.
 
