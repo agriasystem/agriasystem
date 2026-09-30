@@ -33,7 +33,7 @@ export const assistant = {
     form: { label: 'Apri il form', href: '/contatti' },
   },
   fallback: [
-    'Su questo non ho una risposta preparata, e preferisco non improvvisare.',
+    'Su questo non c’è una risposta preparata, ed è meglio non improvvisare.',
     'Meglio parlarne con una persona.',
   ],
   personalData: [
