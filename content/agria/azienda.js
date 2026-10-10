@@ -39,7 +39,7 @@ export const principles = {
     {
       icon: 'code',
       title: 'Sviluppiamo internamente',
-      text: 'Nessun subappalto. Progettazione e sviluppo restano nelle stesse tre persone, e chi ha costruito il sistema è chi interviene quando qualcosa non funziona. È il motivo per cui possiamo garantire tempi e qualità.',
+      text: 'Nessun subappalto. Progettazione e sviluppo restano nelle stesse tre persone, e chi ha costruito il sistema è chi interviene quando qualcosa non funziona. È il motivo per cui di tempi e qualità rispondiamo noi.',
     },
     {
       icon: 'minus',
@@ -72,7 +72,7 @@ export const team = {
     {
       name: 'Matteo Garuzzo',
       role: 'CEO & CTO',
-      detail: "Guida la strategia dell'azienda e l'architettura tecnica di progetti e prodotti. È la persona con cui parlate quando il progetto entra nel merito.",
+      detail: "Guida la strategia di Agria System e l'architettura tecnica di progetti e prodotti. È la persona con cui parlate quando il progetto entra nel merito.",
       photo: '/images/team/matteo-garuzzo.jpg',
       // profilo già pubblicato nel sito legacy (content/site.js)
       linkedin: 'https://www.linkedin.com/in/matteogaruzzo',
@@ -140,10 +140,10 @@ export const territory = {
   image: agriaImage('azienda/territorio'),
 };
 
-// 8. Dati aziendali. Email e telefono arrivano da content/site.js (gli stessi
+// 8. Dati fiscali e legali. Email e telefono arrivano da content/site.js (gli stessi
 // dello schema Organization della homepage), passati dalla pagina.
 export const company = {
-  label: 'Dati aziendali',
+  label: 'Dati fiscali e legali',
   claim: 'Agria System è il marchio con cui opera Matteo Garuzzo, libero professionista.',
   vat: 'IT04006460549',
   address: { street: 'Via Ponte Vecchio 67', postalCode: '06135', city: 'Perugia', province: 'PG', country: 'IT' },

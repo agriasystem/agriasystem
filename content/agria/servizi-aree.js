@@ -40,14 +40,14 @@ export const serviceAreas = {
     meta: {
       title: 'Digital Presence — siti web per agriturismi, cantine e frantoi | Agria System',
       description:
-        'Progettiamo siti che generano richieste dirette: architettura, prestazioni, SEO tecnica e visibilità nei motori AI per hospitality, cantine e frantoi.',
+        'Progettiamo siti costruiti per generare richieste dirette: architettura, prestazioni, SEO tecnica e visibilità nei motori AI per hospitality, cantine e frantoi.',
       path: '/servizi/digital-presence',
     },
     cta: { label: 'Avviate il progetto', href: CONTACT },
     hero: {
       eyebrow: '01 — Digital Presence',
       title: 'La presenza digitale come infrastruttura commerciale.',
-      lead: 'Progettiamo siti che devono generare richieste dirette, non rappresentanza, per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Struttura, prestazioni e visibilità, dentro Google e dentro i motori conversazionali.',
+      lead: 'Progettiamo siti costruiti per generare richieste dirette, non rappresentanza, per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Struttura, prestazioni e visibilità, dentro Google e dentro i motori conversazionali.',
       secondary: METHOD,
       pills: ['Architettura', 'Interfaccia', 'Sviluppo', 'Core Web Vitals', 'SEO tecnica', 'Visibilità AI', 'IT · EN'],
     },
@@ -278,7 +278,7 @@ export const serviceAreas = {
     faq: [
       {
         q: 'Rifare il sito comporta perdita di posizionamento?',
-        a: 'Non se la migrazione è progettata prima. Mappiamo ogni indirizzo esistente, definiamo cosa mantenere e cosa reindirizzare, e monitoriamo indicizzazione e traffico nelle settimane successive alla pubblicazione.',
+        a: 'Il rischio si riduce se la migrazione è progettata prima. Mappiamo ogni indirizzo esistente, definiamo cosa mantenere e cosa reindirizzare, e monitoriamo indicizzazione e traffico nelle settimane successive alla pubblicazione.',
       },
       {
         q: 'Il codice e i contenuti restano nostri?',
@@ -366,7 +366,7 @@ export const serviceAreas = {
           tiles: tiles(
             ['Calendario', 'capienza e turni'],
             ['Acconti', 'pagamento immediato'],
-            ['Promemoria', 'riduzione dei mancati arrivi'],
+            ['Promemoria', 'prima di ogni arrivo'],
           ),
         },
         {
@@ -452,7 +452,7 @@ export const serviceAreas = {
       sectors: {
         hospitality: [
           { icon: 'credit-card', title: 'Prenotazione con acconto', text: 'Il cliente conferma pagando, non promettendo.' },
-          { icon: 'ticket', title: 'Esperienze vendute a parte', text: 'Cene, degustazioni e attività diventano ricavo aggiuntivo.' },
+          { icon: 'ticket', title: 'Esperienze vendute a parte', text: 'Cene, degustazioni e attività si prenotano e si pagano a parte, anche dopo aver prenotato il soggiorno.' },
           { icon: 'file-text', title: 'Condizioni chiare', text: 'Cancellazioni e politiche scritte una volta, applicate sempre.' },
           {
             icon: 'arrow-in',
@@ -471,7 +471,7 @@ export const serviceAreas = {
             title: 'Degustazioni prenotabili',
             text: 'La visita si prenota e si paga online, con capienza sotto controllo.',
           },
-          { icon: 'repeat', title: 'Club e consegne ricorrenti', text: 'Ricavo prevedibile da chi già vi conosce.' },
+          { icon: 'repeat', title: 'Club e consegne ricorrenti', text: 'Abbonamenti e spedizioni programmate per chi compra già da voi.' },
           { icon: 'globe', title: 'Estero', text: "Listini, lingue e condizioni per vendere fuori dall'Italia." },
         ],
         frantoi: [
@@ -512,7 +512,7 @@ export const serviceAreas = {
       },
       {
         q: 'Abbiamo già un e-commerce: perdiamo posizionamento se lo rifate?',
-        a: 'No, se la migrazione è pianificata: indirizzi prodotto mappati uno a uno e monitoraggio dopo la pubblicazione.',
+        a: 'Il rischio si riduce se la migrazione è progettata prima: indirizzi prodotto mappati uno a uno e monitoraggio dopo la pubblicazione.',
       },
       {
         q: 'Chi gestisce gli ordini dopo il lancio?',
@@ -539,7 +539,7 @@ export const serviceAreas = {
     meta: {
       title: 'Digital Automation — automazioni e AI per hospitality, cantine e frantoi | Agria System',
       description:
-        "Automazioni e integrazioni API tra gli strumenti che già usate, con l'AI dove i dati la reggono: meno lavoro manuale, dati coerenti, decisioni più rapide.",
+        "Automazioni e integrazioni API tra gli strumenti che già usate, con l'AI dove i dati la reggono, per ridurre il lavoro manuale e tenere coerenti i dati.",
       path: '/servizi/digital-automation',
     },
     cta: { label: 'Automatizziamo un processo', href: CONTACT },

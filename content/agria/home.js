@@ -157,7 +157,7 @@ export const preview = {
       tiles: [
         { title: 'Shop', text: 'Bottiglie e formati' },
         { title: 'Visite', text: 'Calendario e capienza' },
-        { title: 'Club', text: 'Clienti che tornano' },
+        { title: 'Club', text: 'Abbonamenti e spedizioni' },
       ],
     },
     {

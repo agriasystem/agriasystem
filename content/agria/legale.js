@@ -90,7 +90,7 @@ export const legalPages = {
           '**HubSpot** (HubSpot, Inc. e HubSpot Ireland Ltd.): CRM e ricezione del modulo, in cui registriamo contatti, aziende e richieste; il nostro account è ospitato nel data center europeo di HubSpot (eu1). Gestisce anche il calendario delle videocall.',
           `**Google** (Google Ireland Limited e Google LLC): servizio reCAPTCHA per la sicurezza del modulo, secondo la [privacy policy di Google](${GOOGLE_PRIVACY}).`,
           `**Google Analytics 4** (Google Ireland Limited e Google LLC): statistiche di utilizzo del sito, solo dopo il vostro consenso. Le funzioni pubblicitarie non sono attive (consenso agli annunci sempre negato).`,
-          '**Google Workspace** (Google Ireland Limited): posta elettronica aziendale. Ospita le caselle @agriasystem.com, in cui riceviamo le email che ci inviate e le notifiche interne con i dati di ogni nuova richiesta dal modulo.',
+          '**Google Workspace** (Google Ireland Limited): posta elettronica professionale. Ospita le caselle @agriasystem.com, in cui riceviamo le email che ci inviate e le notifiche interne con i dati di ogni nuova richiesta dal modulo.',
           `**Resend** (Resend, Inc., Stati Uniti): invio delle email interne con cui il team riceve ogni nuova richiesta, dalla regione ${RESEND_REGION}.`,
           '**Unsplash** (Unsplash Inc.): distribuisce alcune fotografie del sito e, per consegnarle, riceve l\'indirizzo IP e i dati tecnici del browser.',
         ],

@@ -60,7 +60,7 @@ export const answers = [
     keywords: ['cosa fate', 'di cosa vi occupate', 'servizi', 'servizio', 'offrite', 'sito', 'siti', 'ecommerce', 'e-commerce', 'shop', 'negozio online', 'vendita online', 'prenotazion', 'automazion', 'software', 'gestionale', 'integrazion', 'app', 'vendere online', 'vendita diretta', 'vendere'],
     text: [
       'Lavoriamo su tre aree, che si possono combinare in un unico sistema.',
-      'Digital Presence: siti che generano richieste dirette, visibili su Google e nei motori AI. Digital Commerce: vendita diretta, prenotazioni e pagamenti. Digital Automation: automazioni e integrazioni tra gli strumenti che usate già.',
+      'Digital Presence: siti costruiti per generare richieste dirette, visibili su Google e nei motori AI. Digital Commerce: vendita diretta, prenotazioni e pagamenti. Digital Automation: automazioni e integrazioni tra gli strumenti che usate già.',
     ],
     links: [
       { label: 'Digital Presence', href: '/servizi/digital-presence' },

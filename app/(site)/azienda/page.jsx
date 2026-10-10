@@ -74,7 +74,7 @@ export default function AziendaPage() {
       <ResearchBand id="azienda-ricerca" {...research} />
       {/* 7. Territorio · bianco con fotografia */}
       <TerritoryPhoto id="azienda-territorio" {...territory} />
-      {/* 8. Dati aziendali · off-white */}
+      {/* 8. Dati fiscali e legali · off-white */}
       <CompanyData id="azienda-dati" {...company} email={site.email} phone={site.phone} />
       {/* 9. CTA finale · scuro */}
       <FinalCta

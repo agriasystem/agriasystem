@@ -46,7 +46,7 @@ const META = {
   hospitality: {
     title: 'Hospitality — siti e prenotazioni dirette per agriturismi, hotel e strutture ricettive | Agria System',
     description:
-      'Siti, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive: disponibilità reali, canale diretto e ospiti che tornano.',
+      'Siti, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive: disponibilità reali, canale diretto e messaggi agli ospiti.',
   },
   cantine: {
     title: 'Cantine — siti, e-commerce e automazioni per aziende vitivinicole | Agria System',

@@ -48,12 +48,12 @@ export const NAV_PANELS = [
       {
         title: 'Cantine',
         href: '/settori/cantine',
-        description: 'Cantine e produttori vitivinicoli.',
+        description: 'Cantine e aziende vitivinicole.',
       },
       {
         title: 'Frantoi',
         href: '/settori/frantoi',
-        description: 'Frantoi e produttori di olio.',
+        description: 'Frantoi e aziende olivicole.',
       },
     ],
   },
