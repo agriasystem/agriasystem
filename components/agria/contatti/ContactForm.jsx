@@ -270,7 +270,7 @@ export default function ContactForm({ moduleLabels = {} }) {
   const hasErrors = Object.keys(errors).length > 0;
   const summaries = [
     [SECTORS.find((s) => s.value === values.settore)?.label, values.azienda.trim()],
-    [values.servizio, values.tempistica],
+    [SERVICES.find((service) => service.value === values.servizio)?.label || values.servizio, values.tempistica],
   ];
 
   if (status === 'done') {
@@ -391,7 +391,7 @@ export default function ContactForm({ moduleLabels = {} }) {
             id={fid('servizio')}
             name="servizio"
             legend={copy.labels.servizio}
-            options={SERVICES}
+            options={SERVICES.filter((service) => !service.hidden)}
             value={values.servizio}
             onChange={(v) => set('servizio', v)}
             error={errors.servizio}

@@ -37,7 +37,7 @@ export const form = {
     tempistica: 'Quando vorresti partire?',
     messaggio: 'Raccontaci brevemente il tuo progetto',
     messaggioHint: 'Facoltativo',
-    messaggioPlaceholder: 'Es. nuovo sito, vendita online, automazione di un processo, software personalizzato…',
+    messaggioPlaceholder: 'Es. nuovo sito, vendita online, automazione di un processo, collegamento tra gli strumenti che già usate…',
     nome: 'Nome',
     cognome: 'Cognome',
     email: 'E-mail',

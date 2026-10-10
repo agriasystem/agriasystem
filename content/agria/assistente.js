@@ -111,9 +111,9 @@ export const answers = [
   {
     id: 'cosa-non-fate',
     question: 'Cosa non fate?',
-    keywords: ['cosa non fate', 'non fate', 'non lavorate', 'rifiutate', 'dite di no', ' social ', 'social media', 'instagram', 'facebook', 'grafica', 'volantin', 'stampa', 'logo'],
+    keywords: ['cosa non fate', 'non fate', 'non lavorate', 'rifiutate', 'dite di no', ' social ', 'social media', 'instagram', 'facebook', 'grafica', 'volantin', 'stampa', 'logo', 'un gestionale', 'gestionali', 'un software', 'software su', 'su commessa', 'su misura', ' crm ', ' erp ', ' pms ', 'un crm', 'un erp', 'un pms'],
     text: [
-      'Non facciamo lavori spot che non cambiano nulla, né gestionali che nessuno poi mantiene. Non subappaltiamo e non vendiamo pacchetti.',
+      'Non facciamo lavori spot che non cambiano nulla e non sviluppiamo gestionali, CRM, ERP o PMS su commessa: lavoriamo sopra gli strumenti che già usate. Non subappaltiamo e non vendiamo pacchetti.',
       'Non gestiamo i social né la grafica per la stampa: curiamo identità ed esperienza dentro i progetti digitali, dove incidono sul risultato.',
     ],
   },
@@ -122,8 +122,9 @@ export const answers = [
     question: 'Usate l’intelligenza artificiale?',
     keywords: ['intelligenza artificiale', ' ai ', 'chatgpt', 'gpt', 'automatic', 'agenti', 'chatbot'],
     text: [
-      'Sì, come metodo di lavoro: per analizzare, strutturare e verificare più in fretta. Nei progetti la applichiamo dove produce un risultato misurabile, per esempio classificare richieste o estrarre dati dai documenti.',
-      'Le decisioni restano umane, e la responsabilità tecnica è nostra.',
+      'Sì, in due modi distinti. Con l’AI progettiamo e sviluppiamo: è il nostro metodo di lavoro, ed è ciò che permette a tre persone di consegnare quello che di solito richiede una struttura più grande.',
+      'Nei vostri processi entra solo come componente dei sistemi che costruiamo, dove ha senso e dove i dati la reggono: per esempio classificare richieste o estrarre dati dai documenti.',
+      'In nessuno dei due casi decide l’AI, e la responsabilità tecnica è nostra.',
     ],
     links: [{ label: 'Digital Automation', href: '/servizi/digital-automation' }],
   },

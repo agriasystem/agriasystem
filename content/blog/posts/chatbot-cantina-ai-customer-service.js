@@ -154,7 +154,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve partire con tutti i casi d’uso insieme: **il modo più sicuro è scegliere quello che risolve il problema più urgente oggi** — spesso la qualificazione dei primi contatti o l’assistenza post-acquisto — e allargare da lì, man mano che il team verifica cosa funziona davvero nella pratica quotidiana.',
-          'Costruiamo agenti AI e chatbot su misura per l’agroalimentare, collegati al vostro catalogo e ai vostri processi reali, con un perimetro chiaro tra ciò che gestisce l’automazione e ciò che resta sempre affidato a una persona. [Scopri Digital Automation →](/servizi/digital-automation)',
+          'Quando ha senso, un assistente come questo è una componente dei sistemi che costruiamo con Digital Automation: collegato al catalogo e ai processi reali della cantina, con un perimetro chiaro tra ciò che gestisce l’automazione e ciò che resta sempre affidato a una persona. [Scopri Digital Automation →](/servizi/digital-automation)',
         ],
       },
     ],

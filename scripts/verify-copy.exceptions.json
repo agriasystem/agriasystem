@@ -1,0 +1,32 @@
+[
+  {
+    "path": "content/blog/posts/storytelling-vino-marketing-vendite.js",
+    "term": "passione",
+    "context": "\"passione\", \"tradizione\", \"eccellenza\" sono parole che compaiono",
+    "reason": "citata come esempio di linguaggio generico da evitare"
+  },
+  {
+    "path": "content/blog/posts/storytelling-vino-marketing-vendite.js",
+    "term": "eccellenza",
+    "context": "\"passione\", \"tradizione\", \"eccellenza\" sono parole che compaiono",
+    "reason": "citata come esempio di linguaggio generico da evitare"
+  },
+  {
+    "path": "content/blog/posts/storytelling-vino-marketing-vendite.js",
+    "term": "passione",
+    "context": "\"Da generazioni coltiviamo con passione\" è una frase che potrebbe stare su qualunque etichetta",
+    "reason": "citata come esempio di frase generica da evitare"
+  },
+  {
+    "path": "content/agria/assistente.js",
+    "term": "agenzia",
+    "context": "keywords: ['chi siete', 'chi e agria', 'agria system', 'azienda', 'agenzia'",
+    "reason": "parola chiave con cui l'assistente riconosce la domanda dell'utente, non descrive Agria System"
+  },
+  {
+    "path": "content/agria/assistente.js",
+    "term": "su misura",
+    "context": "'su commessa', 'su misura', ' crm '",
+    "reason": "parola chiave con cui l'assistente riconosce la richiesta dell'utente e risponde che non sviluppiamo software su commessa"
+  }
+]

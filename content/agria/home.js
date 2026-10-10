@@ -33,14 +33,17 @@ export const facts = [
 export const problem = {
   eyebrow: 'Il punto di partenza',
   title: 'Oggi i vostri dati stanno in dieci posti.',
-  text: "Premete l'interruttore: è tutto quello che facciamo, in due secondi.",
+  text: "Premete l'interruttore: a sinistra come lavorate oggi, a destra dove porta il lavoro di integrazione.",
   states: { before: 'Come lavorate oggi', after: 'Con Agria' },
   sources: ['Booking.com', 'Email', 'Telefono', 'WhatsApp', 'Excel', 'Gestionale'],
   system: { title: 'Un solo sistema', text: 'Dati collegati, decisioni chiare' },
   captions: {
     before: 'Sei fonti, nessuna che parla con le altre: ogni dato viene riscritto a mano.',
-    after: 'Le stesse fonti, collegate: i dati entrano una volta e arrivano dove servono.',
+    after: 'Le stesse fonti, collegate con un lavoro di integrazione: i dati entrano una volta e arrivano dove servono.',
   },
+  // il limite, detto sotto il modulo
+  limit:
+    "L'integrazione è possibile quando i sistemi la permettono: dipende dalle interfacce che espongono, dai permessi di accesso e dalla qualità dei dati. È la prima cosa che verifichiamo.",
 };
 
 // 4. Servizi
@@ -66,7 +69,7 @@ export const services = {
       key: 'automation',
       title: 'Digital Automation',
       href: '/servizi/digital-automation',
-      text: 'Automazioni, integrazioni e AI sui processi: i dati si muovono da soli, senza reinserimenti manuali.',
+      text: "Automazioni e integrazioni tra gli strumenti che usate, con l'AI dove i dati la reggono: l'obiettivo è che ogni dato si inserisca una volta sola.",
     },
   ],
 };
@@ -75,9 +78,9 @@ export const services = {
 // Le scelte arrivano a /contatti come parametri ripetuti: ?moduli=sito&moduli=e-commerce
 // (valori = id qui sotto). Formato documentato in docs/agria/11-homepage-definitiva.md.
 export const composer = {
-  eyebrow: 'Su misura, davvero',
+  eyebrow: 'Sviluppato internamente, senza template',
   title: 'Componete il vostro sistema.',
-  text: 'Scegliete cosa vi serve. Il resto lo colleghiamo noi.',
+  text: 'Scegliete cosa vi serve. Come collegarlo agli strumenti che usate lo verifichiamo noi, per prima cosa.',
   param: 'moduli',
   action: '/contatti',
   modules: [
@@ -199,7 +202,7 @@ export const method = {
 // 9. Chiarezza e ricerca
 export const clarity = {
   title: 'Meglio dirlo subito.',
-  text: 'Non facciamo lavori spot che non cambiano nulla, né gestionali su misura che nessuno poi mantiene. Lavoriamo con aziende strutturate, su progetti che restano nel tempo.',
+  text: 'Non facciamo lavori spot che non cambiano nulla, né gestionali su commessa che nessuno poi mantiene. Lavoriamo con aziende strutturate, su progetti che restano nel tempo.',
 };
 
 export const research = {

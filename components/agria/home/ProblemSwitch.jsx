@@ -118,6 +118,7 @@ export default function ProblemSwitch() {
           <p aria-live="polite" className="mt-4 font-agria-sans text-agria-md text-agria-grey">
             {problem.captions[state]}
           </p>
+          <p className="mt-3 font-agria-sans text-agria-md text-agria-graphite">{problem.limit}</p>
         </div>
       </Container>
     </Section>

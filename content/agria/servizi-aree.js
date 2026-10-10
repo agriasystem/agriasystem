@@ -10,7 +10,11 @@ import { agriaImage } from '@/lib/agria-images';
 const CONTACT = '/contatti';
 const WRITE = { label: 'Scrivici in due righe', href: CONTACT };
 const METHOD = { label: 'Vedi il metodo', href: '#metodo' };
-const AI_TITLE = "L'intelligenza artificiale non è un servizio che vendiamo. È il modo in cui lavoriamo.";
+// Due usi dell'AI, sempre distinti (stessa distinzione della pagina Azienda):
+// quella con cui lavoriamo, su ogni progetto, e quella che implementiamo nei
+// processi del cliente, solo in Digital Automation.
+const AI_METHOD_TITLE = "L'AI con cui lavoriamo: è il modo in cui progettiamo e sviluppiamo, non un servizio che vendiamo.";
+const AI_IN_PROCESS_TITLE = "L'AI che implementiamo nei vostri processi: una componente dei sistemi che costruiamo, dove i dati la reggono.";
 const DELIVERABLES_TITLE = 'Alla consegna resta questo.';
 const CLOSING_TEXT =
   'Una prima analisi serve a capire se ha senso lavorare insieme. Rispondiamo con una valutazione concreta, non con un preventivo generico.';
@@ -108,18 +112,18 @@ export const serviceAreas = {
       ],
     },
     ai: {
-      title: AI_TITLE,
+      title: AI_METHOD_TITLE,
       text: "Analisi, struttura, contenuti e controlli tecnici passano da strumenti che acceleriamo con l'AI. Le decisioni, e la responsabilità, restano nostre.",
       items: [
         {
           icon: 'sparkles',
           title: 'AI nel processo',
-          text: 'Analisi dei contenuti esistenti, struttura delle pagine, bozze e controlli: settimane di lavoro compresse in giorni.',
+          text: "Analisi dei contenuti esistenti, struttura delle pagine, bozze e controlli: preparati più in fretta con l'AI, poi rivisti e decisi da noi.",
         },
         {
           icon: 'chat',
-          title: 'Visibilità nei motori AI',
-          text: 'Dati strutturati e contenuti organizzati perché gli assistenti conversazionali vi trovino e vi descrivano correttamente.',
+          title: 'Controlli tecnici più rapidi',
+          text: "Dati strutturati, collegamenti e versioni IT/EN verificati con strumenti che acceleriamo con l'AI, prima di ogni pubblicazione.",
         },
         {
           icon: 'target',
@@ -380,7 +384,7 @@ export const serviceAreas = {
       ],
     },
     ai: {
-      title: AI_TITLE,
+      title: AI_METHOD_TITLE,
       text: "Cataloghi, contenuti e controlli passano da strumenti che acceleriamo con l'AI. Le decisioni commerciali restano vostre, la responsabilità tecnica è nostra.",
       items: [
         {
@@ -390,8 +394,8 @@ export const serviceAreas = {
         },
         {
           icon: 'search',
-          title: 'Ricerca interna che capisce',
-          text: 'Chi cerca "olio per ristorante" o "rosso da invecchiamento" trova, invece di uscire dal sito.',
+          title: 'Ricerca interna costruita sul catalogo',
+          text: "Attributi e sinonimi preparati con l'AI insieme alle schede: chi cerca \"olio per ristorante\" o \"rosso da invecchiamento\" trova, invece di uscire dal sito.",
         },
         {
           icon: 'funnel',
@@ -406,7 +410,7 @@ export const serviceAreas = {
         {
           icon: 'globe',
           title: 'Schede trovabili',
-          text: 'Contenuti di prodotto scritti per essere trovati da Google e citati dai motori AI, anche in inglese.',
+          text: "Contenuti di prodotto scritti con l'AI e rivisti da noi, perché Google e i motori AI li trovino, anche in inglese.",
         },
       ],
       cta: { label: 'Parliamo del vostro shop', href: CONTACT },
@@ -493,8 +497,8 @@ export const serviceAreas = {
     },
     faq: [
       {
-        q: 'Meglio Shopify o una piattaforma su misura?',
-        a: 'Dipende da catalogo, integrazioni e volumi. Consigliamo la soluzione più semplice che regge i vostri casi reali, e vi spieghiamo perché.',
+        q: 'Conviene una piattaforma pronta o un progetto costruito su richiesta?',
+        a: 'Spesso conviene la piattaforma pronta: con un catalogo semplice e volumi contenuti è la risposta corretta, e lavoriamo anche su Shopify quando è la scelta giusta. Un progetto costruito su richiesta ha senso quando listini per tipo di cliente, preordini o integrazioni richiedono regole che la piattaforma scelta non gestisce. Decidiamo sui vostri casi reali, e vi spieghiamo perché.',
       },
       {
         q: 'Gestite anche spedizioni e adempimenti?',
@@ -533,14 +537,14 @@ export const serviceAreas = {
     meta: {
       title: 'Digital Automation — automazioni e AI per hospitality, cantine e frantoi | Agria System',
       description:
-        'Automazioni, integrazioni API e intelligenza artificiale applicate ai processi reali: meno lavoro manuale, dati coerenti, decisioni più rapide.',
+        "Automazioni e integrazioni API tra gli strumenti che già usate, con l'AI dove i dati la reggono: meno lavoro manuale, dati coerenti, decisioni più rapide.",
       path: '/servizi/digital-automation',
     },
     cta: { label: 'Automatizziamo un processo', href: CONTACT },
     hero: {
       eyebrow: '03 — Digital Automation',
       title: 'Il lavoro ripetitivo esce dalla vostra giornata.',
-      lead: 'Automazioni, integrazioni e intelligenza artificiale applicate ai processi di strutture ricettive, cantine e frantoi. I dati entrano una volta e arrivano dove servono.',
+      lead: "Automazioni e integrazioni nei processi di strutture ricettive, cantine e frantoi, con l'AI come componente dove ha senso e i dati la reggono. Dove i sistemi lo permettono, i dati entrano una volta e arrivano dove servono.",
       secondary: METHOD,
       pills: ['Integrazioni API', 'Automazioni', 'AI sui processi', 'Sincronizzazione', 'Notifiche', 'Report'],
     },
@@ -576,7 +580,7 @@ export const serviceAreas = {
           tiles: tiles(
             ['Ingresso', 'un solo punto'],
             ['Assegnazione', 'chi risponde'],
-            ['Tracciamento', 'nessuna richiesta persa'],
+            ['Tracciamento', 'ogni richiesta registrata'],
           ),
         },
         {
@@ -584,7 +588,7 @@ export const serviceAreas = {
           title: 'Dati sincronizzati',
           image: { src: '/images/blog/pos-cassa-cantina-vendita-degustazione.jpg', alt: 'Mani su una cassa con schermo tattile e uno scontrino' },
           text: 'Anagrafiche, ordini e disponibilità allineati tra gli strumenti che usate.',
-          tiles: tiles(['Anagrafica', 'una sola versione'], ['Ordini', 'stato aggiornato'], ['Disponibilità', 'sempre coerente']),
+          tiles: tiles(['Anagrafica', 'una sola versione'], ['Ordini', 'stato aggiornato'], ['Disponibilità', 'allineata tra gli strumenti']),
         },
         {
           icon: 'file-text',
@@ -603,8 +607,8 @@ export const serviceAreas = {
       ],
     },
     ai: {
-      title: AI_TITLE,
-      text: "Applichiamo l'AI dove produce un risultato misurabile: capire, classificare, estrarre. Mai dove serve una decisione che deve restare umana.",
+      title: AI_IN_PROCESS_TITLE,
+      text: "È diversa dall'AI con cui lavoriamo su ogni progetto: questa entra nei vostri processi, solo dove produce un risultato misurabile (capire, classificare, estrarre) e dove i dati la reggono. Mai dove serve una decisione che deve restare umana.",
       items: [
         {
           icon: 'sort',
@@ -740,8 +744,8 @@ export const serviceAreas = {
         a: "Il primo processo automatizzato è in genere il più corto: si parte da lì proprio per misurare l'effetto prima di estendere.",
       },
       {
-        q: 'Sviluppate software su misura?',
-        a: 'No. Non costruiamo CRM, ERP o gestionali. Realizziamo automazioni e collegamenti tra strumenti esistenti.',
+        q: 'Sviluppate gestionali, CRM, ERP o PMS su commessa?',
+        a: 'No. Non costruiamo gestionali, CRM, ERP o PMS: lavoriamo sopra gli strumenti che già usate, con automazioni e collegamenti tra quelli esistenti.',
       },
     ],
     closing: { title: 'Raccontateci una vostra giornata.', text: CLOSING_TEXT, secondary: WRITE },

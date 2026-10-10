@@ -48,8 +48,8 @@ export const principles = {
     },
     {
       icon: 'sparkles',
-      title: "L'AI è un metodo, non un prodotto",
-      text: 'La usiamo per analizzare, strutturare e accelerare ogni fase. Non la vendiamo come funzione e non le facciamo prendere decisioni: quelle restano nostre, e la responsabilità anche.',
+      title: "L'AI che usiamo e quella che integriamo",
+      text: "Con l'AI progettiamo e sviluppiamo: è ciò che permette a tre persone di consegnare quello che di solito richiede una struttura più grande. Nei vostri processi entra solo come componente dei sistemi che costruiamo, dove ha senso e dove i dati la reggono. In nessuno dei due casi decide l'AI: nel nostro lavoro decidiamo noi, nei vostri processi decidete voi. La responsabilità tecnica è nostra.",
     },
     {
       icon: 'key',
