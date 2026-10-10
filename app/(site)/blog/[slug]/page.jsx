@@ -31,7 +31,7 @@ const CTA = closing.cta;
 const DATE = { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' };
 const LABELS = {
   toc: 'In questo articolo',
-  related: 'Continua a leggere',
+  related: 'Continuate a leggere',
   links: 'Approfondimenti',
   reading: (n) => `${n} min di lettura`,
   updated: 'Aggiornato il',

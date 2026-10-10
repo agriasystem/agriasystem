@@ -8,12 +8,14 @@
 import { agriaImage } from '@/lib/agria-images';
 
 const CONTACT = '/contatti';
-const WRITE = { label: 'Scrivici in due righe', href: CONTACT };
-const METHOD = { label: 'Vedi il metodo', href: '#metodo' };
+const WRITE = { label: 'Scriveteci in due righe', href: CONTACT };
+const METHOD = { label: 'Guardate il metodo', href: '#metodo' };
 // Due usi dell'AI, sempre distinti (stessa distinzione della pagina Azienda):
 // quella con cui lavoriamo, su ogni progetto, e quella che implementiamo nei
 // processi del cliente, solo in Digital Automation.
-const AI_METHOD_TITLE = "L'AI con cui lavoriamo: è il modo in cui progettiamo e sviluppiamo, non un servizio che vendiamo.";
+// Presence e Commerce: la sezione tiene insieme l'AI del metodo, la misurazione e
+// la proprietà; il testo dice che l'AI è un metodo, non un servizio venduto
+const ON_EVERY_PROJECT_TITLE = "Su ogni progetto: l'AI con cui lavoriamo, la misurazione dal primo giorno, nessun vincolo tecnico.";
 const AI_IN_PROCESS_TITLE = "L'AI che implementiamo nei vostri processi: una componente dei sistemi che costruiamo, dove i dati la reggono.";
 const DELIVERABLES_TITLE = 'Alla consegna resta questo.';
 const CLOSING_TEXT =
@@ -41,11 +43,11 @@ export const serviceAreas = {
         'Progettiamo siti che generano richieste dirette: architettura, prestazioni, SEO tecnica e visibilità nei motori AI per hospitality, cantine e frantoi.',
       path: '/servizi/digital-presence',
     },
-    cta: { label: 'Avvia il progetto', href: CONTACT },
+    cta: { label: 'Avviate il progetto', href: CONTACT },
     hero: {
       eyebrow: '01 — Digital Presence',
       title: 'La presenza digitale come infrastruttura commerciale.',
-      lead: 'Progettiamo i siti di agriturismi, hotel, cantine e frantoi che devono generare richieste dirette, non rappresentanza. Struttura, prestazioni e visibilità, dentro Google e dentro i motori conversazionali.',
+      lead: 'Progettiamo siti che devono generare richieste dirette, non rappresentanza, per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Struttura, prestazioni e visibilità, dentro Google e dentro i motori conversazionali.',
       secondary: METHOD,
       pills: ['Architettura', 'Interfaccia', 'Sviluppo', 'Core Web Vitals', 'SEO tecnica', 'Visibilità AI', 'IT · EN'],
     },
@@ -68,7 +70,7 @@ export const serviceAreas = {
           text: 'Ogni richiesta diventa una telefonata o un messaggio. Nessuno storico, nessuna misura, nessuna scalabilità.',
         },
       ],
-      cta: { label: "Richiedi un'analisi della presenza attuale", href: CONTACT },
+      cta: { label: "Richiedete un'analisi della presenza attuale", href: CONTACT },
     },
     build: {
       title: 'Quattro impianti, uno standard unico.',
@@ -112,8 +114,8 @@ export const serviceAreas = {
       ],
     },
     ai: {
-      title: AI_METHOD_TITLE,
-      text: "Analisi, struttura, contenuti e controlli tecnici passano da strumenti che acceleriamo con l'AI. Le decisioni, e la responsabilità, restano nostre.",
+      title: ON_EVERY_PROJECT_TITLE,
+      text: "Analisi, struttura, contenuti e controlli tecnici passano da strumenti che acceleriamo con l'AI: è un metodo, non un servizio che vendiamo. Le decisioni, e la responsabilità, restano nostre.",
       items: [
         {
           icon: 'sparkles',
@@ -208,8 +210,8 @@ export const serviceAreas = {
           },
           {
             icon: 'arrow-in',
-            title: 'Canale diretto competitivo',
-            text: 'Il sito compete con i portali invece di cedere loro il cliente e la commissione.',
+            title: 'Prenotazione diretta in evidenza',
+            text: 'Il sito mette in primo piano la prenotazione diretta, con condizioni chiare, mentre i portali restano attivi.',
           },
           {
             icon: 'map-pin',
@@ -264,7 +266,7 @@ export const serviceAreas = {
       eyebrow: 'Da Perugia, ovunque serva',
       title: 'Made in Italy, leggibile anche fuori.',
       text: "Lavoriamo con aziende che vendono in Italia e all'estero. La versione inglese non è una traduzione automatica: è una versione pensata per chi compra da fuori, con riferimenti, formati e condizioni corretti.",
-      cta: { label: 'Parlaci del vostro mercato', href: CONTACT },
+      cta: { label: 'Parlateci del vostro mercato', href: CONTACT },
       image: agriaImage('servizi/presence'),
     },
     // Prompt 14: sezione prima delle FAQ (solo Digital Presence)
@@ -314,13 +316,13 @@ export const serviceAreas = {
     meta: {
       title: 'Digital Commerce — e-commerce e vendita diretta per cantine, frantoi e hospitality | Agria System',
       description:
-        'E-commerce, prenotazioni, listini B2B e pagamenti integrati con i vostri strumenti: il canale diretto diventa il principale.',
+        'E-commerce, prenotazioni, listini B2B e pagamenti integrati con i vostri strumenti: il canale diretto si affianca a quelli che già avete.',
       path: '/servizi/digital-commerce',
     },
     cta: { label: 'Costruiamo il vostro shop', href: CONTACT },
     hero: {
       eyebrow: '02 — Digital Commerce',
-      title: 'La vendita diretta come canale principale, non come esperimento.',
+      title: 'La vendita diretta come canale stabile accanto agli altri, non come esperimento.',
       lead: 'E-commerce, prenotazioni e listini per cantine, frantoi e strutture ricettive. Incassate senza intermediari, con i flussi collegati agli strumenti che già usate.',
       secondary: METHOD,
       pills: ['E-commerce', 'Prenotazioni', 'Pagamenti', 'Listini B2B', 'Spedizioni', 'Integrazioni', 'IT · EN'],
@@ -384,8 +386,8 @@ export const serviceAreas = {
       ],
     },
     ai: {
-      title: AI_METHOD_TITLE,
-      text: "Cataloghi, contenuti e controlli passano da strumenti che acceleriamo con l'AI. Le decisioni commerciali restano vostre, la responsabilità tecnica è nostra.",
+      title: ON_EVERY_PROJECT_TITLE,
+      text: "Cataloghi, contenuti e controlli passano da strumenti che acceleriamo con l'AI: è un metodo, non un servizio che vendiamo. Le decisioni commerciali restano vostre, la responsabilità tecnica è nostra.",
       items: [
         {
           icon: 'grid',
@@ -454,8 +456,8 @@ export const serviceAreas = {
           { icon: 'file-text', title: 'Condizioni chiare', text: 'Cancellazioni e politiche scritte una volta, applicate sempre.' },
           {
             icon: 'arrow-in',
-            title: 'Meno dipendenza dai portali',
-            text: 'Il diretto cresce senza rinunciare alla visibilità delle OTA.',
+            title: 'Diretto e portali insieme',
+            text: 'Il sito raccoglie le prenotazioni dirette, mentre le OTA restano attive per la visibilità.',
           },
         ],
         cantine: [
@@ -492,7 +494,7 @@ export const serviceAreas = {
       eyebrow: 'Oltre il territorio',
       title: "Vendere fuori dall'Italia, senza improvvisare.",
       text: "Formati, lingue, costi di spedizione e condizioni cambiano da mercato a mercato. Progettiamo il negozio perché l'estero sia una possibilità concreta, non una promessa.",
-      cta: { label: 'Parlaci dei vostri mercati', href: CONTACT },
+      cta: { label: 'Parlateci dei vostri mercati', href: CONTACT },
       image: agriaImage('servizi/commerce'),
     },
     faq: [
@@ -719,7 +721,7 @@ export const serviceAreas = {
       eyebrow: 'Lavoro quotidiano',
       title: 'Automatizzare non significa spersonalizzare.',
       text: 'Il rapporto con il cliente resta vostro. Togliamo il lavoro che non aggiunge valore, così resta tempo per quello che ne aggiunge davvero.',
-      cta: { label: 'Raccontaci una giornata tipo', href: CONTACT },
+      cta: { label: 'Raccontateci una giornata tipo', href: CONTACT },
       image: agriaImage('servizi/automation'),
     },
     faq: [

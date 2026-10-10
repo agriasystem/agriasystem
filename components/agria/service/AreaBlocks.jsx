@@ -5,7 +5,7 @@ import PhotoCredit from '@/components/agria/media/PhotoCredit';
 import IconBadge from './IconBadge';
 
 // Indice /servizi: un blocco a piena larghezza per area, con testo (etichetta,
-// titolo, descrizione, tre voci con icona, "Approfondisci") e fotografia.
+// titolo, descrizione, tre voci con icona, "Scoprite di più") e fotografia.
 // Fondo e lato della foto si alternano da un blocco all'altro.
 export default function AreaBlocks({ areas, linkLabel }) {
   return areas.map((area, index) => {

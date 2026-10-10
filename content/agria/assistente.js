@@ -14,12 +14,12 @@
 export const assistant = {
   name: 'Assistente Agria',
   disclosure: 'Assistente automatico, non un operatore. Risposte preparate dal team.',
-  openLabel: "Apri l'assistente",
-  closeLabel: "Chiudi l'assistente",
+  openLabel: "Aprite l'assistente",
+  closeLabel: "Chiudete l'assistente",
   pillText: 'Domande?',
-  inputLabel: 'Scrivi una domanda',
-  inputPlaceholder: 'Scrivi una domanda…',
-  send: 'Invia',
+  inputLabel: 'Scrivete una domanda',
+  inputPlaceholder: 'Scrivete una domanda…',
+  send: 'Inviate la domanda',
   suggestionsLabel: 'Domande frequenti',
   greeting: [
     'Sono l’assistente automatico di Agria System: rispondo con testi preparati dal team su servizi, settori, tempi e modo di lavorare.',
@@ -28,9 +28,9 @@ export const assistant = {
   suggestions: ['cosa-fate', 'settori', 'tempi', 'persona'],
   handoff: {
     text: 'Potete scrivere direttamente su WhatsApp:',
-    whatsapp: { label: 'Scrivi su WhatsApp', href: 'https://wa.me/393663445417' },
+    whatsapp: { label: 'Scrivete su WhatsApp', href: 'https://wa.me/393663445417' },
     whatsappMessage: 'Buongiorno, arrivo dal sito di Agria System e vorrei parlare di un progetto.',
-    form: { label: 'Apri il form', href: '/contatti' },
+    form: { label: 'Aprite il form', href: '/contatti' },
   },
   fallback: [
     'Su questo non c’è una risposta preparata, ed è meglio non improvvisare.',
@@ -49,10 +49,10 @@ export const answers = [
     question: 'Chi siete?',
     keywords: ['chi siete', 'chi e agria', 'agria system', 'azienda', 'agenzia', 'chi c e dietro', 'team', 'chi lavora', 'siete in quanti', 'storia'],
     text: [
-      'Agria System ha sede a Perugia. Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. Progettiamo sistemi digitali integrati con gli strumenti che già usate.',
+      'Agria System ha sede a Perugia. Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi, integrati con gli strumenti che già usate.',
       'Lo sviluppo è interno, dalla progettazione alla gestione: nessun subappalto.',
     ],
-    links: [{ label: 'Scopri l’azienda', href: '/azienda' }],
+    links: [{ label: 'Scoprite l’azienda', href: '/azienda' }],
   },
   {
     id: 'cosa-fate',
@@ -73,7 +73,7 @@ export const answers = [
     question: 'Lavorate col mio settore?',
     keywords: ['settore', 'settori', 'lavorate con', 'agriturism', 'hotel', 'relais', 'masseri', 'b&b', 'hospitality', 'struttura ricettiva', 'cantin', 'vino', 'vitivinicol', 'frantoi', 'olio', 'olivicol', 'ristorant', 'caseifici', 'agroalimentare', 'birrifici', 'miele'],
     text: [
-      'Lavoriamo con tre settori: hospitality (agriturismi, hotel, relais), cantine e frantoi. Sono quelli che conosciamo a fondo.',
+      'Lavoriamo con tre settori: hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Sono quelli che conosciamo a fondo.',
       'Se la vostra azienda è in un altro settore, la prima analisi serve anche a dirvi con franchezza se siamo la scelta giusta.',
     ],
     links: [{ label: 'I settori', href: '/settori' }],
@@ -83,10 +83,10 @@ export const answers = [
     question: 'Come si inizia?',
     keywords: ['come si inizia', 'come iniziare', 'come funziona', 'primo passo', 'iniziare', 'partire', 'processo', 'metodo', 'come lavorate', 'analisi', 'proposta', 'preventivo'],
     text: [
-      'Si parte da una prima analisi. Ci raccontate come lavorate oggi, il nostro team vi ricontatta, guardiamo il vostro caso e ricevete una proposta con ambito, tempi e investimento definiti.',
+      'Si parte da una prima analisi. Ci raccontate come lavorate oggi, vi ricontattiamo, guardiamo il vostro caso e ricevete una proposta con ambito, tempi e investimento definiti.',
       'La prima analisi non comporta costi né impegni.',
     ],
-    links: [{ label: 'Richiedi la prima analisi', href: '/contatti' }],
+    links: [{ label: 'Richiedete la prima analisi', href: '/contatti' }],
   },
   {
     id: 'tempi',
@@ -96,7 +96,7 @@ export const answers = [
       'Dipende dall’ambito, per questo non diamo tempi standard.',
       'I tempi si definiscono nella proposta, dopo la prima analisi. Il progetto procede con consegne intermedie da approvare, così vedete il lavoro mentre prende forma.',
     ],
-    links: [{ label: 'Richiedi la prima analisi', href: '/contatti' }],
+    links: [{ label: 'Richiedete la prima analisi', href: '/contatti' }],
   },
   {
     id: 'costi',
@@ -106,7 +106,7 @@ export const answers = [
       'Non abbiamo un listino né pacchetti preconfezionati.',
       'L’investimento si definisce nella proposta, sul vostro progetto, dopo la prima analisi. La prima analisi non costa nulla.',
     ],
-    links: [{ label: 'Richiedi la prima analisi', href: '/contatti' }],
+    links: [{ label: 'Richiedete la prima analisi', href: '/contatti' }],
   },
   {
     id: 'cosa-non-fate',
@@ -151,7 +151,7 @@ export const answers = [
     id: 'persona',
     question: 'Voglio parlare con qualcuno',
     keywords: ['parlare con', 'qualcuno', 'una persona', 'operatore', 'umano', 'contatt', 'chiama', 'sentirci', 'telefon', 'whatsapp', 'call', 'videocall', 'appuntamento', 'scrivervi', 'email', 'mail'],
-    text: ['Certo. Il nostro team commerciale segue il primo contatto e risponde personalmente.'],
+    text: ['Certo. Il primo contatto lo seguiamo noi, e vi rispondiamo personalmente.'],
     handoff: true,
   },
   {

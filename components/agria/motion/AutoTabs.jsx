@@ -108,7 +108,7 @@ export default function AutoTabs({ items, label, duration = 7000, className = ''
           <button
             type="button"
             onClick={() => setUserPaused((v) => !v)}
-            aria-label={userPaused ? 'Riprendi la rotazione delle schede' : 'Metti in pausa la rotazione delle schede'}
+            aria-label={userPaused ? 'Riprendete la rotazione delle schede' : 'Mettete in pausa la rotazione delle schede'}
             className="mb-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-agria-border text-agria-graphite transition-colors hover:border-agria-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2"
           >
             {userPaused ? <PlayIcon /> : <PauseIcon />}

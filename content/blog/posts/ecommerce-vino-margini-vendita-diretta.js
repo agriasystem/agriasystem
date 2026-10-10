@@ -5,8 +5,9 @@ const post = {
     description:
       'Vendere vino online conviene? Come calcolare il margine reale della vendita diretta, cosa serve all’e-commerce di una cantina e quali costi prevedere.',
     excerpt:
-      'Vendere tramite grossisti significa cedere gran parte del margine. Ecco come calcolare cosa guadagni davvero online, cosa serve per costruire un e-commerce che converte, e dove si nascondono i costi che nessuno ti dice.',
+      'Vendere tramite grossisti significa cedere gran parte del margine. Ecco come calcolare cosa guadagnate davvero online, cosa serve per costruire un e-commerce che converte, e dove si nascondono i costi che nessuno vi dice.',
     date: '2026-08-01',
+    updated: '2026-10-10',
     readingMinutes: 9,
     category: 'E-commerce',
     featuredImage: '/images/blog/ecommerce-vino-margini-vendita-diretta.jpg',
@@ -20,7 +21,7 @@ const post = {
     ],
     body: [
       {
-        h2: 'Quanto vale davvero un canale grossisti (e quanto ne resta a te)',
+        h2: 'Quanto vale davvero un canale grossisti (e quanto ne resta a voi)',
         paragraphs: [
           'Vendere tramite grossisti e importatori è comodo: qualcun altro si occupa di trovare i clienti finali, gestire gli ordini, fare la logistica. Il prezzo di questa comodità è quasi sempre invisibile finché non lo si mette per iscritto: **ogni passaggio nella filiera — grossista, distributore, punto vendita — trattiene una parte del prezzo finale**, e chi produce resta con quello che avanza.',
           'Non è un problema del settore vino in sé: è una caratteristica di qualsiasi filiera con più intermediari. La differenza è che, con l’e-commerce, per la prima volta una cantina può vendere alla stessa persona che prima raggiungeva solo attraverso tre passaggi — e trattenere la parte di margine che prima finiva a qualcun altro.',
@@ -30,18 +31,18 @@ const post = {
         ],
       },
       {
-        h2: 'Cosa cambia nei margini quando vendi direttamente',
+        h2: 'Cosa cambia nei margini quando vendete direttamente',
         paragraphs: [
-          'Il calcolo corretto non è "prezzo di vendita meno costo di produzione": è **prezzo di vendita meno costo di produzione, meno i costi che nel canale grossisti erano nascosti dentro lo sconto all’ingrosso** (spedizione, packaging, gestione ordini, marketing) e che nell’e-commerce diretto tornano a carico tuo, ma anche a tuo controllo.',
+          'Il calcolo corretto non è "prezzo di vendita meno costo di produzione": è **prezzo di vendita meno costo di produzione, meno i costi che nel canale grossisti erano nascosti dentro lo sconto all’ingrosso** (spedizione, packaging, gestione ordini, marketing) e che nell’e-commerce diretto tornano a carico vostro, ma anche a vostro controllo.',
           'La differenza reale non è un numero fisso uguale per tutte le cantine — dipende da prezzo medio bottiglia, volumi, e quanto costa davvero servire un ordine online. Quello che è vero quasi sempre: **il margine per bottiglia venduta direttamente è nettamente superiore** a quello di una bottiglia venduta a un grossista, anche dopo aver sottratto i costi di gestione dell’e-commerce.',
           '> Il vantaggio non è "vendere online invece che ai grossisti": è avere entrambi i canali, e sapere esattamente quanto vale ciascuno.',
           'C’è anche una differenza meno ovvia, ma altrettanto rilevante: nel canale grossisti, la cantina non sa quasi mai chi ha bevuto la propria bottiglia. Nel canale diretto, ogni ordine porta con sé un nome, un’email, uno storico d’acquisto. Quel dato non compare in nessun bilancio, ma è la base di ogni strategia di fidelizzazione futura — inclusi wine club, remarketing e nuove annate proposte a chi ha già comprato.',
         ],
       },
       {
-        h2: 'Il calcolo che dovresti fare prima di iniziare',
+        h2: 'Il calcolo che dovreste fare prima di iniziare',
         paragraphs: [
-          'Prima di investire in un e-commerce, ha senso costruire un confronto onesto tra i due canali, riga per riga. Non serve un commercialista per farlo: serve mettere per iscritto, per la bottiglia che vendi di più, tutte le voci che oggi restano implicite.',
+          'Prima di investire in un e-commerce, ha senso costruire un confronto onesto tra i due canali, riga per riga. Non serve un commercialista per farlo: serve mettere per iscritto, per la bottiglia che vendete di più, tutte le voci che oggi restano implicite.',
           'Per il canale grossisti: prezzo di cessione all’ingrosso, meno costo di produzione, meno eventuali costi di gestione commerciale (agenti, fiere, campionature). Quello che resta è il margine reale per bottiglia, ed è quasi sempre più basso di quanto si pensi a mente.',
           'Per il canale diretto: prezzo al consumatore finale, meno costo di produzione, meno spedizione, meno packaging protettivo, meno commissioni di pagamento, meno una stima ragionevole del tempo dedicato a gestire l’ordine (anche se non è un costo "in fattura", è un costo reale). Quello che resta è il margine diretto — e va confrontato con il primo, non con il prezzo di listino.',
           'Il numero che ne esce raramente è identico tra due cantine diverse, ma la direzione è quasi sempre la stessa: **il canale diretto lascia più margine per bottiglia**, a patto di avere i volumi e l’organizzazione per gestirlo senza che i costi nascosti lo erodano.',
@@ -86,7 +87,7 @@ const post = {
         h2: 'Wine club e ricorrenza: il moltiplicatore del margine',
         paragraphs: [
           'Il vero salto di qualità nei margini non arriva dal singolo ordine online, ma dalla ricorrenza: un cliente che acquista una volta ha un margine, ma un cliente che acquista più volte nel tempo (grazie a un wine club, a una newsletter ben curata, o semplicemente a un’esperienza d’acquisto positiva) ammortizza il costo di acquisizione iniziale su più ordini, migliorando drasticamente il margine complessivo per cliente.',
-          'Non è un caso che le cantine più solide sul canale diretto trattino l’e-commerce come il punto di ingresso, e il wine club come il vero motore di redditività nel medio periodo — un tema che approfondiamo a parte, perché merita un ragionamento specifico su come strutturarlo.',
+          'Non è un caso che le cantine più solide sul canale diretto trattino l’e-commerce come il punto di ingresso, e il wine club come il vero motore di redditività nel medio periodo.',
         ],
       },
       {
@@ -116,7 +117,7 @@ const post = {
         ],
       },
       {
-        h2: 'Cosa succede se non lo fai adesso',
+        h2: 'Cosa succede se non lo fate adesso',
         paragraphs: [
           'Rimandare la costruzione di un canale diretto ha un costo che raramente viene contabilizzato: ogni anno che passa senza un e-commerce funzionante è un anno in cui i concorrenti che lo hanno già costruito accumulano dati, relazioni con i clienti finali e margine reinvestibile — mentre chi resta dipendente solo dal canale grossisti continua a competere sullo stesso terreno di sempre, quello del prezzo all’ingrosso.',
           'Non è necessario partire con un progetto enorme: anche un e-commerce essenziale, con un catalogo curato e una logistica affidabile, è sufficiente per iniziare a raccogliere dati e costruire relazioni dirette con i clienti finali. Il sistema può crescere in complessità (wine club, automazioni, contenuti) una volta che il canale di base funziona e genera margine reale.',
@@ -134,7 +135,7 @@ const post = {
         h2: 'Domande frequenti su margini ed e-commerce vino',
         paragraphs: [
           '**Un e-commerce sostituisce del tutto il canale grossisti?** Quasi mai, e nella maggior parte dei casi non è nemmeno l’obiettivo giusto. Il canale grossisti resta prezioso per volumi e mercati che il diretto non può coprire da solo. L’e-commerce si affianca, e nel tempo diventa il canale a marginalità più alta.',
-          '**Quanto tempo serve prima che l’e-commerce diventi redditizio?** Dipende da quanto traffico qualificato riesci a portare sul sito e da quanto è curato il percorso d’acquisto. Le prime settimane servono soprattutto a raccogliere dati; il margine reale si consolida quando iniziano gli acquisti ripetuti, non dal primo ordine.',
+          '**Quanto tempo serve prima che l’e-commerce diventi redditizio?** Dipende da quanto traffico qualificato riuscite a portare sul sito e da quanto è curato il percorso d’acquisto. Le prime settimane servono soprattutto a raccogliere dati; il margine reale si consolida quando iniziano gli acquisti ripetuti, non dal primo ordine.',
           '**Serve per forza un wine club fin da subito?** No. Ha senso partire con un e-commerce solido e ben strutturato, e introdurre il wine club una volta che il canale diretto genera un flusso costante di clienti — è un secondo passo naturale, non un prerequisito.',
           '**Vale la pena farlo anche con una produzione piccola?** Sì, spesso è proprio la piccola produzione a beneficiarne di più: con volumi limitati, ogni bottiglia venduta a margine pieno pesa proporzionalmente di più sul conto economico rispetto a una grande cantina che si appoggia principalmente sui volumi.',
         ],
@@ -150,8 +151,8 @@ const post = {
       {
         h2: 'Da dove iniziare',
         paragraphs: [
-          'Prima di costruire qualunque cosa, ha senso fare il conto vero: quanto guadagni oggi per bottiglia venduta al grossista, e quanto potresti guadagnare vendendola direttamente, al netto di spedizione, packaging e tempo di gestione. **Solo con quel numero in mano ha senso decidere quanto investire nell’e-commerce.**',
-          'Costruiamo e-commerce Shopify pensati per il vino — dalla gestione spedizioni al wine club ricorrente. [Scopri il servizio →](/servizi/digital-commerce)',
+          'Prima di costruire qualunque cosa, ha senso fare il conto vero: quanto guadagnate oggi per bottiglia venduta al grossista, e quanto potreste guadagnare vendendola direttamente, al netto di spedizione, packaging e tempo di gestione. **Solo con quel numero in mano ha senso decidere quanto investire nell’e-commerce.**',
+          'Realizziamo e-commerce per il vino, dalle spedizioni al wine club. Spesso conviene la piattaforma pronta: con un catalogo semplice e volumi contenuti è la risposta corretta, e lavoriamo anche su Shopify quando è la scelta giusta. Un progetto costruito su richiesta ha senso quando listini per tipo di cliente, preordini o integrazioni richiedono regole che la piattaforma scelta non gestisce. [Scoprite il servizio →](/servizi/digital-commerce)',
         ],
       },
     ],

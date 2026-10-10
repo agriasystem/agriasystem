@@ -32,12 +32,21 @@ const ARTICLES = {
   frantoi: ['ecommerce-per-frantoi', 'seo-locale-agroalimentare-google-maps'],
 };
 
+// h1 e sottotitolo propri del settore, al posto di quelli dell'anteprima della
+// homepage (che parlano all'ospite, non a chi gestisce la struttura)
+const HEROES = {
+  hospitality: {
+    title: 'Siti e prenotazioni dirette per agriturismi e hotel.',
+    lead: 'Sito, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive, collegati agli strumenti che già usate.',
+  },
+};
+
 // meta: testi nuovi (da approvare)
 const META = {
   hospitality: {
-    title: 'Hospitality — siti, prenotazioni dirette e automazioni per agriturismi | Agria System',
+    title: 'Hospitality — siti e prenotazioni dirette per agriturismi, hotel e strutture ricettive | Agria System',
     description:
-      'Siti, prenotazione diretta e automazioni per agriturismi, relais e strutture ricettive rurali: disponibilità reali, canale diretto e ospiti che tornano.',
+      'Siti, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive: disponibilità reali, canale diretto e ospiti che tornano.',
   },
   cantine: {
     title: 'Cantine — siti, e-commerce e automazioni per aziende vitivinicole | Agria System',
@@ -58,8 +67,10 @@ function buildSector(key) {
     key,
     name: SECTOR_LABELS[key],
     meta: { ...META[key], path: card.href },
-    hero: { eyebrow: sectors.eyebrow, title: view.title, lead: view.line },
+    hero: { eyebrow: sectors.eyebrow, title: view.title, lead: view.line, ...HEROES[key] },
     intro: { eyebrow: view.kicker, title: card.title, text: card.text, image: card.image, tiles: view.tiles },
+    // riquadri dell'anteprima per settore: stessa dicitura della homepage
+    note: preview.note,
     areasTitle: serviceAreas.presence.verticals.title,
     areas: AREA_ORDER.map((areaKey) => {
       const area = serviceAreas[areaKey];
@@ -84,7 +95,7 @@ export const sectorsIndex = {
   meta: {
     title: 'Settori — hospitality, cantine e frantoi | Agria System',
     description:
-      'Agria System lavora con tre settori: strutture ricettive rurali, cantine e aziende vitivinicole, frantoi e aziende olivicole.',
+      'Agria System lavora con tre settori: hospitality (agriturismi, hotel e strutture ricettive), cantine e aziende vitivinicole, frantoi e aziende olivicole.',
     path: '/settori',
   },
   // h1 (da approvare) e titolo della griglia (approvato, come in homepage)
@@ -95,4 +106,4 @@ export const sectorsIndex = {
 };
 
 export const SECTOR_LINK_LABEL = sectors.linkLabel;
-export const AREA_LINK_LABEL = 'Approfondisci';
+export const AREA_LINK_LABEL = 'Scoprite di più';

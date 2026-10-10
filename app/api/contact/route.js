@@ -21,9 +21,9 @@ export const dynamic = 'force-dynamic';
 const MAX_BODY = 20_000; // byte
 const SUBMISSION_ID = /^[a-z0-9-]{8,64}$/i;
 const MESSAGES = {
-  generic: 'Non siamo riusciti a inviare la richiesta. Riprova tra qualche istante, oppure scrivici via email o WhatsApp.',
-  recaptcha: 'Non siamo riusciti a verificare la richiesta. Riprova tra qualche istante.',
-  rate: 'Hai inviato troppe richieste in poco tempo. Riprova tra qualche minuto, oppure scrivici via email o WhatsApp.',
+  generic: 'Non siamo riusciti a inviare la richiesta. Riprovate tra qualche istante, oppure scriveteci via email o WhatsApp.',
+  recaptcha: 'Non siamo riusciti a verificare la richiesta. Riprovate tra qualche istante.',
+  rate: 'Avete inviato troppe richieste in poco tempo. Riprovate tra qualche minuto, oppure scriveteci via email o WhatsApp.',
 };
 const CONSENT_TEXT = `${copy.labels.privacyBefore}${copy.labels.privacyLink}${copy.labels.privacyAfter}`;
 

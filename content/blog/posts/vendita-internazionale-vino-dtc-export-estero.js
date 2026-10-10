@@ -38,7 +38,7 @@ const post = {
       {
         h2: 'Cosa verificare prima di aprire un mercato',
         paragraphs: [
-          'Prima di aprire un mercato specifico conviene verificare tre cose: se esiste già una domanda reale per il tuo vino in quel paese (fiere, richieste ricevute, presenza di altri produttori italiani), quali sono i costi doganali e di spedizione effettivi — non stimati — per quel mercato, e se hai la capacità, anche solo in termini di tempo, di gestire l’assistenza clienti in quella lingua o fascia oraria.',
+          'Prima di aprire un mercato specifico conviene verificare tre cose: se esiste già una domanda reale per il vostro vino in quel paese (fiere, richieste ricevute, presenza di altri produttori italiani), quali sono i costi doganali e di spedizione effettivi — non stimati — per quel mercato, e se avete la capacità, anche solo in termini di tempo, di gestire l’assistenza clienti in quella lingua o fascia oraria.',
           'Partire da un solo mercato alla volta, invece di aprire la vendita a tutto il mondo contemporaneamente, permette di capire cosa funziona senza disperdere energie su troppi fronti.',
         ],
       },
@@ -53,7 +53,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Il modo più sicuro per iniziare è scegliere un solo mercato test — spesso Germania, Svizzera o Regno Unito per un produttore italiano, per vicinanza logistica e domanda già esistente — e verificare margini e operatività reali prima di allargare ad altri paesi.',
-          'Se vuoi valutare se e come ha senso per la tua cantina, [parliamo del progetto](/contatti).',
+          'Se volete valutare se e come ha senso per la vostra cantina, [parliamo del progetto](/contatti).',
         ],
       },
     ],

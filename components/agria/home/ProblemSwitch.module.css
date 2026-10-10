@@ -92,7 +92,11 @@
   left: var(--bx);
   top: var(--by);
   transform: translate(-50%, -50%) rotate(var(--br));
-  white-space: nowrap;
+  /* etichette di una parola su una riga; quelle lunghe ("Portali di
+     prenotazione") vanno a capo invece di uscire dalla tavola */
+  width: max-content;
+  max-width: 9em;
+  text-align: center;
   border: 1px solid rgb(var(--agria-border));
   border-radius: 999px;
   background: rgb(var(--agria-white));

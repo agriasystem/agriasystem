@@ -11,11 +11,11 @@ import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
 // Indice degli articoli (Insights) nel layout Agria: solo gli articoli
 // mantenuti dalla migration map, dal più recente. Etichetta e titolo della
-// sezione News della homepage; meta nuovi, da approvare.
+// sezione Insights della homepage; meta nuovi, da approvare.
 const PAGE = {
   title: 'Insights — siti, vendita diretta e automazioni per hospitality, cantine e frantoi | Agria System',
   description:
-    'Articoli su siti, e-commerce, prenotazioni e automazioni per agriturismi, cantine e frantoi: cosa funziona, cosa evitare, da dove partire.',
+    'Articoli su siti, e-commerce, prenotazioni e automazioni per hospitality, cantine e frantoi: cosa funziona, cosa evitare, da dove partire.',
   path: '/blog',
 };
 

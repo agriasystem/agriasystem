@@ -32,10 +32,10 @@ export const form = {
   labels: {
     settore: 'Settore',
     azienda: 'Azienda',
-    aziendaPlaceholder: 'Inserisci il nome della tua azienda',
-    servizio: 'Di cosa hai bisogno?',
-    tempistica: 'Quando vorresti partire?',
-    messaggio: 'Raccontaci brevemente il tuo progetto',
+    aziendaPlaceholder: 'Inserite il nome della vostra azienda',
+    servizio: 'Di cosa avete bisogno?',
+    tempistica: 'Quando vorreste partire?',
+    messaggio: 'Raccontateci brevemente il vostro progetto',
     messaggioHint: 'Facoltativo',
     messaggioPlaceholder: 'Es. nuovo sito, vendita online, automazione di un processo, collegamento tra gli strumenti che già usate…',
     nome: 'Nome',
@@ -43,7 +43,7 @@ export const form = {
     email: 'E-mail',
     telefono: 'Numero di telefono',
     prefisso: 'Prefisso internazionale',
-    preferenza: 'Come preferisci proseguire?',
+    preferenza: 'Come preferite proseguire?',
     privacyBefore: "Ho letto l'",
     privacyLink: 'Informativa Privacy',
     privacyAfter: ' e acconsento al trattamento dei miei dati per essere ricontattato in merito alla richiesta inviata.',
@@ -53,9 +53,9 @@ export const form = {
   actions: {
     next: 'Avanti',
     back: 'Indietro',
-    submit: 'Invia la richiesta',
+    submit: 'Inviate la richiesta',
     sending: 'Invio in corso…',
-    edit: 'Modifica',
+    edit: 'Modificate i dati',
   },
   progress: (current, total) => `Passo ${current} di ${total}`,
   // avviso richiesto da Google quando il badge reCAPTCHA è nascosto
@@ -69,9 +69,9 @@ export const form = {
     after: ' di Google.',
   },
   requiredNote: 'Tutti i campi sono obbligatori, salvo dove indicato.',
-  errorSummary: 'Controlla i campi evidenziati.',
+  errorSummary: 'Controllate i campi evidenziati.',
   sendError:
-    'Non siamo riusciti a inviare la richiesta. Riprova tra qualche istante, oppure scrivici via email o WhatsApp.',
+    'Non siamo riusciti a inviare la richiesta. Riprovate tra qualche istante, oppure scriveteci via email o WhatsApp.',
   noScript:
     'Per inviare il modulo serve JavaScript attivo nel browser. Potete comunque scriverci via email o WhatsApp: trovate i recapiti qui sotto.',
   // messaggio precompilato se si arriva dal configuratore della homepage (?moduli=)
@@ -80,7 +80,7 @@ export const form = {
   meetingsUrl: 'https://meetings-eu1.hubspot.com/alessandro-poponi',
   success: {
     title: 'Richiesta ricevuta',
-    text: 'Grazie per averci contattato. Abbiamo ricevuto la tua richiesta e il team Agria ti ricontatterà a breve.',
+    text: 'Grazie per averci contattato. Abbiamo ricevuto la vostra richiesta e vi ricontatteremo a breve.',
   },
 };
 
@@ -88,7 +88,7 @@ export const reassurance = [
   {
     icon: 'user-check',
     title: 'Risponde una persona',
-    text: 'La richiesta arriva al nostro team commerciale, che risponde personalmente.',
+    text: 'La richiesta arriva a noi, e vi rispondiamo personalmente.',
   },
   {
     icon: 'check',
@@ -125,10 +125,10 @@ export const nextSteps = {
   eyebrow: 'Dopo l’invio',
   title: 'Cosa succede dopo',
   pause: 'Pausa',
-  play: 'Riprendi',
+  play: 'Riprendete',
   steps: [
-    { icon: 'inbox', title: 'Ricezione', text: 'La richiesta entra nel nostro sistema e viene assegnata.' },
-    { icon: 'phone', title: 'Prima risposta', text: 'Il nostro team commerciale vi scrive o vi chiama per capire meglio.' },
+    { icon: 'inbox', title: 'Ricezione', text: 'La richiesta entra nel nostro sistema e la prendiamo in carico.' },
+    { icon: 'phone', title: 'Prima risposta', text: 'Vi scriviamo o vi chiamiamo per capire meglio.' },
     { icon: 'search', title: 'Analisi', text: 'Guardiamo il vostro caso e prepariamo una valutazione.' },
     { icon: 'file-text', title: 'Proposta', text: 'Ricevete ambito, tempi e investimento definiti sul progetto.' },
   ],
@@ -140,7 +140,7 @@ export const faq = {
   items: [
     {
       q: 'In quanto tempo rispondete?',
-      a: 'Il nostro team commerciale risponde personalmente, di norma entro un giorno lavorativo dalla richiesta.',
+      a: 'Rispondiamo personalmente, di norma entro un giorno lavorativo dalla richiesta.',
     },
     {
       q: 'Cosa serve per la prima call?',

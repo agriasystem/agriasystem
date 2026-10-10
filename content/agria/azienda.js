@@ -10,9 +10,9 @@ import { agriaImage } from '@/lib/agria-images';
 const CONTACT = { label: 'Parliamo del progetto', href: '/contatti' };
 
 export const meta = {
-  title: 'Azienda — Agria System, technology company per agroalimentare e hospitality',
+  title: 'Azienda — Agria System, technology company per hospitality, cantine e frantoi',
   description:
-    'Progettiamo e sviluppiamo internamente sistemi digitali per agriturismi, hotel, cantine e frantoi. Sede a Perugia, progetti in tutta Italia.',
+    'Sistemi digitali sviluppati internamente per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Da Perugia, in tutta Italia.',
   path: '/azienda',
 };
 
@@ -20,9 +20,9 @@ export const meta = {
 export const hero = {
   eyebrow: 'Azienda',
   title: 'Costruiamo i sistemi digitali di chi produce e ospita.',
-  lead: 'Agria System lavora con agriturismi, hotel, cantine e frantoi. Progettiamo e sviluppiamo internamente siti, sistemi di vendita e automazioni, e ci fermiamo dove finisce la nostra competenza.',
+  lead: 'Agria System lavora in tre settori: hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Progettiamo e sviluppiamo internamente siti, sistemi di vendita e automazioni, e ci fermiamo dove finisce la nostra competenza.',
   primary: CONTACT,
-  secondary: { label: 'Vedi i servizi', href: '/servizi' },
+  secondary: { label: 'Guardate i servizi', href: '/servizi' },
 };
 
 // 2. Posizionamento
@@ -39,7 +39,7 @@ export const principles = {
     {
       icon: 'code',
       title: 'Sviluppiamo internamente',
-      text: 'Nessun subappalto. Chi progetta è la stessa persona che scrive il codice e che risponde quando qualcosa non funziona. È il motivo per cui possiamo garantire tempi e qualità.',
+      text: 'Nessun subappalto. Progettazione e sviluppo restano nelle stesse tre persone, e chi ha costruito il sistema è chi interviene quando qualcosa non funziona. È il motivo per cui possiamo garantire tempi e qualità.',
     },
     {
       icon: 'minus',
@@ -117,8 +117,8 @@ export const howWeWork = {
     },
     {
       icon: 'layers',
-      title: 'Progetto',
-      text: 'Sviluppo con consegne intermedie da approvare. Alla fine misuriamo quello che è cambiato e correggiamo.',
+      title: 'Sviluppo',
+      text: 'Costruiamo internamente, con consegne intermedie da approvare. Alla fine misuriamo quello che è cambiato e correggiamo.',
     },
   ],
   cta: CONTACT,

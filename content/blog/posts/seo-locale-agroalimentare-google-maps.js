@@ -23,7 +23,7 @@ const post = {
         h2: 'Perché le ricerche locali valgono più di quanto sembri',
         paragraphs: [
           '"Cantina vicino a me", "agriturismo Umbria", "olio biologico Toscana": chi digita ricerche come queste sta già valutando una visita o un acquisto, non sta solo raccogliendo informazioni generiche. **È tra le ricerche con intenzione più alta che un’azienda agroalimentare possa intercettare.**',
-          'Se la tua attività non compare in quelle ricerche, non significa che quel cliente rinunci: nella maggior parte dei casi sceglie semplicemente chi appare al posto tuo, spesso senza nemmeno accorgersi di aver scartato un’alternativa migliore che semplicemente non ha visto.',
+          'Se la vostra attività non compare in quelle ricerche, non significa che quel cliente rinunci: nella maggior parte dei casi sceglie semplicemente chi appare al posto vostro, spesso senza nemmeno accorgersi di aver scartato un’alternativa migliore che semplicemente non ha visto.',
           'Il paradosso è che molte aziende agroalimentari investono tempo ed energie nel migliorare il sito, i contenuti, i social, ma trascurano proprio il canale attraverso cui una parte consistente dei clienti reali le trova per la prima volta: la ricerca locale su Google, spesso attraverso Google Maps prima ancora che attraverso i risultati organici classici.',
           'Capire questa dinamica cambia anche il modo di pensare al proprio marketing digitale: non si tratta solo di farsi conoscere in generale, ma di **essere presenti nel momento esatto in cui qualcuno, nella propria zona o in una zona che sta per visitare, decide dove andare**. È un tipo di visibilità diverso da quello di una campagna pubblicitaria, perché intercetta una decisione già quasi presa.',
         ],
@@ -64,7 +64,7 @@ const post = {
       {
         h2: 'SEO nazionale e SEO locale non sono la stessa cosa',
         paragraphs: [
-          '**Ottimizzare un sito per essere trovato a livello nazionale e ottimizzarlo per essere trovato localmente sono due lavori diversi**, anche se in parte si sovrappongono. La SEO nazionale punta a farsi trovare da chiunque, ovunque si trovi, per un argomento o un prodotto. La SEO locale punta a farsi trovare da chi, in una determinata zona geografica, sta cercando qualcosa che tu offri lì, sul posto.',
+          '**Ottimizzare un sito per essere trovato a livello nazionale e ottimizzarlo per essere trovato localmente sono due lavori diversi**, anche se in parte si sovrappongono. La SEO nazionale punta a farsi trovare da chiunque, ovunque si trovi, per un argomento o un prodotto. La SEO locale punta a farsi trovare da chi, in una determinata zona geografica, sta cercando qualcosa che voi offrite lì, sul posto.',
           'Per un’attività agroalimentare che vive soprattutto di visite fisiche — degustazioni, vendita diretta in cantina, pernottamenti in agriturismo — la componente locale conta spesso più di quella nazionale, anche se entrambe hanno un ruolo. Un articolo di blog che parla in generale di un vitigno può portare traffico e autorevolezza, ma raramente porta qualcuno a bussare alla porta della cantina il weekend successivo.',
           'Confondere le due strategie porta spesso a investire tempo nella direzione sbagliata: contenuti pensati per un pubblico nazionale generico, mentre il profilo Google Business — lo strumento più direttamente collegato a chi è pronto a visitare — resta trascurato e incompleto.',
         ],
@@ -164,7 +164,7 @@ const post = {
         paragraphs: [
           'Il primo passo, prima di qualunque altra ottimizzazione, è verificare che il profilo Google Business esista, sia verificato e completo. **È la base su cui si costruisce tutto il resto della visibilità locale.**',
           'Da lì, i passi successivi — recensioni raccolte con regolarità, dati coerenti su tutte le piattaforme, contenuti geolocalizzati sul sito — sono lavori progressivi, non un intervento da fare una volta sola e dimenticare: la visibilità locale si costruisce e si mantiene nel tempo, con piccole azioni costanti più che con un singolo grande sforzo iniziale.',
-          'Realizziamo siti e strategie SEO locale pensate per il territorio in cui operate, con un’attenzione specifica alle esigenze di chi, come una cantina, un frantoio o un agriturismo, deve essere trovato da chi è pronto a raggiungerlo di persona. [Scopri il servizio Digital Presence →](/servizi/digital-presence)',
+          'Realizziamo siti e strategie SEO locale pensate per il territorio in cui operate, con un’attenzione specifica alle esigenze di chi, come una cantina, un frantoio o un agriturismo, deve essere trovato da chi è pronto a raggiungerlo di persona. [Scoprite il servizio Digital Presence →](/servizi/digital-presence)',
         ],
       },
     ],

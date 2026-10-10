@@ -31,5 +31,5 @@ export const site = {
   social: {},
   tagline: 'sistemi digitali per hospitality, cantine e frantoi',
   positioning:
-    'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. Progettiamo sistemi digitali integrati con gli strumenti che già usate.',
+    'Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi, integrati con gli strumenti che già usate.',
 };

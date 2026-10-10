@@ -14,7 +14,7 @@ export const hero = {
   titlePrefix: 'Uno strato digitale sopra ',
   titlePhrases: ['il vostro lavoro', 'la vostra cantina', 'il vostro agriturismo', 'il vostro frantoio'],
   titleSuffix: '.',
-  lead: 'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. I dati smettono di stare in dieci posti diversi e iniziano a lavorare per voi.',
+  lead: 'Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. I dati smettono di stare in sei posti diversi e iniziano a lavorare per voi.',
   primary: { label: 'Parliamo del progetto', href: '/contatti' },
   secondary: { label: 'Come lavoriamo', href: '#come-lavoriamo' },
   chips: ['Prenotazioni', 'Ordini', 'Clienti', 'Costi'],
@@ -32,10 +32,10 @@ export const facts = [
 // 3. Il problema (modulo interattivo 1)
 export const problem = {
   eyebrow: 'Il punto di partenza',
-  title: 'Oggi i vostri dati stanno in dieci posti.',
+  title: 'Oggi i vostri dati stanno in sei posti.',
   text: "Premete l'interruttore: a sinistra come lavorate oggi, a destra dove porta il lavoro di integrazione.",
   states: { before: 'Come lavorate oggi', after: 'Con Agria' },
-  sources: ['Booking.com', 'Email', 'Telefono', 'WhatsApp', 'Excel', 'Gestionale'],
+  sources: ['Portali di prenotazione', 'Email', 'Telefono', 'Messaggi', 'Fogli di calcolo', 'Gestionale'],
   system: { title: 'Un solo sistema', text: 'Dati collegati, decisioni chiare' },
   captions: {
     before: 'Sei fonti, nessuna che parla con le altre: ogni dato viene riscritto a mano.',
@@ -51,7 +51,7 @@ export const services = {
   eyebrow: 'Servizi',
   title: 'Tre aree, un solo sistema.',
   intro: 'Non vendiamo pacchetti. Partiamo da come lavorate oggi e costruiamo quello che serve, integrato con gli strumenti che già usate.',
-  linkLabel: 'Approfondisci',
+  linkLabel: 'Scoprite di più',
   items: [
     {
       key: 'presence',
@@ -102,14 +102,14 @@ export const composer = {
 export const sectors = {
   eyebrow: 'Settori',
   title: 'Conosciamo tre mestieri, non tutti.',
-  linkLabel: 'Vedi il settore',
+  linkLabel: 'Guardate il settore',
   items: [
     {
       key: 'hospitality',
       title: 'Hospitality',
       href: '/settori/hospitality',
       image: agriaImage('settori/hospitality'),
-      text: 'Agriturismi, boutique hotel, relais, masserie. Prenotazioni diverse su portali, email e telefono, inserite due volte a mano. Commissioni che crescono mentre il canale diretto resta fermo.',
+      text: 'Agriturismi, hotel e strutture ricettive. Prenotazioni diverse su portali, email e telefono, inserite due volte a mano. Commissioni che crescono mentre il canale diretto resta fermo.',
     },
     {
       key: 'cantine',
@@ -202,7 +202,7 @@ export const method = {
 // 9. Chiarezza e ricerca
 export const clarity = {
   title: 'Meglio dirlo subito.',
-  text: 'Non facciamo lavori spot che non cambiano nulla, né gestionali su commessa che nessuno poi mantiene. Lavoriamo con aziende strutturate, su progetti che restano nel tempo.',
+  text: 'Non facciamo lavori spot che non cambiano nulla, né gestionali su commessa: lavoriamo sopra gli strumenti che già usate. Lavoriamo su progetti che cambiano il modo di lavorare o di vendere.',
 };
 
 export const research = {
@@ -210,10 +210,10 @@ export const research = {
   text: 'Una parte del nostro lavoro è ricerca applicata: software proprietari che nascono dai problemi che vediamo in queste aziende. Ne parliamo quando saranno pronti, non prima.',
 };
 
-// 10. News: articoli reali del blog (titolo, etichetta e immagine dal post).
+// 10. Insights: articoli reali del blog (titolo, etichetta e immagine dal post).
 // alt scritti qui: quelli dei post non descrivono sempre la foto.
 export const news = {
-  eyebrow: 'News',
+  eyebrow: 'Insights',
   title: 'Quello che impariamo, scritto.',
   allLabel: 'Tutti gli articoli',
   allHref: '/blog',

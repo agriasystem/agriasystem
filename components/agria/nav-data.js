@@ -43,7 +43,7 @@ export const NAV_PANELS = [
       {
         title: 'Hospitality',
         href: '/settori/hospitality',
-        description: 'Agriturismi e strutture ricettive rurali.',
+        description: 'Agriturismi, hotel e strutture ricettive.',
       },
       {
         title: 'Cantine',

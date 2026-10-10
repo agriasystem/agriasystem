@@ -7,6 +7,7 @@ const post = {
     excerpt:
       'Chi cerca un soggiorno oggi si aspetta di poter prenotare online, come su qualsiasi altra piattaforma. Ecco come un sistema di booking dedicato aumenta le prenotazioni dirette e alleggerisce il lavoro di chi gestisce l’agriturismo.',
     date: '2026-08-01',
+    updated: '2026-10-10',
     readingMinutes: 9,
     category: 'E-commerce',
     featuredImage: '/images/blog/agriturismo-booking-online-prenotazioni.jpg',
@@ -61,7 +62,7 @@ const post = {
         h2: 'Overbooking e gestione manuale: il problema quotidiano',
         paragraphs: [
           'La gestione manuale delle prenotazioni, oltre un certo numero di camere, porta quasi inevitabilmente a errori: due prenotazioni per la stessa camera nello stesso periodo, un’agenda cartacea non aggiornata, una disponibilità comunicata a voce che nessuno ha scritto da nessuna parte.',
-          'Quando le prenotazioni arrivano da più canali — telefono, email, uno o più portali esterni — senza un sistema che li tenga sincronizzati, il rischio di overbooking cresce in modo quasi proporzionale al numero di canali usati.',
+          'Quando le prenotazioni arrivano da più canali — telefono, email, uno o più portali esterni — senza un calendario unico in cui confluiscano tutte, il rischio di overbooking cresce con ogni canale in più.',
           'Un overbooking scoperto pochi giorni prima dell’arrivo non è solo un problema logistico: è un ospite da spostare altrove, spesso con un imbarazzo che pesa sulla reputazione della struttura molto più del singolo mancato guadagno.',
           'Anche senza arrivare all’overbooking vero e proprio, la gestione manuale consuma tempo in modo silenzioso: verificare a mano la disponibilità ogni volta che arriva una richiesta, aggiornare più agende in parallelo, rispondere di nuovo a chi ha già chiesto la stessa cosa qualche giorno prima.',
         ],
@@ -90,7 +91,7 @@ const post = {
           'Il primo passo è una pagina "Prenota" con calendario reale: l’ospite seleziona le date, vede subito quali camere sono disponibili e a quale prezzo, senza dover scrivere per chiedere.',
           'Il secondo passo è la selezione di camera e servizi extra nello stesso flusso di prenotazione, con caparra o pagamento richiesto al momento della conferma: un impegno concreto, anche minimo, che rende la prenotazione reale invece che provvisoria.',
           'Il terzo passo è la conferma automatica: un’email o un messaggio immediato che rassicura l’ospite, con tutte le informazioni pratiche necessarie, senza richiedere alcun intervento manuale da parte del team.',
-          'Il quarto passo, spesso trascurato, è la sincronizzazione con gli altri canali ancora attivi — telefono per chi preferisce ancora chiamare, eventuali portali esterni — così che una prenotazione arrivata da un canale blocchi automaticamente la disponibilità anche per gli altri.',
+          'Il quarto passo, spesso trascurato, è tenere allineati gli altri canali ancora attivi. Con i portali esterni l’allineamento può essere automatico, se il portale e il sistema di prenotazione lo permettono. Le prenotazioni telefoniche invece non si sincronizzano da sole: qualcuno deve inserirle nello stesso calendario. Da quel momento bloccano la disponibilità sul sito e sui portali allineati in automatico; sugli altri portali le date vanno chiuse a mano.',
         ],
       },
       {
@@ -180,14 +181,14 @@ const post = {
           '**Un sistema di booking online funziona anche per un agriturismo con poche camere?** Sì: anche con un numero ridotto di camere, evita gli errori di gestione manuale e libera un tempo che, su una struttura piccola gestita da poche persone, pesa proporzionalmente ancora di più.',
           '**Quanto tempo richiede impostare un sistema di prenotazione completo?** Dipende dalla complessità dei servizi offerti, ma nella maggior parte dei casi non serve partire da un progetto enorme: rendere prenotabili online le camere è il primo passo, da cui poi si allarga gradualmente a servizi extra e automazioni.',
           '**Le comunicazioni automatiche rischiano di far sembrare la struttura impersonale?** Non se scritte con cura: automatizzare l’invio non significa rinunciare al tono caldo che ci si aspetta da un agriturismo. Il rischio opposto — nessuna comunicazione strutturata, domande che restano senza risposta per giorni — pesa molto di più sulla percezione dell’ospite.',
-          '**Cosa succede alle prenotazioni già esistenti sui portali quando si attiva un sistema diretto?** Restano valide e vengono semplicemente sincronizzate nel nuovo calendario: attivare un canale diretto non richiede di cancellare o rinegoziare le prenotazioni già confermate altrove.',
+          '**Cosa succede alle prenotazioni già esistenti sui portali quando si attiva un sistema diretto?** Restano valide e si riportano nel nuovo calendario, in automatico quando il portale lo permette, altrimenti a mano: attivare un canale diretto non richiede di cancellare o rinegoziare le prenotazioni già confermate altrove.',
         ],
       },
       {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve sostituire tutti i canali esistenti: **il primo passo è offrire un modo diretto e semplice per prenotare sul proprio sito**, così da recuperare le richieste che oggi si perdono nell’attesa di una risposta manuale, e ridurre gradualmente la dipendenza dai portali esterni.',
-          'Realizziamo sistemi di booking per agriturismi, con gestione camere, servizi extra e comunicazioni automatiche pre e post soggiorno. [Scopri il settore Hospitality →](/settori/hospitality)',
+          'Per gli agriturismi realizziamo siti con prenotazione diretta, servizi extra e comunicazioni automatiche prima e dopo il soggiorno, collegati agli strumenti che già usate. [Scoprite il settore Hospitality →](/settori/hospitality)',
         ],
       },
     ],

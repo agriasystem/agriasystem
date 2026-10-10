@@ -81,7 +81,7 @@ export default function ServiceAreaPage({ area, others, sectorLabels }) {
       <AiSection id={id('ai')} {...area.ai} />
       {/* 4b. SEO e GEO · sfumato (facoltativa) */}
       {area.seo && <SeoGeo id={id('seo-geo')} {...area.seo} />}
-      {/* 5. Metodo · scuro (ancora del "Vedi il metodo") */}
+      {/* 5. Metodo · scuro (ancora del "Guardate il metodo") */}
       <MethodTimeline id={id('metodo-titolo')} anchor="metodo" {...area.method} />
       {/* 6. Deliverable · bianco */}
       <Deliverables id={id('deliverable')} {...area.deliverables} />

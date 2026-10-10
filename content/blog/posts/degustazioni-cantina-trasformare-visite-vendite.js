@@ -50,7 +50,7 @@ const post = {
         h2: 'Da dove iniziare',
         paragraphs: [
           'Non serve reinventare tutta l’accoglienza in una volta: basta scegliere un solo elemento — l’ordine di servizio, una frase di upsell durante l’assaggio, o un’email di follow-up — e testarlo per qualche settimana prima di aggiungerne altri.',
-          'Se vuoi capire dove la tua cantina perde più visitatori lungo il percorso, [raccontaci come lavorate oggi](/contatti).',
+          'Se volete capire dove la vostra cantina perde più visitatori lungo il percorso, [raccontateci come lavorate oggi](/contatti).',
         ],
       },
     ],

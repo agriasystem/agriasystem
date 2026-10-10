@@ -61,7 +61,7 @@ export const legalPages = {
           'pagina di provenienza e indirizzo IP',
         ],
         after2: [
-          '**Dati di sicurezza del modulo.** Alla prima interazione con il riquadro del modulo contatti, il servizio Google reCAPTCHA raccoglie dati tecnici del dispositivo e di interazione con la pagina, per distinguere le persone dai sistemi automatici (vedi il punto 5).',
+          '**Dati di sicurezza del modulo.** Alla prima interazione con il riquadro del modulo contatti, il servizio Google reCAPTCHA raccoglie dati tecnici del dispositivo e di interazione con la pagina, per distinguere le persone dai sistemi automatici (si veda il punto 5).',
           '**Dati che ci inviate per altri canali.** Email, telefonate e messaggi WhatsApp contengono i dati che scegliete di condividere. Se prenotate una videocall, i dati che inserite nel calendario (nome, email, orario scelto) sono raccolti tramite HubSpot.',
         ],
       },
@@ -180,7 +180,7 @@ export const legalPages = {
           'Con il vostro consenso usiamo Google Analytics 4 (Google Ireland Limited e Google LLC) per statistiche aggregate sull\'uso del sito: pagine visitate, provenienza, dispositivo, area geografica approssimativa e interazioni come lo scorrimento, i clic verso altri siti e l\'invio del modulo contatti. Nessun dato del modulo (nome, email, telefono, azienda, messaggio) viene inviato a Google Analytics.',
           '**Quando si attiva**: solo dopo che avete scelto "Accetta statistiche". Prima della scelta, o se rifiutate, il codice di Google Analytics non viene caricato e non parte alcuna richiesta verso Google.',
           `**Cookie**: **_ga** e **_ga_<ID>**, che distinguono i browser con un identificativo casuale; durano fino a 2 anni, secondo la [documentazione di Google](${GA_COOKIES}). Le funzioni pubblicitarie restano disattivate.`,
-          '**Base giuridica**: consenso. I dati possono essere trasferiti negli Stati Uniti, sulla base del Data Privacy Framework UE-USA o delle clausole contrattuali standard (vedi la [privacy policy](/privacy-policy)).',
+          '**Base giuridica**: consenso. I dati possono essere trasferiti negli Stati Uniti, sulla base del Data Privacy Framework UE-USA o delle clausole contrattuali standard (si veda la [privacy policy](/privacy-policy)).',
           '**Revoca**: da "Preferenze cookie" scegliete "Rifiuta": gli invii si fermano subito e i cookie di Google Analytics vengono rimossi dal browser. Pixel pubblicitari e cookie di profilazione non sono usati.',
         ],
       },

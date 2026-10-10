@@ -90,6 +90,11 @@ export default function SectorPage({ sector, others }) {
                 </li>
               ))}
             </ul>
+            {sector.note && (
+              <Text size="sm" muted>
+                {sector.note}
+              </Text>
+            )}
           </Reveal>
         </Container>
       </Section>

@@ -3,5 +3,6 @@
 export const ANNOUNCEMENT = {
   enabled: true,
   text: 'Ricerca e sviluppo: stiamo costruendo strumenti propri per hospitality, cantine e frantoi.',
-  link: { label: 'Scopri di più', href: '/azienda' },
+  // nessun link: nessuna pagina parla ancora di questi strumenti
+  link: null,
 };

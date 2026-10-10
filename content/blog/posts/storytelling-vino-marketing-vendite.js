@@ -1,6 +1,6 @@
 const post = {
     slug: 'storytelling-vino-marketing-vendite',
-    title: 'Storytelling del Vino: Come Raccontare la Tua Cantina e Vendere di Più',
+    title: 'Storytelling del Vino: Come Raccontare la Vostra Cantina e Vendere di Più',
     seoTitle: 'Storytelling del vino: raccontare la cantina e vendere',
     description:
       'Come raccontare una cantina in modo che aiuti a vendere: storia, territorio e dettagli verificabili sul sito e sugli altri canali, senza frasi fatte.',
@@ -151,7 +151,7 @@ const post = {
         paragraphs: [
           'Non serve un ufficio marketing per iniziare: **basta mettere per iscritto le storie che già esistono in cantina**, partendo da quella delle origini, e trovare i punti del sito e dei canali social dove hanno più senso.',
           'Il passo successivo, una volta raccolto il materiale, è costruire una struttura che porti quella narrazione fino al momento della decisione d’acquisto — non solo su una pagina isolata del sito, ma nelle schede prodotto, nell’etichetta, nei contenuti ricorrenti sui social — mantenendo coerenza tra tutti i canali nel tempo.',
-          'Aiutiamo cantine a definire contenuti e narrazione di brand come parte della strategia digitale complessiva, collegando lo storytelling agli obiettivi concreti di vendita e non solo all’immagine. [Scopri Digital Presence →](/servizi/digital-presence)',
+          'Aiutiamo cantine a definire contenuti e narrazione di brand come parte della strategia digitale complessiva, collegando lo storytelling agli obiettivi concreti di vendita e non solo all’immagine. [Scoprite Digital Presence →](/servizi/digital-presence)',
         ],
       },
     ],

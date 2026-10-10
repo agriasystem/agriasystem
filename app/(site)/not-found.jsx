@@ -22,10 +22,10 @@ export default function NotFound() {
         </Text>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button as={Link} href="/">
-            Vai alla homepage
+            Andate alla homepage
           </Button>
           <Button as={Link} href="/contatti" variant="ghost">
-            Contattaci
+            Contattateci
           </Button>
         </div>
       </Container>

@@ -126,7 +126,7 @@ export default function Header() {
 
           <button
             type="button"
-            aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
+            aria-label={mobileOpen ? 'Chiudete il menu' : 'Aprite il menu'}
             aria-expanded={mobileOpen}
             aria-controls="agria-mobile-menu"
             onClick={toggleMobile}

@@ -16,14 +16,14 @@ export const servicesIndex = {
   meta: {
     title: 'Servizi — Agria System',
     description:
-      'Digital Presence, Digital Commerce e Digital Automation: siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi.',
+      'Digital Presence, Digital Commerce e Digital Automation per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi.',
     path: '/servizi',
   },
   eyebrow: 'Servizi',
   title: 'Tre aree, un solo sistema.',
   lead: 'Non vendiamo pacchetti. Partiamo da come lavorate oggi e costruiamo quello che serve, integrato con gli strumenti che già usate.',
   cta: CTA,
-  linkLabel: 'Approfondisci',
+  linkLabel: 'Scoprite di più',
 
   // tre blocchi alternati, uno per area
   areas: AREA_ORDER.map((key) => {
