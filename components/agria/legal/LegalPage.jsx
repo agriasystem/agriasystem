@@ -9,7 +9,7 @@ import { graph, webPageNode } from '@/lib/schema';
 // aggiornamento, poi le sezioni in una colonna di lettura. Ogni sezione:
 // paragraphs, list, after, list2, after2 (in quest'ordine, tutti facoltativi).
 const UPDATED_LABEL = 'Ultimo aggiornamento';
-const updated = new Date(LAST_UPDATED).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+const updated = new Date(LAST_UPDATED).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 const P = 'font-agria-sans text-agria-md leading-relaxed text-agria-graphite/85';
 

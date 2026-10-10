@@ -11,3 +11,6 @@ npm-debug.log*
 .idea
 *.swp
 .env*
+
+# piano di invio IndexNow (scripts/indexnow.mjs)
+.indexnow/

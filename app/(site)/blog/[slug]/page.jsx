@@ -27,7 +27,8 @@ import { RICH_TEXT_AGRIA, isBlockquote, renderRichText, stripBlockquoteMarker } 
 // I clic verso /contatti nella pagina inviano contact_click (con consenso):
 // data-analytics-article sul contenitore, location sul collegamento.
 const CTA = closing.cta;
-const DATE = { day: '2-digit', month: 'long', year: 'numeric' };
+// date 'AAAA-MM-GG' lette in UTC: stesso giorno su qualunque macchina di build
+const DATE = { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' };
 const LABELS = {
   toc: 'In questo articolo',
   related: 'Continua a leggere',
@@ -119,7 +120,7 @@ export default function Post({ params }) {
     blogPostingNode({ post: p, image: p.featuredImage ? shareImage(p.featuredImage) : undefined, wordCount }),
     breadcrumbNode([
       { name: 'Home', path: '/' },
-      { name: 'Blog', path: '/blog' },
+      { name: 'Insights', path: '/blog' },
       { name: p.title, path },
     ]),
   ]);

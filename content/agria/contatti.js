@@ -4,6 +4,8 @@
 //  Ordine delle sezioni: app/(site)/contatti/page.jsx.
 // =====================================================================
 
+import { site } from '@/content/site';
+
 export const meta = {
   title: 'Contatti — Agria System, parliamo del progetto',
   description:
@@ -113,8 +115,9 @@ export const channels = {
   },
   whatsappMessage: 'Buongiorno, vorrei parlare di un progetto con Agria System.',
   address: 'Via Ponte Vecchio 67, 06135 Perugia',
-  mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+06135+Perugia',
-  hours: 'Lunedì-venerdì, 9-18',
+  // link alla mappa e orari: stessa fonte dei dati strutturati (content/site.js)
+  mapsHref: site.mapsHref,
+  hours: site.hoursLabel,
 };
 
 // 4. Cosa succede dopo: quattro tappe che avanzano da sole

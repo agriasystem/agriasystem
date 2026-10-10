@@ -37,7 +37,7 @@ export default function Blog() {
           webPageNode({ ...PAGE, type: 'CollectionPage' }),
           breadcrumbNode([
             { name: 'Home', path: '/' },
-            { name: 'Blog', path: PAGE.path },
+            { name: INSIGHTS, path: PAGE.path },
           ]),
         ])}
       />

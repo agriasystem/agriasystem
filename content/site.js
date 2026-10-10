@@ -20,6 +20,13 @@ export const site = {
     postalCode: '06135',
     country: 'IT',
   },
+  // coordinate della sede (dati strutturati ProfessionalService): ricavate
+  // dall'indirizzo, precisione di circa 100 m
+  geo: { latitude: 43.089, longitude: 12.447 },
+  // orari: testo mostrato in /contatti e forma per i dati strutturati
+  hoursLabel: 'Lunedì-venerdì, 9-18',
+  openingHours: { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+  mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+67+06135+Perugia',
   // nessun profilo personale: i profili Agria si aggiungono qui quando esistono
   social: {},
   tagline: 'sistemi digitali per hospitality, cantine e frantoi',

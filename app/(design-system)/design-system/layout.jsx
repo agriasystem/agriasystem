@@ -20,8 +20,12 @@ export default function DesignSystemRootLayout({ children }) {
   return (
     <html lang="it" className={`${agriaSans.variable} ${agriaMono.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        {/* Favicon con percorsi nuovi: Google teneva in cache l'icona del vecchio
+            marchio allo stesso indirizzo. /favicon.ico (Agria) resta servita per i
+            client che la chiedono da soli, ma non è dichiarata. */}
+        <link rel="icon" type="image/png" sizes="48x48" href="/icons/agria-icon-48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icons/agria-icon-96.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/agria-icon-192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
