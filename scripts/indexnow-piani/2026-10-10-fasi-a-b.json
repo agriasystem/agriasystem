@@ -1,0 +1,121 @@
+{
+  "nota": "Piano unico delle fasi A e B del Prompt 22 (nessun invio era ancora partito). Confronto tra la build locale di e5cc7f0, in produzione fino al 10 ottobre 2026, e la build locale di 127cab7: agriasystem.com non era raggiungibile dall'ambiente in cui è stato generato, quindi la versione pubblicata è stata ricostruita dal suo commit. before indica il sito su cui si invia; submit controlla comunque che ogni pagina pubblicata corrisponda all'impronta in expect prima di inviare.",
+  "commit": "127cab7657177f49d29f42a1d6910790344c0a02",
+  "before": "https://agriasystem.com",
+  "after": "http://localhost:3211",
+  "changed": [
+    "/",
+    "/servizi",
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation",
+    "/settori",
+    "/settori/hospitality",
+    "/settori/cantine",
+    "/settori/frantoi",
+    "/azienda",
+    "/contatti",
+    "/blog",
+    "/blog/ecommerce-per-frantoi",
+    "/blog/software-per-agriturismi",
+    "/blog/software-per-cantine",
+    "/blog/siti-web-per-agriturismi",
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione",
+    "/blog/siti-web-per-cantine",
+    "/blog/vendita-internazionale-vino-dtc-export-estero",
+    "/blog/agriturismo-booking-online-prenotazioni",
+    "/blog/degustazioni-cantina-trasformare-visite-vendite",
+    "/blog/ecommerce-vino-margini-vendita-diretta",
+    "/blog/storytelling-vino-marketing-vendite",
+    "/blog/chatbot-cantina-ai-customer-service",
+    "/blog/seo-locale-agroalimentare-google-maps",
+    "/privacy-policy",
+    "/cookie-policy"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "f88ed3c5ed099e4279b28876638b6921d0dd72d7e3c76ee7bd10738f97776d9e",
+      "site": "d92f63d48db3c928b8600f508769ad8816baff3143392834172a9b75a0339464"
+    },
+    "/servizi": {
+      "page": "8f5fef54cf601b11e57ff6a6f789dbeeda5134d2552afca10bc4475135e111ef"
+    },
+    "/servizi/digital-presence": {
+      "page": "1138bacd8ce31cf9acb1a29365c4b0df25a2e821f88472f4444fb4be2b3e6b8c"
+    },
+    "/servizi/digital-commerce": {
+      "page": "245272f18887f83f9153e6339d6b3854ab28e8d0715b2a10e2e4e6156cef270f"
+    },
+    "/servizi/digital-automation": {
+      "page": "fe56afd0deef6fcba388e1b23b7b7dd12a83af79e5f237baa514e9d85daad524"
+    },
+    "/settori": {
+      "page": "5fd36f48dc7dfb21579db655522010bb6de24c3e3ebe0a4a168e98d2cdc62cec"
+    },
+    "/settori/hospitality": {
+      "page": "986a6e8b13e66e84670a2ec9476b67b7fda74261d2b6603101941906d861408f"
+    },
+    "/settori/cantine": {
+      "page": "4e7fb0931fc47f963cd1b233e380c72bedf851799153283c3dc4959589032751"
+    },
+    "/settori/frantoi": {
+      "page": "01a13ed3c494317fa2e6c67a693d51e5a49f0f3c087d49b7d32e1a168b943f1f"
+    },
+    "/azienda": {
+      "page": "7760f214a63b02b5ebad5ce307128f9b06dd8dcecb0d7335edbadeba91aae75a"
+    },
+    "/contatti": {
+      "page": "91788be6c7ab76dcb566d1e1137332f01f90cd3e2a2bb0b8f0ec150d3f5f45ef"
+    },
+    "/blog": {
+      "page": "f8c78d8980f5c0dc997f544700eaa93a1d62c9e1eae8b8404cbd760cde90c52b"
+    },
+    "/blog/ecommerce-per-frantoi": {
+      "page": "65816484c129401ff331a5fa3d2f3423afcbbf935f8753dc17fb184c6c4bafa4"
+    },
+    "/blog/software-per-agriturismi": {
+      "page": "739bb418d23bddf1dd4a5032bffc1a3a5c8775bb5d768cea987f36a461db8242"
+    },
+    "/blog/software-per-cantine": {
+      "page": "e52c7aa631c022da0df8a4e02d3f416538849ec45d391920a99ee1cfc8c5d067"
+    },
+    "/blog/siti-web-per-agriturismi": {
+      "page": "3297aca3915d4a95cb19f8c33e0c94d85ca8f8b3527732c3fdd8d59db97df672"
+    },
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione": {
+      "page": "fb10afb6542210fcad98ee19f7e9e7e21f1daffa00bacb37c47042b0279c4083"
+    },
+    "/blog/siti-web-per-cantine": {
+      "page": "a5219a1b2c9eeb8f1c144e8e01d69c0f36b7f6aa09786792c563663d825922ef"
+    },
+    "/blog/vendita-internazionale-vino-dtc-export-estero": {
+      "page": "2a1494ee34852c5654280b2d3c62bc01a578eda96a8ea11a16b66b75daa9fe93"
+    },
+    "/blog/agriturismo-booking-online-prenotazioni": {
+      "page": "43ed9a892706a260fc7fb655e3e975b9a975b9e76251e4167fa866c26734cb53"
+    },
+    "/blog/degustazioni-cantina-trasformare-visite-vendite": {
+      "page": "cecead41a13a017eac57bab8087a2826555e16395a89175278f254175672bca1"
+    },
+    "/blog/ecommerce-vino-margini-vendita-diretta": {
+      "page": "42b329acedaaf0bf22d53ef2ca9644a13773c47e979d5fad1c800c07d3c786d1"
+    },
+    "/blog/storytelling-vino-marketing-vendite": {
+      "page": "8021c617ddaa7e916d3abce6d3cea40aa8587c52a956d280ba7b32be35545117"
+    },
+    "/blog/chatbot-cantina-ai-customer-service": {
+      "page": "8e691488409194945721a89d950731f5946d1643cd9388016d6b92363052160a"
+    },
+    "/blog/seo-locale-agroalimentare-google-maps": {
+      "page": "9b36df42083086815f049a9233ef14907adbf6d57b5380a07c50af49dc775688"
+    },
+    "/privacy-policy": {
+      "page": "29cef84e1abf743939554ba2a557e1dae62228538afd079274269bff1f9a88ad"
+    },
+    "/cookie-policy": {
+      "page": "d5e4466bb5e035044420c2447ebc421de51d8b2a184792554e75d538f71f85e4"
+    }
+  }
+}
