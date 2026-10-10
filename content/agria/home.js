@@ -74,13 +74,57 @@ export const services = {
   ],
 };
 
+// 4b. Quando interveniamo (Prompt 22, fase B): versione completa in homepage,
+// subito dopo i servizi; la versione breve (short) chiude le tre pagine
+// servizio prima delle FAQ e rimanda a questa sezione.
+// Componente: components/agria/sections/WhenWeHelp.jsx
+export const whenWeHelp = {
+  id: 'quando-interveniamo',
+  eyebrow: 'Quando interveniamo',
+  title: 'Quando serviamo, e quando no.',
+  intro: 'Se la piattaforma che usate funziona, la domanda è se ha senso parlarci. Ecco la risposta, anche quando è no.',
+  blocks: [
+    {
+      key: 'si',
+      icon: 'check',
+      title: 'Quando ha senso chiamarci',
+      items: [
+        'La piattaforma che usate copre la gestione, ma il canale diretto è fermo.',
+        'I dati stanno in più sistemi che non si parlano, e qualcuno li reinserisce a mano.',
+        'Il processo regge nei mesi normali e non regge nei mesi di punta.',
+        "Vendete fuori dall'Italia, o volete cominciare, e il sito non è attrezzato per farlo.",
+      ],
+    },
+    {
+      key: 'no',
+      icon: 'minus',
+      title: 'Quando non ha senso',
+      items: [
+        "Se cercate un sito vetrina e nient'altro: lo fa bene chi costa meno di noi.",
+        'Se volete sostituire il gestionale, il PMS o il CRM: non è il nostro lavoro. Lavoriamo sopra quelli che avete.',
+        'Se il problema non è tecnologico ma commerciale: nessun sistema lo risolve.',
+        'Se il progetto non cambia il modo in cui lavorate o vendete: non lo prendiamo.',
+      ],
+    },
+    {
+      key: 'come',
+      title: 'Come lo capiamo',
+      text: 'Con una prima analisi, prima di qualunque proposta. Guardiamo gli strumenti che usate già, dove i dati si fermano, cosa passa ancora a mano. Non è un preventivo e non promette un risultato: serve a capire se il lavoro ha senso. Può concludersi con un no, e in quel caso ve lo diciamo con il motivo.',
+    },
+  ],
+  short: {
+    text: 'Non prendiamo progetti che non cambiano il modo di lavorare o di vendere, e se la piattaforma che usate funziona ve lo diciamo.',
+    link: { label: 'Quando ha senso chiamarci, e quando no', href: '/#quando-interveniamo' },
+  },
+};
+
 // 5. Componi il tuo sistema (modulo interattivo 2)
 // Le scelte arrivano a /contatti come parametri ripetuti: ?moduli=sito&moduli=e-commerce
 // (valori = id qui sotto). Formato documentato in docs/agria/11-homepage-definitiva.md.
 export const composer = {
   eyebrow: 'Sviluppato internamente, senza template',
   title: 'Componete il vostro sistema.',
-  text: 'Scegliete cosa vi serve. Come collegarlo agli strumenti che usate lo verifichiamo noi, per prima cosa.',
+  text: 'Scegliete cosa vi serve.',
   param: 'moduli',
   action: '/contatti',
   modules: [
@@ -199,14 +243,9 @@ export const method = {
   ],
 };
 
-// 9. Chiarezza e ricerca
-export const clarity = {
-  title: 'Meglio dirlo subito.',
-  text: 'Non facciamo lavori spot che non cambiano nulla, né gestionali su commessa: lavoriamo sopra gli strumenti che già usate. Lavoriamo su progetti che cambiano il modo di lavorare o di vendere.',
-};
-
+// 9. Ricerca (il blocco "Meglio dirlo subito" è confluito in "Quando interveniamo")
 export const research = {
-  title: 'Costruiamo anche prodotti nostri.',
+  title: 'Strumenti nostri, in sviluppo.',
   text: 'Una parte del nostro lavoro è ricerca applicata: software proprietari che nascono dai problemi che vediamo in queste aziende. Ne parliamo quando saranno pronti, non prima.',
 };
 

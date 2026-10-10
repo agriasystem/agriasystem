@@ -7,7 +7,8 @@ import SystemComposer from '@/components/agria/home/SystemComposer';
 import SectorCards from '@/components/agria/home/SectorCards';
 import SectorPreview from '@/components/agria/home/SectorPreview';
 import MethodSection from '@/components/agria/home/MethodSection';
-import ClaritySection from '@/components/agria/home/ClaritySection';
+import ResearchSection from '@/components/agria/home/ResearchSection';
+import WhenWeHelp from '@/components/agria/sections/WhenWeHelp';
 import NewsSection from '@/components/agria/home/NewsSection';
 import TerritoryBand from '@/components/agria/home/TerritoryBand';
 import ClosingCta from '@/components/agria/home/ClosingCta';
@@ -35,11 +36,12 @@ export default function Home() {
       <FactStrip />
       <ProblemSwitch />
       <ServiceCards />
+      <WhenWeHelp />
       <SystemComposer />
       <SectorCards />
       <SectorPreview />
       <MethodSection />
-      <ClaritySection />
+      <ResearchSection />
       <NewsSection />
       <TerritoryBand />
       <ClosingCta />

@@ -1,4 +1,5 @@
 import PageHero from '@/components/agria/sections/PageHero';
+import WhenWeHelp from '@/components/agria/sections/WhenWeHelp';
 import { getPost } from '@/content/blog';
 import JsonLd from '@/components/agria/seo/JsonLd';
 import { breadcrumbNode, faqNode, graph, serviceNode, webPageNode } from '@/lib/schema';
@@ -24,7 +25,10 @@ const LINK_GROUPS = { services: 'Servizi', articles: 'Approfondimenti', index: '
 // scuro · bianco · off-white · bianco · scuro · bianco · off-white · bianco ·
 // off-white · scuro, più la CTA fissa. Sezioni facoltative (Prompt 14), solo se
 // l'area le definisce: area.seo dopo l'AI (sfumata) e area.identity prima delle
-// FAQ (bianca, con filetto). Nessun contenuto qui: la pagina passa
+// FAQ (bianca, con filetto). Sempre, subito prima delle FAQ, il rimando breve a
+// "Quando interveniamo" (Prompt 22: components/agria/sections/WhenWeHelp,
+// variant short, bianca con filetto, link a /#quando-interveniamo; testi in
+// content/agria/home.js). Nessun contenuto qui: la pagina passa
 // area (contenuti dell'area), others (le altre due: { name, meta.path }) e
 // sectorLabels (nomi delle schede dei verticali).
 export default function ServiceAreaPage({ area, others, sectorLabels }) {
@@ -91,6 +95,8 @@ export default function ServiceAreaPage({ area, others, sectorLabels }) {
       <MarketsPhoto id={id('mercati')} {...area.markets} />
       {/* 8b. Identità e digital experience · bianco (facoltativa) */}
       {area.identity && <IdentityBlock id={id('identita')} {...area.identity} />}
+      {/* 8c. Quando interveniamo, versione breve: rimanda alla sezione in homepage · bianco, con filetto, senza margine superiore */}
+      <WhenWeHelp variant="short" />
       {/* 9. FAQ · off-white */}
       <FaqAccordion id={id('faq')} title={FAQ_TITLE} items={area.faq} cta={area.cta} />
       {/* 10. CTA finale · scuro */}
