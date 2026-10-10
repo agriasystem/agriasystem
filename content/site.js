@@ -14,7 +14,7 @@ export const site = {
   phone: '+39 366 344 5417',
   location: 'Perugia, Italia',
   address: {
-    street: 'Via Ponte Vecchio',
+    street: 'Via Ponte Vecchio 67',
     city: 'Perugia',
     province: 'PG',
     postalCode: '06135',

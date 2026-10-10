@@ -7,7 +7,8 @@ import { ZoomImage } from '@/components/agria/motion';
 import { Container, Eyebrow, Heading, Reveal, Section, Text, TextLink } from '@/components/agria/ui';
 import { getPost } from '@/content/blog';
 import { AREA_LINK_LABEL } from '@/content/agria/settori';
-import { breadcrumbSchema, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
 const LINK_GROUPS = { sectors: 'Settori', articles: 'Approfondimenti', index: 'Tutti i settori' };
 
@@ -36,20 +37,18 @@ export default function SectorPage({ sector, others }) {
     },
   ];
 
-  const jsonLd = [
-    webPageSchema(meta),
-    breadcrumbSchema([
+  const jsonLd = graph([
+    webPageNode(meta),
+    breadcrumbNode([
       { name: 'Home', path: '/' },
       { name: 'Settori', path: '/settori' },
       { name: sector.name, path: meta.path },
     ]),
-  ];
+  ]);
 
   return (
     <>
-      {jsonLd.map((data) => (
-        <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      ))}
+      <JsonLd data={jsonLd} />
 
       {/* 1. Hero · scuro */}
       <PageHero

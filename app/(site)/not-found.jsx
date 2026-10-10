@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { Button, Container, Eyebrow, Heading, Section, Text } from '@/components/agria/ui';
 
-// Pagina 404 nel layout Agria (header e footer dal layout del gruppo). Lo
-// stato 404 lo imposta Next; noindex esplicito. Gli indirizzi senza pagina
-// arrivano qui tramite app/(site)/[...pagina]/page.jsx.
+// Pagina 404 nel layout Agria (header e footer dal layout del gruppo). Stato
+// 404 e noindex li imposta Next. Gli indirizzi senza pagina arrivano qui
+// tramite app/(site)/[...pagina]/page.jsx.
 export const metadata = {
   title: { absolute: 'Pagina non trovata | Agria System' },
   description: 'La pagina richiesta non esiste o è stata spostata.',
-  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

@@ -3,7 +3,9 @@ import SectorCards from '@/components/agria/home/SectorCards';
 import SectorPreview from '@/components/agria/home/SectorPreview';
 import FinalCta from '@/components/agria/service/FinalCta';
 import { sectorsIndex } from '@/content/agria/settori';
-import { agriaPageMetadata, breadcrumbSchema, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { agriaPageMetadata } from '@/lib/seo';
+import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
 // Indice dei settori AGRIA: hero scuro · tre settori (off-white) · anteprima
 // per settore (bianco) · CTA finale scura. Componenti e testi della homepage.
@@ -19,11 +21,7 @@ const BREADCRUMB = [
 export default function SettoriPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(meta)) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(BREADCRUMB)) }}
-      />
+      <JsonLd data={graph([webPageNode({ ...meta, type: 'CollectionPage' }), breadcrumbNode(BREADCRUMB)])} />
       <PageHero eyebrow={sectorsIndex.hero.eyebrow} title={sectorsIndex.hero.title} cta={sectorsIndex.cta} titleId="settori-title" />
       <SectorCards eyebrow={null} title={sectorsIndex.cardsTitle} titleId="settori-griglia-title" />
       <SectorPreview />

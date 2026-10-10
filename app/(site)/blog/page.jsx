@@ -5,7 +5,9 @@ import { Container, Section } from '@/components/agria/ui';
 import { closing, news } from '@/content/agria/home';
 import { KEPT_POSTS } from '@/content/blog/kept';
 import { getPost } from '@/lib/data';
-import { agriaPageMetadata, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { agriaPageMetadata } from '@/lib/seo';
+import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
 // Indice degli articoli (Insights) nel layout Agria: solo gli articoli
 // mantenuti dalla migration map, dal più recente. Etichetta e titolo della
@@ -30,11 +32,19 @@ const articles = KEPT_POSTS.map((slug) => getPost(slug))
 export default function Blog() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(PAGE)) }} />
+      <JsonLd
+        data={graph([
+          webPageNode({ ...PAGE, type: 'CollectionPage' }),
+          breadcrumbNode([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: PAGE.path },
+          ]),
+        ])}
+      />
       <PageHero eyebrow={INSIGHTS} title={news.title} titleId="blog-title" />
       <Section background="offwhite" aria-labelledby="blog-title">
         <Container>
-          <ArticleCards articles={articles} />
+          <ArticleCards articles={articles} headingLevel="h2" />
         </Container>
       </Section>
       <FinalCta

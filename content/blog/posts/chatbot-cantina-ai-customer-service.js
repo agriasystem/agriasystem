@@ -2,6 +2,8 @@ const post = {
     slug: 'chatbot-cantina-ai-customer-service',
     title: 'Chatbot per Cantine: 5 Casi d’Uso Concreti per Vendite e Assistenza Clienti',
     seoTitle: 'Chatbot cantina: casi d’uso per vendite e assistenza',
+    description:
+      'Cinque casi d’uso concreti di un chatbot per una cantina: primi contatti, consigli sui vini, wine club, spedizioni e visite, senza perdere il controllo.',
     excerpt:
       'Un chatbot ben progettato risponde ai clienti fuori orario, qualifica i lead e libera tempo al team. Ecco cinque casi d’uso concreti per una cantina, e come impostarli senza perdere il controllo delle risposte.',
     date: '2026-08-01',
@@ -14,6 +16,7 @@ const post = {
     relatedSlugs: ['agriturismo-booking-online-prenotazioni'],
     relatedLinks: [
       { href: '/servizi/digital-automation', label: 'Servizio: Digital Automation' },
+      { href: '/settori/cantine', label: 'Settore Cantine' },
     ],
     body: [
       {

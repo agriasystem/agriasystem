@@ -4,7 +4,9 @@ import GoalSelector from '@/components/agria/service/GoalSelector';
 import IndexSteps from '@/components/agria/service/IndexSteps';
 import FinalCta from '@/components/agria/service/FinalCta';
 import { areaSummary, servicesIndex } from '@/content/agria/servizi';
-import { agriaPageMetadata, breadcrumbSchema, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { agriaPageMetadata } from '@/lib/seo';
+import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
 // Indice dei servizi AGRIA (Prompt 13): struttura propria, non il template delle
 // pagine area. Fondi: scuro · bianco · off-white · bianco · off-white · bianco · scuro.
@@ -21,11 +23,7 @@ const BREADCRUMB = [
 export default function ServiziPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(meta)) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(BREADCRUMB)) }}
-      />
+      <JsonLd data={graph([webPageNode({ ...meta, type: 'CollectionPage' }), breadcrumbNode(BREADCRUMB)])} />
       {/* 1. Hero · scuro */}
       <PageHero
         eyebrow={servicesIndex.eyebrow}

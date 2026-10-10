@@ -7,7 +7,9 @@ import AnalyticsConsent from '@/components/agria/consent/AnalyticsConsent';
 import ConciergeSlot from '@/components/agria/ConciergeSlot';
 import Assistant from '@/components/agria/assistant/Assistant';
 import { site } from '@/lib/data';
-import { OG_IMAGE, SITE_URL } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { SITE_URL } from '@/lib/seo';
+import { siteGraph } from '@/lib/schema';
 import { defaultLocale } from '@/lib/i18n';
 
 const poppins = Poppins({
@@ -31,31 +33,17 @@ const agriaMono = IBM_Plex_Mono({
   display: 'swap',
 });
 
+// Valori di ripiego per le pagine senza metadata propri (404): ogni pagina li
+// sostituisce con pageMetadata (lib/seo.js). Robots non è impostato qui: la 404
+// riceve il noindex di Next, le pagine il proprio.
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.name}`,
-  },
+  title: `${site.name} — ${site.tagline}`,
   description: site.positioning,
-  openGraph: {
-    title: `${site.name} — ${site.tagline}`,
-    description: site.positioning,
-    type: 'website',
-    locale: 'it_IT',
-    siteName: site.name,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: site.name }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `${site.name} — ${site.tagline}`,
-    description: site.positioning,
-    images: [OG_IMAGE],
-  },
-  robots: { index: true, follow: true },
 };
 
-// Lo schema Organization vive nella homepage (app/(site)/page.jsx), non qui.
+// Organizzazione e sito (lib/schema.js) su ogni pagina; le pagine aggiungono
+// i propri nodi collegati tramite @id.
 
 export default function RootLayout({ children }) {
   return (
@@ -67,6 +55,7 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body>
+        <JsonLd data={siteGraph()} />
         <Header />
         <main>{children}</main>
         <Footer />

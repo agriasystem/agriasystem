@@ -9,13 +9,16 @@ const GAP_MS = 380; // pausa a parola cancellata, prima di riscrivere
 
 // Titolo con parte finale che si cancella e si riscrive in ciclo (macchina da scrivere).
 //
-// - HTML e screen reader: sempre la frase predefinita (prefix + phrases[0] + suffix),
-//   in un testo sr-only. La parte animata è aria-hidden.
+// - Una sola rappresentazione testuale: la frase predefinita (prefix +
+//   phrases[0] + suffix) è testo vero, visibile nell'HTML del server, senza
+//   JavaScript e con prefers-reduced-motion. Mentre l'animazione gira resta
+//   nel documento per screen reader e motori di ricerca (sr-only).
+// - La parte animata è solo grafica: lettere disegnate in CSS
+//   (content: attr(...)) su uno strato aria-hidden, quindi nessun testo in più
+//   nel documento.
 // - Nessun salto di layout: ogni variante occupa la stessa cella di una griglia
-//   tramite un segnaposto invisibile generato in CSS (content: attr(data-text)),
-//   quindi l'altezza è quella della variante più lunga e le varianti non
-//   compaiono come testo nell'HTML.
-// - Senza JavaScript o con prefers-reduced-motion: frase predefinita, nessun cursore.
+//   tramite un segnaposto invisibile generato in CSS, quindi l'altezza è quella
+//   della variante più lunga.
 export default function RotatingHeadline({
   as: Tag = 'span',
   prefix = '',
@@ -85,7 +88,6 @@ export default function RotatingHeadline({
 
   return (
     <Tag className={`grid ${className}`} {...props}>
-      <span className="sr-only">{`${prefix}${phrases[0]}${suffix}`}</span>
       {phrases.map((phrase) => (
         <span
           key={phrase}
@@ -94,12 +96,17 @@ export default function RotatingHeadline({
           className="invisible col-start-1 row-start-1 before:content-[attr(data-text)]"
         />
       ))}
-      <span aria-hidden="true" className="col-start-1 row-start-1">
-        {prefix}
-        {text}
-        {animating && <span className="agria-caret" />}
-        {suffix}
-      </span>
+      <span className={animating ? 'sr-only' : 'col-start-1 row-start-1'}>{`${prefix}${phrases[0]}${suffix}`}</span>
+      {animating && (
+        <span
+          aria-hidden="true"
+          data-text={`${prefix}${text}`}
+          data-suffix={suffix}
+          className="col-start-1 row-start-1 before:content-[attr(data-text)] after:content-[attr(data-suffix)]"
+        >
+          <span className="agria-caret" />
+        </span>
+      )}
     </Tag>
   );
 }

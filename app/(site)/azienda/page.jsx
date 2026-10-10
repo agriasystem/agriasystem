@@ -1,4 +1,4 @@
-import { SAME_AS } from '@/components/agria/social';
+import JsonLd from '@/components/agria/seo/JsonLd';
 import PageHero from '@/components/agria/sections/PageHero';
 import Positioning from '@/components/agria/azienda/Positioning';
 import PrinciplesAccordion from '@/components/agria/azienda/PrinciplesAccordion';
@@ -10,7 +10,8 @@ import MidCta from '@/components/agria/azienda/MidCta';
 import CompanyData from '@/components/agria/azienda/CompanyData';
 import FinalCta from '@/components/agria/service/FinalCta';
 import { site } from '@/lib/data';
-import { AGRIA_BRAND, SITE_URL, agriaPageMetadata, breadcrumbSchema, webPageSchema } from '@/lib/seo';
+import { agriaPageMetadata } from '@/lib/seo';
+import { breadcrumbNode, graph, personNode, webPageNode } from '@/lib/schema';
 import {
   meta,
   hero,
@@ -33,46 +34,23 @@ import {
 
 export const metadata = agriaPageMetadata(meta);
 
-// Organization con i dati reali (indirizzo, P.IVA, contatti come nello schema
-// della homepage): nessun profilo social finché non esiste.
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: AGRIA_BRAND,
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/brand/agria-logo-centered.svg`,
-  description: meta.description,
-  sameAs: SAME_AS,
-  telephone: site.phone,
-  email: site.email,
-  vatID: company.vat,
-  // persone del team con il loro ruolo (Person con jobTitle)
-  employee: team.people.map((person) => ({ '@type': 'Person', name: person.name, jobTitle: person.role })),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: company.address.street,
-    addressLocality: company.address.city,
-    addressRegion: company.address.province,
-    postalCode: company.address.postalCode,
-    addressCountry: company.address.country,
-  },
-};
+// Pagina "chi siamo" dell'organizzazione (lib/schema.js) con le persone del
+// team: ruolo e foto come nella pagina, LinkedIn solo dove esiste.
+const PERSON_ID = (name) => name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-');
 
-const jsonLd = [
-  webPageSchema(meta),
-  organizationSchema,
-  breadcrumbSchema([
+const jsonLd = graph([
+  webPageNode({ ...meta, type: 'AboutPage', about: true }),
+  breadcrumbNode([
     { name: 'Home', path: '/' },
     { name: 'Azienda', path: meta.path },
   ]),
-];
+  ...team.people.map((person) => personNode({ id: PERSON_ID(person.name), ...person })),
+]);
 
 export default function AziendaPage() {
   return (
     <>
-      {jsonLd.map((data) => (
-        <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      ))}
+      <JsonLd data={jsonLd} />
 
       {/* 1. Hero · scuro, con la scena dei filari */}
       <PageHero

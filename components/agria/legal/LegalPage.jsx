@@ -2,7 +2,8 @@ import PageHero from '@/components/agria/sections/PageHero';
 import { Container, Heading, Section } from '@/components/agria/ui';
 import { LAST_UPDATED } from '@/content/agria/legale';
 import { RICH_TEXT_AGRIA, renderRichText } from '@/lib/richtext';
-import { webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { graph, webPageNode } from '@/lib/schema';
 
 // Pagina legale nel layout Agria: hero scuro con la data di ultimo
 // aggiornamento, poi le sezioni in una colonna di lettura. Ogni sezione:
@@ -36,7 +37,7 @@ function List({ items }) {
 export default function LegalPage({ page, id }) {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(page.meta)) }} />
+      <JsonLd data={graph(webPageNode({ ...page.meta, breadcrumb: false, extra: { dateModified: LAST_UPDATED } }))} />
       <PageHero eyebrow={`${UPDATED_LABEL}: ${updated}`} title={page.title} lead={page.lead} titleId={`${id}-title`} />
       <Section background="white" aria-labelledby={`${id}-title`}>
         <Container>

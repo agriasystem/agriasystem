@@ -10,7 +10,9 @@ import Link from 'next/link';
 import { closing } from '@/content/agria/home';
 import { KEPT_POSTS } from '@/content/blog/kept';
 import { getPost } from '@/lib/data';
-import { AGRIA_BRAND, SITE_URL, agriaPageMetadata, breadcrumbSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { AGRIA_BRAND, absoluteUrl, pageMetadata } from '@/lib/seo';
+import { blogPostingNode, breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 import { RICH_TEXT_AGRIA, isBlockquote, renderRichText, stripBlockquoteMarker } from '@/lib/richtext';
 
 // Articolo nel layout Agria (migration map: KEEP + REWRITE). Solo gli articoli
@@ -49,7 +51,7 @@ const formatDate = (value) => new Date(value).toLocaleDateString('it-IT', DATE);
 // Unsplash (hotlinking) le ritaglia il CDN a 1200×630, le foto locali sono
 // percorsi del sito.
 function shareImage(src) {
-  if (!src.startsWith('https://images.unsplash.com/')) return `${SITE_URL}${src}`;
+  if (!src.startsWith('https://images.unsplash.com/')) return absoluteUrl(src);
   const url = new URL(src);
   Object.entries({ w: '1200', h: '630', fit: 'crop', q: '80', fm: 'jpg' }).forEach(([key, value]) => url.searchParams.set(key, value));
   return url.toString();
@@ -64,17 +66,15 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const p = getPost(params.slug);
   if (!p) return {};
-  const base = agriaPageMetadata({
+  return pageMetadata({
     title: `${p.seoTitle || p.title} | ${AGRIA_BRAND}`,
     description: p.description || p.excerpt,
     path: `/blog/${p.slug}`,
+    type: 'article',
+    publishedTime: p.date,
+    modifiedTime: p.updated || p.date,
+    ...(p.featuredImage ? { image: { url: shareImage(p.featuredImage), width: 1200, height: 630, alt: p.imageAlt || p.title } } : {}),
   });
-  const image = p.featuredImage ? [{ url: shareImage(p.featuredImage), width: 1200, height: 630, alt: p.imageAlt || p.title }] : base.openGraph.images;
-  return {
-    ...base,
-    openGraph: { ...base.openGraph, type: 'article', publishedTime: p.date, modifiedTime: p.updated || p.date, images: image },
-    twitter: { ...base.twitter, images: image.map((i) => i.url) },
-  };
 }
 
 // Rimando contestuale a metà articolo: una riga e un collegamento a servizio o
@@ -113,32 +113,16 @@ export default function Post({ params }) {
     .split(/\s+/)
     .filter(Boolean).length;
 
-  const jsonLd = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: p.title,
-      description: p.description || p.excerpt,
-      image: p.featuredImage ? shareImage(p.featuredImage) : undefined,
-      datePublished: p.date,
-      dateModified: p.updated || p.date,
-      author: { '@type': 'Organization', name: AGRIA_BRAND, url: SITE_URL },
-      publisher: {
-        '@type': 'Organization',
-        name: AGRIA_BRAND,
-        logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/brand/agria-logo-centered.svg` },
-      },
-      mainEntityOfPage: `${SITE_URL}/blog/${p.slug}`,
-      inLanguage: 'it-IT',
-      keywords: (p.keywords || []).join(', '),
-      wordCount,
-    },
-    breadcrumbSchema([
+  const path = `/blog/${p.slug}`;
+  const jsonLd = graph([
+    webPageNode({ title: p.title, description: p.description || p.excerpt, path }),
+    blogPostingNode({ post: p, image: p.featuredImage ? shareImage(p.featuredImage) : undefined, wordCount }),
+    breadcrumbNode([
       { name: 'Home', path: '/' },
       { name: 'Blog', path: '/blog' },
-      { name: p.title, path: `/blog/${p.slug}` },
+      { name: p.title, path },
     ]),
-  ];
+  ]);
 
   // rimando a metà articolo: dopo il blocco centrale del corpo
   const midAfter = Math.ceil(p.body.length / 2) - 1;
@@ -148,9 +132,7 @@ export default function Post({ params }) {
 
   return (
     <>
-      {jsonLd.map((data) => (
-        <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      ))}
+      <JsonLd data={jsonLd} />
 
       <div data-analytics-article={p.slug}>
       {/* 1. Hero · scuro */}

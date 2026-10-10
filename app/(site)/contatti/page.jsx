@@ -1,4 +1,4 @@
-import { SAME_AS } from '@/components/agria/social';
+import JsonLd from '@/components/agria/seo/JsonLd';
 import PageHero from '@/components/agria/sections/PageHero';
 import ContactSection from '@/components/agria/contatti/ContactSection';
 import ContactChannels from '@/components/agria/contatti/ContactChannels';
@@ -6,7 +6,8 @@ import NextSteps from '@/components/agria/contatti/NextSteps';
 import ContactFaq from '@/components/agria/contatti/ContactFaq';
 import ContactClosing from '@/components/agria/contatti/ContactClosing';
 import { site } from '@/lib/data';
-import { agriaPageMetadata, breadcrumbSchema, faqPageSchema, webPageSchema, SITE_URL, AGRIA_BRAND } from '@/lib/seo';
+import { agriaPageMetadata } from '@/lib/seo';
+import { breadcrumbNode, faqNode, graph, webPageNode } from '@/lib/schema';
 import { composer } from '@/content/agria/home';
 import { meta, hero, reassurance, channels, nextSteps, faq, closing, WHATSAPP } from '@/content/agria/contatti';
 
@@ -19,51 +20,24 @@ export const metadata = agriaPageMetadata(meta);
 // moduli del configuratore in homepage (?moduli=id): etichette per il messaggio
 const moduleLabels = Object.fromEntries(composer.modules.map((m) => [m.id, m.label]));
 
-const contactPageSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ContactPage',
-  name: meta.title,
-  description: meta.description,
-  url: `${SITE_URL}${meta.path}`,
-  inLanguage: 'it-IT',
-  about: {
-    '@type': 'Organization',
-    name: AGRIA_BRAND,
-    url: SITE_URL,
-    sameAs: SAME_AS,
-    email: site.email,
-    telephone: site.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: site.address.street,
-      addressLocality: site.address.city,
-      addressRegion: site.address.province,
-      postalCode: site.address.postalCode,
-      addressCountry: site.address.country,
-    },
-  },
-};
-
 const faqForSchema = faq.items.map((item) => ({
   q: item.q,
   a: item.link ? `${item.a} ${item.link.before}${item.link.label}${item.link.after}` : item.a,
 }));
 
-const jsonLd = [
-  contactPageSchema,
-  breadcrumbSchema([
+const jsonLd = graph([
+  webPageNode({ ...meta, type: 'ContactPage', about: true }),
+  breadcrumbNode([
     { name: 'Home', path: '/' },
     { name: 'Contatti', path: meta.path },
   ]),
-  faqPageSchema(faqForSchema),
-];
+  faqNode(faqForSchema, meta.path),
+]);
 
 export default function ContattiPage() {
   return (
     <>
-      {jsonLd.map((data) => (
-        <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      ))}
+      <JsonLd data={jsonLd} />
       {/* 1. Hero · scuro, con la scena dei filari */}
       <PageHero eyebrow={hero.eyebrow} title={hero.title} lead={hero.lead} titleId="contatti-title" />
       {/* 2. Modulo a passi e rassicurazione · bianco */}

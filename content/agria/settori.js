@@ -26,6 +26,8 @@ const ARTICLES = {
     'ecommerce-vino-margini-vendita-diretta',
     'degustazioni-cantina-trasformare-visite-vendite',
     'software-per-cantine',
+    'gestione-fiscale-ecommerce-vino-iva-fatturazione',
+    'vendita-internazionale-vino-dtc-export-estero',
   ],
   frantoi: ['ecommerce-per-frantoi', 'seo-locale-agroalimentare-google-maps'],
 };

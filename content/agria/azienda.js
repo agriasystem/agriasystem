@@ -136,7 +136,7 @@ export const territory = {
   eyebrow: 'Dove lavoriamo',
   title: 'Da Perugia, in tutta Italia e sui mercati esteri.',
   text: "La sede è in Umbria, in mezzo alle aziende con cui lavoriamo. I progetti no: seguiamo clienti in tutta Italia e costruiamo versioni in inglese per chi vende all'estero.",
-  address: 'Via Ponte Vecchio, 06135 Perugia',
+  address: 'Via Ponte Vecchio 67, 06135 Perugia',
   image: agriaImage('azienda/territorio'),
 };
 
@@ -146,8 +146,8 @@ export const company = {
   label: 'Dati aziendali',
   claim: 'Agria System è il marchio con cui opera Matteo Garuzzo, libero professionista.',
   vat: 'IT04006460549',
-  address: { street: 'Via Ponte Vecchio', postalCode: '06135', city: 'Perugia', province: 'PG', country: 'IT' },
-  addressLine: 'Via Ponte Vecchio, 06135 Perugia',
+  address: { street: 'Via Ponte Vecchio 67', postalCode: '06135', city: 'Perugia', province: 'PG', country: 'IT' },
+  addressLine: 'Via Ponte Vecchio 67, 06135 Perugia',
   labels: { address: 'Indirizzo', vat: 'P.IVA', email: 'Email', phone: 'Telefono' },
 };
 

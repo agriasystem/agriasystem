@@ -49,8 +49,8 @@ export const answers = [
     question: 'Chi siete?',
     keywords: ['chi siete', 'chi e agria', 'agria system', 'azienda', 'agenzia', 'chi c e dietro', 'team', 'chi lavora', 'siete in quanti', 'storia'],
     text: [
-      'Agria System è una technology company con sede a Perugia.',
-      'Progettiamo, sviluppiamo e gestiamo i sistemi digitali di agriturismi, hotel, cantine e frantoi. Lo sviluppo è interno: nessun subappalto.',
+      'Agria System ha sede a Perugia. Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. Progettiamo sistemi digitali integrati con gli strumenti che già usate.',
+      'Lo sviluppo è interno, dalla progettazione alla gestione: nessun subappalto.',
     ],
     links: [{ label: 'Scopri l’azienda', href: '/azienda' }],
   },
@@ -132,7 +132,7 @@ export const answers = [
     question: 'Dove siete?',
     keywords: ['dove siete', 'dove', 'sede', 'indirizzo', 'perugia', 'umbria', 'venire', 'ufficio', 'zona', 'lavorate fuori', 'estero', 'inglese', 'italia'],
     text: [
-      'La sede è in Via Ponte Vecchio, 06135 Perugia.',
+      'La sede è in Via Ponte Vecchio 67, 06135 Perugia.',
       'Seguiamo progetti in tutta Italia, in presenza o da remoto, e costruiamo versioni in inglese per le aziende che vendono all’estero.',
     ],
   },

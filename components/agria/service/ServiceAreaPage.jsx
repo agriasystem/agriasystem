@@ -1,6 +1,7 @@
 import PageHero from '@/components/agria/sections/PageHero';
 import { getPost } from '@/content/blog';
-import { AGRIA_BRAND, breadcrumbSchema, faqPageSchema, serviceSchema, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { breadcrumbNode, faqNode, graph, serviceNode, webPageNode } from '@/lib/schema';
 import Diagnosis from './Diagnosis';
 import BuildSelector from './BuildSelector';
 import AiSection from './AiSection';
@@ -47,22 +48,20 @@ export default function ServiceAreaPage({ area, others, sectorLabels }) {
     },
   ];
 
-  const jsonLd = [
-    webPageSchema(meta),
-    serviceSchema({ name: area.name, description: meta.description, path: meta.path, providerName: AGRIA_BRAND }),
-    breadcrumbSchema([
+  const jsonLd = graph([
+    webPageNode(meta),
+    serviceNode({ name: area.name, description: meta.description, path: meta.path }),
+    breadcrumbNode([
       { name: 'Home', path: '/' },
       { name: 'Servizi', path: '/servizi' },
       { name: area.name, path: meta.path },
     ]),
-    faqPageSchema(area.faq),
-  ];
+    faqNode(area.faq, meta.path),
+  ]);
 
   return (
     <>
-      {jsonLd.map((data) => (
-        <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      ))}
+      <JsonLd data={jsonLd} />
 
       {/* 1. Hero · scuro */}
       <PageHero

@@ -2,6 +2,8 @@ const post = {
     slug: 'storytelling-vino-marketing-vendite',
     title: 'Storytelling del Vino: Come Raccontare la Tua Cantina e Vendere di Più',
     seoTitle: 'Storytelling del vino: raccontare la cantina e vendere',
+    description:
+      'Come raccontare una cantina in modo che aiuti a vendere: storia, territorio e dettagli verificabili sul sito e sugli altri canali, senza frasi fatte.',
     excerpt:
       'A parità di qualità, il vino che si vende meglio è spesso quello con la storia più chiara dietro l’etichetta. Ecco come raccontare la propria cantina in modo che aiuti davvero a vendere, non solo a intrattenere.',
     date: '2026-08-01',
@@ -14,6 +16,7 @@ const post = {
     relatedSlugs: ['seo-locale-agroalimentare-google-maps'],
     relatedLinks: [
       { href: '/servizi/digital-presence', label: 'Servizio: Digital Presence' },
+      { href: '/settori/cantine', label: 'Settore Cantine' },
       { href: '/azienda', label: 'Azienda' },
     ],
     body: [

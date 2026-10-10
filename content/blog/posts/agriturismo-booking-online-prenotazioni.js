@@ -2,6 +2,8 @@ const post = {
     slug: 'agriturismo-booking-online-prenotazioni',
     title: 'Agriturismi: Come il Booking Online Aumenta Prenotazioni e Riduce il Lavoro Amministrativo',
     seoTitle: 'Agriturismo booking online: prenotazioni e gestione',
+    description:
+      'Come impostare la prenotazione diretta sul sito di un agriturismo: disponibilità allineata ai portali, comunicazioni automatiche e meno lavoro manuale.',
     excerpt:
       'Chi cerca un soggiorno oggi si aspetta di poter prenotare online, come su qualsiasi altra piattaforma. Ecco come un sistema di booking dedicato aumenta le prenotazioni dirette e alleggerisce il lavoro di chi gestisce l’agriturismo.',
     date: '2026-08-01',
@@ -13,6 +15,7 @@ const post = {
     keywords: ['agriturismo booking online', 'prenotazioni agriturismo', 'sistema gestione agriturismo', 'farm stay online', 'agriturismo Italia'],
     relatedSlugs: ['degustazioni-cantina-trasformare-visite-vendite', 'chatbot-cantina-ai-customer-service'],
     relatedLinks: [
+      { href: '/servizi/digital-commerce', label: 'Servizio: Digital Commerce' },
       { href: '/blog/software-per-agriturismi', label: 'Software per agriturismi' },
       { href: '/settori/hospitality', label: 'Settore Hospitality' },
     ],

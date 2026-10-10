@@ -2,6 +2,8 @@ const post = {
     slug: 'seo-locale-agroalimentare-google-maps',
     title: 'SEO Locale: Come Farsi Trovare su Google Maps per Cantine, Frantoi e Agriturismi',
     seoTitle: 'SEO locale agroalimentare: farsi trovare su Google Maps',
+    description:
+      'Come farsi trovare da chi cerca una cantina, un agriturismo o un frantoio in zona: scheda sulle mappe, recensioni e pagine del sito.',
     excerpt:
       'Chi cerca "cantina vicino a me" o "agriturismo Umbria" ha già intenzione di visitare o comprare. Ecco come impostare il profilo Google Business e le recensioni per comparire davvero in quelle ricerche.',
     date: '2026-08-01',

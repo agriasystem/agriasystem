@@ -298,7 +298,9 @@ export const serviceAreas = {
     closing: { title: 'Raccontateci come vi trovano oggi.', text: CLOSING_TEXT, secondary: WRITE },
     articles: [
       { slug: 'siti-web-per-agriturismi' },
+      { slug: 'siti-web-per-cantine' },
       { slug: 'seo-locale-agroalimentare-google-maps' },
+      { slug: 'storytelling-vino-marketing-vendite' },
     ],
   },
 
@@ -516,7 +518,13 @@ export const serviceAreas = {
       },
     ],
     closing: { title: 'Raccontateci come vendete oggi.', text: CLOSING_TEXT, secondary: WRITE },
-    articles: [{ slug: 'ecommerce-per-frantoi' }, { slug: 'agriturismo-booking-online-prenotazioni' }],
+    articles: [
+      { slug: 'ecommerce-per-frantoi' },
+      { slug: 'agriturismo-booking-online-prenotazioni' },
+      { slug: 'ecommerce-vino-margini-vendita-diretta' },
+      { slug: 'gestione-fiscale-ecommerce-vino-iva-fatturazione' },
+      { slug: 'vendita-internazionale-vino-dtc-export-estero' },
+    ],
   },
 
   automation: {
@@ -737,6 +745,10 @@ export const serviceAreas = {
       },
     ],
     closing: { title: 'Raccontateci una vostra giornata.', text: CLOSING_TEXT, secondary: WRITE },
-    articles: [{ slug: 'software-per-agriturismi' }, { slug: 'chatbot-cantina-ai-customer-service' }],
+    articles: [
+      { slug: 'software-per-agriturismi' },
+      { slug: 'software-per-cantine' },
+      { slug: 'chatbot-cantina-ai-customer-service' },
+    ],
   },
 };

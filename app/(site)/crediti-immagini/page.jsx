@@ -6,7 +6,9 @@ import { serviceAreas } from '@/content/agria/servizi-aree';
 import { KEPT_POSTS } from '@/content/blog/kept';
 import { getPost } from '@/lib/data';
 import { agriaImageCredits } from '@/lib/agria-images';
-import { agriaPageMetadata, webPageSchema } from '@/lib/seo';
+import JsonLd from '@/components/agria/seo/JsonLd';
+import { ROBOTS_NOINDEX, agriaPageMetadata } from '@/lib/seo';
+import { graph, webPageNode } from '@/lib/schema';
 import blogCredits from '@/public/images/blog/CREDITS.json';
 import softwareCredits from '@/public/images/software/CREDITS.json';
 import serviziCredits from '@/public/images/servizi/CREDITS.json';
@@ -21,10 +23,7 @@ const PAGE = {
   path: '/crediti-immagini',
 };
 
-export const metadata = {
-  ...agriaPageMetadata(PAGE),
-  robots: { index: false, follow: true },
-};
+export const metadata = agriaPageMetadata({ ...PAGE, robots: ROBOTS_NOINDEX });
 
 const UTM_SOURCE = 'agria_website';
 const withUtm = (url) => {
@@ -56,7 +55,7 @@ const LINK =
 export default function CreditiImmaginiPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(PAGE)) }} />
+      <JsonLd data={graph(webPageNode({ ...PAGE, breadcrumb: false }))} />
       <PageHero
         eyebrow="Attribuzione"
         title="Crediti fotografici"

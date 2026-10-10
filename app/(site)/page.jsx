@@ -1,4 +1,4 @@
-import { SAME_AS } from '@/components/agria/social';
+import JsonLd from '@/components/agria/seo/JsonLd';
 import HomeHero from '@/components/agria/home/HomeHero';
 import FactStrip from '@/components/agria/home/FactStrip';
 import ProblemSwitch from '@/components/agria/home/ProblemSwitch';
@@ -12,64 +12,24 @@ import NewsSection from '@/components/agria/home/NewsSection';
 import TerritoryBand from '@/components/agria/home/TerritoryBand';
 import ClosingCta from '@/components/agria/home/ClosingCta';
 import { site } from '@/lib/data';
-import { pageMetadata, webPageSchema, SITE_URL } from '@/lib/seo';
-
-const BRAND = 'Agria System';
+import { pageMetadata } from '@/lib/seo';
+import { graph, webPageNode } from '@/lib/schema';
 
 const PAGE = {
   title: 'Agria System — sistemi digitali per hospitality, cantine e frantoi',
-  description:
-    'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi. Progettiamo sistemi digitali integrati con gli strumenti che già usate.',
+  description: site.positioning,
   path: '/',
 };
 
-// La root page condivide il segmento con app/layout.jsx: il title.template
-// lì definito non si applica qui, quindi il <title> è esattamente PAGE.title.
-// pageMetadata aggiunge al titolo social il nome del sito (site.name): qui lo
-// sovrascriviamo. Immagine social: quella predefinita di Agria (OG_IMAGE).
-const base = pageMetadata(PAGE);
-const { openGraph, twitter } = base;
+export const metadata = pageMetadata(PAGE);
 
-export const metadata = {
-  ...base,
-  keywords: null,
-  openGraph: { ...openGraph, title: PAGE.title, siteName: BRAND },
-  twitter: { ...twitter, title: PAGE.title },
-};
-
-// Dati di contatto e indirizzo invariati rispetto allo schema legacy; niente
-// founder né profili social personali.
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: BRAND,
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/brand/agria-logo-centered.svg`,
-  description: PAGE.description,
-  sameAs: SAME_AS,
-  telephone: site.phone,
-  email: site.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    addressLocality: site.address.city,
-    addressRegion: site.address.province,
-    postalCode: site.address.postalCode,
-    addressCountry: site.address.country,
-  },
-};
+// Organizzazione e sito sono nel layout (lib/schema.js): qui la sola pagina.
+const jsonLdGraph = graph(webPageNode({ ...PAGE, breadcrumb: false, about: true }));
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(PAGE)) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
+      <JsonLd data={jsonLdGraph} />
       {/* problema → soluzione → per chi → prova → chi siamo → contatto (Prompt 11) */}
       <HomeHero />
       <FactStrip />

@@ -112,7 +112,7 @@ export const channels = {
     hours: 'Orari',
   },
   whatsappMessage: 'Buongiorno, vorrei parlare di un progetto con Agria System.',
-  address: 'Via Ponte Vecchio, 06135 Perugia',
+  address: 'Via Ponte Vecchio 67, 06135 Perugia',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+06135+Perugia',
   hours: 'Lunedì-venerdì, 9-18',
 };
