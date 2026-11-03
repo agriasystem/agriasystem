@@ -2,23 +2,25 @@
 // =====================================================================
 //  Verifica della produzione, in sola lettura: i testi delle fasi A e B del
 //  Prompt 22 e le pagine soluzione del Prompt 23 sono online, Poppins non si
-//  scarica su nessuna pagina e le pagine rimosse rispondono ancora 410.
+//  scarica su nessuna pagina, le pagine rimosse rispondono ancora 410 e dal
+//  vecchio dominio ogni indirizzo arriva a destinazione in non più di due salti.
 //
 //  Uso: node scripts/verifica-produzione.mjs [base]
 //       base predefinita: https://agriasystem.com (per una prova in locale:
-//       node scripts/verifica-produzione.mjs http://localhost:3000)
+//       node scripts/verifica-produzione.mjs http://localhost:3000; il
+//       controllo del vecchio dominio gira solo sulla base di produzione)
 //
 //  Stampa OK / NO per ogni controllo ed esce con codice 1 se uno non passa.
-//  Gli indirizzi 410 si ricavano dalla migration map (docs/agria/migration-map-v1.md)
-//  e dalle regole di lib/migration.js, più un indirizzo di prova sotto ogni
-//  prefisso rimosso: nessun elenco scritto a mano.
+//  Gli indirizzi rimossi e reindirizzati si ricavano dalla migration map
+//  (docs/agria/migration-map-v1.md) e dalle regole di lib/migration.js, più un
+//  indirizzo di prova sotto ogni prefisso rimosso: nessun elenco scritto a mano.
 //  Quando i testi controllati cambiano, si aggiorna questo file.
 // =====================================================================
 
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GONE, GONE_PREFIXES, REDIRECTS, resolvePath } from '../lib/migration.js';
+import { CANONICAL_ORIGIN, GONE, GONE_PREFIXES, OLD_HOSTS, REDIRECTS, resolvePath } from '../lib/migration.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = (process.argv[2] || 'https://agriasystem.com').replace(/\/+$/, '');
@@ -45,6 +47,26 @@ async function get(path) {
   } catch (error) {
     return { status: 0, html: '', error: error.cause?.code || error.message };
   }
+}
+
+// segue i redirect uno alla volta: quanti salti, indirizzo e stato finali
+async function follow(url) {
+  for (let hops = 0; hops <= 5; hops++) {
+    try {
+      const res = await fetch(url, {
+        redirect: 'manual',
+        headers: { 'User-Agent': 'agria-verifica-produzione' },
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+      await res.body?.cancel();
+      const location = res.headers.get('location');
+      if (res.status < 300 || res.status >= 400 || !location) return { hops, url, status: res.status };
+      url = new URL(location, url).href;
+    } catch (error) {
+      return { hops, url, status: 0, error: error.cause?.code || error.message };
+    }
+  }
+  return { hops: 6, url, status: 0, error: 'troppi redirect' };
 }
 
 const results = [];
@@ -170,7 +192,8 @@ const named = [...sheets]
   .map(([name, s]) => where(name, s));
 check('Nessun foglio di stile nomina Poppins (--font-poppins è system-ui, sans-serif)', !named.length, named.join('\n    '));
 
-// Pagine rimosse: indirizzi della mappa e delle regole che risultano "gone"
+// Indirizzi vecchi: quelli della mappa e delle regole che hanno una regola
+// (redirect o "gone")
 const candidates = new Set([...GONE, ...Object.keys(REDIRECTS)]);
 for (const line of readFileSync(join(ROOT, 'docs/agria/migration-map-v1.md'), 'utf8').split('\n')) {
   if (!line.startsWith('| ') || line.startsWith('|---')) continue;
@@ -184,7 +207,13 @@ for (const prefix of GONE_PREFIXES) {
   candidates.add(prefix.replace(/\/$/, ''));
   candidates.add(`${prefix}prova-sotto-percorso`);
 }
-const gone = [...candidates].filter((path) => resolvePath(path)?.type === 'gone').sort();
+const rules = [...candidates]
+  .sort()
+  .map((path) => [path, resolvePath(path)])
+  .filter(([, rule]) => rule);
+const gone = rules.filter(([, rule]) => rule.type === 'gone').map(([path]) => path);
+
+// Pagine rimosse
 const wrong = [];
 for (const path of gone) {
   const res = await get(path);
@@ -195,6 +224,36 @@ check(
   wrong.length === 0,
   wrong.join('\n    ')
 );
+
+// Vecchio dominio, solo sulla produzione vera. Vercel reindirizza ogni host di
+// OLD_HOSTS su agriasystem.com, stesso percorso, prima dell'app: i redirect della
+// mappa fanno quindi due salti (308 del dominio, 301 dell'app), i 410 uno. Le
+// build locali non passano da quel redirect, che va controllato qui: ogni
+// indirizzo vecchio arriva in non più di due salti alla destinazione della mappa
+// (200) o al 410 previsto.
+if (BASE === CANONICAL_ORIGIN) {
+  const MAX_HOPS = 2;
+  const wrongOld = [];
+  for (const host of OLD_HOSTS) {
+    for (const [path, rule] of rules) {
+      const url = new URL(rule.type === 'redirect' ? rule.to : path, CANONICAL_ORIGIN).href;
+      const status = rule.type === 'redirect' ? 200 : 410;
+      const end = await follow(`https://${host}${path}`);
+      if (end.hops > MAX_HOPS || end.url !== url || end.status !== status) {
+        wrongOld.push(
+          `${host}${path}: ${end.hops} salti, ${end.status || end.error} su ${end.url} (attesi al più ${MAX_HOPS} salti, ${status} su ${url})`
+        );
+      }
+    }
+  }
+  check(
+    `Vecchio dominio (${OLD_HOSTS.join(', ')}): ${rules.length - gone.length} redirect e ${gone.length} indirizzi rimossi arrivano a destinazione (200 o 410) in al più ${MAX_HOPS} salti`,
+    wrongOld.length === 0,
+    wrongOld.join('\n    ')
+  );
+} else {
+  console.log(`--  Vecchio dominio: saltato, si controlla solo su ${CANONICAL_ORIGIN}`);
+}
 
 const failed = results.filter((ok) => !ok).length;
 console.log(`\n${results.length - failed} controlli superati, ${failed} non superati.`);
