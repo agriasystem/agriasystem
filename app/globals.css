@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --font-poppins: 'Poppins', system-ui, sans-serif;
+  /* nome storico, referenziato dal markup legacy: è il font di sistema.
+     Poppins non va reintrodotto, né qui né da next/font (Prompt 23):
+     scripts/verifica-produzione.mjs fallisce se un foglio di stile lo nomina */
+  --font-poppins: system-ui, sans-serif;
   /* alias storici: tutto il markup esistente che referenzia questi utility
-     font-* ora risolve su Poppins (vedi tailwind.config.js) */
+     font-* risolve sul font di sistema (vedi tailwind.config.js) */
   --font-display: var(--font-poppins);
   --font-body: var(--font-poppins);
   --font-mono: var(--font-poppins);
