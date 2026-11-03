@@ -17,6 +17,9 @@ export const hero = {
   lead: 'Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. I dati smettono di stare in sei posti diversi e iniziano a lavorare per voi.',
   primary: { label: 'Parliamo del progetto', href: '/contatti' },
   secondary: { label: 'Come lavoriamo', href: '#come-lavoriamo' },
+  // tre indicazioni sotto le CTA (Prompt 23, fase C): vere senza condizioni,
+  // niente tempi di risposta, "preventivo gratuito" o "nessun impegno"
+  reassurance: ['Vi risponde una persona', 'Prima analisi prima di qualunque proposta', 'Il codice e i dati restano vostri'],
   chips: ['Prenotazioni', 'Ordini', 'Clienti', 'Costi'],
 };
 
