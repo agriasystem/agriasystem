@@ -45,6 +45,18 @@ const ICONS = {
   chat: (
     <path d="M4 4h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM6.5 8h7M6.5 10.5H11" />
   ),
+  // fumetto rotondo con la coda in basso a sinistra e, dentro, la cornetta di
+  // "phone" ridotta (tratto non scalato, uguale al resto del set)
+  whatsapp: (
+    <>
+      <path d="M3.72 13.63L2.75 17.25l3.63-.97A7.25 7.25 0 1 0 3.72 13.63z" />
+      <path
+        transform="translate(5.6 5.6) scale(0.44)"
+        vectorEffect="non-scaling-stroke"
+        d="M6.5 3h-2A1.5 1.5 0 0 0 3 4.5C3 11.4 8.6 17 15.5 17a1.5 1.5 0 0 0 1.5-1.5v-2l-3.5-1.5-1.8 1.8a10 10 0 0 1-4.5-4.5L8 7.5 6.5 3z"
+      />
+    </>
+  ),
   inbox: <path d="M3 11l2-7h10l2 7v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4zM3 11h4l1 2h4l1-2h4" />,
   bell: <path d="M5 13.5V9a5 5 0 0 1 10 0v4.5l1.5 1.5h-13L5 13.5zM8.5 17a1.5 1.5 0 0 0 3 0" />,
 

@@ -2,13 +2,13 @@
 
 import { useEffect } from 'react';
 import { CONSENT_EVENT, getAnalyticsConsent } from '@/lib/consent';
-import { disableAnalytics, enableAnalytics, trackContactClick, trackWhatsappClick } from '@/lib/analytics';
+import { disableAnalytics, enableAnalytics, trackContactClick, trackPhoneClick, trackWhatsappClick } from '@/lib/analytics';
 
 // Collega la scelta sui cookie a GA4: all'apertura del sito carica GA4 solo se
 // il consenso è già stato dato; poi segue ogni cambio di scelta. Nel layout,
 // quindi montato una sola volta per visita (la navigazione di Next non lo
 // rimonta). Traccia anche i clic sui collegamenti marcati data-analytics="whatsapp"
-// e, negli articoli (contenitore data-analytics-article), i clic verso /contatti.
+// o "phone" e, negli articoli (contenitore data-analytics-article), i clic verso /contatti.
 export default function AnalyticsConsent() {
   useEffect(() => {
     if (getAnalyticsConsent() === 'granted') enableAnalytics();
@@ -22,6 +22,10 @@ export default function AnalyticsConsent() {
       if (!link) return;
       if (link.dataset.analytics === 'whatsapp') {
         trackWhatsappClick(link.dataset.analyticsLocation || 'sito');
+        return;
+      }
+      if (link.dataset.analytics === 'phone') {
+        trackPhoneClick(link.dataset.analyticsLocation || 'sito');
         return;
       }
       const article = link.closest('[data-analytics-article]');

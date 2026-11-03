@@ -7,6 +7,7 @@ import AnnouncementBar from './AnnouncementBar';
 import BrandLockup from './BrandLockup';
 import HeaderPanel from './HeaderPanel';
 import MobileMenu from './MobileMenu';
+import QuickContact from './QuickContact';
 import LanguageSwitcher from './LanguageSwitcher';
 import { FocusOverlay } from './motion';
 import { Button } from './ui';
@@ -119,18 +120,22 @@ export default function Header() {
 
           <div className="hidden items-center gap-4 md:flex">
             <LanguageSwitcher />
+            {/* da lg: tra md e lg non c'è spazio accanto alla navigazione */}
+            <QuickContact className="hidden lg:flex" />
             <Button as={Link} href={CTA.href} variant="bright" className="whitespace-nowrap px-[22px] text-[14.5px]">
               {CTA.label}
             </Button>
           </div>
 
+          {/* su mobile il contatto rapido resta accanto al menu: è lì che serve */}
+          <QuickContact className="ml-auto flex md:hidden" />
           <button
             type="button"
             aria-label={mobileOpen ? 'Chiudete il menu' : 'Aprite il menu'}
             aria-expanded={mobileOpen}
             aria-controls="agria-mobile-menu"
             onClick={toggleMobile}
-            className={`ml-auto flex items-center justify-center rounded-full p-2.5 text-agria-on-dark md:hidden ${FOCUS_RING}`}
+            className={`-ml-3 flex items-center justify-center rounded-full p-2.5 text-agria-on-dark md:hidden ${FOCUS_RING}`}
           >
             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
