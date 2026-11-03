@@ -1,6 +1,7 @@
 import PageHero from '@/components/agria/sections/PageHero';
 import WhenWeHelp from '@/components/agria/sections/WhenWeHelp';
 import { getPost } from '@/content/blog';
+import { SOLUTIONS_LABEL, solutionLinks } from '@/content/agria/soluzioni';
 import JsonLd from '@/components/agria/seo/JsonLd';
 import { breadcrumbNode, faqNode, graph, serviceNode, webPageNode } from '@/lib/schema';
 import Diagnosis from './Diagnosis';
@@ -17,7 +18,8 @@ import FinalCta from './FinalCta';
 import StickyCta from './StickyCta';
 
 // Titoli che il copy non fornisce: nome della sezione FAQ e dei gruppi di
-// rimandi (già usati in navigazione e nel Prompt 12).
+// rimandi (già usati in navigazione e nel Prompt 12). Il gruppo "Soluzioni"
+// compare solo nelle aree che hanno pagine soluzione (content/agria/soluzioni.js).
 const FAQ_TITLE = 'FAQ';
 const LINK_GROUPS = { services: 'Servizi', articles: 'Approfondimenti', index: 'Tutti i servizi' };
 
@@ -35,6 +37,7 @@ export default function ServiceAreaPage({ area, others, sectorLabels }) {
   const { key, meta } = area;
   const id = (name) => `${key}-${name}`;
 
+  const solutions = solutionLinks(key);
   const links = [
     {
       title: LINK_GROUPS.services,
@@ -43,6 +46,7 @@ export default function ServiceAreaPage({ area, others, sectorLabels }) {
         { label: LINK_GROUPS.index, href: '/servizi' },
       ],
     },
+    ...(solutions.length ? [{ title: SOLUTIONS_LABEL, items: solutions }] : []),
     {
       title: LINK_GROUPS.articles,
       items: area.articles

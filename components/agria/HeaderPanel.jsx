@@ -2,6 +2,20 @@
 
 import Link from 'next/link';
 import { useRef } from 'react';
+import { Eyebrow } from './ui';
+
+const ITEM_LINK =
+  'block rounded-xl px-4 py-3 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-inset';
+
+// voce del pannello: titolo e descrizione
+function PanelLink({ item }) {
+  return (
+    <Link href={item.href} className={ITEM_LINK}>
+      <span className="block font-agria-sans text-agria-sm font-medium text-agria-on-dark">{item.title}</span>
+      <span className="mt-0.5 block font-agria-sans text-agria-sm text-agria-on-dark-muted">{item.description}</span>
+    </Link>
+  );
+}
 
 export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, active }) {
   const triggerRef = useRef(null);
@@ -56,19 +70,19 @@ export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, 
         >
           <div>
             {panel.items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block rounded-xl px-4 py-3 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-inset"
-              >
-                <span className="block font-agria-sans text-agria-sm font-medium text-agria-on-dark">
-                  {item.title}
-                </span>
-                <span className="mt-0.5 block font-agria-sans text-agria-sm text-agria-on-dark-muted">
-                  {item.description}
-                </span>
-              </Link>
+              <PanelLink key={item.href} item={item} />
             ))}
+            {/* secondo gruppo (Soluzioni): sotto le voci, con il suo titolo, sempre visibile */}
+            {panel.group && (
+              <div role="group" aria-labelledby={`${panelId}-group`} className="mt-1 border-t border-white/10 pt-2">
+                <Eyebrow id={`${panelId}-group`} onDark className="px-4 pb-1 pt-2">
+                  {panel.group.title}
+                </Eyebrow>
+                {panel.group.items.map((item) => (
+                  <PanelLink key={item.href} item={item} />
+                ))}
+              </div>
+            )}
             {/* sotto lg la card di evidenza è nascosta: il suo link resta qui (indice della sezione) */}
             {panel.feature && (
               <Link

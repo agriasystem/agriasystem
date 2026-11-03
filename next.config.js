@@ -14,6 +14,20 @@ const nextConfig = {
   },
   // Redirect e 410 della migrazione: middleware.js con le regole di
   // lib/migration.js (serve il 410 e il vecchio dominio senza catene).
+  // /soluzioni non ha una pagina indice (Prompt 23): rimanda a /servizi.
+  // Questi redirect vengono prima del middleware: dal vecchio dominio
+  // (OLD_HOSTS in lib/migration.js) si va subito al nuovo, senza catene.
+  async redirects() {
+    return [
+      {
+        source: '/soluzioni',
+        has: [{ type: 'host', value: '(?:www\\.)?matteogaruzzo\\.com' }],
+        destination: 'https://agriasystem.com/servizi',
+        permanent: true,
+      },
+      { source: '/soluzioni', destination: '/servizi', permanent: true },
+    ];
+  },
 };
 
 module.exports = nextConfig;

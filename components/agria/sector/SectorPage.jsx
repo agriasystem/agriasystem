@@ -7,6 +7,7 @@ import { ZoomImage } from '@/components/agria/motion';
 import { Container, Eyebrow, Heading, Reveal, Section, Text, TextLink } from '@/components/agria/ui';
 import { getPost } from '@/content/blog';
 import { AREA_LINK_LABEL } from '@/content/agria/settori';
+import { SOLUTIONS_LABEL, solutionLinks } from '@/content/agria/soluzioni';
 import JsonLd from '@/components/agria/seo/JsonLd';
 import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 
@@ -20,6 +21,8 @@ export default function SectorPage({ sector, others }) {
   const { key, meta } = sector;
   const id = (name) => `${key}-${name}`;
 
+  // soluzioni pertinenti al settore (content/agria/soluzioni.js)
+  const solutions = solutionLinks(key);
   const links = [
     {
       title: LINK_GROUPS.sectors,
@@ -28,6 +31,7 @@ export default function SectorPage({ sector, others }) {
         { label: LINK_GROUPS.index, href: '/settori' },
       ],
     },
+    ...(solutions.length ? [{ title: SOLUTIONS_LABEL, items: solutions }] : []),
     {
       title: LINK_GROUPS.articles,
       items: sector.articles

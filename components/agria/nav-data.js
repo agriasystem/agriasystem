@@ -30,6 +30,28 @@ export const NAV_PANELS = [
         description: 'Automazioni e integrazioni tra gli strumenti che usate.',
       },
     ],
+    // secondo gruppo, sotto le aree e sempre visibile (Prompt 23): le soluzioni
+    // chiamate con quello che fanno; pagine in content/agria/soluzioni.js
+    group: {
+      title: 'Soluzioni',
+      items: [
+        {
+          title: 'Assistente AI per le richieste',
+          href: '/soluzioni/assistente-ai',
+          description: 'Bozze pronte per le domande dei clienti, riviste da chi risponde.',
+        },
+        {
+          title: 'Gestione delle richieste',
+          href: '/soluzioni/gestione-richieste',
+          description: 'Email, WhatsApp, telefono e portali in un solo ingresso.',
+        },
+        {
+          title: 'Collegare gestionale e sito',
+          href: '/soluzioni/collegare-gestionale-e-sito',
+          description: 'Gli strumenti che avete, collegati tra loro.',
+        },
+      ],
+    },
   },
   {
     key: 'settori',
@@ -60,3 +82,6 @@ export const NAV_PANELS = [
 ];
 
 export const NAV_DIRECT = [{ label: 'Azienda', href: '/azienda' }];
+
+// tutte le voci di un pannello, compreso il secondo gruppo (stato attivo)
+export const panelLinks = (panel) => [...panel.items, ...(panel.group?.items ?? [])];

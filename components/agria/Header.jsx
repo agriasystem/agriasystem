@@ -10,7 +10,7 @@ import MobileMenu from './MobileMenu';
 import LanguageSwitcher from './LanguageSwitcher';
 import { FocusOverlay } from './motion';
 import { Button } from './ui';
-import { NAV_PANELS, NAV_DIRECT, CTA } from './nav-data';
+import { NAV_PANELS, NAV_DIRECT, CTA, panelLinks } from './nav-data';
 
 const CLOSE_DELAY_MS = 150;
 
@@ -100,7 +100,7 @@ export default function Header() {
                 onOpen={() => handlePanelOpen(panel.key)}
                 onClose={handlePanelClose}
                 onToggle={() => setOpenPanel((v) => (v === panel.key ? null : panel.key))}
-                active={panel.items.some((item) => isActive(item.href))}
+                active={panelLinks(panel).some((item) => isActive(item.href))}
               />
             ))}
             {NAV_DIRECT.map((item) => (

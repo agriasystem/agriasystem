@@ -16,6 +16,7 @@ const post = {
     keywords: ['chatbot cantina', 'chatbot AI vino', 'automazione customer service vino', 'risposte assistite clienti', 'chatbot e-commerce vino'],
     relatedSlugs: ['agriturismo-booking-online-prenotazioni'],
     relatedLinks: [
+      { href: '/soluzioni/assistente-ai', label: 'Soluzione: Assistente AI per le richieste' },
       { href: '/servizi/digital-automation', label: 'Servizio: Digital Automation' },
       { href: '/settori/cantine', label: 'Settore Cantine' },
     ],

@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { Button } from './ui';
-import { NAV_PANELS, NAV_DIRECT, CTA } from './nav-data';
+import { Button, Eyebrow } from './ui';
+import { NAV_PANELS, NAV_DIRECT, CTA, panelLinks } from './nav-data';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
 
@@ -66,7 +66,7 @@ export default function MobileMenu({ id, open, top = 0, onClose, isActive }) {
       <div className="flex flex-1 flex-col px-6 pb-10">
         <nav className="flex flex-col" aria-label="Navigazione mobile">
           {NAV_PANELS.map((panel) => {
-            const panelActive = panel.items.some((item) => isActive(item.href));
+            const panelActive = panelLinks(panel).some((item) => isActive(item.href));
             return (
               <div key={panel.key} className="border-b border-white/10">
                 <button
@@ -91,21 +91,19 @@ export default function MobileMenu({ id, open, top = 0, onClose, isActive }) {
                 {expanded === panel.key && (
                   <div id={`${id}-${panel.key}`} className="flex flex-col gap-1 pb-4">
                     {panel.items.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={onClose}
-                        aria-current={isActive(item.href) ? 'page' : undefined}
-                        className="rounded-xl px-3 py-3 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright"
-                      >
-                        <span className="block font-agria-sans text-agria-body font-medium text-agria-on-dark">
-                          {item.title}
-                        </span>
-                        <span className="mt-0.5 block font-agria-sans text-agria-sm text-agria-on-dark-muted">
-                          {item.description}
-                        </span>
-                      </Link>
+                      <MenuLink key={item.href} item={item} onClose={onClose} isActive={isActive} />
                     ))}
+                    {/* secondo gruppo (Soluzioni), come nel pannello desktop */}
+                    {panel.group && (
+                      <div role="group" aria-labelledby={`${id}-${panel.key}-group`} className="mt-2 flex flex-col gap-1 border-t border-white/10 pt-3">
+                        <Eyebrow id={`${id}-${panel.key}-group`} onDark className="px-3 pb-1 pt-1">
+                          {panel.group.title}
+                        </Eyebrow>
+                        {panel.group.items.map((item) => (
+                          <MenuLink key={item.href} item={item} onClose={onClose} isActive={isActive} />
+                        ))}
+                      </div>
+                    )}
                     {/* indice della sezione (lo stesso link della card di evidenza su desktop) */}
                     {panel.feature && (
                       <Link
@@ -143,5 +141,20 @@ export default function MobileMenu({ id, open, top = 0, onClose, isActive }) {
         </Button>
       </div>
     </div>
+  );
+}
+
+// voce di un pannello: titolo e descrizione
+function MenuLink({ item, onClose, isActive }) {
+  return (
+    <Link
+      href={item.href}
+      onClick={onClose}
+      aria-current={isActive(item.href) ? 'page' : undefined}
+      className="rounded-xl px-3 py-3 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright"
+    >
+      <span className="block font-agria-sans text-agria-body font-medium text-agria-on-dark">{item.title}</span>
+      <span className="mt-0.5 block font-agria-sans text-agria-sm text-agria-on-dark-muted">{item.description}</span>
+    </Link>
   );
 }

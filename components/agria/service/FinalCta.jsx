@@ -5,7 +5,8 @@ const LINK =
   'rounded font-agria-sans text-agria-sm text-agria-on-dark-muted underline-offset-4 transition-colors hover:text-agria-on-dark hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-agria-ink';
 
 // CTA finale su fondo scuro con una o due CTA e, sotto, gli eventuali rimandi interni:
-// le altre aree con l'indice, e gli articoli del blog collegati.
+// le altre aree con l'indice, le soluzioni e gli articoli del blog collegati
+// (con tre gruppi, tre colonne da lg).
 // links: [{ title, items: [{ label, href }] }]
 export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, links = [] }) {
   return (
@@ -35,7 +36,9 @@ export default function FinalCta({ id, sectionId, title, text, primary, primaryP
           </div>
         </Reveal>
         {links.length > 0 && (
-          <div className="mt-16 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2">
+          <div
+            className={`mt-16 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2 ${links.length > 2 ? 'lg:grid-cols-3' : ''}`}
+          >
             {links.map((group) => (
               <nav key={group.title} aria-label={group.title}>
                 <Eyebrow as="h3" onDark>
