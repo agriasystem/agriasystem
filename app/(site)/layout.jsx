@@ -1,5 +1,5 @@
 import '../globals.css';
-import { Poppins, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, IBM_Plex_Mono } from 'next/font/google';
 import Header from '@/components/agria/Header';
 import Footer from '@/components/agria/Footer';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
@@ -12,15 +12,11 @@ import { SITE_URL } from '@/lib/seo';
 import { siteGraph } from '@/lib/schema';
 import { defaultLocale } from '@/lib/i18n';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
-
 // Font Agria (redesign): solo variabili CSS, non applicati al body.
-// Il font di default del sito resta Poppins (vedi globals.css).
+// Il ripiego di html e body resta --font-poppins di globals.css, senza file da
+// scaricare: con Poppins da next/font la variabile dipendeva dall'ordine dei
+// fogli di stile nella build e, quando vinceva next/font, ogni pagina scaricava
+// Poppins senza testo che lo usasse (Prompt 23).
 const agriaSans = Inter({
   subsets: ['latin'],
   variable: '--font-agria-sans',
@@ -47,7 +43,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang={defaultLocale} className={`${poppins.variable} ${agriaSans.variable} ${agriaMono.variable}`}>
+    <html lang={defaultLocale} className={`${agriaSans.variable} ${agriaMono.variable}`}>
       <head>
         {/* Favicon con percorsi nuovi: Google teneva in cache l'icona del vecchio
             marchio allo stesso indirizzo. /favicon.ico (Agria) resta servita per i
