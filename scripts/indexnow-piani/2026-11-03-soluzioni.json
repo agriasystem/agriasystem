@@ -1,0 +1,53 @@
+{
+  "nota": "Prompt 23: tre pagine soluzione, contatto rapido nell'header, indicazioni della hero, collegamenti dalle pagine di servizi, settori e da un articolo. Confronto tra agriasystem.com (main 78785de, in produzione il 3 novembre 2026) e la build locale di 2f7586f. before indica il sito su cui si invia; submit controlla comunque che ogni pagina pubblicata corrisponda all'impronta in expect prima di inviare.",
+  "commit": "2f7586fed893f1b9196c783760339ed1c691449d",
+  "before": "https://agriasystem.com",
+  "after": "http://localhost:3213",
+  "changed": [
+    "/",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation",
+    "/settori/hospitality",
+    "/settori/cantine",
+    "/settori/frantoi",
+    "/blog/chatbot-cantina-ai-customer-service"
+  ],
+  "added": [
+    "/soluzioni/assistente-ai",
+    "/soluzioni/gestione-richieste",
+    "/soluzioni/collegare-gestionale-e-sito"
+  ],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "29e2527af905c203e8237b2afd9e0bae3dccf48b2fbe6ed8f7c558fbf8014215"
+    },
+    "/servizi/digital-commerce": {
+      "page": "d64930d73504a7c86767014792a5a7be65c0c193e0a04b90aaf975782fb8e820"
+    },
+    "/servizi/digital-automation": {
+      "page": "419a4b6941d2b686592e2638460ee14024fbaee8f8e4eab1ce26cce6f23b0ead"
+    },
+    "/settori/hospitality": {
+      "page": "76520ca2a666b1eef31ca9525fe229a76f02c45bfb24ada06807ed92261d9751"
+    },
+    "/settori/cantine": {
+      "page": "3b1fdc7d2be8f87c7aa1ac75b50a716894769cb7efb32c732c75fc97918cb91c"
+    },
+    "/settori/frantoi": {
+      "page": "087a9a959c97a5213f9867855e42ad520bb261c13cd118955cf6749ba8b95c88"
+    },
+    "/blog/chatbot-cantina-ai-customer-service": {
+      "page": "25f9d2fe39e38ecac010b8574b872298993e2b205ff6762e4d383457b6fc85a4"
+    },
+    "/soluzioni/assistente-ai": {
+      "page": "fed2a9f87ca985020225ba992dfca2a1179a16c9217b6008686ff813db1fabd4"
+    },
+    "/soluzioni/gestione-richieste": {
+      "page": "49741b8a111d40aee03ee2d0dff25e691c8db7341f2bdc50b29d053bd6c03734"
+    },
+    "/soluzioni/collegare-gestionale-e-sito": {
+      "page": "13bf9e2dc89ee406383cc6ce0e86a6a58a6cff7564488bf7c13b70e441ca51a9"
+    }
+  }
+}

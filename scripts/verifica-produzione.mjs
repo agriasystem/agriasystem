@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // =====================================================================
 //  Verifica della produzione, in sola lettura: i testi delle fasi A e B del
-//  Prompt 22 sono online e le pagine rimosse rispondono ancora 410.
+//  Prompt 22 e le pagine soluzione del Prompt 23 sono online, Poppins non si
+//  scarica su nessuna pagina e le pagine rimosse rispondono ancora 410.
 //
 //  Uso: node scripts/verifica-produzione.mjs [base]
 //       base predefinita: https://agriasystem.com (per una prova in locale:
@@ -23,18 +24,24 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = (process.argv[2] || 'https://agriasystem.com').replace(/\/+$/, '');
 const TIMEOUT_MS = 20000;
 const SERVICES = ['/servizi/digital-presence', '/servizi/digital-commerce', '/servizi/digital-automation'];
+const SOLUTIONS = [
+  ['/soluzioni/assistente-ai', 'Serve un chatbot per rispondere ai clienti?'],
+  ['/soluzioni/gestione-richieste', 'Email, WhatsApp, telefono, portali: chi raccoglie le richieste?'],
+  ['/soluzioni/collegare-gestionale-e-sito', 'Si può collegare quello che usate già? Sì, se il sistema lo permette.'],
+];
 
 const decode = (s) =>
   s.replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
+// path relativo alla base, oppure indirizzo completo (fogli di stile su altri domini)
 async function get(path) {
   try {
-    const res = await fetch(BASE + path, {
+    const res = await fetch(new URL(path, `${BASE}/`), {
       redirect: 'manual',
       headers: { 'User-Agent': 'agria-verifica-produzione' },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
-    return { status: res.status, html: decode(await res.text()) };
+    return { status: res.status, location: res.headers.get('location'), html: decode(await res.text()) };
   } catch (error) {
     return { status: 0, html: '', error: error.cause?.code || error.message };
   }
@@ -94,6 +101,74 @@ for (const path of SERVICES) {
     html.includes('Non prendiamo progetti che non cambiano il modo di lavorare o di vendere') && html.includes('href="/#quando-interveniamo"')
   );
 }
+
+// Prompt 23: pagine soluzione, contatto rapido nell'header, indicazioni della hero
+for (const [path, title] of SOLUTIONS) {
+  const html = await page(path);
+  check(`${path}, h1: "${title}"`, h(1, title).test(html) && html.includes('id="cosa-non-fa"'));
+}
+const soluzioni = await get('/soluzioni');
+check(
+  '/soluzioni rimanda a /servizi (308)',
+  soluzioni.status === 308 && soluzioni.location && new URL(soluzioni.location, `${BASE}/`).pathname === '/servizi',
+  soluzioni.error || `risponde ${soluzioni.status} verso ${soluzioni.location}`
+);
+const automation = (await page('/servizi/digital-automation')).match(/<main[\s\S]*<\/main>/)?.[0] || '';
+check('/servizi/digital-automation: link alle tre pagine soluzione', SOLUTIONS.every(([path]) => automation.includes(`href="${path}"`)));
+check(
+  'Home: indicazioni della hero (Vi risponde una persona, Prima analisi prima di qualunque proposta, Il codice e i dati restano vostri)',
+  ['Vi risponde una persona', 'Prima analisi prima di qualunque proposta', 'Il codice e i dati restano vostri'].every((t) => home.includes(t))
+);
+const anchors = home.match(/<a\s[^>]*>/g) || [];
+check(
+  'Header: telefono e WhatsApp con data-analytics e location "header"',
+  [
+    ['href="tel:', 'phone'],
+    ['href="https://wa.me/', 'whatsapp'],
+  ].every(([href, event]) =>
+    anchors.some((a) => a.includes(href) && a.includes(`data-analytics="${event}"`) && a.includes('data-analytics-location="header"'))
+  )
+);
+
+// Poppins non si scarica su nessuna pagina della sitemap (Prompt 23). Un font web
+// si scarica solo se un foglio di stile lo dichiara (@font-face, @import) o se
+// un <link> lo carica: il controllo fallisce appena Poppins diventa scaricabile,
+// anche quando l'ordine dei fogli di stile lo lascerebbe inutilizzato.
+// --font-poppins non conta: è il nome storico della variabile del font di sistema.
+const paths = [...(await get('/sitemap.xml')).html.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1].trim()).pathname);
+check('Sitemap: le tre pagine soluzione', SOLUTIONS.every(([path]) => paths.includes(path)));
+const sheets = new Map(); // foglio di stile (o stile in linea) -> { css, pages }
+const poppinsLinks = [];
+for (const path of paths) {
+  const html = await page(path);
+  for (const tag of html.match(/<link\b[^>]*>/g) || []) {
+    const href = tag.match(/\bhref="([^"]*)"/)?.[1] || '';
+    if (/poppins/i.test(href)) poppinsLinks.push(`${path}: ${href}`);
+    if (!/\brel="stylesheet"/.test(tag)) continue;
+    if (!sheets.has(href)) {
+      const res = await get(href);
+      sheets.set(href, { css: res.status === 200 ? res.html : null, pages: [] });
+    }
+    sheets.get(href).pages.push(path);
+  }
+  for (const [, css] of html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)) {
+    sheets.set(`${path} (stile in linea)`, { css, pages: [path] });
+  }
+}
+const where = (name, { pages }) => `${name} (${pages.length === 1 ? pages[0] : `${pages.length} pagine`})`;
+const unreadable = [...sheets].filter(([, s]) => s.css === null).map(([name, s]) => `${where(name, s)} non risponde 200`);
+const downloadable = [...sheets]
+  .filter(([, s]) => s.css && [...(s.css.match(/@font-face\s*{[^}]*}/g) || []), ...(s.css.match(/@import[^;]*;/g) || [])].some((r) => /poppins/i.test(r)))
+  .map(([name, s]) => `${where(name, s)}: @font-face o @import Poppins`);
+check(
+  `Poppins non si scarica: nessun @font-face, @import o <link> Poppins su ${paths.length} pagine (${sheets.size} fogli di stile)`,
+  paths.length > 0 && !unreadable.length && !downloadable.length && !poppinsLinks.length,
+  [...unreadable, ...downloadable, ...poppinsLinks].join('\n    ') || 'sitemap vuota o non leggibile'
+);
+const named = [...sheets]
+  .filter(([, s]) => s.css && /poppins/i.test(s.css.replace(/--font-poppins\b/g, '')))
+  .map(([name, s]) => where(name, s));
+check('Nessun foglio di stile nomina Poppins (--font-poppins è system-ui, sans-serif)', !named.length, named.join('\n    '));
 
 // Pagine rimosse: indirizzi della mappa e delle regole che risultano "gone"
 const candidates = new Set([...GONE, ...Object.keys(REDIRECTS)]);
