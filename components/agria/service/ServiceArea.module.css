@@ -371,10 +371,11 @@
 }
 
 /* ---------- CTA fissa ---------- */
+/* sotto md sta sopra la barra contatti (--contact-bar, app/(site)/layout.jsx) */
 .sticky {
   position: fixed;
   left: 16px;
-  bottom: 16px;
+  bottom: calc(16px + var(--contact-bar, 0px));
   z-index: 40;
   opacity: 0;
   visibility: hidden;
@@ -384,7 +385,7 @@
 @media (min-width: 640px) {
   .sticky {
     left: 24px;
-    bottom: 24px;
+    bottom: calc(24px + var(--contact-bar, 0px));
   }
 }
 

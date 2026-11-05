@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import AnnouncementBar from './AnnouncementBar';
 import BrandLockup from './BrandLockup';
 import HeaderPanel from './HeaderPanel';
+import MobileContactBar from './MobileContactBar';
 import MobileMenu from './MobileMenu';
 import QuickContact from './QuickContact';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -86,11 +87,7 @@ export default function Header() {
           className="absolute inset-0 border-b border-white/[0.08] bg-agria-ink/[0.92] backdrop-blur-[16px]"
         />
         <div className="relative mx-auto flex max-w-[1220px] items-center gap-6 px-5 py-[13px] sm:px-10 lg:gap-8">
-          <BrandLockup
-            tone="dark"
-            wordmarkClassName="hidden md:inline"
-            onClick={() => setOpenPanel(null)}
-          />
+          <BrandLockup tone="dark" onClick={() => setOpenPanel(null)} />
 
           <nav className="mx-auto hidden items-center gap-1 md:flex lg:gap-3" aria-label="Navigazione principale">
             {NAV_PANELS.map((panel) => (
@@ -127,15 +124,13 @@ export default function Header() {
             </Button>
           </div>
 
-          {/* su mobile il contatto rapido resta accanto al menu: è lì che serve */}
-          <QuickContact className="ml-auto flex md:hidden" />
           <button
             type="button"
             aria-label={mobileOpen ? 'Chiudete il menu' : 'Aprite il menu'}
             aria-expanded={mobileOpen}
             aria-controls="agria-mobile-menu"
             onClick={toggleMobile}
-            className={`-ml-3 flex items-center justify-center rounded-full p-2.5 text-agria-on-dark md:hidden ${FOCUS_RING}`}
+            className={`ml-auto flex items-center justify-center rounded-full p-2.5 text-agria-on-dark md:hidden ${FOCUS_RING}`}
           >
             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -149,6 +144,7 @@ export default function Header() {
           isActive={isActive}
         />
       </header>
+      <MobileContactBar menuOpen={mobileOpen} />
     </>
   );
 }

@@ -7,14 +7,15 @@
 //     fixed: con 40 anche qui lo slot, che viene dopo nel DOM, lo coprirebbe),
 //     sopra il contenuto;
 //   - il banner cookie occupa il fondo pagina finché non viene chiuso: il widget
-//     deve evitarne l'area o comparire dopo il consenso (lib/consent.js).
+//     deve evitarne l'area o comparire dopo il consenso (lib/consent.js);
+//   - sotto md sta sopra la barra contatti (--contact-bar, app/(site)/layout.jsx).
 // Vedi docs/agria/09-interazioni.md.
 export default function ConciergeSlot({ children = null }) {
   return (
     <div
       id="agria-concierge-root"
       data-concierge-slot=""
-      className="pointer-events-none fixed bottom-4 right-4 z-[35] sm:bottom-6 sm:right-6"
+      className="pointer-events-none fixed bottom-[calc(1rem+var(--contact-bar,0px))] right-4 z-[35] sm:bottom-[calc(1.5rem+var(--contact-bar,0px))] sm:right-6"
     >
       {children}
     </div>

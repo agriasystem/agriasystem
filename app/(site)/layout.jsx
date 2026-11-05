@@ -54,7 +54,10 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body>
+      {/* --contact-bar: altezza della barra contatti sotto md (MobileContactBar), zero
+          da md. Riserva lo spazio in fondo alla pagina dal primo disegno; assistente
+          e CTA fissa la usano per stare sopra la barra. */}
+      <body className="pb-[var(--contact-bar)] [--contact-bar:calc(3.5rem+env(safe-area-inset-bottom))] md:[--contact-bar:0px]">
         <JsonLd data={siteGraph()} />
         <Header />
         <main>{children}</main>

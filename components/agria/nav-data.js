@@ -86,12 +86,14 @@ export const NAV_PANELS = [
 
 export const NAV_DIRECT = [{ label: 'Azienda', href: '/azienda' }];
 
-// Contatto rapido nell'header, a sinistra della CTA (Prompt 23, fase B): stesso
-// numero di content/site.js, stesso messaggio precompilato dell'assistente.
+// Contatto rapido: nell'header da lg, a sinistra della CTA (Prompt 23, fase B), e
+// nella barra fissa sotto md (Prompt 24). Stesso numero di content/site.js, stesso
+// messaggio precompilato dell'assistente. short: etichetta visibile nella barra.
 export const QUICK_CONTACT = {
-  phone: { label: `Chiamateci al ${site.phone}`, href: `tel:${site.phone.replace(/\s+/g, '')}` },
+  phone: { label: `Chiamateci al ${site.phone}`, short: 'Chiamateci', href: `tel:${site.phone.replace(/\s+/g, '')}` },
   whatsapp: {
     label: 'Scriveteci su WhatsApp',
+    short: 'WhatsApp',
     href: `${assistant.handoff.whatsapp.href}?text=${encodeURIComponent(assistant.handoff.whatsappMessage)}`,
   },
 };
