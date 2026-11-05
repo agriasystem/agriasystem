@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button, Container, Eyebrow, Heading, Text } from '@/components/agria/ui';
-import { FieldScene, RotatingHeadline } from '@/components/agria/motion';
+import { FieldScene } from '@/components/agria/motion';
 import Icon from '@/components/agria/icons/Icon';
 import { hero } from '@/content/agria/home';
 import styles from './HomeHero.module.css';
@@ -11,7 +11,7 @@ export default function HomeHero() {
       <FieldScene />
 
       <Container className={styles.content}>
-        <Eyebrow onDark className={styles.enter}>
+        <Eyebrow onDark className={`text-balance ${styles.enter}`}>
           {hero.eyebrow}
         </Eyebrow>
         <Heading
@@ -19,9 +19,9 @@ export default function HomeHero() {
           as="h1"
           id="home-hero-title"
           onDark
-          className={`mx-auto mt-5 max-w-[19ch] ${styles.enter}`}
+          className={`mx-auto mt-5 max-w-[19ch] text-balance ${styles.enter}`}
         >
-          <RotatingHeadline prefix={hero.titlePrefix} phrases={hero.titlePhrases} suffix={hero.titleSuffix} />
+          {hero.title}
         </Heading>
         <Text size="lg" onDark muted measure={false} className={`mx-auto mt-6 max-w-[54ch] ${styles.enter}`}>
           {hero.lead}

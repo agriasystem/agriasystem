@@ -8,13 +8,12 @@ import { agriaImage } from '@/lib/agria-images';
 
 // 1. Hero
 export const hero = {
-  eyebrow: 'Technology company · Hospitality · Cantine · Frantoi',
-  title: 'Uno strato digitale sopra il vostro lavoro.',
-  // titolo animato: la prima variante è quella nell'HTML
-  titlePrefix: 'Uno strato digitale sopra ',
-  titlePhrases: ['il vostro lavoro', 'la vostra cantina', 'il vostro agriturismo', 'il vostro frantoio'],
-  titleSuffix: '.',
-  lead: 'Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. I dati smettono di stare in sei posti diversi e iniziano a lavorare per voi.',
+  // Prompt 24: l'eyebrow dice cosa facciamo e per chi, il titolo cosa ottiene il
+  // cliente, il lead come funziona. "Non cambiare" vale per il gestionale: siti ed
+  // e-commerce li costruiamo anche nuovi
+  eyebrow: 'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi',
+  title: 'Prenotazioni e ordini, senza ricopiarli a mano.',
+  lead: 'Non vi facciamo cambiare gestionale: colleghiamo il sito, le prenotazioni, gli ordini e le email a quello che usate già, così ogni informazione si scrive una volta sola.',
   primary: { label: 'Parliamo del progetto', href: '/contatti' },
   secondary: { label: 'Come lavoriamo', href: '#come-lavoriamo' },
   // tre indicazioni sotto le CTA (Prompt 23, fase C): vere senza condizioni,
@@ -23,13 +22,15 @@ export const hero = {
   chips: ['Prenotazioni', 'Ordini', 'Clienti', 'Costi'],
 };
 
-// 2. Fatti
+// 2. Fatti: cosa il cliente può pretendere (Prompt 24). Solo impegni già scritti
+// nel sito, nessun numero, niente di ciò che vale solo per i contratti di assistenza
 export const facts = [
   // kind: 'figure' per valori brevi o numerici, 'word' per parole (resi più piccoli)
-  { value: '3', label: 'settori: hospitality, cantine, frantoi', kind: 'figure' },
-  { value: 'IT · EN', label: "progetti pensati anche per l'estero", kind: 'figure' },
-  { value: 'Interno', label: 'sviluppo nostro, nessun subappalto', kind: 'word' },
-  { value: 'Perugia', label: 'lavoriamo in tutta Italia', kind: 'word' },
+  //  : sotto i 345 px il valore va su due righe, senza lasciare "no" da solo
+  { value: 'Fatto da noi', label: 'nessun subappalto: chi costruisce è chi interviene', kind: 'word' },
+  { value: 'Decidete voi', label: 'nessuna automazione decide al posto vostro', kind: 'word' },
+  { value: 'Anche un no', label: 'se il progetto non serve, lo diciamo prima di firmare', kind: 'word' },
+  { value: 'Liberi', label: 'di cambiare fornitore: domini e dati restano accessibili', kind: 'word' },
 ];
 
 // 3. Il problema (modulo interattivo 1)

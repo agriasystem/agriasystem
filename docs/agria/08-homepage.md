@@ -21,7 +21,7 @@
 | # | Sezione | Fondo | Componente | Note |
 |---|---|---|---|---|
 | 1 | Hero | ink | `HomeHero` | Filari 3D, luce che scorre, pill `Prenotazioni · Ordini · Clienti · Costi`, unico `h1`, CTA `/contatti` e `#come-lavoriamo` |
-| 2 | Striscia di fatti | bianco, sovrapposta all'hero | `FactStrip` | 4 riquadri: `3`, `IT · EN`, `Interno`, `Perugia`; nessun numero di performance |
+| 2 | Striscia di fatti | bianco, sovrapposta all'hero | `FactStrip` | 4 riquadri: `Fatto da noi`, `Decidete voi`, `Anche un no`, `Liberi`; nessun numero di performance |
 | 3 | Settori | bianco | `SectorCards` | 3 card con pattern geometrico, link `Vedi il settore` |
 | 4 | Servizi | off-white | `ServiceCards` | Introduzione + 3 card, link `Approfondisci` |
 | 5 | Dai dati alle decisioni | bianco | `DataSection` | Due colonne; schema con barre decorative e 3 righe |
@@ -104,7 +104,7 @@ Tutto il copy è in `content/agria/home.js`, identico al prompt (apostrofi dritt
 ## 6. Esito della validazione
 
 - `npm run build`: **riuscito**, 170/170 pagine, stesso numero di prima. `/` pesa 1,83 kB, con 95,8 kB di JS al primo caricamento.
-- Un solo `h1` ("Uno strato digitale sopra il vostro lavoro."), 7 `h2`.
+- Un solo `h1` ("Prenotazioni e ordini, senza ricopiarli a mano."), 7 `h2`.
 - Nessuna occorrenza di "MG Solutions", "Matteo", "€", "%", "cliente", "testimon", "case study" nel testo della pagina né nell'HTML generato (`MG Solutions`: 0).
 - Metadata verificati nell'HTML: title, description, canonical `/`, `og:title`, `og:site_name=Agria`, nessuna immagine social, nessuna meta `keywords`. JSON-LD: `WebPage` + `Organization` (Agria, senza `founder`/`sameAs`).
 - Tastiera: con 32 pressioni reali di Tab si raggiungono in ordine barra annuncio, header, le 9 destinazioni della pagina e il footer; tutti i 30 elementi hanno `:focus-visible` e anello visibile.

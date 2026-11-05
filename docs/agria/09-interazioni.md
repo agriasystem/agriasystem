@@ -119,7 +119,7 @@ Tutti i componenti usano CSS e JavaScript nativi, rispettano `prefers-reduced-mo
 
 | Sezione | Fondo | Interazioni |
 |---|---|---|
-| Hero | ink | `RotatingHeadline` sul titolo (*Uno strato digitale sopra* + il vostro lavoro · la vostra cantina · il vostro agriturismo · il vostro frantoio + "."), CTA `bright` a riempimento |
+| Hero | ink | Titolo fisso, senza animazione (dal Prompt 24 `RotatingHeadline` resta solo nella pagina del design system), CTA `bright` a riempimento |
 | Fatti | bianco, sovrapposto | Valori a parola più piccoli dei valori numerici |
 | Settori | bianco, spaziatura superiore compatta | `HoverGroup` sulle tre card; `ZoomImage` sulla foto Hospitality; Vino e Olio con pattern |
 | Servizi | off-white | `AutoTabs` Hospitality · Vino · Olio, in ogni scheda tre card (`HoverGroup`) verso le pagine servizio |
@@ -184,7 +184,7 @@ Valori calcolati con la funzione di `app/(design-system)/design-system/contrast.
 
 - `npm run build`: **riuscito**, 170/170 pagine, stesso numero di prima. `/`: 409 B, 102 kB di JS al primo caricamento.
 - **Movimento ridotto:** `RotatingHeadline` (non parte, frase predefinita), `AutoTabs` (non ruota, nessuna barra), zoom, cursore, riempimento (compare senza animazione per la regola globale), `Reveal` e animazioni dell'hero sono tutti condizionati a `prefers-reduced-motion`.
-- **Senza JavaScript:** l'HTML servito contiene un solo `h1` con la frase predefinita "Uno strato digitale sopra il vostro lavoro.", i tre pannelli delle schede (i due nascosti diventano visibili via `scripting: none`), la foto con `alt`. Le varianti del titolo compaiono solo in attributi `data-text` e nei dati di idratazione di React, non come testo della pagina.
+- **Senza JavaScript:** l'HTML servito contiene un solo `h1` con il titolo "Prenotazioni e ordini, senza ricopiarli a mano.", i tre pannelli delle schede (i due nascosti diventano visibili via `scripting: none`), la foto con `alt`.
 - **Salti di layout del titolo:** altezza del titolo identica con tutte e quattro le varianti e a metà scrittura: 185px a 375, 173px a 768, 227px a 1536 (prima dell'allargamento); dopo l'allargamento tutte le varianti su 2 righe a 1536px.
 - **Tastiera** (tasti reali): nei Settori i tre link; nei Servizi scheda attiva, pulsante Pausa, pannello, tre link "Approfondisci" con nome completo ("Approfondisci: Digital Commerce per Vino"); frecce ed End tra le schede; nel mega menu `ArrowDown`, voci, link della card, `Esc` con ritorno del focus sul trigger. Focus visibile ovunque.
 - **Mobile e tablet:** nessuno scorrimento orizzontale a 375px e 768px (anche a 1024 e 1536); schede alte 55px, il tocco seleziona la scheda e ferma la rotazione; foto a 310×168 (375px) e 216×168 (768px) con `object-fit: cover`, non deformata; pannelli del menu dentro lo schermo a 768 e 1024px.
