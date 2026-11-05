@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // =====================================================================
 //  Verifica della produzione, in sola lettura: i testi delle fasi A e B del
-//  Prompt 22 e le pagine soluzione del Prompt 23 sono online, Poppins non si
-//  scarica su nessuna pagina, le pagine rimosse rispondono ancora 410 e dal
-//  vecchio dominio ogni indirizzo arriva a destinazione in non più di due salti.
+//  Prompt 22, le pagine soluzione del Prompt 23 e l'eroe, la banda e la barra
+//  contatti del Prompt 24 sono online, Poppins non si scarica su nessuna pagina,
+//  le pagine rimosse rispondono ancora 410 e dal vecchio dominio ogni indirizzo
+//  arriva a destinazione in non più di due salti.
 //
 //  Uso: node scripts/verifica-produzione.mjs [base]
 //       base predefinita: https://agriasystem.com (per una prova in locale:
@@ -151,6 +152,38 @@ check(
     anchors.some((a) => a.includes(href) && a.includes(`data-analytics="${event}"`) && a.includes('data-analytics-location="header"'))
   )
 );
+
+// Prompt 24: eroe e banda della home, scritta del logo, barra contatti sotto md
+check(
+  'Home, h1 fisso: "Prenotazioni e ordini, senza ricopiarli a mano.", nessun "strato digitale"',
+  h(1, 'Prenotazioni e ordini, senza ricopiarli a mano.').test(home) && !home.includes('strato digitale')
+);
+check('Home: eyebrow con cosa facciamo e per chi', home.includes('Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi'));
+check(
+  'Home: la frase che spiega, al posto del lead',
+  home.includes('Non vi facciamo cambiare gestionale: colleghiamo il sito, le prenotazioni, gli ordini e le email a quello che usate già, così ogni informazione si scrive una volta sola.')
+);
+// nella banda alcuni valori hanno lo spazio unificatore
+const homePlain = home.replace(/ /g, ' ');
+check(
+  'Home: banda con i quattro impegni (Fatto da noi, Decidete voi, Anche un no, Liberi), nessun attributo di prima',
+  ['Fatto da noi', 'Decidete voi', 'Anche un no', 'Liberi'].every((t) => homePlain.includes(`>${t}<`)) && !home.includes('settori: hospitality, cantine, frantoi')
+);
+const wordmark = home.match(/aria-label="Agria System, home"[\s\S]*?<span aria-hidden="true" class="leading-none([^"]*)"/)?.[1];
+check('Header: scritta "Agria System" visibile anche su mobile', wordmark !== undefined && !wordmark.includes('hidden'));
+const headerLinks = anchors.filter((a) => a.includes('data-analytics-location="header"'));
+check('Header: telefono e WhatsApp una volta sola (su mobile li porta la barra)', headerLinks.length === 2);
+// la barra sta nel layout: si controlla anche su una pagina diversa dalla home
+const hrefOf = (a) => a.match(/href="([^"]*)"/)?.[1];
+for (const [name, html] of [['Home', home], ['/azienda', azienda]]) {
+  const bar = [...html.matchAll(/<a\s[^>]*data-analytics-location="barra_mobile"[^>]*>([\s\S]*?)<\/a>/g)];
+  check(
+    `${name}: barra contatti con WhatsApp e Chiamateci, stessi recapiti dell'header, spazio riservato sul body`,
+    bar.map((m) => m[1].replace(/<[^>]+>/g, '')).join() === 'WhatsApp,Chiamateci' &&
+      bar.every((m) => headerLinks.some((a) => hrefOf(a) === hrefOf(m[0]))) &&
+      /<body[^>]*class="[^"]*pb-\[var\(--contact-bar\)\]/.test(html)
+  );
+}
 
 // Poppins non si scarica su nessuna pagina della sitemap (Prompt 23). Un font web
 // si scarica solo se un foglio di stile lo dichiara (@font-face, @import) o se

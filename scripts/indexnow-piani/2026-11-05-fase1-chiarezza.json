@@ -1,0 +1,16 @@
+{
+  "nota": "Prompt 24, Fase 1: eroe, banda dei fatti e barra contatti. Solo la home: la barra e il logo sono interfaccia, fuori dal contenuto confrontato. Confronto tra agriasystem.com (main 9b9474f, in produzione il 5 novembre 2026) e la build locale di 7505313. before indica il sito su cui si invia; submit controlla comunque che ogni pagina pubblicata corrisponda all'impronta in expect prima di inviare.",
+  "commit": "75053137629a4b8660246bf347cfbbcad555770a",
+  "before": "https://agriasystem.com",
+  "after": "http://localhost:3301",
+  "changed": [
+    "/"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "ed376461286456720d8c2e25d8914ee04ebb08e4e057c419bffe166aa108d3e4"
+    }
+  }
+}
