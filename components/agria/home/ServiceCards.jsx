@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import { Card, Container, Reveal, Section, TextLink } from '@/components/agria/ui';
 import { HoverGroup } from '@/components/agria/motion';
+import PreviewNote from '@/components/agria/preview/PreviewNote';
+import PreviewPlayer from '@/components/agria/preview/PreviewPlayer';
+import { previews } from '@/content/agria/anteprime';
 import { services } from '@/content/agria/home';
 import SectionIntro from './SectionIntro';
 
-// Servizi: tre aree, ognuna collegata alla propria pagina.
+// Servizi: tre aree, ognuna collegata alla propria pagina, con l'anteprima animata
+// di cosa produce (Prompt 25) sopra la card.
 export default function ServiceCards() {
   return (
     <Section background="offwhite" aria-labelledby="home-servizi-title">
@@ -20,23 +24,26 @@ export default function ServiceCards() {
           {services.items.map((service, index) => (
             <li key={service.key}>
               <Reveal delay={index * 70} className="h-full">
-                <Card
-                  interactive
-                  title={service.title}
-                  textSize="md"
-                  className="h-full"
-                  action={
-                    <TextLink as={Link} href={service.href} aria-label={`${services.linkLabel}: ${service.title}`}>
-                      {services.linkLabel}
-                    </TextLink>
-                  }
-                >
-                  {service.text}
-                </Card>
+                <PreviewPlayer className="flex h-full flex-col" kind={service.key} label={previews[service.key].label}>
+                  <Card
+                    interactive
+                    title={service.title}
+                    textSize="md"
+                    className="flex-1"
+                    action={
+                      <TextLink as={Link} href={service.href} aria-label={`${services.linkLabel}: ${service.title}`}>
+                        {services.linkLabel}
+                      </TextLink>
+                    }
+                  >
+                    {service.text}
+                  </Card>
+                </PreviewPlayer>
               </Reveal>
             </li>
           ))}
         </HoverGroup>
+        <PreviewNote />
       </Container>
     </Section>
   );
