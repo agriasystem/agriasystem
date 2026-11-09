@@ -6,6 +6,7 @@ import CookieConsentBanner from '@/components/CookieConsentBanner';
 import AnalyticsConsent from '@/components/agria/consent/AnalyticsConsent';
 import ConciergeSlot from '@/components/agria/ConciergeSlot';
 import Assistant from '@/components/agria/assistant/Assistant';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { site } from '@/lib/data';
 import JsonLd from '@/components/agria/seo/JsonLd';
 import { SITE_URL } from '@/lib/seo';
@@ -67,6 +68,9 @@ export default function RootLayout({ children }) {
         </ConciergeSlot>
         <CookieConsentBanner />
         <AnalyticsConsent />
+        {/* Speed Insights di Vercel: Core Web Vitals dei visitatori reali, senza
+            cookie. Raccoglie dati solo dopo l'attivazione nel pannello Vercel. */}
+        <SpeedInsights />
       </body>
     </html>
   );
