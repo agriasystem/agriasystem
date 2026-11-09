@@ -1,7 +1,14 @@
 'use client';
 
 import { Fragment, useEffect, useRef, useState } from 'react';
-import styles from './PreviewPlayer.module.css';
+
+// Cornice: resa dal server, vuota, con le proporzioni riservate dal primo render;
+// container-type perché le misure interne sono in cqw. Classi Tailwind e non un
+// modulo CSS: il menu la carica in differita dal layout, e un modulo CSS in quel
+// percorso cambiava i raggruppamenti dei fogli di stile di Next su tutte le pagine.
+// frameClassName: regole del singolo posto (margini, quando nasconderla).
+const FRAME =
+  'relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-agria-border bg-agria-offwhite shadow-[0_2px_0_rgb(var(--agria-border)),0_24px_48px_-30px_rgb(var(--agria-graphite)/0.28)] [container-type:inline-size]';
 
 // Il contenuto delle finestre (ServicePreview, con i suoi stili) è un modulo a parte,
 // scaricato una volta sola. Import gestito qui e non con next/dynamic: con il
@@ -20,7 +27,7 @@ export function loadPreview() {
 // al passaggio del cursore (solo puntatori fini) o quando il focus entra nel blocco.
 // Con movimento ridotto si carica il contenuto e basta: il CSS mostra già il finale.
 // label: descrizione della finestra (role="img").
-export default function PreviewPlayer({ kind, label, children, className = '' }) {
+export default function PreviewPlayer({ kind, label, children, className = '', frameClassName = '' }) {
   const frameRef = useRef(null);
   const done = useRef(false);
   const [near, setNear] = useState(false);
@@ -88,7 +95,7 @@ export default function PreviewPlayer({ kind, label, children, className = '' })
         aria-label={label}
         data-nosnippet=""
         data-play={visible ? '' : undefined}
-        className={styles.frame}
+        className={`${FRAME} ${frameClassName}`}
         onAnimationEnd={(event) => {
           if (event.target.hasAttribute('data-last')) done.current = true;
         }}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Card, Container, Reveal, Section, TextLink } from '@/components/agria/ui';
 import { HoverGroup } from '@/components/agria/motion';
+import { HOME_HIDDEN } from '@/components/agria/preview/home';
 import PreviewNote from '@/components/agria/preview/PreviewNote';
 import PreviewPlayer from '@/components/agria/preview/PreviewPlayer';
 import { previews } from '@/content/agria/anteprime';
@@ -24,7 +25,12 @@ export default function ServiceCards() {
           {services.items.map((service, index) => (
             <li key={service.key}>
               <Reveal delay={index * 70} className="h-full">
-                <PreviewPlayer className="flex h-full flex-col" kind={service.key} label={previews[service.key].label}>
+                <PreviewPlayer
+                  className="flex h-full flex-col"
+                  frameClassName={`mb-3 ${HOME_HIDDEN}`}
+                  kind={service.key}
+                  label={previews[service.key].label}
+                >
                   <Card
                     interactive
                     title={service.title}
