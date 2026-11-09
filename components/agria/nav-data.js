@@ -11,7 +11,9 @@ export const NAV_PANELS = [
     key: 'servizi',
     label: 'Servizi',
     href: '/servizi',
-    // card di evidenza a destra del pannello (testi già approvati nella homepage)
+    // card di evidenza a destra del pannello (testi già approvati nella homepage).
+    // preview: l'anteprima animata della voce, nel pannello da xl (Prompt 25, fase C);
+    // chiavi in content/agria/anteprime.js. Senza preview resta la card di oggi.
     feature: {
       title: 'Prima capire, poi costruire.',
       link: { label: 'Tutti i servizi', href: '/servizi' },
@@ -20,16 +22,19 @@ export const NAV_PANELS = [
       {
         title: 'Digital Presence',
         href: '/servizi/digital-presence',
+        preview: 'presence',
         description: 'Siti e visibilità per hospitality, cantine e frantoi.',
       },
       {
         title: 'Digital Commerce',
         href: '/servizi/digital-commerce',
+        preview: 'commerce',
         description: 'Vendita diretta, prenotazioni e pagamenti online.',
       },
       {
         title: 'Digital Automation',
         href: '/servizi/digital-automation',
+        preview: 'automation',
         description: 'Automazioni e integrazioni tra gli strumenti che usate.',
       },
     ],
@@ -41,11 +46,13 @@ export const NAV_PANELS = [
         {
           title: 'Assistente AI per le richieste',
           href: '/soluzioni/assistente-ai',
+          preview: 'assistant',
           description: 'Bozze pronte per le domande dei clienti, riviste da chi risponde.',
         },
         {
           title: 'Gestione delle richieste',
           href: '/soluzioni/gestione-richieste',
+          preview: 'automation',
           description: 'Email, WhatsApp, telefono e portali in un solo ingresso.',
         },
         {
