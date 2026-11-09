@@ -1,16 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { panelLinks } from './nav-data';
 import { Eyebrow } from './ui';
+
+// da xl il pannello con anteprime (Prompt 25, fase C) passa a 760 px e ha spazio
+// per la finestra
+const WIDE = '(min-width: 1280px)';
 
 const ITEM_LINK =
   'block rounded-xl px-4 py-3 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-inset';
 
-// voce del pannello: titolo e descrizione
-function PanelLink({ item }) {
+// voce del pannello: titolo e descrizione. onActivate: cursore o focus sulla voce
+function PanelLink({ item, onActivate }) {
   return (
-    <Link href={item.href} className={ITEM_LINK}>
+    <Link href={item.href} className={ITEM_LINK} onMouseEnter={onActivate} onFocus={onActivate}>
       <span className="block font-agria-sans text-agria-sm font-medium text-agria-on-dark">{item.title}</span>
       <span className="mt-0.5 block font-agria-sans text-agria-sm text-agria-on-dark-muted">{item.description}</span>
     </Link>
@@ -20,6 +25,35 @@ function PanelLink({ item }) {
 export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, active }) {
   const triggerRef = useRef(null);
   const panelId = `agria-panel-${panel.key}`;
+  const hasPreviews = panelLinks(panel).some((item) => item.preview);
+  // anteprima della voce sotto il cursore o il focus; null: la card di oggi
+  const [preview, setPreview] = useState(null);
+  // componente dell'anteprima, scaricato alla prima apertura da xl
+  const [MenuPreview, setMenuPreview] = useState(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setPreview(null);
+      return;
+    }
+    // all'apertura si scarica solo il codice, così il primo passaggio non aspetta la
+    // rete; le anteprime si montano una alla volta, quando si passa sulla voce
+    if (hasPreviews && !MenuPreview && window.matchMedia(WIDE).matches) {
+      import('./preview/MenuPreview')
+        .then((module) => {
+          setMenuPreview(() => module.default);
+          return module.preload();
+        })
+        .catch(() => {});
+    }
+  }, [isOpen, hasPreviews, MenuPreview]);
+
+  function activate(item) {
+    if (!hasPreviews) return undefined;
+    return () => {
+      if (window.matchMedia(WIDE).matches) setPreview(item.preview ?? null);
+    };
+  }
 
   function handleKeyDown(event) {
     if (event.key === 'Escape') {
@@ -66,11 +100,13 @@ export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, 
           id={panelId}
           role="group"
           aria-label={panel.label}
-          className="absolute left-1/2 top-full z-10 mt-3 w-[320px] -translate-x-1/2 rounded-2xl border border-white/10 bg-agria-ink p-2 shadow-[0_24px_58px_rgb(0_0_0/0.45)] lg:grid lg:w-[640px] lg:grid-cols-[1fr_236px] lg:gap-2"
+          className={`absolute left-1/2 top-full z-10 mt-3 w-[320px] -translate-x-1/2 rounded-2xl border border-white/10 bg-agria-ink p-2 shadow-[0_24px_58px_rgb(0_0_0/0.45)] lg:grid lg:w-[640px] lg:grid-cols-[1fr_236px] lg:gap-2 ${
+            hasPreviews ? 'xl:w-[760px] xl:grid-cols-[1fr_356px]' : ''
+          }`}
         >
           <div>
             {panel.items.map((item) => (
-              <PanelLink key={item.href} item={item} />
+              <PanelLink key={item.href} item={item} onActivate={activate(item)} />
             ))}
             {/* secondo gruppo (Soluzioni): sotto le voci, con il suo titolo, sempre visibile */}
             {panel.group && (
@@ -79,7 +115,7 @@ export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, 
                   {panel.group.title}
                 </Eyebrow>
                 {panel.group.items.map((item) => (
-                  <PanelLink key={item.href} item={item} />
+                  <PanelLink key={item.href} item={item} onActivate={activate(item)} />
                 ))}
               </div>
             )}
@@ -109,6 +145,13 @@ export default function HeaderPanel({ panel, isOpen, onOpen, onClose, onToggle, 
               <p className="font-agria-sans text-agria-lg font-light leading-snug text-agria-on-dark">
                 {panel.feature.title}
               </p>
+              {/* spazio dell'anteprima, riservato da xl dal primo render: vuoto finché
+                  non si passa su una voce, e la card resta quella di oggi */}
+              {hasPreviews && (
+                <div className="relative -mx-[14px] hidden aspect-[4/3] xl:block">
+                  {preview && MenuPreview && <MenuPreview kind={preview} />}
+                </div>
+              )}
               <Link
                 href={panel.feature.link.href}
                 className="group inline-flex items-center gap-1.5 self-start rounded-sm font-agria-sans text-agria-sm font-medium text-agria-green-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-agria-ink"

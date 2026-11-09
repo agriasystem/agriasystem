@@ -180,7 +180,50 @@ function Automation({ p }) {
   );
 }
 
-const MOCKS = { presence: Presence, commerce: Commerce, automation: Automation };
+// Arriva una domanda, l'assistente raccoglie le informazioni e prepara la bozza, la
+// richiesta passa a una persona. La bozza resta tratteggiata: non è partita.
+function Assistant({ p }) {
+  return (
+    <>
+      <div className={styles.nav}>
+        <span className={styles.brand}>{p.from}</span>
+        <span className={styles.channel}>{p.channel}</span>
+      </div>
+      <div className={styles.thread}>
+        <span data-anim="" className={`${styles.bubble} ${styles.rise}`} style={at(0.15)}>
+          {p.question}
+        </span>
+        <span className={styles.collect}>
+          <span data-anim="" className={`${styles.collectTitle} ${styles.rise}`} style={at(0.95)}>
+            {p.collect.title}
+          </span>
+          <span className={styles.chips}>
+            {p.collect.items.map((item, index) => (
+              <span key={item} data-anim="" className={`${styles.tag} ${styles.pop}`} style={at(1.25 + index * 0.25, 0.4)}>
+                {item}
+              </span>
+            ))}
+          </span>
+        </span>
+        <span data-anim="" className={`${styles.draft} ${styles.rise}`} style={at(2.6)}>
+          <span className={styles.collectTitle}>{p.draft.title}</span>
+          <span>{p.draft.text}</span>
+        </span>
+        <span data-anim="" className={`${styles.handoff} ${styles.rise}`} style={at(3.6)}>
+          <span className={styles.owner}>
+            <span className={styles.avatar}>{p.owner.initials}</span>
+            <span>{p.owner.text}</span>
+          </span>
+          <span data-anim="" data-last="" className={`${styles.pill} ${styles.line} ${styles.small} ${styles.pop}`} style={at(4.1, 0.4)}>
+            {p.review}
+          </span>
+        </span>
+      </div>
+    </>
+  );
+}
+
+const MOCKS = { presence: Presence, commerce: Commerce, automation: Automation, assistant: Assistant };
 
 function Rows({ rows }) {
   return rows.map(([key, value]) => (

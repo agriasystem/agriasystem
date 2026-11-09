@@ -65,4 +65,24 @@ export const previews = {
     owner: { initials: 'GE', text: 'Presa in carico da Giulia Esempio' },
     draft: 'Bozza da rivedere',
   },
+
+  // Assistente AI, solo nel menu (fase C): arriva una domanda, l'assistente
+  // raccoglie le informazioni utili e prepara la bozza; l'ultimo fotogramma è la
+  // richiesta che passa a una persona, con la bozza da rivedere. Al cliente non
+  // parte niente da solo, come dice la pagina della soluzione.
+  assistant: {
+    label:
+      "Anteprima illustrativa dell'assistente AI: arriva una domanda, l'assistente raccoglie le informazioni utili e prepara una bozza, poi la richiesta passa a una persona che la rivede.",
+    bar: 'Conversazioni',
+    from: 'Marta Esempio',
+    channel: 'Messaggio',
+    question: 'Organizzate degustazioni per gruppi a giugno?',
+    collect: {
+      title: 'Informazioni raccolte',
+      items: ['Degustazione', 'Per un gruppo', 'Giugno', 'Calendario consultato'],
+    },
+    draft: { title: 'Bozza', text: 'Buongiorno Marta, sì: a giugno organizziamo degustazioni per gruppi.' },
+    owner: { initials: 'GE', text: 'Passata a Giulia Esempio' },
+    review: 'Bozza da rivedere',
+  },
 };

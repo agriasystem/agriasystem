@@ -134,6 +134,8 @@ Sequenza dei fondi: scuro → bianco → off-white → sfumato → bianco → of
 
 **Mega menu:** pannelli Servizi e Settori su due colonne da `lg` (1024px): voci a sinistra, card di evidenza sfumata a destra, larghezza 640px. Servizi → *Prima capire, poi costruire.* + "Come lavoriamo" (`/#come-lavoriamo`); Settori → *Conosciamo tre mestieri, non tutti.* + "Tutti i settori" (`/settori`). Tra 768 e 1023px il pannello resta a una colonna (320px) senza card, per non uscire dallo schermo. Pannello scuro, `ArrowDown` apre e porta il focus sulla prima voce, `Esc` chiude e riporta il focus sul trigger.
 
+**Anteprime nel mega menu (Prompt 25, fase C):** da `xl` (1280px) il pannello Servizi passa a 760px e la card di evidenza a 356px; Settori resta a 640px. Nella card, tra titolo e link, uno spazio 4:3 riservato dal primo render mostra l'anteprima della voce sotto il cursore o il focus (`preview` in `nav-data.js`): le tre aree, Assistente AI con la sua anteprima, Gestione delle richieste con quella di Automation; Collegare gestionale e sito non ne ha e lascia la card di oggi. All'apertura si scarica solo il codice (`MenuPreview`, `ServicePreview`), la finestra si monta al passaggio e si smonta alla chiusura. Sotto `xl` nulla cambia e nulla si scarica.
+
 ---
 
 ## 5. Punto di innesto del concierge AI
