@@ -1,0 +1,671 @@
+/* Contenuto delle anteprime dei servizi (Prompt 25): finte finestre in DOM, CSS e
+   SVG, con lo stesso linguaggio del dispositivo di "Cosa costruiamo"
+   (SectorPreview). Sta nella cornice di PreviewPlayer, che riserva le proporzioni
+   4:3 ed è il contenitore delle misure in cqw (1% della sua larghezza).
+   Questi stili arrivano con il contenuto, non con la pagina.
+   Lo stile di base è il fotogramma finale, quello che si vede con movimento
+   ridotto o sotto lg. Le animazioni partono ferme sul primo fotogramma e girano
+   con data-play sulla cornice. Solo opacity e transform, tranne il colore di
+   un'etichetta. */
+
+.content {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-agria-sans), system-ui, sans-serif;
+  line-height: 1.3;
+  color: rgb(var(--agria-graphite));
+  text-align: left;
+}
+
+/* ---------- finestra ---------- */
+.chrome {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+  height: 7cqw;
+  padding-inline: 3.4cqw;
+  border-bottom: 1px solid rgb(var(--agria-border));
+  background: rgb(var(--agria-offwhite));
+}
+
+.chrome > span {
+  width: 1.9cqw;
+  height: 1.9cqw;
+  border-radius: 999px;
+  background: rgb(var(--agria-border));
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 56cqw;
+  height: 4.2cqw;
+  margin-left: 2.4cqw;
+  padding-inline: 2cqw;
+  overflow: hidden;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 999px;
+  background: rgb(var(--agria-white));
+  font-family: var(--font-agria-mono), monospace;
+  font-size: 2.2cqw;
+  font-style: normal;
+  color: rgb(var(--agria-grey));
+  white-space: nowrap;
+}
+
+.screen {
+  position: absolute;
+  inset: 7cqw 0 0;
+  overflow: hidden;
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgb(var(--agria-green) / 0.1), transparent 70%),
+    rgb(var(--agria-offwhite));
+}
+
+/* ---------- elementi comuni ---------- */
+.nav {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8.5cqw;
+  padding-inline: 5cqw;
+}
+
+.brand {
+  font-size: 3cqw;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8cqw;
+  padding: 1.3cqw 2.8cqw;
+  border-radius: 999px;
+  font-size: 2.4cqw;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.solid {
+  background: rgb(var(--agria-green-dark));
+  color: rgb(var(--agria-white));
+}
+
+.line {
+  border: 1px solid rgb(var(--agria-border));
+  background: rgb(var(--agria-white));
+}
+
+.small {
+  padding: 0.8cqw 1.8cqw;
+  font-size: 2.1cqw;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.check {
+  flex-shrink: 0;
+  width: 3cqw;
+  height: 3cqw;
+  color: rgb(var(--agria-green-bright));
+}
+
+.check path,
+.icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* il cursore finto: alla fine della passata sparisce */
+.cursor {
+  position: absolute;
+  left: 62%;
+  top: 55%;
+  width: 4.6cqw;
+  height: 4.6cqw;
+  opacity: 0;
+}
+
+.cursor path {
+  fill: rgb(var(--agria-white));
+  stroke: rgb(var(--agria-graphite));
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+/* scheda e pannello: compaiono durante la passata, alla fine non ci sono */
+.sheet,
+.panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2cqw;
+  border: 1px solid rgb(var(--agria-border));
+  background: rgb(var(--agria-white));
+  opacity: 0;
+}
+
+.sheet {
+  left: 18cqw;
+  right: 18cqw;
+  bottom: 3cqw;
+  padding: 3cqw;
+  border-radius: 2.6cqw;
+  box-shadow: 0 3cqw 8cqw -2cqw rgb(var(--agria-graphite) / 0.3);
+}
+
+.panel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 46cqw;
+  padding: 4cqw 3.6cqw;
+  border-width: 0 0 0 1px;
+  box-shadow: -2cqw 0 6cqw -3cqw rgb(var(--agria-graphite) / 0.3);
+}
+
+.sheetTitle {
+  margin-bottom: 0.6cqw;
+  font-size: 3cqw;
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2cqw;
+  padding-bottom: 1.2cqw;
+  border-bottom: 1px solid rgb(var(--agria-border));
+  font-size: 2.3cqw;
+}
+
+.row > span:first-child {
+  color: rgb(var(--agria-grey));
+}
+
+.sheetCta {
+  align-self: flex-start;
+  margin-top: 1cqw;
+}
+
+/* avviso finale: su ink il verde è green-bright */
+.toast {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6cqw;
+  max-width: 50cqw;
+  padding: 2cqw 2.6cqw;
+  border-radius: 2.4cqw;
+  background: rgb(var(--agria-ink));
+  color: rgb(var(--agria-white));
+  box-shadow: 0 2cqw 5cqw -1cqw rgb(var(--agria-graphite) / 0.4);
+}
+
+.toast strong {
+  display: block;
+  font-size: 2.5cqw;
+  font-weight: 500;
+}
+
+.toast small {
+  display: block;
+  margin-top: 0.5cqw;
+  font-size: 2.3cqw;
+  color: rgb(var(--agria-white) / 0.7);
+}
+
+.toastBottom {
+  right: 4cqw;
+  bottom: 3.5cqw;
+}
+
+/* ---------- Digital Presence ---------- */
+.links {
+  display: flex;
+  gap: 2.6cqw;
+  font-size: 2.3cqw;
+  color: rgb(var(--agria-grey));
+}
+
+.hills {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: 30cqw;
+}
+
+.hillBack {
+  fill: rgb(var(--agria-green) / 0.18);
+}
+
+.hillFront {
+  fill: rgb(var(--agria-green) / 0.32);
+}
+
+.copy {
+  position: absolute;
+  left: 5cqw;
+  top: 13cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 56cqw;
+}
+
+.title {
+  font-size: 6cqw;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  margin-top: 1.6cqw;
+  font-size: 2.7cqw;
+  color: rgb(var(--agria-grey));
+}
+
+.ctaWrap {
+  position: relative;
+  margin-top: 3cqw;
+}
+
+/* ---------- Digital Commerce ---------- */
+.bag {
+  position: relative;
+  display: inline-flex;
+  width: 3.6cqw;
+  height: 3.6cqw;
+}
+
+.dot {
+  position: absolute;
+  top: -0.4cqw;
+  right: -0.6cqw;
+  width: 1.6cqw;
+  height: 1.6cqw;
+  border-radius: 999px;
+  background: rgb(var(--agria-green));
+}
+
+.grid {
+  position: absolute;
+  left: 5cqw;
+  right: 5cqw;
+  top: 10.5cqw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.6cqw;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4cqw;
+  padding: 2cqw;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 2.2cqw;
+  background: rgb(var(--agria-white));
+}
+
+.art {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  height: 20cqw;
+  border-radius: 1.4cqw;
+  background: rgb(var(--agria-offwhite));
+}
+
+.art svg {
+  width: 12cqw;
+  height: 12cqw;
+}
+
+.artDark {
+  fill: rgb(var(--agria-green-dark));
+}
+
+.artMid {
+  fill: rgb(var(--agria-green));
+}
+
+.artLight {
+  fill: rgb(var(--agria-green) / 0.35);
+}
+
+.artLabel {
+  fill: rgb(var(--agria-white) / 0.9);
+}
+
+.name {
+  min-height: 6cqw;
+  font-size: 2.4cqw;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.btnWrap {
+  position: relative;
+}
+
+/* "Aggiungi" e "Aggiunto" occupano la stessa cella: la larghezza non cambia */
+.swap {
+  display: inline-grid;
+}
+
+.swap > * {
+  display: inline-flex;
+  grid-area: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6cqw;
+}
+
+.addLabel {
+  opacity: 0;
+}
+
+.addedLabel .check {
+  width: 2.4cqw;
+  height: 2.4cqw;
+  color: rgb(var(--agria-green-dark));
+}
+
+/* ---------- Digital Automation ---------- */
+.label,
+.columnTitle {
+  font-family: var(--font-agria-mono), monospace;
+  text-transform: uppercase;
+  color: rgb(var(--agria-grey));
+  white-space: nowrap;
+}
+
+.label {
+  position: absolute;
+  left: 5cqw;
+  top: 3cqw;
+  font-size: 2cqw;
+  letter-spacing: 0.1em;
+}
+
+.columns {
+  position: absolute;
+  left: 5cqw;
+  right: 5cqw;
+  top: 22cqw;
+  bottom: 3cqw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4cqw;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4cqw;
+  padding: 2cqw;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 2cqw;
+  background: rgb(var(--agria-white) / 0.6);
+}
+
+.columnTitle {
+  overflow: hidden;
+  font-size: 2cqw;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+}
+
+.highlight {
+  color: rgb(var(--agria-green-dark));
+}
+
+.ghost {
+  display: block;
+  height: 6cqw;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 1.4cqw;
+  background: rgb(var(--agria-offwhite));
+}
+
+/* la richiesta, già nella prima colonna: l'animazione la porta qui dall'alto */
+.move {
+  position: absolute;
+  left: 6cqw;
+  top: 27.6cqw;
+  z-index: 1;
+  width: 26.4cqw;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2cqw;
+  padding: 2cqw;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 2cqw;
+  background: rgb(var(--agria-white));
+  box-shadow: 0 2cqw 5cqw -2cqw rgb(var(--agria-graphite) / 0.25);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8cqw;
+  font-size: 2.1cqw;
+  color: rgb(var(--agria-grey));
+  white-space: nowrap;
+}
+
+.meta .icon {
+  width: 2.6cqw;
+  height: 2.6cqw;
+}
+
+.message {
+  font-size: 2.4cqw;
+  line-height: 1.35;
+}
+
+.tag {
+  padding: 0.8cqw 1.8cqw;
+  border-radius: 999px;
+  background: rgb(var(--agria-green) / 0.14);
+  font-size: 2.1cqw;
+  font-weight: 500;
+  color: rgb(var(--agria-green-dark));
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  font-size: 2.2cqw;
+  line-height: 1.3;
+}
+
+.avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 4cqw;
+  height: 4cqw;
+  border-radius: 999px;
+  background: rgb(var(--agria-ink));
+  font-size: 1.6cqw;
+  font-weight: 500;
+  color: rgb(var(--agria-green-bright));
+}
+
+/* ---------- animazioni ----------
+   Solo da lg. Sotto md resta il fotogramma finale: misurato a 375 px con CPU
+   rallentata 4 volte (Prompt 25, fase B), l'animazione aggiungeva circa 0,4 s di
+   lavoro del browser, la versione statica quanto nessuna anteprima. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .content [data-anim] {
+    animation-duration: var(--t, 0.6s);
+    animation-delay: var(--d, 0s);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  [data-play] .content [data-anim] {
+    animation-play-state: running;
+  }
+
+  .rise {
+    animation-name: rise;
+  }
+  .pop {
+    animation-name: pop;
+  }
+  .drop {
+    animation-name: drop;
+  }
+  .hide {
+    animation-name: hide;
+  }
+  .press {
+    animation-name: press;
+  }
+  .cursor {
+    animation-name: cursor;
+  }
+  .sheetMove {
+    animation-name: sheet;
+  }
+  .panelMove {
+    animation-name: panel;
+  }
+  .moveIn {
+    animation-name: move;
+  }
+  .highlight {
+    animation-name: highlight;
+  }
+}
+
+/* i "from" senza "to" arrivano allo stile di base, cioè al fotogramma finale */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(2.4cqw);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-2cqw);
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes press {
+  50% {
+    transform: scale(0.92);
+  }
+}
+
+@keyframes highlight {
+  from {
+    color: rgb(var(--agria-grey));
+  }
+}
+
+/* dalla posizione d'ingresso, in alto al centro, alla prima colonna */
+@keyframes move {
+  from {
+    transform: translate(30.8cqw, -19.6cqw);
+  }
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+    transform: translate(var(--fx), var(--fy));
+  }
+  15% {
+    opacity: 1;
+    transform: translate(var(--fx), var(--fy));
+  }
+  65% {
+    opacity: 1;
+    transform: none;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(0.85);
+  }
+  85% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+@keyframes sheet {
+  0% {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+  22%,
+  78% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+}
+
+@keyframes panel {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  22%,
+  78% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
