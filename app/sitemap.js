@@ -1,5 +1,5 @@
 import { KEPT_POSTS } from '@/content/blog/kept';
-import { LAST_UPDATED } from '@/content/agria/legale';
+import { legalPages } from '@/content/agria/legale';
 import { getPost } from '@/lib/data';
 import { SITE_URL } from '@/lib/seo';
 
@@ -24,7 +24,6 @@ const PAGES = [
   ['/blog', 0.6],
 ];
 
-const LEGAL = ['/privacy-policy', '/cookie-policy', '/termini-e-condizioni', '/note-legali'];
 
 export default function sitemap() {
   const pages = PAGES.map(([path, priority]) => ({ url: `${SITE_URL}${path === '/' ? '' : path}`, priority }));
@@ -35,6 +34,11 @@ export default function sitemap() {
       lastModified: new Date(post.updated || post.date),
       priority: 0.6,
     }));
-  const legal = LEGAL.map((path) => ({ url: `${SITE_URL}${path}`, lastModified: new Date(LAST_UPDATED), priority: 0.2 }));
+  // privacy, cookie, termini, note legali: ognuna con la data del suo ultimo cambiamento
+  const legal = Object.values(legalPages).map((page) => ({
+    url: `${SITE_URL}${page.meta.path}`,
+    lastModified: new Date(page.updated),
+    priority: 0.2,
+  }));
   return [...pages, ...posts, ...legal];
 }

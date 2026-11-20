@@ -30,7 +30,7 @@ Route legacy rimosse (ora 301 o 410): chi-sono, metodo, prenota-call, quiz, prop
 - Recapiti: `info@agriasystem.com`, `matteo.garuzzo@agriasystem.com`, telefono e WhatsApp +39 366 344 5417. Nessun recapito Gmail o su matteogaruzzo.com.
 - Posta aziendale su Google Workspace (dichiarata nella privacy).
 - Vercel: funzioni in fra1 (Francoforte) dal primo deploy dopo il 27 settembre 2026, log conservati 1 giorno. Resend: Irlanda (eu-west-1). HubSpot: data center UE (eu1).
-- Se cambia la regione delle funzioni: aggiornare in `content/agria/legale.js` `VERCEL_FUNCTIONS_REGION`, la frase "funzioni di Vercel in Germania" al punto 6 della privacy e `LAST_UPDATED`.
+- Se cambia la regione delle funzioni: aggiornare in `content/agria/legale.js` `VERCEL_FUNCTIONS_REGION`, la frase "funzioni di Vercel in Germania" al punto 6 della privacy e `updated` delle pagine che citano la regione (privacy e note legali). Dal Prompt 27 ogni pagina legale ha la sua data (`updated` in `legalPages`), al posto dell'unico `LAST_UPDATED`.
 
 ## 3. Dopo il go-live
 

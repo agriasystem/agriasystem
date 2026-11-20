@@ -1,15 +1,15 @@
 import PageHero from '@/components/agria/sections/PageHero';
 import { Container, Heading, Section } from '@/components/agria/ui';
-import { LAST_UPDATED } from '@/content/agria/legale';
 import { RICH_TEXT_AGRIA, renderRichText } from '@/lib/richtext';
 import JsonLd from '@/components/agria/seo/JsonLd';
 import { graph, webPageNode } from '@/lib/schema';
 
 // Pagina legale nel layout Agria: hero scuro con la data di ultimo
-// aggiornamento, poi le sezioni in una colonna di lettura. Ogni sezione:
-// paragraphs, list, after, list2, after2 (in quest'ordine, tutti facoltativi).
+// aggiornamento della pagina (page.updated), poi le sezioni in una colonna di
+// lettura. Ogni sezione: paragraphs, list, after, list2, after2 (in
+// quest'ordine, tutti facoltativi).
 const UPDATED_LABEL = 'Ultimo aggiornamento';
-const updated = new Date(LAST_UPDATED).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const formatDate = (iso) => new Date(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 const P = 'font-agria-sans text-agria-md leading-relaxed text-agria-graphite/85';
 
@@ -35,9 +35,10 @@ function List({ items }) {
 }
 
 export default function LegalPage({ page, id }) {
+  const updated = formatDate(page.updated);
   return (
     <>
-      <JsonLd data={graph(webPageNode({ ...page.meta, breadcrumb: false, extra: { dateModified: LAST_UPDATED } }))} />
+      <JsonLd data={graph(webPageNode({ ...page.meta, breadcrumb: false, extra: { dateModified: page.updated } }))} />
       <PageHero eyebrow={`${UPDATED_LABEL}: ${updated}`} title={page.title} lead={page.lead} titleId={`${id}-title`} />
       <Section background="white" aria-labelledby={`${id}-title`}>
         <Container>
@@ -55,7 +56,7 @@ export default function LegalPage({ page, id }) {
               </section>
             ))}
             <p className="font-agria-sans text-agria-sm text-agria-grey">
-              {UPDATED_LABEL}: <time dateTime={LAST_UPDATED}>{updated}</time>
+              {UPDATED_LABEL}: <time dateTime={page.updated}>{updated}</time>
             </p>
           </div>
         </Container>

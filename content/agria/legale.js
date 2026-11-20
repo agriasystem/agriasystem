@@ -2,14 +2,14 @@
 //  PAGINE LEGALI AGRIA — privacy policy, cookie policy, termini e note
 //  legali. Scritte sull'elenco dei trattamenti rilevati nel codice
 //  (servizi, dati, luoghi): se cambia un servizio del sito, aggiornare
-//  qui e la data di ultimo aggiornamento. Template: components/agria/legal/.
+//  qui e la data di ultimo aggiornamento (updated) delle sole pagine il cui
+//  testo cambia davvero: la usano la pagina, i dati strutturati
+//  (dateModified) e la sitemap. Template: components/agria/legal/.
 //  Paragrafi con markup leggero: **grassetto**, [testo](/percorso) o
 //  [testo](https://…). Voci di elenco: array di stringhe (list).
 // =====================================================================
 
 import { site } from '@/content/site';
-
-export const LAST_UPDATED = '2026-11-20';
 
 const ADDRESS = `${site.address.street}, ${site.address.postalCode} ${site.address.city} (${site.address.province})`;
 const MAIL = `[${site.email}](mailto:${site.email})`;
@@ -17,7 +17,8 @@ const CONTROLLER = `${site.founder}, ${site.legalForm}, P.IVA ${site.vat.replace
 
 // Infrastruttura verificata (27 settembre 2026). Se cambia la regione delle
 // funzioni su Vercel, aggiornare VERCEL_FUNCTIONS_REGION, la frase sui
-// trasferimenti al punto 6 della privacy ("funzioni di Vercel in Germania") e LAST_UPDATED.
+// trasferimenti al punto 6 della privacy ("funzioni di Vercel in Germania") e
+// updated delle pagine che le citano (privacy e note legali).
 const VERCEL_FUNCTIONS_REGION = 'Francoforte, Germania (regione fra1)';
 const VERCEL_LOG_RETENTION = '1 giorno';
 const RESEND_REGION = 'Irlanda (eu-west-1)';
@@ -33,6 +34,8 @@ export const legalPages = {
       description: 'Come Agria System tratta i dati personali di chi visita il sito e di chi ci scrive: titolare, finalità, fornitori, conservazione e diritti.',
       path: '/privacy-policy',
     },
+    // Speed Insights (Prompt 26)
+    updated: '2026-11-20',
     title: 'Privacy policy',
     lead: 'Come trattiamo i dati di chi visita il sito e di chi ci contatta, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).',
     sections: [
@@ -146,6 +149,8 @@ export const legalPages = {
       description: 'Cookie e memorie del browser usati dal sito di Agria System: strumenti tecnici necessari e statistiche di Google Analytics 4, solo con consenso.',
       path: '/cookie-policy',
     },
+    // ultimo cambiamento del testo: 2f51ed6 ("si veda la privacy policy")
+    updated: '2026-10-10',
     title: 'Cookie policy',
     lead: 'Strumenti tecnici necessari al funzionamento del sito e, solo con il vostro consenso, statistiche di utilizzo. Nessuna pubblicità, nessuna profilazione.',
     sections: [
@@ -203,6 +208,8 @@ export const legalPages = {
       description: 'Condizioni di uso del sito di Agria System: contenuti, proprietà intellettuale, servizi di terze parti, responsabilità e legge applicabile.',
       path: '/termini-e-condizioni',
     },
+    // ultimo cambiamento del testo: 9a3edf2 (numero civico della sede, da content/site.js)
+    updated: '2026-10-10',
     title: 'Termini e condizioni',
     lead: 'Le condizioni di uso di questo sito.',
     sections: [
@@ -263,6 +270,8 @@ export const legalPages = {
       description: 'Dati del titolare del sito di Agria System: titolare, partita IVA, sede e contatti.',
       path: '/note-legali',
     },
+    // ultimo cambiamento del testo: 9a3edf2 (numero civico della sede, da content/site.js)
+    updated: '2026-10-10',
     title: 'Note legali',
     lead: 'I dati di chi gestisce questo sito.',
     sections: [
