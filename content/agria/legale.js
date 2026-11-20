@@ -9,7 +9,7 @@
 
 import { site } from '@/content/site';
 
-export const LAST_UPDATED = '2026-09-28';
+export const LAST_UPDATED = '2026-11-20';
 
 const ADDRESS = `${site.address.street}, ${site.address.postalCode} ${site.address.city} (${site.address.province})`;
 const MAIL = `[${site.email}](mailto:${site.email})`;
@@ -48,6 +48,7 @@ export const legalPages = {
         paragraphs: ['**Dati di navigazione.** I sistemi che ospitano il sito registrano, per funzionamento e sicurezza, dati tecnici di ogni richiesta:'],
         list: ['indirizzo IP', 'tipo di browser e di dispositivo', 'pagina richiesta', 'data e ora'],
         after: [
+          '**Dati sulla velocità delle pagine.** Vercel Speed Insights misura quanto velocemente si carica ogni pagina, insieme al tipo di browser, di dispositivo e di connessione e al paese. Le misure sono anonime: non usa cookie né altre memorie del browser e non assegna un identificativo a chi visita (si veda il punto 5).',
           '**Dati statistici, solo con il vostro consenso.** Se accettate le statistiche nell\'avviso sui cookie, Google Analytics 4 raccoglie dati di utilizzo del sito: pagine visitate, provenienza della visita, tipo di dispositivo e di browser, area geografica approssimativa, interazioni come lo scorrimento, i clic verso altri siti e l\'invio del modulo contatti. I dati sono associati a un identificativo casuale del browser, non al vostro nome. Agli eventi non inviamo mai nome, email, telefono, azienda, testo del messaggio o altri dati del modulo: per una richiesta inviata registriamo solo il tipo di richiesta e l\'area di servizio scelta. Non usiamo strumenti di profilazione o pubblicità.',
           '**Dati inviati con il modulo contatti.** Sono i dati che inserite nel modulo, più alcune informazioni tecniche:',
         ],
@@ -71,6 +72,7 @@ export const legalPages = {
           '**Rispondere alla richiesta** e valutare con voi un possibile progetto. Base giuridica: misure precontrattuali adottate su vostra richiesta (art. 6, par. 1, lett. b GDPR).',
           '**Gestire la richiesta nel nostro CRM**: registrarla, assegnarla a un referente, ricordarci di ricontattarvi. Base giuridica: misure precontrattuali e nostro legittimo interesse a organizzare le richieste ricevute (art. 6, par. 1, lett. b e f).',
           '**Proteggere il sito e il modulo** da abusi e invii automatici, con reCAPTCHA, un limite alle richieste per indirizzo IP e i registri tecnici. Base giuridica: legittimo interesse alla sicurezza (art. 6, par. 1, lett. f).',
+          '**Misurare la velocità del sito** e migliorare le pagine più lente, con misure anonime di Vercel Speed Insights. Base giuridica: legittimo interesse a offrire un sito veloce (art. 6, par. 1, lett. f).',
           '**Statistiche aggregate** sull\'uso del sito, per capire quali pagine e contenuti funzionano e migliorarli, con Google Analytics 4. Base giuridica: consenso (art. 6, par. 1, lett. a GDPR), espresso nell\'avviso sui cookie e revocabile in qualsiasi momento da "Preferenze cookie", senza conseguenze sulla navigazione. Senza consenso Google Analytics non viene caricato.',
           '**Adempiere a obblighi di legge**, per esempio fiscali, se nasce un rapporto commerciale. Base giuridica: obbligo legale (art. 6, par. 1, lett. c).',
         ],
@@ -87,6 +89,7 @@ export const legalPages = {
         paragraphs: ['I dati sono trattati da persone autorizzate e da questi fornitori, nominati responsabili del trattamento dove previsto:'],
         list: [
           `**Vercel Inc.** (Stati Uniti): ospita il sito. Le funzioni che ricevono il modulo contatti girano a ${VERCEL_FUNCTIONS_REGION}; le pagine sono distribuite dalla rete di Vercel dal nodo più vicino al visitatore, che può trovarsi anche fuori dall'Unione europea. Tratta dati di navigazione e, per il tempo dell'invio, i dati del modulo.`,
+          '**Vercel Speed Insights** (Vercel Inc.): misura quanto velocemente si caricano le pagine per chi le visita, così possiamo migliorarle. Registra la pagina, i tempi di caricamento, il tipo di browser, di dispositivo e di connessione e il paese, in forma anonima: non usa cookie né altre memorie del browser e non raccoglie dati che identificano chi visita.',
           '**HubSpot** (HubSpot, Inc. e HubSpot Ireland Ltd.): CRM e ricezione del modulo, in cui registriamo contatti, aziende e richieste; il nostro account è ospitato nel data center europeo di HubSpot (eu1). Gestisce anche il calendario delle videocall.',
           `**Google** (Google Ireland Limited e Google LLC): servizio reCAPTCHA per la sicurezza del modulo, secondo la [privacy policy di Google](${GOOGLE_PRIVACY}).`,
           `**Google Analytics 4** (Google Ireland Limited e Google LLC): statistiche di utilizzo del sito, solo dopo il vostro consenso. Le funzioni pubblicitarie non sono attive (consenso agli annunci sempre negato).`,
@@ -101,7 +104,7 @@ export const legalPages = {
       {
         h2: '6. Trasferimenti fuori dall\'Unione europea',
         paragraphs: [
-          'Vercel e Resend hanno sede negli Stati Uniti; HubSpot e Google appartengono a gruppi statunitensi. Anche quando i dati sono trattati in data center europei (funzioni di Vercel in Germania, invii di Resend in Irlanda, posta di Google Workspace, account HubSpot nel data center UE), come anche per le statistiche di Google Analytics, questi fornitori possono accedervi dagli Stati Uniti, e la rete di distribuzione di Vercel può servire le pagine da nodi fuori dall\'Unione europea.',
+          'Vercel e Resend hanno sede negli Stati Uniti; HubSpot e Google appartengono a gruppi statunitensi. Anche quando i dati sono trattati in data center europei (funzioni di Vercel in Germania, invii di Resend in Irlanda, posta di Google Workspace, account HubSpot nel data center UE), come anche per le statistiche di Google Analytics e le misure di Vercel Speed Insights, questi fornitori possono accedervi dagli Stati Uniti, e la rete di distribuzione di Vercel può servire le pagine da nodi fuori dall\'Unione europea.',
           'Questi trasferimenti avvengono sulla base della decisione di adeguatezza della Commissione europea sul Data Privacy Framework UE-USA, per i fornitori certificati, oppure delle clausole contrattuali standard approvate dalla Commissione.',
         ],
       },
