@@ -1,0 +1,20 @@
+{
+  "nota": "Prompt 26, Fase 2: Speed Insights e privacy (bd8f117), anteprime nella home (703be43), anteprime nel menu (adcc7cf, e223d2a), pubblicate prima del piano. Confronto tra la build locale di 25cb7a1 (produzione fino al 20 novembre 2026, NEXT_PUBLIC_SITE_URL di produzione) e agriasystem.com a e223d2a: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia (il confronto è stato fatto con before http://localhost:3200). Il piano segnava anche /cookie-policy, /termini-e-condizioni e /note-legali, cambiate solo per la data di ultimo aggiornamento condivisa (LAST_UPDATED): escluse, il loro contenuto non cambia. Il menu è interfaccia, fuori dal contenuto confrontato.",
+  "commit": "e223d2ae17ad2ee419a278581b54d58083bc0384",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/",
+    "/privacy-policy"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "76a0be7c7a1ec262a60ebbd5c1cd3183c38de46812b22e62855261cee0a00770"
+    },
+    "/privacy-policy": {
+      "page": "5466969bdd611b13e644eb319bccfe5ce1730ee792ba9186fb02ec6be14a60f3"
+    }
+  }
+}
