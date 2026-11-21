@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Unico dominio remoto delle foto: images.unsplash.com (manifest
+  // content/agria/image-credits.json). Quelle foto passano dal loader di
+  // AgriaImage, direttamente dal CDN di Unsplash; l'ottimizzatore del sito
+  // riceve solo file locali (verificato su tutte le pagine della sitemap,
+  // Prompt 28). Prima la regola accettava qualunque dominio.
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: '**' }],
+    remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' }],
   },
   // La configurazione ESLint versionata (.eslintrc.json) fa emergere errori
   // preesistenti (vedi docs/agria/05-infrastruttura.md) non corretti in questa
