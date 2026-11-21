@@ -241,6 +241,29 @@ p {
   }
 }
 
+/* RotatingHeadline a parola singola (homepage): il cursore è il bordo destro
+   del testo disegnato (::before), la punteggiatura (::after) compare solo a
+   parola finita. Così niente si sposta mentre scrive: il testo che cresce non
+   conta come spostamento di layout, un cursore o una virgola spinti in avanti sì. */
+.agria-typing::before {
+  content: attr(data-text);
+  border-right: max(2px, 0.06em) solid currentColor;
+  margin-right: 0.04em;
+}
+.agria-typing[data-done]::after {
+  content: attr(data-punct);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .agria-typing::before {
+    animation: agria-caret-border 1.05s steps(1) infinite;
+  }
+}
+@keyframes agria-caret-border {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
 /* AutoTabs: barra di avanzamento a tempo */
 .agria-progress {
   animation-name: agria-progress;

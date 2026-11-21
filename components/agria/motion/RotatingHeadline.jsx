@@ -144,6 +144,9 @@ function RotatingWord({
   ...props
 }) {
   const [text, setText] = useState(words[0]);
+  // parola completa: solo allora si disegna la punteggiatura (niente che si
+  // sposta mentre scrive, vedi .agria-typing in globals.css)
+  const [done, setDone] = useState(true);
   const [animating, setAnimating] = useState(false);
   const run = useRef(null);
 
@@ -165,6 +168,7 @@ function RotatingWord({
       let current = words[0];
       for (const next of sequence) {
         await wait(HOLD_MS);
+        setDone(false);
         for (let i = current.length; i >= 0 && !cancelled; i -= 1) {
           setText(current.slice(0, i));
           await wait(DELETE_MS);
@@ -175,8 +179,10 @@ function RotatingWord({
           await wait(TYPE_MS + Math.round((Math.random() - 0.5) * 50));
         }
         if (cancelled) return;
+        setDone(true);
         current = next;
       }
+      await wait(HOLD_MS / 2);
       running = false;
       setAnimating(false);
       setText(words[0]);
@@ -190,6 +196,7 @@ function RotatingWord({
         clearTimeout(timer);
         running = false;
         setAnimating(false);
+        setDone(true);
         setText(words[0]);
       } else {
         cancelled = false;
@@ -225,10 +232,9 @@ function RotatingWord({
             aria-hidden="true"
             data-text={text}
             data-punct={punct}
-            className={`col-start-1 row-start-1 whitespace-nowrap before:content-[attr(data-text)] after:content-[attr(data-punct)] ${wordClassName} ${punctClassName}`}
-          >
-            <span className="agria-caret" />
-          </span>
+            data-done={done ? '' : undefined}
+            className={`agria-typing col-start-1 row-start-1 whitespace-nowrap ${wordClassName} ${punctClassName}`}
+          />
         )}
       </span>{' '}
       {after}
