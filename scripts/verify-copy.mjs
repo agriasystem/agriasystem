@@ -2,7 +2,7 @@
 // =====================================================================
 //  Controllo dei testi (npm run verify:copy): cerca nei file di content/ le
 //  formule promozionali vietate e stampa file, riga e contesto.
-//  - Le sette formule vietate sono errori: lo script esce con codice 1.
+//  - Le formule vietate sono errori: lo script esce con codice 1.
 //  - "agenzia" / "agency" sono avvisi: nei contenuti editoriali possono
 //    comparire legittimamente (per esempio quando una guida spiega come si
 //    valuta un fornitore). Vanno controllati: non devono riferirsi a noi.
@@ -31,6 +31,11 @@ const ERRORS = [
   { term: 'soluzioni innovative', pattern: /\bsoluzion[ei](?:\s+\p{L}+)?\s+innovativ[ae]\b/giu },
   { term: 'partner ideale', pattern: /\bpartner(?:\s+\p{L}+)?\s+ideal[ei]\b/giu },
   { term: 'giovani e dinamici', pattern: /\bgiovan[ei]\s*(?:e|,|&)\s*dinamic(?:[oaie]|he)\b/gi },
+  // Prompt 28
+  { term: 'la nostra società', pattern: /\bla\s+nostra\s+società\b/gi },
+  { term: 'il nostro staff', pattern: /\bil\s+nostro\s+staff\b/gi },
+  { term: 'nessun impegno', pattern: /\bnessun\s+impegno\b/gi },
+  { term: 'preventivo gratuito', pattern: /\bpreventiv[oi]\s+gratuit[oi]\b/gi },
 ];
 const WARNINGS = [
   { term: 'agenzia', pattern: /\bagenzi[ae]\b/gi },

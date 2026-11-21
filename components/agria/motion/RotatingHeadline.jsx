@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const TYPE_MS = 85; // velocità di scrittura per carattere (± variazione naturale)
 const DELETE_MS = 42; // velocità di cancellazione
@@ -19,7 +19,15 @@ const GAP_MS = 380; // pausa a parola cancellata, prima di riscrivere
 // - Nessun salto di layout: ogni variante occupa la stessa cella di una griglia
 //   tramite un segnaposto invisibile generato in CSS, quindi l'altezza è quella
 //   della variante più lunga.
-export default function RotatingHeadline({
+//
+// Con `words` il componente lavora su una parola sola dentro il titolo
+// (RotatingWord, sotto): stessa scrittura, un giro e poi fermo.
+export default function RotatingHeadline({ words, ...props }) {
+  if (words) return <RotatingWord words={words} {...props} />;
+  return <RotatingSentence {...props} />;
+}
+
+function RotatingSentence({
   as: Tag = 'span',
   prefix = '',
   phrases,
@@ -107,6 +115,123 @@ export default function RotatingHeadline({
           <span className="agria-caret" />
         </span>
       )}
+    </Tag>
+  );
+}
+
+// Parola che si riscrive dentro un titolo (homepage, Prompt 28):
+// "Il vostro [sito], collegato a tutto il resto."
+//
+// - before e after: testo fisso; la parola sta su una riga sua, in una cella
+//   larga quanto la parola più lunga (più `punct`, la punteggiatura che la
+//   segue): il titolo non cambia misura mentre scrive (CLS zero).
+// - Il testo del documento è uno solo: before + words[0] + punct + after. Mentre
+//   scrive, la parola vera resta nel documento (trasparente) e le lettere
+//   animate sono disegnate in CSS su uno strato aria-hidden.
+// - Un giro completo (words[0] → … → ultima → words[0]), poi fermo; riparte al
+//   passaggio del cursore sul titolo. Con prefers-reduced-motion resta su words[0].
+// - wordClassName: colore della parola; punctClassName: colore della
+//   punteggiatura disegnata mentre scrive (after:text-…, quello del titolo).
+function RotatingWord({
+  as: Tag = 'span',
+  before,
+  words,
+  punct = '',
+  after,
+  wordClassName = '',
+  punctClassName = '',
+  className = '',
+  ...props
+}) {
+  const [text, setText] = useState(words[0]);
+  const [animating, setAnimating] = useState(false);
+  const run = useRef(null);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer;
+    let cancelled = false;
+    let running = false;
+    const wait = (ms) =>
+      new Promise((resolve) => {
+        timer = setTimeout(resolve, ms);
+      });
+
+    async function round() {
+      if (running || media.matches) return;
+      running = true;
+      setAnimating(true);
+      const sequence = [...words.slice(1), words[0]];
+      let current = words[0];
+      for (const next of sequence) {
+        await wait(HOLD_MS);
+        for (let i = current.length; i >= 0 && !cancelled; i -= 1) {
+          setText(current.slice(0, i));
+          await wait(DELETE_MS);
+        }
+        await wait(GAP_MS);
+        for (let i = 1; i <= next.length && !cancelled; i += 1) {
+          setText(next.slice(0, i));
+          await wait(TYPE_MS + Math.round((Math.random() - 0.5) * 50));
+        }
+        if (cancelled) return;
+        current = next;
+      }
+      running = false;
+      setAnimating(false);
+      setText(words[0]);
+    }
+
+    run.current = round;
+    round();
+    function onChange() {
+      if (media.matches) {
+        cancelled = true;
+        clearTimeout(timer);
+        running = false;
+        setAnimating(false);
+        setText(words[0]);
+      } else {
+        cancelled = false;
+      }
+    }
+    media.addEventListener('change', onChange);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+      run.current = null;
+      media.removeEventListener('change', onChange);
+    };
+  }, [words]);
+
+  return (
+    <Tag className={className} onMouseEnter={() => run.current?.()} {...props}>
+      {before}{' '}
+      <span className="grid justify-start">
+        {words.map((word) => (
+          <span
+            key={word}
+            aria-hidden="true"
+            data-text={`${word}${punct}`}
+            className="invisible col-start-1 row-start-1 whitespace-nowrap before:content-[attr(data-text)]"
+          />
+        ))}
+        <span className={`col-start-1 row-start-1 whitespace-nowrap ${animating ? 'opacity-0' : ''}`}>
+          <span className={wordClassName}>{words[0]}</span>
+          {punct}
+        </span>
+        {animating && (
+          <span
+            aria-hidden="true"
+            data-text={text}
+            data-punct={punct}
+            className={`col-start-1 row-start-1 whitespace-nowrap before:content-[attr(data-text)] after:content-[attr(data-punct)] ${wordClassName} ${punctClassName}`}
+          >
+            <span className="agria-caret" />
+          </span>
+        )}
+      </span>{' '}
+      {after}
     </Tag>
   );
 }

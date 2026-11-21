@@ -11,11 +11,11 @@ export const NAV_PANELS = [
     key: 'servizi',
     label: 'Servizi',
     href: '/servizi',
-    // card di evidenza a destra del pannello (testi già approvati nella homepage).
+    // card di evidenza a destra del pannello (testi del Prompt 28).
     // preview: l'anteprima animata della voce, nel pannello da xl (Prompt 25, fase C);
     // chiavi in content/agria/anteprime.js. Senza preview resta la card di oggi.
     feature: {
-      title: 'Prima capire, poi costruire.',
+      title: 'Un pezzo alla volta, o tutto il sistema.',
       link: { label: 'Tutti i servizi', href: '/servizi' },
     },
     items: [
@@ -23,19 +23,19 @@ export const NAV_PANELS = [
         title: 'Digital Presence',
         href: '/servizi/digital-presence',
         preview: 'presence',
-        description: 'Siti e visibilità per hospitality, cantine e frantoi.',
+        description: 'Siti nuovi o rifatti, facili da trovare su Google e sugli assistenti AI.',
       },
       {
         title: 'Digital Commerce',
         href: '/servizi/digital-commerce',
         preview: 'commerce',
-        description: 'Vendita diretta, prenotazioni e pagamenti online.',
+        description: 'Vendita e prenotazioni dirette, con il pagamento online.',
       },
       {
         title: 'Digital Automation',
         href: '/servizi/digital-automation',
         preview: 'automation',
-        description: 'Automazioni e integrazioni tra gli strumenti che usate.',
+        description: 'Assistenti AI e lavori ripetitivi che si fanno da soli.',
       },
     ],
     // secondo gruppo, sotto le aree e sempre visibile (Prompt 23): le soluzioni
@@ -58,7 +58,7 @@ export const NAV_PANELS = [
         {
           title: 'Collegare gestionale e sito',
           href: '/soluzioni/collegare-gestionale-e-sito',
-          description: 'Gli strumenti che avete, collegati tra loro.',
+          description: 'Il sito e il gestionale che avete, che si scambiano i dati da soli.',
         },
       ],
     },
@@ -68,7 +68,7 @@ export const NAV_PANELS = [
     label: 'Settori',
     href: '/settori',
     feature: {
-      title: 'Conosciamo tre mestieri, non tutti.',
+      title: 'Tre settori che conosciamo da vicino.',
       link: { label: 'Tutti i settori', href: '/settori' },
     },
     items: [

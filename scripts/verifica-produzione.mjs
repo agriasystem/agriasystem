@@ -80,6 +80,13 @@ const page = async (path) => {
   if (res.status !== 200) check(`${path} risponde 200`, false, res.error || `risponde ${res.status}`);
   return res.html;
 };
+// testo di un titolo con id, senza i tag interni (titoli bicolori, parola che si riscrive)
+const headingText = (html, id) =>
+  (html.match(new RegExp('<h([1-6])[^>]*id="' + id + '"[^>]*>([\\s\\S]*?)</h\\1>'))?.[2] || '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 const h = (level, text, id) =>
   new RegExp(`<h${level}[^>]*${id ? `id="${id}"[^>]*` : ''}>${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</h${level}>`);
 
@@ -100,28 +107,71 @@ check(
 );
 
 const home = await page('/');
-check('Home: "Oggi i vostri dati stanno in sei posti."', home.includes('Oggi i vostri dati stanno in sei posti.'));
-// etichetta della sezione articoli (non il link del footer, che dice Insights da prima)
-check('Home: etichetta "Insights" sulla sezione articoli, nessun "News"', />Insights<\/p>\s*<h2[^>]*id="home-news-title"/.test(home) && !/>News</.test(home));
-check('Home: "Portali di prenotazione" nel modulo, nessun "Booking.com"', home.includes('Portali di prenotazione') && !home.includes('Booking.com'));
-check('Home: riga sul limite sotto il modulo', home.includes("L'integrazione è possibile quando i sistemi la permettono"));
+const plain = (html) => html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/ /g, ' ').replace(/\s+/g, ' ');
+const homeText = plain(home.match(/<main[\s\S]*<\/main>/)?.[0] || '');
 
-// Fase B
+// Prompt 28, Fase A: la nuova home su base chiara
 check(
-  'Home: sezione #quando-interveniamo con h2 "Quando serviamo, e quando no."',
-  home.includes('id="quando-interveniamo"') && h(2, 'Quando serviamo, e quando no.', 'quando-interveniamo-titolo').test(home)
+  'Home, title: "Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi"',
+  home.includes('<title>Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi</title>')
 );
+check('Home, h1: "Il vostro sito, collegato a tutto il resto."', headingText(home, 'home-hero-title') === 'Il vostro sito, collegato a tutto il resto.', headingText(home, 'home-hero-title'));
 check(
-  'Home: i tre blocchi in h3 (Quando ha senso chiamarci, Quando non ha senso, Come lo capiamo)',
-  ['Quando ha senso chiamarci', 'Quando non ha senso', 'Come lo capiamo'].every((t) => h(3, t).test(home))
+  'Home: etichetta e lead dell\'apertura',
+  homeText.includes('( SITI, E-COMMERCE E AUTOMAZIONI · AGRITURISMI, HOTEL, CANTINE E FRANTOI )') &&
+    homeText.includes('Un dato inserito una volta arriva ovunque serve.')
 );
-check('Home: "Può concludersi con un no, e in quel caso ve lo diciamo con il motivo."', home.includes('Può concludersi con un no, e in quel caso ve lo diciamo con il motivo.'));
-check('Home: h2 "Strumenti nostri, in sviluppo.", nessun "Meglio dirlo subito"', h(2, 'Strumenti nostri, in sviluppo.').test(home) && !home.includes('Meglio dirlo subito'));
+const SECTIONS_28 = [
+  ['home-hero-title', 'Il vostro sito, collegato a tutto il resto.'],
+  ['home-glance-label', null],
+  ['home-piani-title', 'Si parte dal sito. Poi si sale.'],
+  ['selezione-titolo', 'Scegliamo i progetti. E ve lo diciamo subito.'],
+  ['come-lavoriamo-titolo', 'Quattro passi. Il primo dura tre minuti.'],
+  ['home-team-title', 'Tre persone, a Perugia. Chi progetta è chi costruisce.'],
+  ['home-faq-title', 'Le domande che ci fanno prima di firmare.'],
+  ['home-news-title', 'Guide pratiche, scritte da chi costruisce.'],
+  ['home-chiusura-title', "Ogni sistema che funziona è partito da un'analisi."],
+];
+const badTitles = SECTIONS_28.filter(([id, text]) => text && headingText(home, id) !== text).map(([id]) => `${id}: "${headingText(home, id)}"`);
+check('Home: titoli delle sezioni della Fase A (bicolori, letti senza i tag)', badTitles.length === 0, badTitles.join(' · '));
+const order = SECTIONS_28.map(([id]) => home.indexOf(`id="${id}"`));
+check('Home: sezioni nell\'ordine del Prompt 28', order.every((pos, i) => pos > 0 && (i === 0 || pos > order[i - 1])), JSON.stringify(order));
+const goneSections = ['Tre aree, un solo sistema.', 'Componete il vostro sistema.', 'Strumenti nostri, in sviluppo.', 'Da Perugia, in tutta Italia', 'Quando serviamo, e quando no.', 'Oggi i vostri dati stanno in sei posti.', 'Fatto da noi', 'Guardate il risultato, per settore.'];
+const still = goneSections.filter((t) => homeText.includes(t));
+check('Home: le sezioni uscite non ci sono più', still.length === 0, still.join(' · '));
+const labels = homeText.match(/\( [A-ZÀ-Ù0-9 ,·'-]+ \)/g) || [];
+check('Home: etichette tra parentesi su ogni sezione con etichetta (almeno 8)', labels.length >= 8, labels.join(' '));
+check('Home: ancora #come-funziona e #selezione nella pagina', home.includes('id="come-funziona"') && home.includes('id="selezione"'));
+const faqLd = [...home.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap((m) => {
+  try {
+    return JSON.parse(m[1])['@graph'] || [];
+  } catch {
+    return [];
+  }
+}).find((n) => n['@type'] === 'FAQPage');
+check('Home: dati strutturati FAQPage con le sei domande', faqLd?.mainEntity?.length === 6 && faqLd.mainEntity[0].name === 'Dobbiamo cambiare gestionale?');
+check(
+  'Home: foto del team (1600 e 800 px) con il testo alternativo dei tre nomi',
+  home.includes('alt="Matteo Garuzzo, Matteo De Pilla e Alessandro Poponi"') && home.includes('team.jpg') && home.includes('team-800.jpg')
+);
+const mainSections = [...(home.match(/<main[\s\S]*<\/main>/)?.[0] || '').matchAll(/<section[^>]*class="([^"]*)"[^>]*aria-labelledby="([^"]+)"/g)];
+const inkSections = mainSections.filter((m) => m[1].includes('bg-agria-ink')).map((m) => m[2]);
+check('Home: fondo ink solo nella chiusura, tra le sezioni a sfondo per classe (l\'apertura ha il suo)', inkSections.join() === 'home-chiusura-title', inkSections.join());
+const banned = ['passione', 'eccellenza', 'su misura', 'a 360 gradi', 'soluzioni innovative', 'partner ideale', 'giovani e dinamici', 'agenzia', 'la nostra società', 'il nostro staff', 'nessun impegno', 'preventivo gratuito'];
+const bannedFound = banned.filter((w) => homeText.toLowerCase().includes(w));
+check('Home: nessuna parola vietata', bannedFound.length === 0, bannedFound.join(', '));
+check(
+  'Barra in cima: "Sito, gestionale e pagamenti che si parlano da soli." con il link a /contatti',
+  /Sito, gestionale e pagamenti che si parlano da soli\.(?:<!-- -->)?\s*<a[^>]*href="\/contatti"[^>]*>Vi mostriamo come, sui vostri programmi/.test(home)
+);
+const contatti = await page('/contatti');
+check('/contatti: card "Poi decidete voi", nessun "Nessun impegno"', contatti.includes('Poi decidete voi') && !/nessun impegno/i.test(contatti));
+
 for (const path of SERVICES) {
   const html = await page(path);
   check(
-    `${path}: rimando breve con il link a /#quando-interveniamo`,
-    html.includes('Non prendiamo progetti che non cambiano il modo di lavorare o di vendere') && html.includes('href="/#quando-interveniamo"')
+    `${path}: rimando breve con il link a /#selezione`,
+    html.includes('Non prendiamo progetti che non cambiano il modo di lavorare o di vendere') && html.includes('href="/#selezione"')
   );
 }
 
@@ -138,10 +188,6 @@ check(
 );
 const automation = (await page('/servizi/digital-automation')).match(/<main[\s\S]*<\/main>/)?.[0] || '';
 check('/servizi/digital-automation: link alle tre pagine soluzione', SOLUTIONS.every(([path]) => automation.includes(`href="${path}"`)));
-check(
-  'Home: indicazioni della hero (Vi risponde una persona, Prima analisi prima di qualunque proposta, Il codice e i dati restano vostri)',
-  ['Vi risponde una persona', 'Prima analisi prima di qualunque proposta', 'Il codice e i dati restano vostri'].every((t) => home.includes(t))
-);
 const anchors = home.match(/<a\s[^>]*>/g) || [];
 check(
   'Header: telefono e WhatsApp con data-analytics e location "header"',
@@ -154,21 +200,6 @@ check(
 );
 
 // Prompt 24: eroe e banda della home, scritta del logo, barra contatti sotto md
-check(
-  'Home, h1 fisso: "Prenotazioni e ordini, senza ricopiarli a mano.", nessun "strato digitale"',
-  h(1, 'Prenotazioni e ordini, senza ricopiarli a mano.').test(home) && !home.includes('strato digitale')
-);
-check('Home: eyebrow con cosa facciamo e per chi', home.includes('Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi'));
-check(
-  'Home: la frase che spiega, al posto del lead',
-  home.includes('Non vi facciamo cambiare gestionale: colleghiamo il sito, le prenotazioni, gli ordini e le email a quello che usate già, così ogni informazione si scrive una volta sola.')
-);
-// nella banda alcuni valori hanno lo spazio unificatore
-const homePlain = home.replace(/ /g, ' ');
-check(
-  'Home: banda con i quattro impegni (Fatto da noi, Decidete voi, Anche un no, Liberi), nessun attributo di prima',
-  ['Fatto da noi', 'Decidete voi', 'Anche un no', 'Liberi'].every((t) => homePlain.includes(`>${t}<`)) && !home.includes('settori: hospitality, cantine, frantoi')
-);
 const wordmark = home.match(/aria-label="Agria System, home"[\s\S]*?<span aria-hidden="true" class="leading-none([^"]*)"/)?.[1];
 check('Header: scritta "Agria System" visibile anche su mobile', wordmark !== undefined && !wordmark.includes('hidden'));
 const headerLinks = anchors.filter((a) => a.includes('data-analytics-location="header"'));

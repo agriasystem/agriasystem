@@ -29,7 +29,8 @@ export const site = {
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Via+Ponte+Vecchio+67+06135+Perugia',
   // nessun profilo personale: i profili Agria si aggiungono qui quando esistono
   social: {},
-  tagline: 'sistemi digitali per hospitality, cantine e frantoi',
+  // Prompt 28
+  tagline: 'siti, e-commerce e automazioni per hospitality, cantine e frantoi',
   positioning:
-    'Siti, e-commerce e automazioni per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi, integrati con gli strumenti che già usate.',
+    'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi, collegati tra loro e ai programmi che usate già: gestionale, pagamenti, email.',
 };

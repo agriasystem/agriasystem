@@ -76,6 +76,9 @@ export const form = {
     'Per inviare il modulo serve JavaScript attivo nel browser. Potete comunque scriverci via email o WhatsApp: trovate i recapiti qui sotto.',
   // messaggio precompilato se si arriva dal configuratore della homepage (?moduli=)
   modulesNote: (labels) => `Moduli scelti in homepage: ${labels.join(', ')}.`,
+  // ?problemi=…: le situazioni segnate in "Quante ne riconoscete?" (homepage),
+  // con i loro titoli. Formula da confermare (Prompt 28): non era nel testo approvato.
+  problemsNote: (titles) => `Segnate in homepage: ${titles.join(' ')}`,
   // dopo l'invio con "Fissare una videocall" si apre il calendario di Alessandro
   meetingsUrl: 'https://meetings-eu1.hubspot.com/alessandro-poponi',
   success: {
@@ -92,7 +95,7 @@ export const reassurance = [
   },
   {
     icon: 'check',
-    title: 'Nessun impegno',
+    title: 'Poi decidete voi',
     text: 'La prima analisi serve a capire se il progetto ha senso, per entrambi.',
   },
   {

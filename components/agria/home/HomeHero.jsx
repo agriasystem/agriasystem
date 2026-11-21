@@ -1,57 +1,49 @@
 import Link from 'next/link';
 import { Button, Container, Eyebrow, Heading, Text } from '@/components/agria/ui';
-import { FieldScene } from '@/components/agria/motion';
-import Icon from '@/components/agria/icons/Icon';
+import { FieldScene, RotatingHeadline } from '@/components/agria/motion';
 import { hero } from '@/content/agria/home';
+import { ArrowLabel } from './parts';
 import styles from './HomeHero.module.css';
 
+// Apertura (fascia ink, Prompt 28): griglia dei filari sullo sfondo, testo a
+// sinistra. Il titolo riscrive la parola: "Il vostro [sito], collegato a tutto
+// il resto." (RotatingHeadline con words). La colonna di destra è dell'edificio
+// a tre piani (Fase B); sotto lg l'edificio va sotto il testo.
 export default function HomeHero() {
+  const { before, words, after } = hero.title;
   return (
     <section className={styles.hero} aria-labelledby="home-hero-title">
       <FieldScene />
 
-      <Container className={styles.content}>
-        <Eyebrow onDark className={`text-balance ${styles.enter}`}>
-          {hero.eyebrow}
-        </Eyebrow>
-        <Heading
-          level="display"
-          as="h1"
-          id="home-hero-title"
-          onDark
-          className={`mx-auto mt-5 max-w-[19ch] text-balance ${styles.enter}`}
-        >
-          {hero.title}
-        </Heading>
-        <Text size="lg" onDark muted measure={false} className={`mx-auto mt-6 max-w-[54ch] ${styles.enter}`}>
-          {hero.lead}
-        </Text>
-        <div className={`mt-9 flex flex-wrap justify-center gap-3 ${styles.enter}`}>
-          <Button as={Link} href={hero.primary.href} variant="bright">
-            {hero.primary.label}
-          </Button>
-          <Button href={hero.secondary.href} variant="line">
-            {hero.secondary.label}
-          </Button>
+      <Container className={`${styles.content} grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12`}>
+        <div className={`min-w-0 ${styles.column}`}>
+          <Eyebrow onDark className={`text-balance ${styles.enter}`}>
+            {hero.eyebrow}
+          </Eyebrow>
+          <Heading level="h1" as="h1" id="home-hero-title" onDark className={`mt-5 ${styles.title} ${styles.enter}`}>
+            <RotatingHeadline
+              before={before}
+              words={words}
+              punct={after.slice(0, 1)}
+              after={after.slice(1).trim()}
+              wordClassName="text-agria-green-bright"
+              punctClassName="after:text-agria-on-dark"
+            />
+          </Heading>
+          <Text size="lg" onDark muted className={`mt-6 max-w-[54ch] max-sm:text-agria-body ${styles.enter}`}>
+            {hero.lead}
+          </Text>
+          <div className={`mt-9 flex flex-wrap gap-3 ${styles.enter}`}>
+            <Button as={Link} href={hero.primary.href} variant="bright">
+              <ArrowLabel label={hero.primary.label} />
+            </Button>
+            <Button href={hero.secondary.href} variant="line">
+              {hero.secondary.label}
+            </Button>
+          </div>
+          <p className={`mt-6 font-agria-mono text-agria-sm text-agria-on-dark-muted ${styles.enter}`}>{hero.note}</p>
         </div>
-        {/* indicazioni di rassicurazione, con una spunta discreta */}
-        <ul className={`mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2.5 ${styles.enter}`}>
-          {hero.reassurance.map((item) => (
-            <li key={item} className="flex items-center gap-2 font-agria-sans text-agria-sm text-agria-on-dark-muted">
-              <Icon name="check" size={16} className="shrink-0 text-agria-green-bright" />
-              {item}
-            </li>
-          ))}
-        </ul>
       </Container>
-      {/* da lg le pill fluttuano sul campo; fino a lg scendono sotto le CTA */}
-      <ul className={styles.chips} aria-hidden="true">
-        {hero.chips.map((chip) => (
-          <li key={chip} className={styles.chip}>
-            {chip}
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }

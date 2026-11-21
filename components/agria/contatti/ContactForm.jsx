@@ -121,8 +121,9 @@ function ChoiceGroup({ id, name, legend, options, value, onChange, error, varian
 // Senza JavaScript i tre passi sono visibili uno sotto l'altro e un avviso
 // spiega che per l'invio serve JavaScript (i pulsanti non compaiono).
 // moduleLabels: { id: etichetta } dei moduli del configuratore in homepage,
-// per precompilare il messaggio quando si arriva con ?moduli=.
-export default function ContactForm({ moduleLabels = {} }) {
+// per precompilare il messaggio quando si arriva con ?moduli=; problemLabels:
+// { id: titolo } delle situazioni di "Quante ne riconoscete?" (?problemi=).
+export default function ContactForm({ moduleLabels = {}, problemLabels = {} }) {
   const baseId = useId();
   const fid = (name) => `${baseId}-${name}`;
   const [step, setStep] = useState(0);
@@ -157,14 +158,19 @@ export default function ContactForm({ moduleLabels = {} }) {
     }
   };
 
-  // arrivo dal configuratore della homepage: moduli scelti nel messaggio
+  // arrivo dalla homepage: moduli del vecchio configuratore (?moduli=) e
+  // situazioni segnate in "Quante ne riconoscete?" (?problemi=), nel messaggio
   useEffect(() => {
-    const ids = new URLSearchParams(window.location.search).getAll('moduli');
-    const labels = ids.map((id) => moduleLabels[id]).filter(Boolean);
-    if (labels.length) {
-      setValues((current) => (current.messaggio ? current : { ...current, messaggio: copy.modulesNote(labels) }));
+    const params = new URLSearchParams(window.location.search);
+    const labels = params.getAll('moduli').map((id) => moduleLabels[id]).filter(Boolean);
+    const titles = [...new Set(params.getAll('problemi'))].map((id) => problemLabels[id]).filter(Boolean);
+    const note = [labels.length ? copy.modulesNote(labels) : '', titles.length ? copy.problemsNote(titles) : '']
+      .filter(Boolean)
+      .join('\n');
+    if (note) {
+      setValues((current) => (current.messaggio ? current : { ...current, messaggio: note }));
     }
-  }, [moduleLabels]);
+  }, [moduleLabels, problemLabels]);
 
   // cambio di passo: il focus va al titolo del nuovo passo
   useEffect(() => {

@@ -1,24 +1,26 @@
-import { Card, Container, Reveal, Section } from '@/components/agria/ui';
-import { HoverGroup } from '@/components/agria/motion';
+import Link from 'next/link';
+import { Button, Container, Eyebrow, Heading, Reveal, Section } from '@/components/agria/ui';
 import { method } from '@/content/agria/home';
-import SectionIntro from './SectionIntro';
+import MethodSteps from './MethodSteps';
+import { ArrowLabel, TwoTone } from './parts';
 
+// 9. Come lavoriamo (#come-lavoriamo): a sinistra titolo e pulsante, a destra
+// i quattro passi sulla linea verticale, che si accendono scorrendo.
 export default function MethodSection() {
+  const titleId = `${method.id}-titolo`;
   return (
-    <Section background="offwhite" id={method.id} aria-labelledby="home-metodo-title">
-      <Container>
-        <SectionIntro eyebrow={method.eyebrow} title={method.title} titleId="home-metodo-title" />
-        <HoverGroup as="ol" className="mt-8 grid grid-cols-1 gap-[18px] md:mt-12 md:grid-cols-3">
-          {method.steps.map((step, index) => (
-            <li key={step.number}>
-              <Reveal delay={index * 70} className="h-full">
-                <Card eyebrow={step.number} title={step.title} textSize="md" className="h-full">
-                  {step.text}
-                </Card>
-              </Reveal>
-            </li>
-          ))}
-        </HoverGroup>
+    <Section background="offwhite" id={method.id} aria-labelledby={titleId}>
+      <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(32px,5vw,72px)]">
+        <Reveal className="flex flex-col items-start gap-6 lg:sticky lg:top-32 lg:self-start">
+          <Eyebrow>{method.eyebrow}</Eyebrow>
+          <Heading level="h2" id={titleId} className="max-w-[20ch] text-balance">
+            <TwoTone title={method.title} />
+          </Heading>
+          <Button as={Link} href={method.cta.href} variant="primary">
+            <ArrowLabel label={method.cta.label} />
+          </Button>
+        </Reveal>
+        <MethodSteps steps={method.steps} />
       </Container>
     </Section>
   );

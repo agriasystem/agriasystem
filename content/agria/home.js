@@ -1,151 +1,321 @@
 // =====================================================================
-//  HOMEPAGE AGRIA — copy approvato (Prompt 11). Modificare qui i testi,
+//  HOMEPAGE AGRIA — copy approvato (Prompt 28). Modificare qui i testi,
 //  non nei componenti. Nessun testo va aggiunto senza approvazione.
 //  Ordine delle sezioni: app/(site)/page.jsx.
+//  Titoli bicolore: { text, accent }. accent è la seconda frase, resa in
+//  verde (green-dark su chiaro, green-bright su ink), stesso peso.
+//  Etichette: tra parentesi, come nel prompt (l'Eyebrow le rende maiuscole).
 // =====================================================================
 
 import { agriaImage } from '@/lib/agria-images';
 
-// 1. Hero
+// 1. Apertura (fascia ink). Il titolo si riscrive: "Il vostro [parola],
+// collegato a tutto il resto." La prima parola è quella fissa (movimento
+// ridotto, senza JavaScript, HTML del server).
 export const hero = {
-  // Prompt 24: l'eyebrow dice cosa facciamo e per chi, il titolo cosa ottiene il
-  // cliente, il lead come funziona. "Non cambiare" vale per il gestionale: siti ed
-  // e-commerce li costruiamo anche nuovi
-  eyebrow: 'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi',
-  title: 'Prenotazioni e ordini, senza ricopiarli a mano.',
-  lead: 'Non vi facciamo cambiare gestionale: colleghiamo il sito, le prenotazioni, gli ordini e le email a quello che usate già, così ogni informazione si scrive una volta sola.',
-  primary: { label: 'Parliamo del progetto', href: '/contatti' },
-  secondary: { label: 'Come lavoriamo', href: '#come-lavoriamo' },
-  // tre indicazioni sotto le CTA (Prompt 23, fase C): vere senza condizioni,
-  // niente tempi di risposta, "preventivo gratuito" o "nessun impegno"
-  reassurance: ['Vi risponde una persona', 'Prima analisi prima di qualunque proposta', 'Il codice e i dati restano vostri'],
-  chips: ['Prenotazioni', 'Ordini', 'Clienti', 'Costi'],
-};
-
-// 2. Fatti: cosa il cliente può pretendere (Prompt 24). Solo impegni già scritti
-// nel sito, nessun numero, niente di ciò che vale solo per i contratti di assistenza
-export const facts = [
-  // kind: 'figure' per valori brevi o numerici, 'word' per parole (resi più piccoli)
-  //  : sotto i 345 px il valore va su due righe, senza lasciare "no" da solo
-  { value: 'Fatto da noi', label: 'nessun subappalto: chi costruisce è chi interviene', kind: 'word' },
-  { value: 'Decidete voi', label: 'nessuna automazione decide al posto vostro', kind: 'word' },
-  { value: 'Anche un no', label: 'se il progetto non serve, lo diciamo prima di firmare', kind: 'word' },
-  { value: 'Liberi', label: 'di cambiare fornitore: domini e dati restano accessibili', kind: 'word' },
-];
-
-// 3. Il problema (modulo interattivo 1)
-export const problem = {
-  eyebrow: 'Il punto di partenza',
-  title: 'Oggi i vostri dati stanno in sei posti.',
-  text: "Premete l'interruttore: a sinistra come lavorate oggi, a destra dove porta il lavoro di integrazione.",
-  states: { before: 'Come lavorate oggi', after: 'Con Agria' },
-  sources: ['Portali di prenotazione', 'Email', 'Telefono', 'Messaggi', 'Fogli di calcolo', 'Gestionale'],
-  system: { title: 'Un solo sistema', text: 'Dati collegati, decisioni chiare' },
-  captions: {
-    before: 'Sei fonti, nessuna che parla con le altre: ogni dato viene riscritto a mano.',
-    after: 'Le stesse fonti, collegate con un lavoro di integrazione: i dati entrano una volta e arrivano dove servono.',
+  eyebrow: '( SITI, E-COMMERCE E AUTOMAZIONI · AGRITURISMI, HOTEL, CANTINE E FRANTOI )',
+  title: {
+    before: 'Il vostro',
+    words: ['sito', 'e-commerce', 'gestionale', 'sistema di prenotazione', 'calendario'],
+    after: ', collegato a tutto il resto.',
   },
-  // il limite, detto sotto il modulo
-  limit:
-    "L'integrazione è possibile quando i sistemi la permettono: dipende dalle interfacce che espongono, dai permessi di accesso e dalla qualità dei dati. È la prima cosa che verifichiamo.",
+  lead: 'Costruiamo siti ed e-commerce nuovi, o miglioriamo quelli che avete, e li colleghiamo ai programmi che usate già: gestionale, pagamenti, email, calendario. Un dato inserito una volta arriva ovunque serve.',
+  primary: { label: 'Richiedete la prima analisi →', href: '/contatti' },
+  secondary: { label: 'Guardate come funziona', href: '#come-funziona' },
+  note: 'Tre minuti per raccontarci come lavorate · vi risponde una persona',
 };
 
-// 4. Servizi
-export const services = {
-  eyebrow: 'Servizi',
-  title: 'Tre aree, un solo sistema.',
-  intro: 'Non vendiamo pacchetti. Partiamo da come lavorate oggi e costruiamo quello che serve, integrato con gli strumenti che già usate.',
-  linkLabel: 'Scoprite di più',
+// 2. In trenta secondi: quattro colonne di testo
+export const glance = {
+  eyebrow: '( IN TRENTA SECONDI )',
+  columns: [
+    { title: 'Cosa facciamo', text: 'Siti, e-commerce e automazioni, collegati tra loro e ai programmi che usate già.' },
+    {
+      title: 'Per chi',
+      text: 'Agriturismi, hotel e strutture ricettive, aziende vitivinicole, frantoi. Tre settori che conosciamo da vicino.',
+    },
+    { title: 'Come', text: "Prima un'analisi di come lavorate, poi un progetto scritto, poi costruiamo noi, a Perugia." },
+    { title: 'Da dove si parte', text: 'Da un pezzo solo, di solito il sito o le prenotazioni. Il resto si aggiunge quando serve.' },
+  ],
+};
+
+// 3. Quante ne riconoscete? (modulo interattivo, Fase B). Le scelte arrivano a
+// /contatti come parametro ripetuto: ?problemi=prenotazioni&problemi=richieste
+// (valori = id qui sotto); la pagina contatti ne mostra i titoli nel messaggio.
+export const problems = {
+  eyebrow: '( DA DOVE SI PARTE )',
+  title: { text: 'Contate quante ne riconoscete.', accent: 'Poi decidete se potete permettervele.' },
+  intro:
+    'Finché succedono, sembrano la normalità. Messe in fila costano tempo, soldi e qualche cliente. Segnate quelle che succedono da voi: in fondo vi diciamo da dove partiremmo.',
+  param: 'problemi',
+  action: '/contatti',
   items: [
     {
-      key: 'presence',
-      title: 'Digital Presence',
-      href: '/servizi/digital-presence',
-      text: 'Il sito come strumento commerciale: struttura, contenuti, velocità e visibilità su Google e sui sistemi AI.',
+      id: 'prenotazioni',
+      label: '01 · PRENOTAZIONI',
+      title: 'La stessa prenotazione, scritta tre volte.',
+      text: 'Arriva dal portale, va ricopiata nel gestionale, poi nel foglio delle pulizie. Un errore, e la camera è venduta due volte.',
     },
     {
-      key: 'commerce',
-      title: 'Digital Commerce',
-      href: '/servizi/digital-commerce',
-      text: 'Vendita diretta: e-commerce, prenotazioni, pagamenti, listini B2B e integrazione con i canali che già usate.',
+      id: 'richieste',
+      label: '02 · RICHIESTE',
+      title: '«Avete posto per sabato?», alle 23:40.',
+      text: "La risposta parte la mattina dopo. L'ospite, intanto, ha prenotato altrove.",
     },
     {
-      key: 'automation',
-      title: 'Digital Automation',
-      href: '/servizi/digital-automation',
-      text: "Automazioni e integrazioni tra gli strumenti che usate, con l'AI dove i dati la reggono: l'obiettivo è che ogni dato si inserisca una volta sola.",
+      id: 'vendita',
+      label: '03 · VENDITA',
+      title: 'Il sito è bello, ma vende poco.',
+      text: 'Visite tante, prenotazioni dirette poche: si passa dai portali, e dalle loro commissioni.',
+    },
+    {
+      id: 'ordini',
+      label: '04 · ORDINI',
+      title: 'Ordini di olio e vino su WhatsApp, email e telefono.',
+      text: 'Ogni ordine va riscritto a mano, e il listino del ristorante lo sapete a memoria solo voi.',
+    },
+    {
+      id: 'estero',
+      label: '05 · ESTERO',
+      title: "Chi arriva dall'estero vi scrive in inglese.",
+      text: 'Il sito risponde solo in italiano, e la prenotazione finisce in una telefonata.',
+    },
+    {
+      id: 'pagamenti',
+      label: '06 · PAGAMENTI',
+      title: 'La caparra arriva con il bonifico, quando arriva.',
+      text: "Controllare l'estratto conto, cercare il nome, segnare la conferma: tutto a mano.",
+    },
+    {
+      id: 'stagione',
+      label: '07 · STAGIONE',
+      title: 'A luglio la reception non sta dietro alle richieste.',
+      text: "D'inverno regge tutto. In alta stagione le richieste si accumulano, e qualcuna si perde.",
+    },
+    {
+      id: 'fogli',
+      label: '08 · FOGLI',
+      title: 'Il foglio di calcolo che conosce una persona sola.',
+      text: 'Se manca lei, nessuno sa dove sono le prenotazioni di settembre.',
+    },
+  ],
+  // barra in fondo: contatore "n su 8"
+  count: (n, total) => `${n} su ${total}`,
+  hint: 'Segnate quelle che succedono da voi.',
+  cta: 'Vi diciamo da dove partire →',
+};
+
+// 4. Tre piani. links: le pagine del piano (etichette = nomi delle pagine nel menu)
+export const floors = {
+  eyebrow: '( COME COSTRUIAMO )',
+  title: { text: 'Si parte dal sito.', accent: 'Poi si sale.' },
+  intro:
+    'Ogni piano regge da solo e prepara quello sopra. Se oggi vi serve solo il sito, si parte da lì: il resto può aspettare, e quando arriva trova tutto pronto.',
+  items: [
+    {
+      key: 'terra',
+      label: '1 · PIANO TERRA',
+      title: 'Sito e vendita',
+      text: 'Sito nuovo o rifatto: veloce, in più lingue, trovato su Google e dagli assistenti AI. Prenotazioni, shop, buoni regalo e pagamento online.',
+      links: [
+        { label: 'Digital Presence', href: '/servizi/digital-presence' },
+        { label: 'Digital Commerce', href: '/servizi/digital-commerce' },
+      ],
+    },
+    {
+      key: 'primo',
+      label: '2 · PRIMO PIANO',
+      title: 'Collegamenti',
+      text: 'Sito, gestionale, pagamenti, email e calendario si scambiano i dati da soli. Ogni dato entra una volta.',
+      links: [{ label: 'Collegare gestionale e sito', href: '/soluzioni/collegare-gestionale-e-sito' }],
+    },
+    {
+      key: 'secondo',
+      label: '3 · SECONDO PIANO',
+      title: 'Assistenti',
+      text: "Rispondono alle domande di sempre, preparano prenotazioni e ordini, mandano promemoria. L'ultima parola è di una persona.",
+      links: [{ label: 'Digital Automation', href: '/servizi/digital-automation' }],
     },
   ],
 };
 
-// 4b. Quando interveniamo (Prompt 22, fase B): versione completa in homepage,
-// subito dopo i servizi; la versione breve (short) chiude le tre pagine
-// servizio prima delle FAQ e rimanda a questa sezione.
-// Componente: components/agria/sections/WhenWeHelp.jsx
+// 8. Quando sì, quando no (id "selezione": vi punta anche il rimando breve
+// delle pagine servizio, whenWeHelp.short)
+export const selection = {
+  id: 'selezione',
+  eyebrow: '( SELEZIONE )',
+  title: { text: 'Scegliamo i progetti.', accent: 'E ve lo diciamo subito.' },
+  yes: {
+    title: 'Ha senso chiamarci se…',
+    items: [
+      "Il sito c'è, ma prenotazioni e ordini diretti sono pochi.",
+      "Qualcuno passa ore a ricopiare dati da un programma all'altro.",
+      "In alta stagione l'ufficio non sta dietro alle richieste.",
+      "Volete vendere all'estero e il sito parla solo italiano.",
+    ],
+  },
+  no: {
+    title: 'Vi diciamo di no se…',
+    items: [
+      "Cercate un sito vetrina e nient'altro: lo fa bene chi costa meno di noi.",
+      'Volete cambiare gestionale: noi colleghiamo al resto quello che avete.',
+      'Il problema è commerciale, non tecnico: nessun sistema lo risolve.',
+      'Cercate il preventivo più basso da confrontare con altri due.',
+    ],
+  },
+  note: 'Quando diciamo di no, diciamo anche perché, e cosa vi conviene fare invece.',
+};
+
+// Rimando breve in fondo alle tre pagine servizio (components/agria/sections/
+// WhenWeHelp.jsx): porta alla sezione "Quando sì, quando no" della homepage.
+// eyebrow: etichetta accessibile del blocco.
 export const whenWeHelp = {
-  id: 'quando-interveniamo',
   eyebrow: 'Quando interveniamo',
-  title: 'Quando serviamo, e quando no.',
-  intro: 'Se la piattaforma che usate funziona, la domanda è se ha senso parlarci. Ecco la risposta, anche quando è no.',
-  blocks: [
-    {
-      key: 'si',
-      icon: 'check',
-      title: 'Quando ha senso chiamarci',
-      items: [
-        'La piattaforma che usate copre la gestione, ma il canale diretto è fermo.',
-        'I dati stanno in più sistemi che non si parlano, e qualcuno li reinserisce a mano.',
-        'Il processo regge nei mesi normali e non regge nei mesi di punta.',
-        "Vendete fuori dall'Italia, o volete cominciare, e il sito non è attrezzato per farlo.",
-      ],
-    },
-    {
-      key: 'no',
-      icon: 'minus',
-      title: 'Quando non ha senso',
-      items: [
-        "Se cercate un sito vetrina e nient'altro: lo fa bene chi costa meno di noi.",
-        'Se volete sostituire il gestionale, il PMS o il CRM: non è il nostro lavoro. Lavoriamo sopra quelli che avete.',
-        'Se il problema non è tecnologico ma commerciale: nessun sistema lo risolve.',
-        'Se il progetto non cambia il modo in cui lavorate o vendete: non lo prendiamo.',
-      ],
-    },
-    {
-      key: 'come',
-      title: 'Come lo capiamo',
-      text: 'Con una prima analisi, prima di qualunque proposta. Guardiamo gli strumenti che usate già, dove i dati si fermano, cosa passa ancora a mano. Non è un preventivo e non promette un risultato: serve a capire se il lavoro ha senso. Può concludersi con un no, e in quel caso ve lo diciamo con il motivo.',
-    },
-  ],
   short: {
     text: 'Non prendiamo progetti che non cambiano il modo di lavorare o di vendere, e se la piattaforma che usate funziona ve lo diciamo.',
-    link: { label: 'Quando ha senso chiamarci, e quando no', href: '/#quando-interveniamo' },
+    link: { label: 'Quando ha senso chiamarci, e quando no', href: '/#selezione' },
   },
 };
 
-// 5. Componi il tuo sistema (modulo interattivo 2)
-// Le scelte arrivano a /contatti come parametri ripetuti: ?moduli=sito&moduli=e-commerce
-// (valori = id qui sotto). Formato documentato in docs/agria/11-homepage-definitiva.md.
-export const composer = {
-  eyebrow: 'Sviluppato internamente, senza template',
-  title: 'Componete il vostro sistema.',
-  text: 'Scegliete cosa vi serve.',
-  param: 'moduli',
-  action: '/contatti',
-  modules: [
-    { id: 'sito', label: 'Sito', area: 'Presence' },
-    { id: 'prenotazioni-dirette', label: 'Prenotazioni dirette', area: 'Commerce' },
-    { id: 'e-commerce', label: 'E-commerce', area: 'Commerce' },
-    { id: 'listini-b2b', label: 'Listini B2B', area: 'Commerce' },
-    { id: 'automazioni', label: 'Automazioni', area: 'Automation' },
-    { id: 'report-settimanale', label: 'Report settimanale', area: 'Automation' },
+// 9. Come lavoriamo
+export const method = {
+  id: 'come-lavoriamo',
+  eyebrow: '( DALLA RICHIESTA ALLA CONSEGNA )',
+  title: { text: 'Quattro passi.', accent: 'Il primo dura tre minuti.' },
+  cta: { label: 'Richiedete la prima analisi →', href: '/contatti' },
+  steps: [
+    {
+      number: '1',
+      title: 'La richiesta',
+      label: 'TRE MINUTI, DAL SITO',
+      text: 'Ci raccontate come lavorate oggi, nel modulo o su WhatsApp. Vi risponde una persona.',
+    },
+    {
+      number: '2',
+      title: 'La prima analisi',
+      label: 'IN VIDEOCALL, O DI PERSONA IN UMBRIA',
+      text: 'Guardiamo i programmi che usate, dove i dati si fermano e cosa passa ancora a mano. Ve la mostriamo e vi diciamo subito se è un lavoro per noi.',
+    },
+    {
+      number: '3',
+      title: 'Il progetto',
+      label: 'SCRITTO',
+      text: 'Cosa serve, in che ordine, cosa potete tenere. Con i costi voce per voce, prima di firmare.',
+    },
+    {
+      number: '4',
+      title: 'Costruzione ed evoluzione',
+      label: 'A PERUGIA',
+      text: 'Costruiamo noi, con consegne intermedie, e vi consegniamo tutto documentato. Dopo la consegna restiamo, e miglioriamo.',
+    },
   ],
-  // contatore: "n moduli scelti" (singolare per 1)
-  count: (n) => (n === 1 ? '1 modulo scelto' : `${n} moduli scelti`),
-  cta: 'Parliamo del progetto',
-  caption: 'Le scelte arrivano con la richiesta: la prima call parte da qui, non da zero.',
 };
 
-// 6. Settori
+// 10. Chi siamo. Foto: IMG_8530 (Prompt 28), 1600 px e 800 px per mobile.
+export const team = {
+  eyebrow: '( CHI SIAMO )',
+  title: { text: 'Tre persone, a Perugia.', accent: 'Chi progetta è chi costruisce.' },
+  text: 'Siamo Matteo Garuzzo, Matteo De Pilla e Alessandro Poponi. Lavoriamo con strutture ricettive, aziende vitivinicole e frantoi, e usiamo ogni giorno gli stessi strumenti che proponiamo. Quello che costruiamo per voi lo abbiamo provato prima su di noi.',
+  people: [
+    { name: 'Matteo Garuzzo', role: 'Progetta e costruisce siti, e-commerce e collegamenti tra i programmi.' },
+    { name: 'Matteo De Pilla', role: 'Assistenti AI e automazioni: tutto quello che lavora da solo, e passa a una persona.' },
+    { name: 'Alessandro Poponi', role: 'Vi ascolta per primo, e vi segue dalla prima analisi alla consegna.' },
+  ],
+  principles: [
+    { title: 'Costruiamo noi.', text: 'Chi progetta è anche chi sviluppa e chi interviene dopo.' },
+    { title: 'Un solo riferimento.', text: 'La stessa persona dalla prima analisi alla manutenzione.' },
+    {
+      title: 'Tutto scritto.',
+      text: 'Ogni collegamento documentato e consegnato: il vostro sistema dipende da voi, e da nessuna memoria.',
+    },
+  ],
+  image: {
+    src: '/images/azienda/team.jpg',
+    mobileSrc: '/images/azienda/team-800.jpg',
+    width: 1600,
+    height: 1067,
+    mobileWidth: 800,
+    mobileHeight: 533,
+    alt: 'Matteo Garuzzo, Matteo De Pilla e Alessandro Poponi',
+  },
+};
+
+// 11. Domande frequenti (anche nei dati strutturati FAQPage)
+export const faq = {
+  eyebrow: '( LE DOMANDE CHE CI FANNO DAVVERO )',
+  title: { text: 'Le domande che ci fanno', accent: 'prima di firmare.' },
+  items: [
+    {
+      q: 'Dobbiamo cambiare gestionale?',
+      a: 'No. Lavoriamo sopra il gestionale, il PMS o il programma di cassa che avete già, e lo colleghiamo al resto. Se non si può collegare, ve lo diciamo nella prima analisi, prima di qualunque proposta.',
+    },
+    {
+      q: 'Quanto costa?',
+      a: 'Dipende da quanti piani servono e da cosa avete già. Dopo la prima analisi ricevete un progetto scritto con i costi voce per voce, e lo rileggiamo insieme in videocall. Si firma solo dopo.',
+    },
+    {
+      q: "L'assistente risponde al posto nostro?",
+      a: 'Prepara. Raccoglie le informazioni, scrive una bozza e la passa a una persona, che la rilegge e la manda. Nessuna conferma e nessun prezzo partono da soli.',
+    },
+    {
+      q: 'Possiamo partire da una cosa sola?',
+      a: 'Sì, ed è quello che consigliamo: di solito il sito o le prenotazioni dirette. Ogni pezzo nasce pronto a collegarsi al prossimo, quando vorrete.',
+    },
+    {
+      q: 'Quanto tempo ci vuole?',
+      a: 'Il sito è il primo piano e il più veloce; i collegamenti vengono dopo, uno alla volta. I tempi, con le consegne intermedie, stanno nel progetto scritto.',
+    },
+    {
+      q: 'E dopo la consegna?',
+      a: 'Restiamo. Assistenza, piccoli interventi e miglioramenti, con un piano mensile o a chiamata: lo scegliete voi, nel progetto. Sito, dati e accessi restano comunque vostri.',
+    },
+  ],
+};
+
+// 12. Blog: tre articoli reali (titolo, etichetta e immagine dal post).
+// alt scritti qui: quelli dei post non descrivono sempre la foto.
+export const blog = {
+  eyebrow: '( BLOG )',
+  title: 'Guide pratiche, scritte da chi costruisce.',
+  allLabel: 'Tutti gli articoli',
+  allHref: '/blog',
+  articles: [
+    { slug: 'agriturismo-booking-online-prenotazioni', alt: 'Casolari rossi lungo una strada bianca in campagna' },
+    { slug: 'ecommerce-vino-margini-vendita-diretta', alt: 'Scatole di cartone aperte, pronte per la spedizione' },
+    { slug: 'ecommerce-per-frantoi', alt: "Olive su un cucchiaio sotto un filo d'olio" },
+  ],
+};
+
+// 13. Chiusura (fascia ink). Il secondo pulsante usa il link di QUICK_CONTACT.whatsapp.
+export const homeClosing = {
+  title: { text: 'Ogni sistema che funziona', accent: "è partito da un'analisi." },
+  text: 'Raccontateci come lavorate oggi. Vi mostriamo cosa si può collegare, e da dove conviene partire.',
+  primary: { label: 'Richiedete la prima analisi →', href: '/contatti' },
+  secondary: { label: 'Scriveteci su WhatsApp' },
+};
+
+// ---------------------------------------------------------------------
+//  Testi usati fuori dalla homepage (non toccati dal Prompt 28)
+// ---------------------------------------------------------------------
+
+// /blog: titolo della pagina (news.title). /blog e articoli: chiusura (closing).
+export const news = {
+  eyebrow: 'Insights',
+  title: 'Quello che impariamo, scritto.',
+  allLabel: 'Tutti gli articoli',
+  allHref: '/blog',
+  articles: blog.articles,
+};
+
+export const closing = {
+  title: 'Raccontateci come lavorate oggi.',
+  text: 'Una prima analisi serve a capire se ha senso lavorare insieme. Rispondiamo con una valutazione concreta, non con un preventivo generico.',
+  cta: { label: 'Parliamo del progetto', href: '/contatti' },
+};
+
+
+// /settori: griglia dei settori (SectorCards) e anteprima per settore
+// (SectorPreview), fuori dalla homepage dal Prompt 28. Testi invariati.
 // Foto dalla pipeline Unsplash (settori/* in scripts/images.config.json).
 export const sectors = {
   eyebrow: 'Settori',
@@ -176,7 +346,6 @@ export const sectors = {
   ],
 };
 
-// 7. Anteprima per settore (modulo interattivo 3)
 export const preview = {
   eyebrow: 'Cosa costruiamo',
   title: 'Guardate il risultato, per settore.',
@@ -223,64 +392,33 @@ export const preview = {
   ],
 };
 
-// 8. Come lavoriamo
-export const method = {
-  id: 'come-lavoriamo',
-  eyebrow: 'Come lavoriamo',
-  title: 'Prima capire, poi costruire.',
-  steps: [
-    {
-      number: '01',
-      title: 'Analisi',
-      text: 'Guardiamo come lavorate davvero: strumenti, passaggi manuali, dove si perdono tempo e clienti.',
-    },
-    {
-      number: '02',
-      title: 'Progetto',
-      text: 'Definiamo il sistema: cosa serve, cosa si integra con quello che avete, cosa non serve affatto.',
-    },
-    {
-      number: '03',
-      title: 'Sviluppo ed evoluzione',
-      text: 'Costruiamo internamente, con consegne intermedie. Poi misuriamo e miglioriamo.',
-    },
+// /contatti?moduli=…: il vecchio configuratore della homepage. Resta perché link
+// esterni possono usarlo: la pagina contatti ne mostra le etichette nel messaggio.
+export const composer = {
+  param: 'moduli',
+  modules: [
+    { id: 'sito', label: 'Sito' },
+    { id: 'prenotazioni-dirette', label: 'Prenotazioni dirette' },
+    { id: 'e-commerce', label: 'E-commerce' },
+    { id: 'listini-b2b', label: 'Listini B2B' },
+    { id: 'automazioni', label: 'Automazioni' },
+    { id: 'report-settimanale', label: 'Report settimanale' },
   ],
 };
 
-// 9. Ricerca (il blocco "Meglio dirlo subito" è confluito in "Quando interveniamo")
-export const research = {
-  title: 'Strumenti nostri, in sviluppo.',
-  text: 'Una parte del nostro lavoro è ricerca applicata: software proprietari che nascono dai problemi che vediamo in queste aziende. Ne parliamo quando saranno pronti, non prima.',
-};
-
-// 10. Insights: articoli reali del blog (titolo, etichetta e immagine dal post).
-// alt scritti qui: quelli dei post non descrivono sempre la foto.
-export const news = {
-  eyebrow: 'Insights',
-  title: 'Quello che impariamo, scritto.',
-  allLabel: 'Tutti gli articoli',
-  allHref: '/blog',
-  articles: [
-    { slug: 'agriturismo-booking-online-prenotazioni', alt: 'Casolari rossi lungo una strada bianca in campagna' },
-    { slug: 'ecommerce-vino-margini-vendita-diretta', alt: 'Scatole di cartone aperte, pronte per la spedizione' },
-    { slug: 'ecommerce-per-frantoi', alt: "Olive su un cucchiaio sotto un filo d'olio" },
-  ],
-};
-
-// 11. Banda territoriale
-export const territory = {
-  eyebrow: 'Dove lavoriamo',
-  title: 'Da Perugia, in tutta Italia e sui mercati esteri.',
-  // foto Unsplash già accreditata in /crediti-immagini (public/images/servizi/CREDITS.json)
-  image: {
-    src: '/images/servizi/seo-geo-strategy-hero.jpg',
-    alt: 'Strada bianca tra cipressi e vigneti al tramonto',
+// Interruttore "Oggi / Con Agria" di components/agria/home/ProblemSwitch.jsx,
+// fuori dalla homepage dal Prompt 28: torna nello schema "Come funziona" (Fase C).
+export const problem = {
+  eyebrow: 'Il punto di partenza',
+  title: 'Oggi i vostri dati stanno in sei posti.',
+  text: "Premete l'interruttore: a sinistra come lavorate oggi, a destra dove porta il lavoro di integrazione.",
+  states: { before: 'Come lavorate oggi', after: 'Con Agria' },
+  sources: ['Portali di prenotazione', 'Email', 'Telefono', 'Messaggi', 'Fogli di calcolo', 'Gestionale'],
+  system: { title: 'Un solo sistema', text: 'Dati collegati, decisioni chiare' },
+  captions: {
+    before: 'Sei fonti, nessuna che parla con le altre: ogni dato viene riscritto a mano.',
+    after: 'Le stesse fonti, collegate con un lavoro di integrazione: i dati entrano una volta e arrivano dove servono.',
   },
-};
-
-// 12. CTA finale
-export const closing = {
-  title: 'Raccontateci come lavorate oggi.',
-  text: 'Una prima analisi serve a capire se ha senso lavorare insieme. Rispondiamo con una valutazione concreta, non con un preventivo generico.',
-  cta: { label: 'Parliamo del progetto', href: '/contatti' },
+  limit:
+    "L'integrazione è possibile quando i sistemi la permettono: dipende dalle interfacce che espongono, dai permessi di accesso e dalla qualità dei dati. È la prima cosa che verifichiamo.",
 };

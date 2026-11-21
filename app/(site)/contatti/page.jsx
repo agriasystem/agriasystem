@@ -8,7 +8,7 @@ import ContactClosing from '@/components/agria/contatti/ContactClosing';
 import { site } from '@/lib/data';
 import { agriaPageMetadata } from '@/lib/seo';
 import { breadcrumbNode, faqNode, graph, webPageNode } from '@/lib/schema';
-import { composer } from '@/content/agria/home';
+import { composer, problems } from '@/content/agria/home';
 import { meta, hero, reassurance, channels, nextSteps, faq, closing, WHATSAPP } from '@/content/agria/contatti';
 
 // Pagina contatti AGRIA (Prompt 15). Fondi: scuro · bianco (modulo in
@@ -19,6 +19,8 @@ export const metadata = agriaPageMetadata(meta);
 
 // moduli del configuratore in homepage (?moduli=id): etichette per il messaggio
 const moduleLabels = Object.fromEntries(composer.modules.map((m) => [m.id, m.label]));
+// situazioni di "Quante ne riconoscete?" in homepage (?problemi=id): titoli per il messaggio
+const problemLabels = Object.fromEntries(problems.items.map((p) => [p.id, p.title]));
 
 const faqForSchema = faq.items.map((item) => ({
   q: item.q,
@@ -41,7 +43,7 @@ export default function ContattiPage() {
       {/* 1. Hero · scuro, con la scena dei filari */}
       <PageHero eyebrow={hero.eyebrow} title={hero.title} lead={hero.lead} titleId="contatti-title" />
       {/* 2. Modulo a passi e rassicurazione · bianco */}
-      <ContactSection id="modulo" reassurance={reassurance} moduleLabels={moduleLabels} />
+      <ContactSection id="modulo" reassurance={reassurance} moduleLabels={moduleLabels} problemLabels={problemLabels} />
       {/* 3. Altri modi per parlarci · off-white */}
       <ContactChannels
         id="contatti-canali"
