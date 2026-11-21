@@ -32,17 +32,8 @@ export function TwoTone({ title, onDark = false }) {
   );
 }
 
-// Etichetta con la freccia finale del testo approvato ("… →"): la freccia resta
-// visibile ma fuori dal nome accessibile del pulsante.
-export function ArrowLabel({ label }) {
-  const match = label.match(/^(.*?)\s*→$/);
-  if (!match) return label;
-  return (
-    <>
-      {match[1]} <span aria-hidden="true">→</span>
-    </>
-  );
-}
+// Etichetta con la freccia finale (file a sé: la usano anche componenti client)
+export { default as ArrowLabel } from './ArrowLabel';
 
 // Apertura di sezione: etichetta tra parentesi, titolo bicolore, introduzione.
 export function HomeIntro({ eyebrow, title, intro, titleId, onDark = false, className = '' }) {

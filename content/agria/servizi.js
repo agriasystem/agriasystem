@@ -32,12 +32,14 @@ export const servicesIndex = {
       key,
       name: area.name,
       eyebrow: area.hero.eyebrow,
-      title: area.hero.title,
+      // titolo bicolore delle pagine nuove (Prompt 29): qui come frase unica
+      title: typeof area.hero.title === 'string' ? area.hero.title : `${area.hero.title.text} ${area.hero.title.accent}`,
       text: area.hero.lead,
       items: area.build.items.slice(0, 3).map(({ icon, title, text }) => ({ icon, title, text })),
       href: area.meta.path,
-      // stessa fotografia della sezione "Fotografia e mercati" dell'area (temporanea, vedi report 13)
-      image: area.markets.image,
+      // fotografia del blocco: indexImage nelle pagine nuove (Prompt 29, senza
+      // foto), altrimenti quella della sezione "Fotografia e mercati" dell'area
+      image: area.indexImage ?? area.markets.image,
     };
   }),
 

@@ -222,13 +222,53 @@ check(
 const blog = await page('/blog');
 check('/blog: chiusura con "Richiedete la prima analisi"', plain(blog.match(/<main[\s\S]*<\/main>/)?.[0] || '').includes('Richiedete la prima analisi'));
 
-for (const path of SERVICES) {
+// pagine area con la struttura di prima (fino alle loro fasi del Prompt 29)
+const OLD_TEMPLATE = SERVICES.filter((path) => path !== '/servizi/digital-presence');
+for (const path of OLD_TEMPLATE) {
   const html = await page(path);
   check(
     `${path}: rimando breve con il link a /#selezione`,
     html.includes('Non prendiamo progetti che non cambiano il modo di lavorare o di vendere') && html.includes('href="/#selezione"')
   );
 }
+
+// Prompt 29, Fase A: Digital Presence nella struttura nuova (otto sezioni)
+const presence = await page('/servizi/digital-presence');
+const presenceMain = presence.match(/<main[\s\S]*<\/main>/)?.[0] || '';
+const presenceText = plain(presenceMain);
+check(
+  '/servizi/digital-presence, h1: "Il sito che porta clienti, non quello che fa bella figura."',
+  headingText(presence, 'presence-title') === 'Il sito che porta clienti, non quello che fa bella figura.',
+  headingText(presence, 'presence-title')
+);
+const PRESENCE_SECTIONS = [
+  ['presence-title', null],
+  ['presence-problemi-title', 'Tre cose che costano più di un sito nuovo.'],
+  ['presence-schermata-title', "Com'è fatto un sito che prenota."],
+  ['presence-costruiamo-title', 'Quattro cose, in ogni progetto.'],
+  ['presence-mestiere-title', 'Progettato per quello che fate voi.'],
+  ['come-lavoriamo-titolo', 'Quattro passi. Il primo dura tre minuti.'],
+  ['presence-faq-title', 'Domande frequenti'],
+  ['presence-cta-titolo', 'Raccontateci come vi trovano oggi.'],
+];
+const presenceBad = PRESENCE_SECTIONS.filter(([id, text]) => text && headingText(presence, id) !== text).map(([id]) => `${id}: "${headingText(presence, id)}"`);
+const presenceOrder = PRESENCE_SECTIONS.map(([id]) => presence.indexOf(`id="${id}"`));
+check('/servizi/digital-presence: otto sezioni nell\'ordine del Prompt 29, con i titoli nuovi', presenceBad.length === 0 && presenceOrder.every((pos, i) => pos > 0 && (i === 0 || pos > presenceOrder[i - 1])), presenceBad.join(' · ') || JSON.stringify(presenceOrder));
+check(
+  '/servizi/digital-presence: schermata con il sito inventato, le tre didascalie e la riga di fantasia',
+  ['orvenna.example', 'Il cliente sceglie camera, giorno e ora da solo, anche alle undici di sera.', "Italiano e inglese: chi arriva dall'estero prenota nella sua lingua.", 'Vi trova su Google, e anche quando chiede consiglio a ChatGPT.', 'Esempio illustrativo: nomi e contenuti di fantasia.'].every((t) =>
+    presenceText.includes(t)
+  )
+);
+check(
+  '/servizi/digital-presence: i quattro passi della homepage (#come-lavoriamo) e le sei domande nei dati strutturati',
+  presence.includes('id="come-lavoriamo"') &&
+    ['La richiesta', 'La prima analisi', 'Il progetto', 'Costruzione ed evoluzione'].every((t) => presenceText.includes(t)) &&
+    (presence.match(/"@type":"Question"/g) || []).length === 6
+);
+const presenceOld = ['La presenza digitale come infrastruttura commerciale', 'Quattro impianti', 'Core Web Vitals', 'hreflang', 'Design system', 'Alla consegna resta questo', "l'AI con cui lavoriamo", 'Made in Italy, leggibile anche fuori'].filter((t) => presenceText.includes(t));
+check('/servizi/digital-presence: nessun testo della pagina di prima', presenceOld.length === 0, presenceOld.join(' · '));
+check('/servizi/digital-presence: nessuna fotografia (al loro posto la schermata)', !/<img\b/.test(presenceMain), (presenceMain.match(/<img[^>]*src="([^"]+)"/g) || []).join(' '));
 
 // Prompt 23: pagine soluzione, contatto rapido nell'header, indicazioni della hero
 for (const [path, title] of SOLUTIONS) {

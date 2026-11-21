@@ -40,7 +40,8 @@ export default function StickyCta({ label, href, endId }) {
         href={href}
         className="inline-flex items-center gap-2 rounded-full bg-agria-graphite px-5 py-3 ring-1 ring-white/15 font-agria-sans text-agria-sm font-medium text-agria-white shadow-[0_14px_34px_rgb(var(--agria-graphite)/0.28)] transition-colors hover:bg-agria-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-dark focus-visible:ring-offset-2"
       >
-        {label}
+        {/* la freccia la disegna già il pulsante (icona): via quella del testo */}
+        {label.replace(/\s*→$/, '')}
         <Icon name="arrow-right" size={16} />
       </Link>
     </div>

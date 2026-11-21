@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button, Container, Eyebrow, Heading, Text } from '@/components/agria/ui';
 import { FieldScene } from '@/components/agria/motion';
+import { ArrowLabel } from '@/components/agria/home/parts';
 import styles from './PageHero.module.css';
 
 // Hero compatto delle pagine interne: fondo scuro con la scena dei filari in
@@ -25,7 +26,7 @@ export default function PageHero({ eyebrow, title, lead, cta, secondaryCta, pill
           <div className="mt-8 flex flex-wrap gap-3">
             {cta && (
               <Button as={Link} href={cta.href} variant="bright">
-                {cta.label}
+                <ArrowLabel label={cta.label} />
               </Button>
             )}
             {secondaryCta && (

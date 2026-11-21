@@ -34,171 +34,201 @@ const HOSPITALITY_PHOTO = agriaImage('settori/hospitality');
 export const SECTOR_LABELS = { hospitality: 'Hospitality', cantine: 'Cantine', frantoi: 'Frantoi' };
 
 export const serviceAreas = {
+  // Prompt 29, Fase A: struttura nuova in otto sezioni (components/agria/service/ServicePage.jsx).
+  // Titoli bicolore: { text, accent } come nella homepage.
   presence: {
     key: 'presence',
     name: 'Digital Presence',
+    // titolo e descrizione per Google: invariati (il Prompt 29 non li riscrive)
     meta: {
       title: 'Digital Presence — siti web per agriturismi, cantine e frantoi | Agria System',
       description:
         'Progettiamo siti costruiti per generare richieste dirette: architettura, prestazioni, SEO tecnica e visibilità nei motori AI per hospitality, cantine e frantoi.',
       path: '/servizi/digital-presence',
     },
-    cta: { label: 'Avviate il progetto', href: CONTACT },
+    cta: { label: 'Richiedete la prima analisi →', href: CONTACT },
+    // 1. Apertura
     hero: {
-      eyebrow: '01 — Digital Presence',
-      title: 'La presenza digitale come infrastruttura commerciale.',
-      lead: 'Progettiamo siti costruiti per generare richieste dirette, non rappresentanza, per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Struttura, prestazioni e visibilità, dentro Google e dentro i motori conversazionali.',
-      secondary: METHOD,
-      pills: ['Architettura', 'Interfaccia', 'Sviluppo', 'Core Web Vitals', 'SEO tecnica', 'Visibilità AI', 'IT · EN'],
+      eyebrow: '( 01 · DIGITAL PRESENCE )',
+      title: { text: 'Il sito che porta clienti,', accent: 'non quello che fa bella figura.' },
+      lead: 'Un sito nuovo, o quello che avete rifatto come si deve: veloce, in italiano e in inglese, facile da trovare su Google e da chi chiede consiglio agli assistenti AI. E con la prenotazione o la richiesta in primo piano, non nascosta in fondo.',
+      secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
+      pills: ['Sito nuovo o rifatto', 'Italiano e inglese', 'Google e assistenti AI', 'Prenotazione diretta', 'Velocità'],
     },
+    // 2. Tre problemi
     diagnosis: {
-      title: 'Tre problemi che costano più di un sito.',
+      title: { text: 'Tre cose che costano', accent: 'più di un sito nuovo.' },
       items: [
         {
-          icon: 'search',
-          title: 'Invisibili nella ricerca',
-          text: 'Le richieste del vostro territorio finiscono ai portali. Il sito non è strutturato per essere trovato, né da Google né dagli assistenti conversazionali.',
+          title: 'Vi trovano i portali, non voi',
+          text: 'Chi cerca una struttura nel vostro territorio finisce su Booking o su un portale di settore. La prenotazione arriva lo stesso, ma con la commissione sopra.',
         },
         {
-          icon: 'funnel',
-          title: 'Traffico che non converte',
-          text: 'Chi arriva non trova disponibilità, condizioni o un percorso chiaro. La visita si chiude senza lasciare un contatto.',
+          title: 'Chi arriva non prenota',
+          text: 'Il sito racconta bene chi siete, poi chi vorrebbe prenotare non trova disponibilità, prezzi o un pulsante: scrive una email, o lascia perdere.',
         },
         {
-          icon: 'phone',
-          title: 'Domanda gestita a mano',
-          text: 'Ogni richiesta diventa una telefonata o un messaggio. Nessuno storico, nessuna misura, nessuna scalabilità.',
+          title: 'Ogni richiesta diventa una telefonata',
+          text: 'Rispondete uno per uno alle stesse domande, e di quelle conversazioni non resta niente: né un contatto, né un numero.',
         },
       ],
-      cta: { label: "Richiedete un'analisi della presenza attuale", href: CONTACT },
+      cta: { label: "Richiedete un'analisi del vostro sito →", href: CONTACT },
     },
+    // 3. La schermata (components/agria/service/screens/BookingScreen.jsx).
+    // mock: i testi del sito inventato, solo scenografia (nome verificato: nessuna
+    // azienda reale con questo nome, Prompt 29).
+    screens: [
+      {
+        key: 'prenotazione',
+        kind: 'booking',
+        title: "Com'è fatto un sito che prenota.",
+        captions: [
+          'Il cliente sceglie camera, giorno e ora da solo, anche alle undici di sera.',
+          "Italiano e inglese: chi arriva dall'estero prenota nella sua lingua.",
+          'Vi trova su Google, e anche quando chiede consiglio a ChatGPT.',
+        ],
+        mock: {
+          url: 'orvenna.example',
+          brand: 'Orvenna',
+          kind: 'Agriturismo',
+          nav: ['Camere', 'Esperienze', 'Ristorante'],
+          book: 'Prenota',
+          eyebrow: 'Agriturismo in collina',
+          headline: ['Camere tra gli ulivi,', 'a mezz’ora dal lago.'],
+          sub: 'Sei camere, piscina e cene con quello che cresce nell’orto.',
+          rooms: [
+            { name: 'Camera Ulivo', note: '2 persone · vista valle', state: '2 notti libere' },
+            { name: 'Suite Fienile', note: '4 persone · terrazza', state: 'libera dal 12' },
+          ],
+          bar: [
+            { label: 'Camera', value: 'Camera Ulivo · 2 persone' },
+            { label: 'Arrivo', value: 'Venerdì 12' },
+            { label: 'Partenza', value: 'Domenica 14' },
+          ],
+          phone: {
+            time: '23:04',
+            title: 'Book your stay',
+            fields: [
+              { label: 'Room', value: 'Olive room · 2 guests' },
+              { label: 'Check-in', value: 'Fri 12' },
+              { label: 'Check-out', value: 'Sun 14', active: true },
+            ],
+            total: { label: '2 nights', value: '€ 240' },
+            button: 'Book now',
+          },
+          search: {
+            query: 'agriturismo con piscina vicino al lago',
+            title: 'Casale Orvenna · Agriturismo',
+            text: 'Camere tra gli ulivi · prenotazione online',
+          },
+        },
+      },
+    ],
+    // 4. Cosa costruiamo (icon: per i blocchi dell'indice /servizi)
     build: {
-      title: 'Quattro impianti, uno standard unico.',
+      title: { text: 'Quattro cose,', accent: 'in ogni progetto.' },
       items: [
         {
-          icon: 'calendar',
-          title: 'Struttura ricettiva',
-          image: HOSPITALITY_PHOTO,
-          text: 'Disponibilità reali, esperienze e prenotazione diretta al centro del percorso.',
-          tiles: tiles(
-            ['Camere', 'disponibilità sincronizzata'],
-            ['Esperienze', 'cena, degustazioni, visite'],
-            ['Ospiti', 'storico e ritorni'],
-          ),
-        },
-        {
-          icon: 'tag',
-          title: 'Cantina',
-          image: { src: '/images/software/sector-vitivinicolo-hero.jpg', alt: 'Botti di legno allineate in una cantina con volta in mattoni' },
-          text: "Etichette, territorio e visite collegati alla vendita diretta e all'export.",
-          tiles: tiles(['Etichette', 'annate e formati'], ['Visite', 'calendario e capienza'], ['Export', 'schede in inglese']),
-        },
-        {
-          icon: 'sprout',
-          title: 'Frantoio',
-          image: { src: '/images/software/sector-frantoi-hero.jpg', alt: "Olio appena estratto che scende da un beccuccio d'acciaio" },
-          text: 'Prodotto, campagna e listini distinti tra privati e professionali.',
-          tiles: tiles(
-            ['Formati', 'bottiglie, latte, bag-in-box'],
-            ['Listini', 'privati e professionali'],
-            ['Campagna', 'molitura e olio nuovo'],
-          ),
+          icon: 'layout',
+          title: 'Il sito',
+          text: 'Struttura, testi e immagini costruiti su come lavorate: camere, prodotti, esperienze, con la prenotazione o la richiesta sempre a portata di mano.',
         },
         {
           icon: 'globe',
-          title: 'Presenza internazionale',
-          image: { src: '/images/servizi/seo-geo-strategy-hero.jpg', alt: 'Strada bianca tra cipressi e vigneti al tramonto' },
-          text: "Italiano e inglese in un'unica architettura, con contenuti adattati al mercato.",
-          tiles: tiles(['IT', 'mercato interno'], ['EN', 'export e viaggiatori'], ['hreflang', 'versioni collegate']),
+          title: 'Italiano e inglese',
+          text: "Due versioni vere, non una traduzione automatica: prezzi, condizioni e riferimenti giusti per chi compra dall'estero.",
+        },
+        {
+          icon: 'search',
+          title: 'Trovabile',
+          text: 'Pagine costruite sulle domande che la gente scrive davvero, e dati organizzati perché Google e gli assistenti AI vi citino con le informazioni corrette.',
+        },
+        {
+          icon: 'zap',
+          title: 'Veloce',
+          text: 'Un sito che si apre in un secondo anche dal telefono, in mezzo a una vigna con una tacca di segnale.',
         },
       ],
     },
-    ai: {
-      title: ON_EVERY_PROJECT_TITLE,
-      text: "Analisi, struttura, contenuti e controlli tecnici passano da strumenti che acceleriamo con l'AI: è un metodo, non un servizio che vendiamo. Le decisioni, e la responsabilità, restano nostre.",
+    // 5. Per il vostro mestiere
+    sectors: {
+      title: { text: 'Progettato per', accent: 'quello che fate voi.' },
       items: [
         {
-          icon: 'sparkles',
-          title: 'AI nel processo',
-          text: "Analisi dei contenuti esistenti, struttura delle pagine, bozze e controlli: preparati più in fretta con l'AI, poi rivisti e decisi da noi.",
+          key: 'hospitality',
+          title: 'Agriturismi, hotel e strutture ricettive',
+          points: [
+            'Disponibilità vera, aggiornata: chi guarda vede cosa c\'è libero, non "scriveteci".',
+            'Prenotazione diretta in primo piano, mentre i portali restano attivi.',
+            'Esperienze, cene e degustazioni prenotabili a parte.',
+            'Mappe e schede costruite per chi cerca una struttura in quella zona.',
+          ],
         },
         {
-          icon: 'chat',
-          title: 'Controlli tecnici più rapidi',
-          text: "Dati strutturati, collegamenti e versioni IT/EN verificati con strumenti che acceleriamo con l'AI, prima di ogni pubblicazione.",
+          key: 'cantine',
+          title: 'Nel settore vitivinicolo',
+          points: [
+            'Etichette, annate e formati raccontati in modo utile a chi compra.',
+            'Degustazioni e visite prenotabili dal sito, con il contatto che resta vostro.',
+            'Versione inglese pensata per importatori e appassionati stranieri.',
+            'Struttura già pronta per la vendita online, quando deciderete di attivarla.',
+          ],
         },
         {
-          icon: 'target',
-          title: 'Misurazione dal primo clic',
-          text: 'Il piano di tracciamento si progetta prima della pubblicazione: sapete da dove arrivano le richieste e dove si interrompono.',
-        },
-        {
-          icon: 'key',
-          title: 'Proprietà e continuità',
-          text: 'Codice, contenuti e domini restano vostri. Nessun vincolo tecnico che vi leghi a noi.',
-        },
-      ],
-      cta: { label: 'Parliamo del vostro progetto', href: CONTACT },
-    },
-    // Prompt 14: sezione dopo l'AI (solo Digital Presence)
-    seo: {
-      title: 'SEO e GEO',
-      items: [
-        {
-          icon: 'gauge',
-          title: 'SEO tecnica',
-          text: 'Struttura, indicizzazione, dati strutturati e velocità: le fondamenta senza cui nessun contenuto rende.',
-        },
-        {
-          icon: 'map-pin',
-          title: 'SEO locale',
-          text: 'Schede, mappe e contenuti di territorio, dove si decide la scelta di una struttura o di un produttore.',
-        },
-        {
-          icon: 'sparkles',
-          title: 'GEO, visibilità nei motori AI',
-          text: 'Contenuti e dati organizzati perché gli assistenti conversazionali vi citino con informazioni corrette.',
-        },
-        {
-          icon: 'chat',
-          title: 'Contenuti che rispondono',
-          text: 'Pagine costruite sulle domande reali di chi cerca, non sulle parole che usiamo tra noi.',
+          key: 'frantoi',
+          title: 'Frantoi e aziende olivicole',
+          points: [
+            'Il sito segue la campagna: molitura, olio nuovo, ordini di fine anno.',
+            'Privati e ristoratori trovano prezzi e formati diversi senza confondersi.',
+            'Analisi e certificazioni presentate in modo verificabile.',
+            'Trovabili da chi cerca olio nuovo, bag-in-box o forniture per la ristorazione.',
+          ],
         },
       ],
     },
-    method: {
-      title: 'Un metodo che unisce dati, design e sviluppo.',
-      steps: [
-        {
-          title: 'Strategia',
-          text: 'Analisi della domanda reale del vostro settore, dei concorrenti diretti e di come vi trovano oggi.',
-        },
-        {
-          title: 'Architettura',
-          text: 'Modello dei contenuti, prototipo navigabile e design system approvati prima di scrivere codice.',
-        },
-        {
-          title: 'Sviluppo',
-          text: 'Costruzione interna, con prestazioni e accessibilità verificate durante il lavoro, non alla consegna.',
-        },
-        {
-          title: 'Go-live',
-          text: 'Pubblicazione con tracciamento attivo, controllo dei dati reali e interventi correttivi nelle settimane successive.',
-        },
-      ],
+    // 6. Come lavoriamo: i quattro passi della homepage (method in content/agria/home.js)
+    // 7. Domande frequenti
+    faq: [
+      {
+        q: 'Rifare il sito ci fa perdere posizioni su Google?',
+        a: 'Non se il trasloco è preparato prima. Prendiamo ogni indirizzo del sito vecchio, decidiamo cosa tenere e cosa far puntare altrove, e controlliamo le visite nelle settimane dopo la pubblicazione.',
+      },
+      {
+        q: 'Il sito resta nostro?',
+        a: 'Sì. Codice, contenuti, dominio e accessi sono vostri, anche se un giorno cambiate fornitore.',
+      },
+      {
+        q: 'Possiamo aggiornarlo da soli?',
+        a: 'Le parti che cambiano spesso sì: prezzi, periodi, foto, articoli. Vi lasciamo una guida e vi facciamo vedere come si fa.',
+      },
+      {
+        q: 'Quanto tempo ci vuole?',
+        a: 'Dipende da quante pagine e quante lingue. Dopo la prima analisi avete i tempi per fase, con consegne intermedie da approvare.',
+      },
+      {
+        q: 'Il nostro sito è recente: lo rifate comunque?',
+        a: 'Solo se serve. Se il problema è la struttura o il fatto che non porta richieste, interveniamo lì. Se rifarlo non ha senso, ve lo diciamo.',
+      },
+      {
+        q: "Usate l'AI per scrivere i testi?",
+        a: 'La usiamo per preparare le bozze e per i controlli. Ogni testo che va online è riletto da noi e approvato da voi.',
+      },
+    ],
+    // 8. Chiusura (il secondo pulsante usa il link di QUICK_CONTACT.whatsapp)
+    closing: {
+      title: { text: 'Raccontateci', accent: 'come vi trovano oggi.' },
+      text: 'Vi prepariamo una prima analisi del vostro sito e ve la mostriamo: cosa funziona, cosa vi fa perdere richieste, da dove conviene partire.',
+      secondary: { label: 'Scriveteci su WhatsApp' },
     },
-    deliverables: {
-      title: DELIVERABLES_TITLE,
-      intro: 'Non solo un sito pubblicato: la documentazione che lo rende governabile nel tempo, anche senza di noi.',
-      items: [
-        { text: 'Architettura informativa e modello dei contenuti', category: 'Ricerca' },
-        { text: 'Prototipo navigabile, approvato prima dello sviluppo', category: 'Design' },
-        { text: 'Design system: componenti, stati e documentazione', category: 'Design' },
-        { text: 'Piano di misurazione: eventi, obiettivi, conversioni', category: 'Analytics' },
-        { text: 'Checklist SEO tecnica e piano di migrazione degli indirizzi', category: 'SEO' },
-        { text: 'Report di collaudo: Core Web Vitals, accessibilità, dispositivi', category: 'Delivery' },
-      ],
-    },
+    articles: [
+      { slug: 'siti-web-per-agriturismi' },
+      { slug: 'siti-web-per-cantine' },
+      { slug: 'seo-locale-agroalimentare-google-maps' },
+      { slug: 'storytelling-vino-marketing-vendite' },
+    ],
+    // Verticali della pagina area di prima del Prompt 29: non li usa più la pagina
+    // Digital Presence (ora sectors), solo le pagine /settori (content/agria/settori.js),
+    // che non sono nel Prompt 29. Testi invariati.
     verticals: {
       title: 'Progettato per il vostro mestiere.',
       sectors: {
@@ -262,54 +292,9 @@ export const serviceAreas = {
         ],
       },
     },
-    markets: {
-      eyebrow: 'Da Perugia, ovunque serva',
-      title: 'Made in Italy, leggibile anche fuori.',
-      text: "Lavoriamo con aziende che vendono in Italia e all'estero. La versione inglese non è una traduzione automatica: è una versione pensata per chi compra da fuori, con riferimenti, formati e condizioni corretti.",
-      cta: { label: 'Parlateci del vostro mercato', href: CONTACT },
-      image: agriaImage('servizi/presence'),
-    },
-    // Prompt 14: sezione prima delle FAQ (solo Digital Presence)
-    identity: {
-      eyebrow: 'Identità e digital experience',
-      title: "L'identità non è il logo. È come vi si riconosce.",
-      text: "Curiamo coerenza visiva, tono di voce e qualità dell'esperienza dentro il progetto: tipografia, fotografia, ritmo delle pagine, comportamento delle interazioni. Non vendiamo restyling di marchio a parte: lo trattiamo dove incide sul risultato.",
-    },
-    faq: [
-      {
-        q: 'Rifare il sito comporta perdita di posizionamento?',
-        a: 'Il rischio si riduce se la migrazione è progettata prima. Mappiamo ogni indirizzo esistente, definiamo cosa mantenere e cosa reindirizzare, e monitoriamo indicizzazione e traffico nelle settimane successive alla pubblicazione.',
-      },
-      {
-        q: 'Il codice e i contenuti restano nostri?',
-        a: 'Sì. Repository, contenuti e domini sono di vostra proprietà, con accesso completo anche in caso di cambio fornitore.',
-      },
-      {
-        q: 'Possiamo aggiornare il sito autonomamente?',
-        a: 'Le sezioni che cambiano spesso sono modificabili da voi. Consegniamo una guida operativa e una sessione di formazione sulle attività ricorrenti.',
-      },
-      {
-        q: 'Quali sono i tempi di un progetto?',
-        a: 'Dipendono da numero di pagine, lingue e integrazioni. Dopo la prima analisi forniamo tempi per fase, con consegne intermedie da approvare.',
-      },
-      {
-        q: "Come usate l'AI sui contenuti?",
-        a: 'Per analizzare, strutturare e produrre bozze. Ogni testo pubblicato è rivisto da noi e approvato da voi: nessuna pagina va online senza controllo umano.',
-      },
-      {
-        q: 'Lavorate anche su siti recenti?',
-        a: 'Sì, quando il problema è la struttura o la conversione. Se rifarlo non è giustificato, ve lo diciamo e interveniamo solo dove serve.',
-      },
-    ],
-    closing: { title: 'Raccontateci come vi trovano oggi.', text: CLOSING_TEXT, secondary: WRITE },
-    articles: [
-      { slug: 'siti-web-per-agriturismi' },
-      { slug: 'siti-web-per-cantine' },
-      { slug: 'seo-locale-agroalimentare-google-maps' },
-      { slug: 'storytelling-vino-marketing-vendite' },
-    ],
+    // foto del blocco Digital Presence nell'indice /servizi (la pagina area non ha più fotografie)
+    indexImage: agriaImage('servizi/presence'),
   },
-
   commerce: {
     key: 'commerce',
     name: 'Digital Commerce',

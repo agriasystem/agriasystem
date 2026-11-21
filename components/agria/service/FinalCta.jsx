@@ -9,14 +9,18 @@ const LINK =
 // le altre aree con l'indice, le soluzioni e gli articoli del blog collegati
 // (con tre gruppi, tre colonne da lg).
 // links: [{ title, items: [{ label, href }] }]
-export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, links = [] }) {
+// secondaryProps: attributi del secondo pulsante (es. WhatsApp in una nuova scheda);
+// glow: false toglie l'alone verde (pagine servizio del Prompt 29, come la home).
+export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, secondaryProps = {}, links = [], glow = true }) {
   return (
     <Section background="ink" id={sectionId} aria-labelledby={id} className="relative isolate overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-20%] bottom-[-60%] -z-10 h-full"
-        style={{ background: 'radial-gradient(50% 60% at 50% 100%, rgb(var(--agria-green-bright) / 0.18), transparent 70%)' }}
-      />
+      {glow && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-[-20%] bottom-[-60%] -z-10 h-full"
+          style={{ background: 'radial-gradient(50% 60% at 50% 100%, rgb(var(--agria-green-bright) / 0.18), transparent 70%)' }}
+        />
+      )}
       <Container>
         <Reveal className="mx-auto flex max-w-[44rem] flex-col items-center text-center">
           <Heading level="h2" id={id} onDark>
@@ -30,7 +34,7 @@ export default function FinalCta({ id, sectionId, title, text, primary, primaryP
               <ArrowLabel label={primary.label} />
             </Button>
             {secondary && (
-              <Button as={Link} href={secondary.href} variant="line">
+              <Button as={Link} href={secondary.href} variant="line" {...secondaryProps}>
                 {secondary.label}
               </Button>
             )}
