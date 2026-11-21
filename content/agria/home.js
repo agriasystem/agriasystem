@@ -16,7 +16,7 @@ export const hero = {
   eyebrow: '( SITI, E-COMMERCE E AUTOMAZIONI · AGRITURISMI, HOTEL, CANTINE E FRANTOI )',
   title: {
     before: 'Il vostro',
-    words: ['sito', 'e-commerce', 'gestionale', 'sistema di prenotazione', 'calendario'],
+    words: ['sito', 'e-commerce', 'gestionale', 'prenotazioni', 'calendario'],
     after: ', collegato a tutto il resto.',
   },
   lead: 'Costruiamo siti ed e-commerce nuovi, o miglioriamo quelli che avete, e li colleghiamo ai programmi che usate già: gestionale, pagamenti, email, calendario. Un dato inserito una volta arriva ovunque serve.',
@@ -99,8 +99,8 @@ export const problems = {
       text: 'Se manca lei, nessuno sa dove sono le prenotazioni di settembre.',
     },
   ],
-  // barra in fondo: contatore "n su 8"
-  count: (n, total) => `${n} su ${total}`,
+  // barra in fondo: contatore "n su 8" ({n} e {total} li sostituisce il contatore)
+  count: '{n} su {total}',
   hint: 'Segnate quelle che succedono da voi.',
   cta: 'Vi diciamo da dove partire →',
 };
@@ -310,7 +310,8 @@ export const news = {
 export const closing = {
   title: 'Raccontateci come lavorate oggi.',
   text: 'Una prima analisi serve a capire se ha senso lavorare insieme. Rispondiamo con una valutazione concreta, non con un preventivo generico.',
-  cta: { label: 'Parliamo del progetto', href: '/contatti' },
+  // stessa chiamata della homepage (Prompt 28, correzioni prima della Fase B)
+  cta: { label: 'Richiedete la prima analisi →', href: '/contatti' },
 };
 
 

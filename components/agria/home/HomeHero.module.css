@@ -14,18 +14,20 @@
   z-index: 4;
 }
 
-/* titolo su tre righe ("Il vostro" / parola / resto): la riga della parola è
-   larga quanto "sistema di prenotazione," (circa 10,9 volte la misura del
-   carattere). La misura segue la larghezza della colonna (.column, container
-   query) così la riga sta sempre nella colonna; al massimo resta quella di h1.
-   Senza container query: la stima sulla larghezza della finestra. */
+/* titolo: "Il vostro [parola]," sulla prima riga, il resto dopo l'a capo.
+   La riga più larga è "Il vostro e-commerce," (9,79 volte la misura del
+   carattere): la misura segue la larghezza della colonna (.column, container
+   query) così la prima riga sta sempre intera; al massimo resta quella di h1.
+   A 1280 e 1440 il titolo sta su due righe ("collegato a tutto il resto." è
+   10,5 volte la misura); sui telefoni su tre. Senza container query: la stima
+   sulla larghezza della finestra. */
 .column {
   container-type: inline-size;
 }
 
 .title {
-  font-size: min(clamp(2.25rem, 1.75rem + 2.2vw, 3.5rem), calc((100vw - 48px) / 11.6));
-  font-size: min(clamp(2.25rem, 1.75rem + 2.2vw, 3.5rem), calc(100cqw / 11.2));
+  font-size: min(clamp(2.25rem, 1.75rem + 2.2vw, 3.5rem), calc((100vw - 48px) / 9.9));
+  font-size: min(clamp(2.25rem, 1.75rem + 2.2vw, 3.5rem), calc(100cqw / 9.9));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -55,5 +57,156 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* =====================================================================
+   Edificio a tre piani (components/agria/home/Building.jsx), nello stesso
+   modulo della homepage: un modulo CSS in più rimescola i fogli di stile di
+   tutte le pagine (raggruppamento loose di Next 14.2), misurato in Fase B.
+   ===================================================================== */
+
+/* Edificio a tre piani della homepage (Prompt 28, Fase B): linee sottili, i
+   piani si accendono dal basso uno alla volta, una passata, poi tutto acceso.
+   Lo stile di base è il fotogramma finale (tutto acceso): lo vede chi non ha
+   JavaScript o ha prefers-reduced-motion. Le animazioni partono ferme sul primo
+   fotogramma (spento) e girano quando PlayOnView mette data-play su .stage.
+   Toni: .dark (su ink, verde #7AE098) e .light (su offwhite). */
+
+.dark {
+  --b-line: rgb(255 255 255 / 0.26);
+  --b-lit: rgb(var(--agria-green-bright));
+  --b-fill: rgb(var(--agria-green-bright) / 0.13);
+  --b-label: rgb(255 255 255 / 0.5);
+  --b-label-lit: rgb(var(--agria-green-bright));
+  --b-ground: rgb(255 255 255 / 0.2);
+}
+
+.light {
+  --b-line: rgb(var(--agria-graphite) / 0.22);
+  --b-lit: rgb(var(--agria-green-dark));
+  --b-fill: rgb(var(--agria-green-bright) / 0.3);
+  --b-label: rgb(var(--agria-grey));
+  --b-label-lit: rgb(var(--agria-green-dark));
+  --b-ground: rgb(var(--agria-graphite) / 0.18);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ground {
+  stroke: var(--b-ground);
+  stroke-width: 1;
+}
+
+/* fotogramma finale: tutto acceso */
+.face {
+  fill: var(--b-fill);
+  stroke: var(--b-lit);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.detail {
+  fill: none;
+  stroke: var(--b-lit);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.label {
+  fill: var(--b-label-lit);
+  font-family: var(--font-agria-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.leader {
+  stroke: var(--b-label-lit);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+}
+
+/* schede dei piani (sezione 4): finale bianche e piene */
+.card {
+  background: rgb(var(--agria-white));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage .face,
+  .stage .detail,
+  .stage .label,
+  .stage .leader,
+  .stage .card {
+    animation-duration: 0.7s;
+    animation-delay: calc(0.35s + var(--floor) * 0.75s);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  .stage .face {
+    animation-name: face-on;
+  }
+  .stage .detail,
+  .stage .leader {
+    animation-name: line-on;
+  }
+  .stage .label {
+    animation-name: label-on;
+  }
+  .stage .card {
+    animation-name: card-on;
+  }
+  .stage[data-play] .face,
+  .stage[data-play] .detail,
+  .stage[data-play] .label,
+  .stage[data-play] .leader,
+  .stage[data-play] .card {
+    animation-play-state: running;
+  }
+}
+
+/* senza JavaScript nessuno mette data-play: niente animazioni, finale subito */
+@media (scripting: none) {
+  .stage .face,
+  .stage .detail,
+  .stage .label,
+  .stage .leader,
+  .stage .card {
+    animation: none;
+  }
+}
+
+@keyframes face-on {
+  from {
+    fill: transparent;
+    stroke: var(--b-line);
+  }
+}
+
+@keyframes line-on {
+  from {
+    stroke: var(--b-line);
+  }
+}
+
+@keyframes label-on {
+  from {
+    fill: var(--b-label);
+  }
+}
+
+/* la scheda del piano acceso si stacca in bianco; le altre restano attenuate */
+@keyframes card-on {
+  from {
+    opacity: 0.5;
+    background-color: transparent;
   }
 }

@@ -3,19 +3,21 @@ import { Button, Container, Eyebrow, Heading, Text } from '@/components/agria/ui
 import { FieldScene, RotatingHeadline } from '@/components/agria/motion';
 import { hero } from '@/content/agria/home';
 import { ArrowLabel } from './parts';
+import Building, { buildingStage } from './Building';
+import PlayOnView from './PlayOnView';
 import styles from './HomeHero.module.css';
 
 // Apertura (fascia ink, Prompt 28): griglia dei filari sullo sfondo, testo a
 // sinistra. Il titolo riscrive la parola: "Il vostro [sito], collegato a tutto
-// il resto." (RotatingHeadline con words). La colonna di destra è dell'edificio
-// a tre piani (Fase B); sotto lg l'edificio va sotto il testo.
+// il resto." (RotatingHeadline con words). A destra l'edificio a tre piani in
+// versione compatta (lo stesso della sezione 4); sotto lg va sotto il testo.
 export default function HomeHero() {
   const { before, words, after } = hero.title;
   return (
     <section className={styles.hero} aria-labelledby="home-hero-title">
       <FieldScene />
 
-      <Container className={`${styles.content} grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12`}>
+      <Container className={`${styles.content} grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-12`}>
         <div className={`min-w-0 ${styles.column}`}>
           <Eyebrow onDark className={`text-balance ${styles.enter}`}>
             {hero.eyebrow}
@@ -43,6 +45,10 @@ export default function HomeHero() {
           </div>
           <p className={`mt-6 font-agria-mono text-agria-sm text-agria-on-dark-muted ${styles.enter}`}>{hero.note}</p>
         </div>
+        {/* l'edificio, versione compatta: i piani si accendono dal basso */}
+        <PlayOnView className={`${buildingStage} mx-auto mt-14 w-full max-w-[380px] lg:mx-0 lg:mt-0 lg:max-w-[420px] lg:justify-self-end`}>
+          <Building tone="dark" />
+        </PlayOnView>
       </Container>
     </section>
   );

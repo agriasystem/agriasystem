@@ -122,9 +122,10 @@ function RotatingSentence({
 // Parola che si riscrive dentro un titolo (homepage, Prompt 28):
 // "Il vostro [sito], collegato a tutto il resto."
 //
-// - before e after: testo fisso; la parola sta su una riga sua, in una cella
-//   larga quanto la parola più lunga (più `punct`, la punteggiatura che la
-//   segue): il titolo non cambia misura mentre scrive (CLS zero).
+// - before e after: testo fisso. La parola sta sulla riga di before, in una
+//   cella in linea larga quanto la parola più lunga (più `punct`, la
+//   punteggiatura che la segue); after va a capo. Il titolo non cambia misura
+//   mentre scrive (CLS zero).
 // - Il testo del documento è uno solo: before + words[0] + punct + after. Mentre
 //   scrive, la parola vera resta nel documento (trasparente) e le lettere
 //   animate sono disegnate in CSS su uno strato aria-hidden.
@@ -214,7 +215,7 @@ function RotatingWord({
   return (
     <Tag className={className} onMouseEnter={() => run.current?.()} {...props}>
       {before}{' '}
-      <span className="grid justify-start">
+      <span className="inline-grid justify-start">
         {words.map((word) => (
           <span
             key={word}
@@ -237,6 +238,7 @@ function RotatingWord({
           />
         )}
       </span>{' '}
+      <br />
       {after}
     </Tag>
   );

@@ -124,6 +124,7 @@ check(
 const SECTIONS_28 = [
   ['home-hero-title', 'Il vostro sito, collegato a tutto il resto.'],
   ['home-glance-label', null],
+  ['home-problemi-title', 'Contate quante ne riconoscete. Poi decidete se potete permettervele.'],
   ['home-piani-title', 'Si parte dal sito. Poi si sale.'],
   ['selezione-titolo', 'Scegliamo i progetti. E ve lo diciamo subito.'],
   ['come-lavoriamo-titolo', 'Quattro passi. Il primo dura tre minuti.'],
@@ -133,7 +134,7 @@ const SECTIONS_28 = [
   ['home-chiusura-title', "Ogni sistema che funziona è partito da un'analisi."],
 ];
 const badTitles = SECTIONS_28.filter(([id, text]) => text && headingText(home, id) !== text).map(([id]) => `${id}: "${headingText(home, id)}"`);
-check('Home: titoli delle sezioni della Fase A (bicolori, letti senza i tag)', badTitles.length === 0, badTitles.join(' · '));
+check('Home: titoli delle sezioni (bicolori, letti senza i tag)', badTitles.length === 0, badTitles.join(' · '));
 const order = SECTIONS_28.map(([id]) => home.indexOf(`id="${id}"`));
 check('Home: sezioni nell\'ordine del Prompt 28', order.every((pos, i) => pos > 0 && (i === 0 || pos > order[i - 1])), JSON.stringify(order));
 const goneSections = ['Tre aree, un solo sistema.', 'Componete il vostro sistema.', 'Strumenti nostri, in sviluppo.', 'Da Perugia, in tutta Italia', 'Quando serviamo, e quando no.', 'Oggi i vostri dati stanno in sei posti.', 'Fatto da noi', 'Guardate il risultato, per settore.'];
@@ -166,6 +167,23 @@ check(
 );
 const contatti = await page('/contatti');
 check('/contatti: card "Poi decidete voi", nessun "Nessun impegno"', contatti.includes('Poi decidete voi') && !/nessun impegno/i.test(contatti));
+
+// Prompt 28, Fase B: lista dei problemi, edificio, correzioni della Fase A
+check(
+  'Home: parole del titolo (sito, e-commerce, gestionale, prenotazioni, calendario), nessun "sistema di prenotazione"',
+  ['sito,', 'e-commerce,', 'gestionale,', 'prenotazioni,', 'calendario,'].every((w) => home.includes(`data-text="${w}"`)) && !home.includes('sistema di prenotazione')
+);
+const problemForm = home.match(/<form[^>]*action="\/contatti"[^>]*method="get"[^>]*>[\s\S]*?<\/form>/)?.[0] || '';
+const boxes = [...problemForm.matchAll(/<input[^>]*type="checkbox"[^>]*name="problemi"[^>]*value="([^"]+)"/g)].map((m) => m[1]);
+check(
+  'Home: "Quante ne riconoscete?" come form GET verso /contatti, otto caselle "problemi", contatore "0 su 8"',
+  boxes.join() === 'prenotazioni,richieste,vendita,ordini,estero,pagamenti,stagione,fogli' && /0 su 8/.test(problemForm) && problemForm.includes('Segnate quelle che succedono da voi.'),
+  boxes.join()
+);
+const buildings = (home.match(/<svg[^>]*viewBox="0 44 [0-9]+ 256"/g) || []).length;
+check('Home: l\'edificio nell\'apertura, nella sezione 4 e nella chiusura', buildings === 3, `${buildings} edifici`);
+const blog = await page('/blog');
+check('/blog: chiusura con "Richiedete la prima analisi"', plain(blog.match(/<main[\s\S]*<\/main>/)?.[0] || '').includes('Richiedete la prima analisi'));
 
 for (const path of SERVICES) {
   const html = await page(path);

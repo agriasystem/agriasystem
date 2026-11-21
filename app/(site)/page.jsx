@@ -1,6 +1,7 @@
 import JsonLd from '@/components/agria/seo/JsonLd';
 import HomeHero from '@/components/agria/home/HomeHero';
 import GlanceStrip from '@/components/agria/home/GlanceStrip';
+import ProblemsSection from '@/components/agria/home/ProblemsSection';
 import FloorCards from '@/components/agria/home/FloorCards';
 import SelectionSection from '@/components/agria/home/SelectionSection';
 import MethodSection from '@/components/agria/home/MethodSection';
@@ -25,15 +26,16 @@ export const metadata = pageMetadata(PAGE);
 // domande frequenti (sezione 11).
 const jsonLdGraph = graph([webPageNode({ ...PAGE, breadcrumb: false, about: true }), faqNode(faq.items, PAGE.path)]);
 
-// Ordine del Prompt 28. Fase A: le sezioni senza moduli nuovi; la 3 (problemi),
-// la 5 (schema), la 6 (assistente) e la 7 (reparti) arrivano nelle fasi B e C,
-// la 4 è per ora in tre card statiche.
+// Ordine del Prompt 28. Fase B: edificio (apertura, sezione 4, chiusura) e la
+// lista dei problemi (3); la 5 (schema), la 6 (assistente) e la 7 (reparti)
+// arrivano con la Fase C.
 export default function Home() {
   return (
     <>
       <JsonLd data={jsonLdGraph} />
       <HomeHero />
       <GlanceStrip />
+      <ProblemsSection />
       <FloorCards />
       <SelectionSection />
       <MethodSection />

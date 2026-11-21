@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button, Container, Eyebrow, Heading, Reveal, Section, Text } from '@/components/agria/ui';
+import { ArrowLabel } from '@/components/agria/home/parts';
 
 const LINK =
   'rounded font-agria-sans text-agria-sm text-agria-on-dark-muted underline-offset-4 transition-colors hover:text-agria-on-dark hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-agria-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-agria-ink';
@@ -26,7 +27,7 @@ export default function FinalCta({ id, sectionId, title, text, primary, primaryP
           </Text>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button as={Link} href={primary.href} variant="bright" {...primaryProps}>
-              {primary.label}
+              <ArrowLabel label={primary.label} />
             </Button>
             {secondary && (
               <Button as={Link} href={secondary.href} variant="line">
