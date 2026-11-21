@@ -1,0 +1,43 @@
+{
+  "nota": "Prompt 28, Fase D: nuova homepage (Fasi A, B e C, fino a cd67598) e /contatti (\"Poi decidete voi\", situazioni segnalate dalla homepage). Confronto tra la build locale di 7630be3 (produzione prima del Prompt 28, NEXT_PUBLIC_SITE_URL di produzione) e agriasystem.com a cd67598: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia (il confronto è stato fatto con before http://localhost:3200). Il piano segnava anche 20 altre pagine (servizi, settori, blog e articoli: rimando a /#selezione, pulsante finale \"Richiedete la prima analisi\"), escluse su indicazione: si inviano solo home e /contatti. Dati dell'organizzazione cambiati (site.tagline e positioning): già coperti dalla home.",
+  "commit": "cd67598e3d51d4a93255d3e888ac44759c8f1c1f",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/",
+    "/contatti"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "a74809c768ca7fd3778fc56c63f46ba233898355fa9a15f3ef8ab76c85bf873d",
+      "site": "a8d770951f7a43ceab423a0b35a492b156b744386a74224e1a2d884c289c8222"
+    },
+    "/contatti": {
+      "page": "751c0393ec512f94d7911f601588bd0fef60ed3547882f0022b3e41c89846e3e"
+    }
+  },
+  "esclusi": [
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation",
+    "/settori/hospitality",
+    "/settori/cantine",
+    "/settori/frantoi",
+    "/blog",
+    "/blog/ecommerce-per-frantoi",
+    "/blog/software-per-agriturismi",
+    "/blog/software-per-cantine",
+    "/blog/siti-web-per-agriturismi",
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione",
+    "/blog/siti-web-per-cantine",
+    "/blog/vendita-internazionale-vino-dtc-export-estero",
+    "/blog/agriturismo-booking-online-prenotazioni",
+    "/blog/degustazioni-cantina-trasformare-visite-vendite",
+    "/blog/ecommerce-vino-margini-vendita-diretta",
+    "/blog/storytelling-vino-marketing-vendite",
+    "/blog/chatbot-cantina-ai-customer-service",
+    "/blog/seo-locale-agroalimentare-google-maps"
+  ]
+}
