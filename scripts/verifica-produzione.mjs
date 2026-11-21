@@ -222,9 +222,8 @@ check(
 const blog = await page('/blog');
 check('/blog: chiusura con "Richiedete la prima analisi"', plain(blog.match(/<main[\s\S]*<\/main>/)?.[0] || '').includes('Richiedete la prima analisi'));
 
-// pagine area con la struttura di prima (fino alle loro fasi del Prompt 29)
-const OLD_TEMPLATE = SERVICES.filter((path) => path !== '/servizi/digital-presence');
-for (const path of OLD_TEMPLATE) {
+// Prompt 29: rimando breve a "Quando sì, quando no" su tutte e tre le pagine area
+for (const path of SERVICES) {
   const html = await page(path);
   check(
     `${path}: rimando breve con il link a /#selezione`,
@@ -232,43 +231,71 @@ for (const path of OLD_TEMPLATE) {
   );
 }
 
-// Prompt 29, Fase A: Digital Presence nella struttura nuova (otto sezioni)
-const presence = await page('/servizi/digital-presence');
-const presenceMain = presence.match(/<main[\s\S]*<\/main>/)?.[0] || '';
-const presenceText = plain(presenceMain);
-check(
-  '/servizi/digital-presence, h1: "Il sito che porta clienti, non quello che fa bella figura."',
-  headingText(presence, 'presence-title') === 'Il sito che porta clienti, non quello che fa bella figura.',
-  headingText(presence, 'presence-title')
-);
-const PRESENCE_SECTIONS = [
-  ['presence-title', null],
-  ['presence-problemi-title', 'Tre cose che costano più di un sito nuovo.'],
-  ['presence-schermata-title', "Com'è fatto un sito che prenota."],
-  ['presence-costruiamo-title', 'Quattro cose, in ogni progetto.'],
-  ['presence-mestiere-title', 'Progettato per quello che fate voi.'],
-  ['come-lavoriamo-titolo', 'Quattro passi. Il primo dura tre minuti.'],
-  ['presence-faq-title', 'Domande frequenti'],
-  ['presence-cta-titolo', 'Raccontateci come vi trovano oggi.'],
+// Prompt 29: pagine area nella struttura nuova (otto sezioni, etichette, schermate)
+const NEW_AREAS = [
+  {
+    key: 'presence',
+    path: '/servizi/digital-presence',
+    title: 'Digital Presence — siti per agriturismi, hotel, cantine e frantoi | Agria System',
+    h1: 'Il sito che porta clienti, non quello che fa bella figura.',
+    sections: [
+      ['problemi', 'Tre cose che costano più di un sito nuovo.'],
+      ['schermata', "Com'è fatto un sito che prenota."],
+      ['costruiamo', 'Quattro cose, in ogni progetto.'],
+      ['mestiere', 'Progettato per quello che fate voi.'],
+    ],
+    closing: 'Raccontateci come vi trovano oggi.',
+    screen: ['orvenna.example', 'Il cliente sceglie camera e date da solo, anche alle undici di sera.'],
+    old: ['La presenza digitale come infrastruttura commerciale', 'Quattro impianti', 'Core Web Vitals', 'hreflang', 'Design system', 'Made in Italy, leggibile anche fuori'],
+  },
+  {
+    key: 'commerce',
+    path: '/servizi/digital-commerce',
+    title: 'Digital Commerce — shop e prenotazioni dirette per agriturismi, hotel, cantine e frantoi | Agria System',
+    h1: 'Vendete voi, senza passare da nessuno.',
+    sections: [
+      ['problemi', 'Il margine se ne va prima di arrivare a voi.'],
+      ['schermata', "Com'è fatto un negozio che vende da solo."],
+      ['costruiamo', "Quattro modi di vendere, uno accanto all'altro."],
+      ['mestiere', 'Ogni settore vende in modo diverso.'],
+    ],
+    closing: 'Raccontateci come vendete oggi.',
+    screen: ['calvena.example/shop', 'calvena.example/buoni-regalo', 'Ordini, pagamenti e magazzino si aggiornano da soli.', "L'ordine arriva già registrato, pronto da preparare."],
+    old: ["l'AI con cui lavoriamo", 'Alla consegna resta questo'],
+  },
 ];
-const presenceBad = PRESENCE_SECTIONS.filter(([id, text]) => text && headingText(presence, id) !== text).map(([id]) => `${id}: "${headingText(presence, id)}"`);
-const presenceOrder = PRESENCE_SECTIONS.map(([id]) => presence.indexOf(`id="${id}"`));
-check('/servizi/digital-presence: otto sezioni nell\'ordine del Prompt 29, con i titoli nuovi', presenceBad.length === 0 && presenceOrder.every((pos, i) => pos > 0 && (i === 0 || pos > presenceOrder[i - 1])), presenceBad.join(' · ') || JSON.stringify(presenceOrder));
-check(
-  '/servizi/digital-presence: schermata con il sito inventato, le tre didascalie e la riga di fantasia',
-  ['orvenna.example', 'Il cliente sceglie camera, giorno e ora da solo, anche alle undici di sera.', "Italiano e inglese: chi arriva dall'estero prenota nella sua lingua.", 'Vi trova su Google, e anche quando chiede consiglio a ChatGPT.', 'Esempio illustrativo: nomi e contenuti di fantasia.'].every((t) =>
-    presenceText.includes(t)
-  )
-);
-check(
-  '/servizi/digital-presence: i quattro passi della homepage (#come-lavoriamo) e le sei domande nei dati strutturati',
-  presence.includes('id="come-lavoriamo"') &&
-    ['La richiesta', 'La prima analisi', 'Il progetto', 'Costruzione ed evoluzione'].every((t) => presenceText.includes(t)) &&
-    (presence.match(/"@type":"Question"/g) || []).length === 6
-);
-const presenceOld = ['La presenza digitale come infrastruttura commerciale', 'Quattro impianti', 'Core Web Vitals', 'hreflang', 'Design system', 'Alla consegna resta questo', "l'AI con cui lavoriamo", 'Made in Italy, leggibile anche fuori'].filter((t) => presenceText.includes(t));
-check('/servizi/digital-presence: nessun testo della pagina di prima', presenceOld.length === 0, presenceOld.join(' · '));
-check('/servizi/digital-presence: nessuna fotografia (al loro posto la schermata)', !/<img\b/.test(presenceMain), (presenceMain.match(/<img[^>]*src="([^"]+)"/g) || []).join(' '));
+const LABELS_29 = ['( COSA VI COSTA )', "( COM'È FATTO )", '( COSA COSTRUIAMO )', '( PER IL VOSTRO MESTIERE )', '( DALLA RICHIESTA ALLA CONSEGNA )', '( DOMANDE FREQUENTI )'];
+for (const a of NEW_AREAS) {
+  const html = await page(a.path);
+  const main = html.match(/<main[\s\S]*<\/main>/)?.[0] || '';
+  const text = plain(main);
+  check(`${a.path}, title per Google: "${a.title}"`, html.includes(`<title>${a.title.replace(/'/g, '&#x27;')}</title>`) || html.includes(`<title>${a.title}</title>`));
+  check(`${a.path}, h1: "${a.h1}"`, headingText(html, `${a.key}-title`) === a.h1, headingText(html, `${a.key}-title`));
+  const ids = [
+    `${a.key}-title`,
+    ...a.sections.map(([s]) => `${a.key}-${s}-title`),
+    'come-lavoriamo-titolo',
+    `${a.key}-faq-title`,
+    `${a.key}-cta-titolo`,
+  ];
+  const bad = a.sections.filter(([s, t]) => headingText(html, `${a.key}-${s}-title`) !== t).map(([s]) => `${s}: "${headingText(html, `${a.key}-${s}-title`)}"`);
+  const order = ids.map((id) => html.indexOf(`id="${id}"`));
+  check(`${a.path}: otto sezioni nell'ordine del Prompt 29, con i titoli nuovi`, bad.length === 0 && order.every((pos, i) => pos > 0 && (i === 0 || pos > order[i - 1])) && headingText(html, `${a.key}-cta-titolo`) === a.closing, bad.join(' · ') || JSON.stringify(order));
+  const missingLabels = LABELS_29.filter((l) => !text.includes(l));
+  check(`${a.path}: etichette tra parentesi sulle sei sezioni (la chiusura senza)`, missingLabels.length === 0, missingLabels.join(' '));
+  check(`${a.path}: schermate con il sito inventato, le didascalie e la riga di fantasia`, [...a.screen, 'Esempio illustrativo: nomi e contenuti di fantasia.'].every((t) => text.includes(t)));
+  check(
+    `${a.path}: i quattro passi della homepage (#come-lavoriamo) e le sei domande nei dati strutturati`,
+    html.includes('id="come-lavoriamo"') && ['La richiesta', 'La prima analisi', 'Il progetto', 'Costruzione ed evoluzione'].every((t) => text.includes(t)) && (html.match(/"@type":"Question"/g) || []).length === 6
+  );
+  const faqPos = html.indexOf(`id="${a.key}-faq-title"`);
+  const whenPos = html.indexOf('href="/#selezione"');
+  const ctaPos = html.indexOf(`id="${a.key}-cta-titolo"`);
+  check(`${a.path}: rimando a /#selezione tra le domande frequenti e la chiusura`, faqPos > 0 && whenPos > faqPos && ctaPos > whenPos);
+  const old = a.old.filter((t) => text.includes(t));
+  check(`${a.path}: nessun testo della pagina di prima`, old.length === 0, old.join(' · '));
+  check(`${a.path}: nessuna fotografia (al loro posto le schermate)`, !/<img\b/.test(main), (main.match(/<img[^>]*src="([^"]+)"/g) || []).join(' '));
+}
 
 // Prompt 23: pagine soluzione, contatto rapido nell'header, indicazioni della hero
 for (const [path, title] of SOLUTIONS) {

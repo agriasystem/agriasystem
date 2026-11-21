@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PageHero from '@/components/agria/sections/PageHero';
+import WhenWeHelp from '@/components/agria/sections/WhenWeHelp';
 import { Button, Container, Reveal } from '@/components/agria/ui';
 import Icon from '@/components/agria/icons/Icon';
 import { QUICK_CONTACT } from '@/components/agria/nav-data';
@@ -14,18 +15,24 @@ import SectorTabs from './SectorTabs';
 import FinalCta from './FinalCta';
 import StickyCta from './StickyCta';
 import BookingScreen from './screens/BookingScreen';
+import ShopScreen from './screens/ShopScreen';
+import GiftScreen from './screens/GiftScreen';
 
 // Pagina area del Prompt 29: otto sezioni, uguali per le tre aree, con l'aspetto
-// della homepage (base offwhite, titoli bicolore, card bianche).
-// 1 apertura · 2 tre problemi · 3 la schermata · 4 cosa costruiamo · 5 per il
-// vostro mestiere · 6 come lavoriamo (i quattro passi della home, #come-lavoriamo)
-// · 7 domande frequenti · 8 chiusura con gli articoli collegati.
-// Testi in content/agria/servizi-aree.js; nessun testo qui, tranne i nomi dei
-// gruppi di rimandi e il titolo delle FAQ (sotto).
+// della homepage (base offwhite, etichette tra parentesi, titoli bicolore, card
+// bianche, spaziatura ridotta).
+// 1 apertura · 2 tre problemi · 3 la schermata (o le schermate) · 4 cosa
+// costruiamo · 5 per il vostro mestiere · 6 come lavoriamo (i quattro passi della
+// home, #come-lavoriamo) · 7 domande frequenti · rimando breve a /#selezione ·
+// 8 chiusura con gli articoli collegati (senza etichetta, come in home).
+// Tra due sezioni chiare di seguito il margine superiore è compatto: i due
+// margini si sommano. Testi in content/agria/servizi-aree.js (labels: le
+// etichette delle sezioni); qui solo i nomi dei gruppi di rimandi e il titolo
+// delle FAQ.
 const FAQ_TITLE = 'Domande frequenti';
 const LINK_GROUPS = { services: 'Servizi', articles: 'Approfondimenti', index: 'Tutti i servizi' };
 const NOTE = 'Esempio illustrativo: nomi e contenuti di fantasia.';
-const SCREENS = { booking: BookingScreen };
+const SCREENS = { booking: BookingScreen, shop: ShopScreen, gift: GiftScreen };
 
 function Cards({ items, columns }) {
   return (
@@ -58,7 +65,7 @@ function Points({ points }) {
 }
 
 export default function ServicePage({ area, others }) {
-  const { key, meta } = area;
+  const { key, meta, labels } = area;
   const id = (name) => `${key}-${name}`;
   const solutions = solutionLinks(key);
   const links = [
@@ -85,6 +92,7 @@ export default function ServicePage({ area, others }) {
     ]),
     faqNode(area.faq, meta.path),
   ]);
+  const several = area.screens.length > 1;
   const screensTitle = area.screensTitle ?? area.screens[0].title;
 
   return (
@@ -102,9 +110,9 @@ export default function ServicePage({ area, others }) {
       />
 
       {/* 2. Tre problemi */}
-      <HomeSection aria-labelledby={id('problemi-title')}>
+      <HomeSection spacing="compact" spacingTop="normal" aria-labelledby={id('problemi-title')}>
         <Container>
-          <HomeIntro title={area.diagnosis.title} titleId={id('problemi-title')} />
+          <HomeIntro eyebrow={labels.problems} title={area.diagnosis.title} titleId={id('problemi-title')} />
           <Cards items={area.diagnosis.items} columns="md:grid-cols-3" />
           <Button as={Link} href={area.diagnosis.cta.href} variant="primary" className="mt-8 md:mt-10">
             <ArrowLabel label={area.diagnosis.cta.label} />
@@ -112,31 +120,41 @@ export default function ServicePage({ area, others }) {
         </Container>
       </HomeSection>
 
-      {/* 3. La schermata (o le schermate) */}
-      <HomeSection aria-labelledby={id('schermata-title')}>
+      {/* 3. La schermata, o le schermate una sotto l'altra con il loro sottotitolo */}
+      <HomeSection spacingTop="compact" aria-labelledby={id('schermata-title')}>
         <Container>
-          <HomeIntro title={screensTitle} titleId={id('schermata-title')} />
+          <HomeIntro eyebrow={labels.screens} title={screensTitle} titleId={id('schermata-title')} />
           <div className="mt-10 flex flex-col gap-20 md:mt-12">
             {area.screens.map((screen) => {
               const Screen = SCREENS[screen.kind];
-              return <Screen key={screen.key} screen={screen} titleId={id('schermata-title')} note={NOTE} />;
+              const screenId = several ? id(`schermata-${screen.key}`) : id('schermata-title');
+              return (
+                <div key={screen.key}>
+                  {several && (
+                    <h3 id={screenId} className="mb-8 font-agria-sans text-agria-h3 text-agria-graphite">
+                      {screen.label}
+                    </h3>
+                  )}
+                  <Screen screen={screen} titleId={screenId} note={NOTE} />
+                </div>
+              );
             })}
           </div>
         </Container>
       </HomeSection>
 
       {/* 4. Cosa costruiamo */}
-      <HomeSection aria-labelledby={id('costruiamo-title')}>
+      <HomeSection spacingTop="compact" aria-labelledby={id('costruiamo-title')}>
         <Container>
-          <HomeIntro title={area.build.title} titleId={id('costruiamo-title')} />
+          <HomeIntro eyebrow={labels.build} title={area.build.title} titleId={id('costruiamo-title')} />
           <Cards items={area.build.items} columns="md:grid-cols-2" />
         </Container>
       </HomeSection>
 
       {/* 5. Per il vostro mestiere: schede da md, fisarmonica sotto */}
-      <HomeSection aria-labelledby={id('mestiere-title')}>
+      <HomeSection spacingTop="compact" aria-labelledby={id('mestiere-title')}>
         <Container>
-          <HomeIntro title={area.sectors.title} titleId={id('mestiere-title')} />
+          <HomeIntro eyebrow={labels.sectors} title={area.sectors.title} titleId={id('mestiere-title')} />
           <div className="mt-10 hidden md:mt-12 md:block">
             <SectorTabs titles={area.sectors.items.map((sector) => sector.title)}>
               {area.sectors.items.map((sector) => (
@@ -171,10 +189,11 @@ export default function ServicePage({ area, others }) {
       </HomeSection>
 
       {/* 6. Come lavoriamo: i quattro passi della homepage (#come-lavoriamo) */}
-      <MethodSection eyebrow={null} title={area.method?.title} text={area.method?.text} />
+      <MethodSection eyebrow={labels.method} title={area.method?.title} text={area.method?.text} spacingTop="compact" />
 
-      {/* 7. Domande frequenti */}
-      <HomeFaq eyebrow={null} title={FAQ_TITLE} items={area.faq} group={id('faq')} titleId={id('faq-title')} />
+      {/* 7. Domande frequenti, poi il rimando breve a "Quando sì, quando no" */}
+      <HomeFaq eyebrow={labels.faq} title={FAQ_TITLE} items={area.faq} group={id('faq')} titleId={id('faq-title')} spacingTop="compact" />
+      <WhenWeHelp background="offwhite" />
 
       {/* 8. Chiusura · scuro, con i rimandi e gli articoli collegati */}
       <FinalCta
@@ -187,6 +206,7 @@ export default function ServicePage({ area, others }) {
         secondaryProps={{ target: '_blank', rel: 'noopener', 'data-analytics': 'whatsapp', 'data-analytics-location': `${key}_chiusura` }}
         links={links}
         glow={false}
+        spacing="compact"
       />
       <StickyCta label={area.cta.label} href={area.cta.href} endId={id('cta-finale')} />
     </>

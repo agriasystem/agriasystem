@@ -10,9 +10,9 @@ import { HomeIntro, HomeSection } from './parts';
 // (app/(site)/page.jsx).
 // Senza argomenti: le domande della homepage. Le pagine servizio passano le loro
 // (items, title; eyebrow facoltativa) e un group per i <details>.
-export default function HomeFaq({ eyebrow = faq.eyebrow, title = faq.title, items = faq.items, group = 'home-faq', titleId = 'home-faq-title' }) {
+export default function HomeFaq({ eyebrow = faq.eyebrow, title = faq.title, items = faq.items, group = 'home-faq', titleId = 'home-faq-title', spacingTop }) {
   return (
-    <HomeSection background="offwhite" aria-labelledby={titleId}>
+    <HomeSection background="offwhite" spacingTop={spacingTop} aria-labelledby={titleId}>
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(32px,5vw,72px)]">
         <HomeIntro eyebrow={eyebrow} title={title} titleId={titleId} className="lg:self-start" />
         <div className="border-t border-agria-border">

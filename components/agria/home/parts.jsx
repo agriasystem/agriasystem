@@ -8,13 +8,13 @@ import { Eyebrow, Heading, Reveal, Text } from '@/components/agria/ui';
 // clamp(2.75rem, 1.25rem + 6vw, 6.75rem), compact da clamp(3rem, 1.875rem +
 // 4.5vw, 6rem) a clamp(2rem, 1.25rem + 3vw, 4rem).
 const HOME_BG = { offwhite: 'bg-agria-offwhite', ink: 'bg-agria-ink', white: 'bg-agria-white' };
-const HOME_PAD = {
-  normal: 'py-[clamp(2.75rem,1.25rem+6vw,6.75rem)]',
-  compact: 'py-[clamp(2rem,1.25rem+3vw,4rem)]',
-};
-export function HomeSection({ background = 'offwhite', spacing = 'normal', className = '', children, ...props }) {
+const HOME_PAD_TOP = { normal: 'pt-[clamp(2.75rem,1.25rem+6vw,6.75rem)]', compact: 'pt-[clamp(2rem,1.25rem+3vw,4rem)]' };
+const HOME_PAD_BOTTOM = { normal: 'pb-[clamp(2.75rem,1.25rem+6vw,6.75rem)]', compact: 'pb-[clamp(2rem,1.25rem+3vw,4rem)]' };
+// spacingTop: sovrascrive il solo margine superiore (pagine servizio: tra due
+// sezioni chiare di seguito i due margini si sommano, quello sopra è compatto)
+export function HomeSection({ background = 'offwhite', spacing = 'normal', spacingTop, className = '', children, ...props }) {
   return (
-    <section className={`${HOME_BG[background]} ${HOME_PAD[spacing]} ${className}`} {...props}>
+    <section className={`${HOME_BG[background]} ${HOME_PAD_TOP[spacingTop ?? spacing]} ${HOME_PAD_BOTTOM[spacing]} ${className}`} {...props}>
       {children}
     </section>
   );

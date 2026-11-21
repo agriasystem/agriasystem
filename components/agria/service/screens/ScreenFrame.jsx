@@ -1,4 +1,7 @@
 import { Reveal } from '@/components/agria/ui';
+import Icon from '@/components/agria/icons/Icon';
+
+const IconSmall = ({ name }) => <Icon name={name} size={18} />;
 
 // Pezzi comuni delle schermate delle pagine servizio (Prompt 29, modello: brochure
 // hospitality, pagine 3-6). Tutto in elementi della pagina, niente immagini:
@@ -97,5 +100,55 @@ export function ScreenLayout({ title, titleId, captions, aside, note, children }
       </Reveal>
       <figcaption className="mt-8 font-agria-sans text-agria-sm text-agria-grey">{note}</figcaption>
     </figure>
+  );
+}
+
+// prodotto disegnato (cantina o frantoio inventati): bottiglia di vino, olio o
+// cassetta, nei toni dell'azienda, non nel verde Agria
+const BOTTLE = { rosso: '#6f2c2c', bianco: '#cdbb7e', rosato: '#d49a8a', olio: '#9a9446' };
+export function Product({ kind, className = '' }) {
+  if (kind === 'cassetta') {
+    return (
+      <svg viewBox="0 0 60 60" aria-hidden="true" focusable="false" className={className}>
+        <rect x="10" y="26" width="40" height="22" rx="2" fill="#c9a27a" />
+        <rect x="10" y="26" width="40" height="5" fill="#b38b63" />
+        {[18, 26, 34, 42].map((x) => (
+          <rect key={x} x={x - 2} y="12" width="4" height="15" rx="1.5" fill="#6f2c2c" />
+        ))}
+      </svg>
+    );
+  }
+  const color = BOTTLE[kind] ?? BOTTLE.rosso;
+  const oil = kind === 'olio';
+  return (
+    <svg viewBox="0 0 60 60" aria-hidden="true" focusable="false" className={className}>
+      {oil ? (
+        <>
+          <rect x="21" y="8" width="18" height="5" rx="1.5" fill="#3d3a2a" />
+          <path d="M22 13 h16 v6 q6 3 6 10 v20 q0 4 -4 4 h-20 q-4 0 -4 -4 v-20 q0 -7 6 -10 z" fill={color} />
+        </>
+      ) : (
+        <>
+          <rect x="26" y="5" width="8" height="5" rx="1" fill="#3d2f2a" />
+          <path d="M27 10 h6 v10 q7 4 7 12 v19 q0 3 -3 3 h-14 q-3 0 -3 -3 v-19 q0 -8 7 -12 z" fill={color} />
+        </>
+      )}
+      <rect x="22" y="34" width="16" height="11" rx="1.5" fill="#f4efe6" />
+    </svg>
+  );
+}
+
+// notifica di sistema (ordine registrato, magazzino aggiornato) con icona a tratto
+export function Notice({ icon = 'file-text', title, children, className = '' }) {
+  return (
+    <div className={`flex gap-3 rounded-2xl border border-agria-border bg-agria-white p-4 ${className}`}>
+      <span className="mt-0.5 shrink-0 text-agria-graphite">
+        <IconSmall name={icon} />
+      </span>
+      <div className="min-w-0">
+        <p className="font-agria-sans text-[12.5px] font-medium text-agria-graphite">{title}</p>
+        <div className="mt-0.5 font-agria-sans text-[11.5px] leading-snug text-agria-grey">{children}</div>
+      </div>
+    </div>
   );
 }

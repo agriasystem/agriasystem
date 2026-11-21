@@ -9,10 +9,10 @@ import { ArrowLabel, TwoTone, HomeSection } from './parts';
 // Senza argomenti: la versione della homepage. Le pagine servizio possono passare
 // un altro titolo e un testo sopra i passi; i quattro passi sono sempre quelli di
 // method (content/agria/home.js), un'unica fonte.
-export default function MethodSection({ eyebrow = method.eyebrow, title = method.title, text = null }) {
+export default function MethodSection({ eyebrow = method.eyebrow, title = method.title, text = null, spacingTop }) {
   const titleId = `${method.id}-titolo`;
   return (
-    <HomeSection background="offwhite" id={method.id} aria-labelledby={titleId}>
+    <HomeSection background="offwhite" spacingTop={spacingTop} id={method.id} aria-labelledby={titleId}>
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(32px,5vw,72px)]">
         <Reveal className="flex flex-col items-start gap-6 lg:sticky lg:top-32 lg:self-start">
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}

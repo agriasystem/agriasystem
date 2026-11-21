@@ -39,12 +39,20 @@ export const serviceAreas = {
   presence: {
     key: 'presence',
     name: 'Digital Presence',
-    // titolo e descrizione per Google: invariati (il Prompt 29 non li riscrive)
     meta: {
-      title: 'Digital Presence — siti web per agriturismi, cantine e frantoi | Agria System',
+      title: 'Digital Presence — siti per agriturismi, hotel, cantine e frantoi | Agria System',
       description:
-        'Progettiamo siti costruiti per generare richieste dirette: architettura, prestazioni, SEO tecnica e visibilità nei motori AI per hospitality, cantine e frantoi.',
+        'Siti nuovi o rifatti per agriturismi, hotel, cantine e frantoi: veloci, in italiano e inglese, con la prenotazione in primo piano e collegati ai programmi che usate già.',
       path: '/servizi/digital-presence',
+    },
+    // etichette delle sezioni (la chiusura resta senza, come in home)
+    labels: {
+      problems: '( COSA VI COSTA )',
+      screens: "( COM'È FATTO )",
+      build: '( COSA COSTRUIAMO )',
+      sectors: '( PER IL VOSTRO MESTIERE )',
+      method: '( DALLA RICHIESTA ALLA CONSEGNA )',
+      faq: '( DOMANDE FREQUENTI )',
     },
     cta: { label: 'Richiedete la prima analisi →', href: CONTACT },
     // 1. Apertura
@@ -83,7 +91,7 @@ export const serviceAreas = {
         kind: 'booking',
         title: "Com'è fatto un sito che prenota.",
         captions: [
-          'Il cliente sceglie camera, giorno e ora da solo, anche alle undici di sera.',
+          'Il cliente sceglie camera e date da solo, anche alle undici di sera.',
           "Italiano e inglese: chi arriva dall'estero prenota nella sua lingua.",
           'Vi trova su Google, e anche quando chiede consiglio a ChatGPT.',
         ],
@@ -295,143 +303,258 @@ export const serviceAreas = {
     // foto del blocco Digital Presence nell'indice /servizi (la pagina area non ha più fotografie)
     indexImage: agriaImage('servizi/presence'),
   },
+  // Prompt 29, Fase B: struttura nuova in otto sezioni (components/agria/service/ServicePage.jsx).
   commerce: {
     key: 'commerce',
     name: 'Digital Commerce',
     meta: {
-      title: 'Digital Commerce — e-commerce e vendita diretta per cantine, frantoi e hospitality | Agria System',
+      title: 'Digital Commerce — shop e prenotazioni dirette per agriturismi, hotel, cantine e frantoi | Agria System',
       description:
-        'E-commerce, prenotazioni, listini B2B e pagamenti integrati con i vostri strumenti: il canale diretto si affianca a quelli che già avete.',
+        'Shop, prenotazioni, buoni regalo e listini per i professionisti, per agriturismi, hotel, cantine e frantoi: pagamento online, ordini già registrati e il cliente che resta vostro.',
       path: '/servizi/digital-commerce',
     },
-    cta: { label: 'Costruiamo il vostro shop', href: CONTACT },
-    hero: {
-      eyebrow: '02 — Digital Commerce',
-      title: 'La vendita diretta come canale stabile accanto agli altri, non come esperimento.',
-      lead: 'E-commerce, prenotazioni e listini per cantine, frantoi e strutture ricettive. Incassate senza intermediari, con i flussi collegati agli strumenti che già usate.',
-      secondary: METHOD,
-      pills: ['E-commerce', 'Prenotazioni', 'Pagamenti', 'Listini B2B', 'Spedizioni', 'Integrazioni', 'IT · EN'],
+    labels: {
+      problems: '( COSA VI COSTA )',
+      screens: "( COM'È FATTO )",
+      build: '( COSA COSTRUIAMO )',
+      sectors: '( PER IL VOSTRO MESTIERE )',
+      method: '( DALLA RICHIESTA ALLA CONSEGNA )',
+      faq: '( DOMANDE FREQUENTI )',
     },
+    cta: { label: 'Richiedete la prima analisi →', href: CONTACT },
+    // 1. Apertura
+    hero: {
+      eyebrow: '( 02 · DIGITAL COMMERCE )',
+      title: { text: 'Vendete voi,', accent: 'senza passare da nessuno.' },
+      lead: "Shop, prenotazioni, buoni regalo e listini per i professionisti, con il pagamento online. L'ordine arriva già registrato, il cliente resta vostro, e la commissione non la paga nessuno.",
+      secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
+      pills: ['Shop', 'Prenotazioni', 'Buoni regalo', 'Listini per professionisti', 'Pagamento online', 'Spedizioni'],
+    },
+    // 2. Tre problemi
     diagnosis: {
-      title: 'Il margine se ne va prima di arrivare a voi.',
+      title: { text: 'Il margine se ne va', accent: 'prima di arrivare a voi.' },
       items: [
         {
-          icon: 'coins',
-          title: 'Commissioni su ogni vendita',
-          text: 'Portali e marketplace portano ordini, ma trattengono una quota e tengono per sé il cliente. Il canale diretto resta marginale.',
+          title: 'Una commissione su ogni vendita',
+          text: 'I portali portano ordini, ma trattengono una quota e si tengono il cliente. Quando quel cliente torna, torna da loro.',
         },
         {
-          icon: 'pen',
           title: 'Ordini raccolti a mano',
-          text: 'Telefono, WhatsApp ed email diventano un lavoro di trascrizione, con errori su formati, quantità e condizioni.',
+          text: 'Telefono, WhatsApp ed email: ogni ordine va riscritto da qualche parte, e prima o poi uno sbaglia formato, quantità o prezzo.',
         },
         {
-          icon: 'repeat',
-          title: 'Clienti che non tornano',
-          text: 'Chi ha già comprato è il contatto più redditizio che avete, ma senza anagrafica e storico non potete richiamarlo.',
+          title: 'Chi ha già comprato non torna',
+          text: 'È il cliente che costa meno riconquistare, ma senza un elenco e uno storico non sapete nemmeno chi è.',
         },
       ],
-      cta: { label: 'Valutiamo il vostro canale diretto', href: CONTACT },
+      cta: { label: 'Valutiamo il vostro canale diretto →', href: CONTACT },
     },
+    // 3. Le schermate (brochure, pagine 4 e 5), una sotto l'altra. mock: il sito
+    // di una cantina inventata, solo scenografia (nome senza riscontri, Prompt 29).
+    screensTitle: { text: "Com'è fatto", accent: 'un negozio che vende da solo.' },
+    screens: [
+      {
+        key: 'shop',
+        kind: 'shop',
+        label: 'Lo shop',
+        captions: [
+          'I vostri prodotti in vendita giorno e notte, con spedizione o ritiro in struttura.',
+          'Lo shop lo creiamo da zero, oppure miglioriamo quello che avete già.',
+          'Ordini, pagamenti e magazzino si aggiornano da soli.',
+        ],
+        mock: {
+          url: 'calvena.example/shop',
+          brand: 'Calvena',
+          kind: 'Tenuta',
+          nav: ['Vini', 'Shop', 'Buoni regalo'],
+          active: 'Shop',
+          cart: 'Carrello · 2',
+          categoriesLabel: 'Categorie',
+          categories: ['Tutti i vini', 'Rossi', 'Bianchi', 'Rosati', 'Olio', 'Idee regalo'],
+          products: [
+            { name: 'Rosso di collina 2022', price: '€ 14', kind: 'rosso' },
+            { name: 'Bianco del poggio 2024', price: '€ 12', kind: 'bianco' },
+            { name: 'Rosato 2024', price: '€ 11', kind: 'rosato' },
+            { name: 'Riserva 2020', price: '€ 28', kind: 'rosso' },
+            { name: 'Olio nuovo · 0,5 l', price: '€ 16', kind: 'olio' },
+            { name: 'Cassetta da sei', price: '€ 72', kind: 'cassetta' },
+          ],
+          phone: {
+            time: '22:18',
+            title: 'Come lo ricevete?',
+            options: ['Spedizione a casa', 'Ritiro in cantina'],
+            active: 'Ritiro in cantina',
+            items: [
+              ['Rosso di collina', '€ 14'],
+              ['Olio nuovo', '€ 16'],
+            ],
+            total: ['Totale', '€ 30'],
+            button: 'Paga e conferma',
+          },
+          notice: {
+            title: 'Magazzino aggiornato',
+            lines: ['Rosso di collina 2022 · una bottiglia in meno', 'Ordine registrato · da preparare'],
+          },
+        },
+      },
+      {
+        key: 'buoni',
+        kind: 'gift',
+        label: 'I buoni regalo e i pacchetti',
+        captions: [
+          'Buoni regalo pagati online, pronti da stampare o da inviare.',
+          'Pacchetti ed esperienze vendute direttamente da voi.',
+          "L'ordine arriva già registrato, pronto da preparare.",
+        ],
+        mock: {
+          url: 'calvena.example/buoni-regalo',
+          brand: 'Calvena',
+          kind: 'Tenuta',
+          nav: ['Vini', 'Visite', 'Buoni regalo'],
+          active: 'Buoni regalo',
+          cart: 'Carrello · 3',
+          card: { label: 'Buono regalo', for: 'Per', name: 'Martina', item: 'Degustazione per due', price: '€ 60' },
+          message: '«Buon compleanno! Un pomeriggio tra le vigne.» · da Luca',
+          send: ['Invia per email', 'Da stampare'],
+          packagesLabel: 'Visite e degustazioni',
+          package: {
+            title: 'Visita e pranzo in cantina',
+            text: 'Giro delle vigne, quattro vini in degustazione e pranzo · 3 ore',
+            price: '€ 85',
+            add: 'Aggiungi',
+          },
+          cartBox: {
+            title: 'Il vostro carrello',
+            items: [
+              ['Buono regalo · Martina', '€ 60'],
+              ['Visita e pranzo in cantina', '€ 85'],
+              ['Rosso di collina 2022', '€ 14'],
+            ],
+            total: ['Totale', '€ 159'],
+            button: 'Paga ora',
+          },
+          productsLabel: 'I vini della tenuta',
+          products: [
+            { name: 'Rosso di collina 2022', price: '€ 14', kind: 'rosso' },
+            { name: 'Bianco del poggio 2024', price: '€ 12', kind: 'bianco' },
+            { name: 'Olio nuovo · 0,5 l', price: '€ 16', kind: 'olio' },
+          ],
+          notice: {
+            title: 'Nuovo ordine · n. 0148',
+            meta: 'Pagato · 00:12',
+            text: 'Buono per Martina, visita e pranzo, una bottiglia',
+            badge: 'Da preparare',
+          },
+        },
+      },
+    ],
+    // 4. Cosa costruiamo (icon: per i blocchi dell'indice /servizi)
     build: {
-      title: 'Quattro impianti di vendita.',
+      title: { text: 'Quattro modi di vendere,', accent: "uno accanto all'altro." },
       items: [
         {
           icon: 'cart',
-          title: 'E-commerce di prodotto',
-          image: { src: '/images/software/sector-frantoi-hero.jpg', alt: "Olio appena estratto che scende da un beccuccio d'acciaio" },
-          text: 'Catalogo, formati e disponibilità costruiti su come vendete davvero.',
-          tiles: tiles(['Catalogo', 'formati e confezioni'], ['Pagamenti', 'metodi e sicurezza'], ['Spedizioni', 'corrieri e regole']),
+          title: 'Lo shop',
+          text: 'Catalogo, formati e confezioni come li vendete davvero, con pagamento sicuro e spedizioni già impostate.',
         },
         {
           icon: 'calendar',
           title: 'Prenotazioni ed esperienze',
-          image: HOSPITALITY_PHOTO,
-          text: 'Camere, degustazioni e visite prenotabili e pagabili dal vostro sito.',
-          tiles: tiles(
-            ['Calendario', 'capienza e turni'],
-            ['Acconti', 'pagamento immediato'],
-            ['Promemoria', 'prima di ogni arrivo'],
-          ),
+          text: 'Camere, degustazioni, visite e cene prenotabili con acconto: chi conferma paga, non promette.',
         },
         {
-          icon: 'list',
-          title: 'Listini professionali',
-          image: { src: '/images/software/sector-vitivinicolo-hero.jpg', alt: 'Botti di legno allineate in una cantina con volta in mattoni' },
-          text: 'Privati, ristorazione e rivenditori nello stesso sistema, con condizioni separate.',
-          tiles: tiles(['Prezzi', 'per tipo di cliente'], ['Ordini minimi', 'regole per listino'], ['Accesso riservato', 'area B2B']),
+          icon: 'ticket',
+          title: 'Buoni regalo e pacchetti',
+          text: 'Si comprano a qualunque ora, arrivano per email o si stampano, e valgono quello che decidete voi.',
         },
         {
-          icon: 'repeat',
-          title: 'Riacquisto e fidelizzazione',
-          image: { src: '/images/blog/ecommerce-vino-margini-vendita-diretta.jpg', alt: 'Scatole di cartone aperte, pronte per la spedizione' },
-          text: 'Chi ha comprato una volta viene richiamato con un motivo, non con uno sconto.',
-          tiles: tiles(['Anagrafica', 'storico ordini'], ['Club', 'consegne ricorrenti'], ['Email', 'sequenze post acquisto']),
+          icon: 'tag',
+          title: 'Listini per i professionisti',
+          text: 'Ristoranti, enoteche e rivenditori entrano e vedono i loro prezzi, con ordini ricorrenti in pochi clic.',
         },
       ],
     },
-    ai: {
-      title: ON_EVERY_PROJECT_TITLE,
-      text: "Cataloghi, contenuti e controlli passano da strumenti che acceleriamo con l'AI: è un metodo, non un servizio che vendiamo. Le decisioni commerciali restano vostre, la responsabilità tecnica è nostra.",
+    // 5. Per il vostro mestiere
+    sectors: {
+      title: { text: 'Ogni settore', accent: 'vende in modo diverso.' },
       items: [
         {
-          icon: 'grid',
-          title: 'Cataloghi costruiti più in fretta',
-          text: 'Schede prodotto, attributi e varianti generati come bozza e rifiniti da noi, anche in inglese.',
+          key: 'hospitality',
+          title: 'Agriturismi, hotel e strutture ricettive',
+          points: [
+            'Prenotazione con acconto: chi conferma paga.',
+            'Esperienze vendute a parte, anche dopo aver prenotato il soggiorno.',
+            'Buoni regalo per un soggiorno o una cena, comprati da chi li regala.',
+            'Condizioni di cancellazione scritte una volta e applicate sempre.',
+          ],
         },
         {
-          icon: 'search',
-          title: 'Ricerca interna costruita sul catalogo',
-          text: "Attributi e sinonimi preparati con l'AI insieme alle schede: chi cerca \"olio per ristorante\" o \"rosso da invecchiamento\" trova, invece di uscire dal sito.",
+          key: 'cantine',
+          title: 'Nel settore vitivinicolo',
+          points: [
+            'Vendita diretta delle bottiglie, con spedizioni e adempimenti in regola.',
+            'Degustazioni prenotabili, con il contatto che resta a voi.',
+            'Club del vino e consegne ricorrenti per chi compra già da voi.',
+            "Listini, lingue e condizioni per vendere fuori dall'Italia.",
+          ],
         },
         {
-          icon: 'funnel',
-          title: "Imbuto d'acquisto misurato",
-          text: "Sappiamo dove si interrompe l'acquisto: pagina prodotto, spedizioni o pagamento.",
-        },
-        {
-          icon: 'download',
-          title: 'Proprietà e portabilità',
-          text: 'Catalogo, clienti e ordini restano dati vostri, esportabili in qualunque momento.',
-        },
-        {
-          icon: 'globe',
-          title: 'Schede trovabili',
-          text: "Contenuti di prodotto scritti con l'AI e rivisti da noi, perché Google e i motori AI li trovino, anche in inglese.",
-        },
-      ],
-      cta: { label: 'Parliamo del vostro shop', href: CONTACT },
-    },
-    method: {
-      title: 'Dalla vendita di oggi al canale di domani.',
-      steps: [
-        { title: 'Analisi commerciale', text: 'Come vendete adesso, su quali canali, con quali margini e quali vincoli.' },
-        {
-          title: 'Catalogo e flussi',
-          text: "Struttura del catalogo, regole di prezzo e percorso d'acquisto, prototipati prima dello sviluppo.",
-        },
-        {
-          title: 'Sviluppo e integrazioni',
-          text: 'Piattaforma, pagamenti, spedizioni e collegamenti con i sistemi già in uso.',
-        },
-        {
-          title: 'Lancio e ottimizzazione',
-          text: 'Pubblicazione, osservazione degli ordini reali e correzioni sui punti di abbandono.',
+          key: 'frantoi',
+          title: 'Frantoi e aziende olivicole',
+          points: [
+            'Listini separati per privati, ristorazione e rivenditori.',
+            'Tutti i formati: bottiglie, latte, bag-in-box.',
+            'Olio nuovo prenotabile prima che esca.',
+            'I clienti abituali riordinano in pochi clic.',
+          ],
         },
       ],
     },
-    deliverables: {
-      title: DELIVERABLES_TITLE,
-      intro: 'Un canale di vendita funzionante e le istruzioni per governarlo.',
-      items: [
-        { text: 'Mappa del catalogo: attributi, varianti, regole di prezzo', category: 'Ricerca' },
-        { text: "Percorso d'acquisto prototipato e approvato", category: 'Design' },
-        { text: 'Design system del negozio: schede, carrello, checkout', category: 'Design' },
-        { text: 'Piano di misurazione degli acquisti e degli abbandoni', category: 'Analytics' },
-        { text: 'Configurazione documentata di spedizioni, imposte e adempimenti', category: 'Operazioni' },
-        { text: 'Report di collaudo: pagamenti, dispositivi, prestazioni', category: 'Delivery' },
-      ],
+    // 6. Come lavoriamo: i quattro passi della homepage (method in content/agria/home.js)
+    // 7. Domande frequenti
+    faq: [
+      {
+        q: 'Dobbiamo lasciare i portali?',
+        a: 'No, e non ve lo consigliamo. I portali continuano a portare clienti nuovi; il canale diretto serve a non pagare la commissione su chi vi avrebbe scelto comunque.',
+      },
+      {
+        q: 'Dove finiscono gli ordini?',
+        a: 'Nel vostro gestionale, se si può collegare, altrimenti in un pannello che vi consegniamo. In ogni caso in un posto solo, già scritti.',
+      },
+      {
+        q: 'I soldi passano da voi?',
+        a: 'Mai. I pagamenti vanno direttamente sul vostro conto, tramite il servizio che scegliete: noi colleghiamo e basta.',
+      },
+      {
+        q: 'Chi carica i prodotti?',
+        a: 'All\'inizio li carichiamo noi insieme a voi. Dopo li gestite da soli: aggiungere un prodotto o cambiare un prezzo si fa in un minuto.',
+      },
+      {
+        q: 'E le spedizioni?',
+        a: 'Impostiamo zone, costi e corriere come lavorate già. Se spedite vino o olio ci sono regole precise: le teniamo in conto.',
+      },
+      {
+        q: 'Quanto costa?',
+        a: 'Dipende da quanti prodotti e quali collegamenti servono. Dopo la prima analisi avete un progetto scritto con i costi voce per voce, e si firma solo dopo.',
+      },
+    ],
+    // 8. Chiusura (il secondo pulsante usa il link di QUICK_CONTACT.whatsapp)
+    closing: {
+      title: { text: 'Raccontateci', accent: 'come vendete oggi.' },
+      text: 'Vi prepariamo una prima analisi e ve la mostriamo: dove se ne va il margine, cosa potete vendere direttamente, da dove conviene partire.',
+      secondary: { label: 'Scriveteci su WhatsApp' },
     },
+    articles: [
+      { slug: 'ecommerce-per-frantoi' },
+      { slug: 'agriturismo-booking-online-prenotazioni' },
+      { slug: 'ecommerce-vino-margini-vendita-diretta' },
+      { slug: 'gestione-fiscale-ecommerce-vino-iva-fatturazione' },
+      { slug: 'vendita-internazionale-vino-dtc-export-estero' },
+    ],
+    // foto del blocco Digital Commerce nell'indice /servizi (la pagina area non ha più fotografie)
+    indexImage: agriaImage('servizi/commerce'),
+    // Verticali della pagina area di prima del Prompt 29: li usano solo le pagine
+    // /settori (content/agria/settori.js), che non sono nel Prompt 29. Testi invariati.
     verticals: {
       title: 'Ogni settore vende in modo diverso.',
       sectors: {
@@ -475,49 +598,7 @@ export const serviceAreas = {
         ],
       },
     },
-    markets: {
-      eyebrow: 'Oltre il territorio',
-      title: "Vendere fuori dall'Italia, senza improvvisare.",
-      text: "Formati, lingue, costi di spedizione e condizioni cambiano da mercato a mercato. Progettiamo il negozio perché l'estero sia una possibilità concreta, non una promessa.",
-      cta: { label: 'Parlateci dei vostri mercati', href: CONTACT },
-      image: agriaImage('servizi/commerce'),
-    },
-    faq: [
-      {
-        q: 'Conviene una piattaforma pronta o un progetto costruito su richiesta?',
-        a: 'Spesso conviene la piattaforma pronta: con un catalogo semplice e volumi contenuti è la risposta corretta, e lavoriamo anche su Shopify quando è la scelta giusta. Un progetto costruito su richiesta ha senso quando listini per tipo di cliente, preordini o integrazioni richiedono regole che la piattaforma scelta non gestisce. Decidiamo sui vostri casi reali, e vi spieghiamo perché.',
-      },
-      {
-        q: 'Gestite anche spedizioni e adempimenti?',
-        a: 'Configuriamo corrieri, costi e regole dentro il negozio. Le pratiche restano vostre o del vostro consulente, ma il sistema le rispetta.',
-      },
-      {
-        q: 'Possiamo collegare il gestionale che usiamo?',
-        a: "Se espone un'interfaccia o un export, quasi sempre sì. Lo verifichiamo prima di proporlo.",
-      },
-      {
-        q: 'Abbiamo già un e-commerce: perdiamo posizionamento se lo rifate?',
-        a: 'Il rischio si riduce se la migrazione è progettata prima: indirizzi prodotto mappati uno a uno e monitoraggio dopo la pubblicazione.',
-      },
-      {
-        q: 'Chi gestisce gli ordini dopo il lancio?',
-        a: 'Voi. Prepariamo procedure e formazione, e restiamo disponibili per evoluzioni e correzioni.',
-      },
-      {
-        q: 'Vendiamo anche in negozio: si può unire?',
-        a: 'Dove gli strumenti lo permettono, colleghiamo disponibilità e anagrafiche per evitare doppie realtà.',
-      },
-    ],
-    closing: { title: 'Raccontateci come vendete oggi.', text: CLOSING_TEXT, secondary: WRITE },
-    articles: [
-      { slug: 'ecommerce-per-frantoi' },
-      { slug: 'agriturismo-booking-online-prenotazioni' },
-      { slug: 'ecommerce-vino-margini-vendita-diretta' },
-      { slug: 'gestione-fiscale-ecommerce-vino-iva-fatturazione' },
-      { slug: 'vendita-internazionale-vino-dtc-export-estero' },
-    ],
   },
-
   automation: {
     key: 'automation',
     name: 'Digital Automation',

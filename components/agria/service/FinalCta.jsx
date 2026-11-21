@@ -10,10 +10,11 @@ const LINK =
 // (con tre gruppi, tre colonne da lg).
 // links: [{ title, items: [{ label, href }] }]
 // secondaryProps: attributi del secondo pulsante (es. WhatsApp in una nuova scheda);
-// glow: false toglie l'alone verde (pagine servizio del Prompt 29, come la home).
-export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, secondaryProps = {}, links = [], glow = true }) {
+// glow: false toglie l'alone verde; spacing: "compact" per la spaziatura ridotta
+// (pagine servizio del Prompt 29, come la home).
+export default function FinalCta({ id, sectionId, title, text, primary, primaryProps = {}, secondary, secondaryProps = {}, links = [], glow = true, spacing = 'normal' }) {
   return (
-    <Section background="ink" id={sectionId} aria-labelledby={id} className="relative isolate overflow-hidden">
+    <Section background="ink" spacing={spacing} id={sectionId} aria-labelledby={id} className="relative isolate overflow-hidden">
       {glow && (
         <div
           aria-hidden="true"

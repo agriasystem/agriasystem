@@ -6,12 +6,14 @@ import { whenWeHelp } from '@/content/agria/home';
 // e il link alla sezione "Quando sì, quando no" della homepage (/#selezione).
 // Testi in content/agria/home.js (whenWeHelp). La versione completa, che stava
 // in homepage, è diventata components/agria/home/SelectionSection.jsx (Prompt 28).
-export default function WhenWeHelp() {
+// background: fondo della sezione (bianco nelle pagine area di prima, offwhite
+// nelle pagine del Prompt 29, tra le domande frequenti e la chiusura).
+export default function WhenWeHelp({ background = 'white' }) {
   const { eyebrow, short } = whenWeHelp;
   return (
     // senza margine superiore: chiude la sezione bianca che la precede, con
     // un filetto (come IdentityBlock), invece di aggiungerne un'altra
-    <Section as="aside" background="white" spacing="compact" spacingTop="none" aria-label={eyebrow}>
+    <Section as="aside" background={background} spacing="compact" spacingTop="none" aria-label={eyebrow}>
       <Container>
         <div className="border-t border-agria-border pt-8">
           <Reveal className="flex flex-col items-start gap-4">
