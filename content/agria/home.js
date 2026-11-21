@@ -46,7 +46,7 @@ export const problems = {
   eyebrow: '( DA DOVE SI PARTE )',
   title: { text: 'Contate quante ne riconoscete.', accent: 'Poi decidete se potete permettervele.' },
   intro:
-    'Finché succedono, sembrano la normalità. Messe in fila costano tempo, soldi e qualche cliente. Segnate quelle che succedono da voi: in fondo vi diciamo da dove partiremmo.',
+    'Finché succedono, sembrano la normalità. Messe in fila costano tempo, soldi e qualche cliente. Segnate quelle che succedono da voi: le guardiamo insieme nella prima analisi.',
   param: 'problemi',
   action: '/contatti',
   items: [
@@ -102,7 +102,7 @@ export const problems = {
   // barra in fondo: contatore "n su 8" ({n} e {total} li sostituisce il contatore)
   count: '{n} su {total}',
   hint: 'Segnate quelle che succedono da voi.',
-  cta: 'Vi diciamo da dove partire →',
+  cta: 'Richiedete la prima analisi →',
 };
 
 // 4. Tre piani. links: le pagine del piano (etichette = nomi delle pagine nel menu)
@@ -137,6 +137,131 @@ export const floors = {
       links: [{ label: 'Digital Automation', href: '/servizi/digital-automation' }],
     },
   ],
+};
+
+// 5. Come funziona (schema prima/dopo, Fase C). nodes: i sei riquadri; side e
+// row: posto nello stato "Con Agria" (tre a sinistra, tre a destra; su mobile
+// in colonna, nello stesso ordine). step: la riga mono che compare quando il
+// dato arriva; order: posizione nella sequenza (1-4, poi gli ultimi due insieme).
+export const howItWorks = {
+  id: 'come-funziona',
+  eyebrow: '( COME FUNZIONA )',
+  title: { text: 'Oggi ogni programma lavora per conto suo.', accent: 'Con Agria si parlano.' },
+  text: "Premete l'interruttore e guardate cosa cambia quando i programmi si parlano.",
+  states: { before: 'Oggi', after: 'Con Agria' },
+  replay: '↻ rivedi',
+  nodes: [
+    { key: 'sito', label: 'Sito', step: "1 · l'ospite prenota", side: 'left', row: 0, order: 1 },
+    { key: 'portali', label: 'Portali di prenotazione', step: 'le prenotazioni arrivano da sole', side: 'left', row: 1, order: 5 },
+    { key: 'fogli', label: 'Fogli di calcolo', step: 'si aggiornano da soli', side: 'left', row: 2, order: 5 },
+    { key: 'pagamenti', label: 'Pagamenti online', step: "2 · l'ospite paga", side: 'right', row: 0, order: 2 },
+    { key: 'gestionale', label: 'Gestionale', step: '3 · la prenotazione entra', side: 'right', row: 1, order: 3 },
+    { key: 'email', label: 'Email e messaggi', step: '4 · conferma e promemoria', side: 'right', row: 2, order: 4 },
+  ],
+  center: { title: 'Un unico sistema', text: 'Ogni dato entra una volta' },
+  captions: {
+    before: 'Ogni dato si ricopia a mano, da un programma all\'altro.',
+    after: 'Gli stessi programmi, collegati: ogni dato entra una volta e arriva da solo dove serve.',
+  },
+  note: 'Ogni collegamento dipende da cosa permettono i programmi che usate: è la prima cosa che controlliamo.',
+};
+
+// 6. L'assistente al lavoro (fascia ink, Fase C). Due finestre: la chat, i cui
+// messaggi compaiono uno alla volta, e la richiesta, i cui campi si riempiono
+// man mano (after: indice del messaggio che fornisce il dato).
+export const assistantDemo = {
+  eyebrow: '( GLI ASSISTENTI )',
+  title: { text: 'Risponde subito.', accent: 'Decide la reception.' },
+  intro:
+    'Un assistente per un compito preciso. Risponde alle domande di sempre, raccoglie le informazioni giuste e passa tutto a una persona, già in ordine. Costruito sulle vostre camere, i vostri prezzi, il vostro modo di parlare agli ospiti.',
+  chat: {
+    bar: 'SITO DI ESEMPIO · AGRITURISMO DI FANTASIA',
+    messages: [
+      { from: 'ospite', text: 'Buonasera, avete una camera per due dal 12 al 14 giugno?' },
+      {
+        from: 'assistente',
+        text: 'Sì: per quelle date abbiamo libera la camera con vista sugli ulivi. Preferite la colazione in camera o in sala?',
+      },
+      { from: 'ospite', text: 'In sala. Si può arrivare dopo le 21?' },
+      { from: 'assistente', text: 'Certo, basta avvisarci. Vi confermo tutto a breve con una email: a quale indirizzo?' },
+      { from: 'ospite', text: 'laura.esempio@example.com' },
+    ],
+  },
+  request: {
+    bar: 'RICHIESTA PRONTA · DA CONFERMARE',
+    fields: [
+      { label: 'Ospiti', value: '2', after: 0 },
+      { label: 'Periodo', value: '12–14 giugno', after: 0 },
+      { label: 'Camera', value: 'Vista ulivi', after: 1 },
+      { label: 'Colazione', value: 'In sala', after: 2 },
+      { label: 'Arrivo', value: 'Dopo le 21', after: 2 },
+      { label: 'Prende in carico', value: 'Giulia Esempio', note: 'bozza da rivedere', after: 4 },
+    ],
+  },
+  note: 'Esempio illustrativo: nomi e contenuti di fantasia.',
+  limits: {
+    title: 'Cosa non fanno, di proposito',
+    text: 'Confermare prenotazioni, fare prezzi, rispondere a nome vostro senza che qualcuno abbia letto. Preparano tutto; la risposta la date voi. Un assistente che si improvvisa albergatore prima o poi sbaglia, e quello sbaglio diventa un problema vostro.',
+  },
+  commitments: {
+    title: 'Tre impegni',
+    items: [
+      {
+        icon: 'layers',
+        title: 'Sui vostri sistemi.',
+        text: "L'assistente lavora dentro il sito e il gestionale che avete: i dati restano lì, e restano vostri.",
+      },
+      {
+        icon: 'user-check',
+        title: 'Decidete voi.',
+        text: 'Ogni prenotazione, ordine o risposta importante passa da una persona prima di partire.',
+      },
+      {
+        icon: 'key',
+        title: 'Liberi.',
+        text: 'Sito, dati e accessi restano vostri, documentati e consegnati. Potete cambiare fornitore quando volete, con tutto in mano.',
+      },
+    ],
+  },
+};
+
+// 7. Reparto per reparto (Fase C): schede selezionabili, su mobile fisarmonica.
+export const departments = {
+  eyebrow: '( DOVE INTERVENIAMO )',
+  title: { text: 'Dove interveniamo,', accent: 'reparto per reparto.' },
+  intro: 'Quattro schede. Per ognuna: cosa si fa da solo, quali programmi tocca, da dove si comincia.',
+  labels: { auto: 'Cosa si fa da solo', tools: 'Programmi che tocca', first: 'Il primo passo' },
+  items: [
+    {
+      key: 'reception',
+      title: 'Reception',
+      auto: 'Risposte su orari, disponibilità e come arrivare. Prenotazione preparata. Conferma e promemoria inviati.',
+      tools: ['Sito', 'Gestionale', 'Email', 'WhatsApp'],
+      first: 'Un assistente sulle domande più frequenti, con la reception che conferma.',
+    },
+    {
+      key: 'prenotazioni',
+      title: 'Prenotazioni e vendita',
+      auto: 'Prenotazioni e buoni regalo venduti dal sito, pagati online. Disponibilità sempre aggiornata.',
+      tools: ['Sito', 'Pagamenti', 'Gestionale', 'Portali'],
+      first: 'Il modulo di prenotazione diretta, collegato alla disponibilità vera.',
+    },
+    {
+      key: 'amministrazione',
+      title: 'Amministrazione',
+      auto: 'Incassi abbinati alle prenotazioni. Conferme inviate. Report pronto il lunedì mattina.',
+      tools: ['Pagamenti', 'Gestionale', 'Fogli di calcolo'],
+      first: 'Il report settimanale, che arriva da solo.',
+    },
+    {
+      key: 'ordini',
+      title: 'Ordini, per cantine e frantoi',
+      auto: 'Ordini di privati, ristoranti e rivenditori in un solo posto, ognuno con il suo listino. Spedizioni e magazzino aggiornati.',
+      tools: ['Shop', 'Gestionale', 'Corriere'],
+      first: 'Lo shop con i listini separati.',
+    },
+  ],
+  cta: { label: 'Mappiamo insieme il vostro lavoro →', href: '/contatti' },
 };
 
 // 8. Quando sì, quando no (id "selezione": vi punta anche il rimando breve
@@ -405,21 +530,4 @@ export const composer = {
     { id: 'automazioni', label: 'Automazioni' },
     { id: 'report-settimanale', label: 'Report settimanale' },
   ],
-};
-
-// Interruttore "Oggi / Con Agria" di components/agria/home/ProblemSwitch.jsx,
-// fuori dalla homepage dal Prompt 28: torna nello schema "Come funziona" (Fase C).
-export const problem = {
-  eyebrow: 'Il punto di partenza',
-  title: 'Oggi i vostri dati stanno in sei posti.',
-  text: "Premete l'interruttore: a sinistra come lavorate oggi, a destra dove porta il lavoro di integrazione.",
-  states: { before: 'Come lavorate oggi', after: 'Con Agria' },
-  sources: ['Portali di prenotazione', 'Email', 'Telefono', 'Messaggi', 'Fogli di calcolo', 'Gestionale'],
-  system: { title: 'Un solo sistema', text: 'Dati collegati, decisioni chiare' },
-  captions: {
-    before: 'Sei fonti, nessuna che parla con le altre: ogni dato viene riscritto a mano.',
-    after: 'Le stesse fonti, collegate con un lavoro di integrazione: i dati entrano una volta e arrivano dove servono.',
-  },
-  limit:
-    "L'integrazione è possibile quando i sistemi la permettono: dipende dalle interfacce che espongono, dai permessi di accesso e dalla qualità dei dati. È la prima cosa che verifichiamo.",
 };

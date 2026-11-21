@@ -1,7 +1,7 @@
 import { getImageProps } from 'next/image';
-import { Container, Reveal, Section } from '@/components/agria/ui';
+import { Container, Reveal } from '@/components/agria/ui';
 import { team } from '@/content/agria/home';
-import { HomeIntro } from './parts';
+import { HomeIntro, HomeSection } from './parts';
 
 // 10. Chi siamo: testo e persone a sinistra, la foto del team a destra (sotto
 // lg, sotto il testo); poi tre righe con un filetto sopra ciascuna.
@@ -30,7 +30,7 @@ function TeamPhoto() {
 
 export default function TeamSection() {
   return (
-    <Section background="offwhite" aria-labelledby="home-team-title">
+    <HomeSection background="offwhite" aria-labelledby="home-team-title">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:items-center lg:gap-[clamp(32px,5vw,72px)]">
           <div>
@@ -60,6 +60,6 @@ export default function TeamSection() {
           ))}
         </ul>
       </Container>
-    </Section>
+    </HomeSection>
   );
 }

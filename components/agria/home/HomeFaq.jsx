@@ -1,7 +1,7 @@
-import { Container, Section } from '@/components/agria/ui';
+import { Container } from '@/components/agria/ui';
 import Icon from '@/components/agria/icons/Icon';
 import { faq } from '@/content/agria/home';
-import { HomeIntro } from './parts';
+import { HomeIntro, HomeSection } from './parts';
 
 // 11. Domande frequenti: fisarmonica con <details> nativi dello stesso gruppo
 // (attributo name): il browser tiene aperta una domanda alla volta, senza
@@ -10,7 +10,7 @@ import { HomeIntro } from './parts';
 // (app/(site)/page.jsx).
 export default function HomeFaq() {
   return (
-    <Section background="offwhite" aria-labelledby="home-faq-title">
+    <HomeSection background="offwhite" aria-labelledby="home-faq-title">
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(32px,5vw,72px)]">
         <HomeIntro eyebrow={faq.eyebrow} title={faq.title} titleId="home-faq-title" className="lg:self-start" />
         <div className="border-t border-agria-border">
@@ -32,6 +32,6 @@ export default function HomeFaq() {
           ))}
         </div>
       </Container>
-    </Section>
+    </HomeSection>
   );
 }

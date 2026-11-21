@@ -1,7 +1,7 @@
-import { Container, Reveal, Section } from '@/components/agria/ui';
+import { Container, Reveal } from '@/components/agria/ui';
 import Icon from '@/components/agria/icons/Icon';
 import { selection } from '@/content/agria/home';
-import { HomeIntro } from './parts';
+import { HomeIntro, HomeSection } from './parts';
 
 // 8. Quando sì, quando no (#selezione: vi punta anche il rimando breve delle
 // pagine servizio). Due card bianche: spunte verdi a sinistra, trattini grigi a
@@ -14,7 +14,7 @@ export default function SelectionSection() {
     { ...no, key: 'no', icon: 'minus', iconClass: 'text-agria-grey' },
   ];
   return (
-    <Section background="offwhite" id={id} aria-labelledby={titleId}>
+    <HomeSection background="offwhite" id={id} aria-labelledby={titleId}>
       <Container>
         <HomeIntro eyebrow={eyebrow} title={title} titleId={titleId} />
         <div className="mt-10 grid grid-cols-1 gap-[18px] md:mt-12 md:grid-cols-2">
@@ -40,6 +40,6 @@ export default function SelectionSection() {
           <p className="mt-8 font-agria-sans text-agria-md text-agria-grey">{note}</p>
         </Reveal>
       </Container>
-    </Section>
+    </HomeSection>
   );
 }

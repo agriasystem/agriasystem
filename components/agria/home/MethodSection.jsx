@@ -1,15 +1,15 @@
 import Link from 'next/link';
-import { Button, Container, Eyebrow, Heading, Reveal, Section } from '@/components/agria/ui';
+import { Button, Container, Eyebrow, Heading, Reveal } from '@/components/agria/ui';
 import { method } from '@/content/agria/home';
 import MethodSteps from './MethodSteps';
-import { ArrowLabel, TwoTone } from './parts';
+import { ArrowLabel, TwoTone, HomeSection } from './parts';
 
 // 9. Come lavoriamo (#come-lavoriamo): a sinistra titolo e pulsante, a destra
 // i quattro passi sulla linea verticale, che si accendono scorrendo.
 export default function MethodSection() {
   const titleId = `${method.id}-titolo`;
   return (
-    <Section background="offwhite" id={method.id} aria-labelledby={titleId}>
+    <HomeSection background="offwhite" id={method.id} aria-labelledby={titleId}>
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(32px,5vw,72px)]">
         <Reveal className="flex flex-col items-start gap-6 lg:sticky lg:top-32 lg:self-start">
           <Eyebrow>{method.eyebrow}</Eyebrow>
@@ -22,6 +22,6 @@ export default function MethodSection() {
         </Reveal>
         <MethodSteps steps={method.steps} />
       </Container>
-    </Section>
+    </HomeSection>
   );
 }

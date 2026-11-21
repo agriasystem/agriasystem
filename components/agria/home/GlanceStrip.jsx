@@ -1,11 +1,12 @@
-import { Container, Eyebrow, Reveal, Section } from '@/components/agria/ui';
+import { Container, Eyebrow, Reveal } from '@/components/agria/ui';
 import { glance } from '@/content/agria/home';
+import { HomeSection } from './parts';
 
 // 2. In trenta secondi: quattro colonne di testo su offwhite, separate da righe
 // sottili (orizzontali fino a lg, verticali da lg). Nessuna immagine.
 export default function GlanceStrip() {
   return (
-    <Section background="offwhite" spacing="compact" aria-labelledby="home-glance-label">
+    <HomeSection background="offwhite" spacing="compact" aria-labelledby="home-glance-label">
       <Container>
         <Reveal>
           <Eyebrow id="home-glance-label">{glance.eyebrow}</Eyebrow>
@@ -24,6 +25,6 @@ export default function GlanceStrip() {
           </ul>
         </Reveal>
       </Container>
-    </Section>
+    </HomeSection>
   );
 }

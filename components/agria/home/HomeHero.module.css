@@ -210,3 +210,504 @@
     background-color: transparent;
   }
 }
+
+/* =====================================================================
+   Edificio della sezione 4 in HTML e CSS (components/agria/home/FloorCards.jsx,
+   da md): un piano per riga della griglia delle schede, alto quanto la sua
+   scheda. Stessi rapporti dell'SVG: fianco profondo 42 px che sale di 28 px
+   (skewY -33,69°), tetto con la stessa inclinazione (skewX -56,31°).
+   ===================================================================== */
+
+@media (min-width: 768px) {
+  .tGrid {
+    padding-top: 30px; /* il tetto sta sopra la prima riga */
+  }
+}
+
+.tFloor {
+  position: relative;
+  height: 100%;
+}
+
+.tFace {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid var(--b-lit);
+  background: var(--b-fill);
+}
+
+.tFront {
+  inset: -1px 42px 0 0; /* -1px: i piani si sovrappongono di un filo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tSide {
+  top: -1px;
+  bottom: 0;
+  right: 0;
+  width: 43px;
+  transform-origin: left center;
+  transform: skewY(-33.69deg);
+}
+
+.tRoof {
+  left: 0;
+  right: 42px;
+  bottom: calc(100% + 1px);
+  height: 28px;
+  transform-origin: left bottom;
+  transform: skewX(-56.31deg);
+}
+
+.tGround::after {
+  content: '';
+  position: absolute;
+  left: -14px;
+  right: -6px;
+  bottom: -1px;
+  border-bottom: 1px solid var(--b-ground);
+}
+
+.tWindows {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 12px;
+  width: 68%;
+}
+
+.tPane,
+.tWindow,
+.tDoor {
+  border: 1px solid var(--b-lit);
+  border-radius: 2px;
+}
+
+.tPane {
+  aspect-ratio: 3 / 4;
+  max-height: 44px;
+}
+
+.tShop {
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
+  gap: 9%;
+  width: 74%;
+  height: 74%;
+}
+
+.tWindow {
+  flex: 1;
+  align-self: flex-start;
+  height: 52%;
+}
+
+.tDoor {
+  width: 20%;
+  height: 100%;
+  border-bottom: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage .tFace,
+  .stage .tWin {
+    animation-duration: 0.7s;
+    animation-delay: calc(0.35s + var(--floor) * 0.75s);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  .stage .tFace {
+    animation-name: tface-on;
+  }
+  .stage .tWin {
+    animation-name: twin-on;
+  }
+  .stage[data-play] .tFace,
+  .stage[data-play] .tWin {
+    animation-play-state: running;
+  }
+}
+
+@media (scripting: none) {
+  .stage .tFace,
+  .stage .tWin {
+    animation: none;
+  }
+}
+
+@keyframes tface-on {
+  from {
+    background-color: transparent;
+    border-color: var(--b-line);
+  }
+}
+
+@keyframes twin-on {
+  from {
+    border-color: var(--b-line);
+  }
+}
+
+/* =====================================================================
+   Schema "Come funziona" (components/agria/home/HowItWorks.jsx e
+   BoardSwitch.jsx). I riquadri sono posati nella posizione "Con Agria"
+   (left/top) e in "Oggi" sono spostati con transform, in unità della tavola
+   (cqw/cqh): il passaggio è un transform, non uno spostamento di layout.
+   Sequenza "Con Agria": ogni riquadro, la sua linea e la sua riga mono si
+   accendono a --light; i punti (.dot) viaggiano nell'SVG con translate.
+   Movimento ridotto: nessuna transizione né animazione, stato finale subito.
+   ===================================================================== */
+
+/* interruttore */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  font-family: var(--font-agria-sans), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.switchLabel {
+  color: rgb(var(--agria-grey));
+  transition: color 0.2s;
+}
+
+.switchLabel[data-active] {
+  color: rgb(var(--agria-graphite));
+}
+
+.track {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgb(var(--agria-border));
+  transition: background-color 0.25s;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgb(var(--agria-white));
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.switch[aria-checked='true'] .track {
+  background: rgb(var(--agria-green-dark));
+}
+
+.switch[aria-checked='true'] .thumb {
+  transform: translateX(20px);
+}
+
+@media (scripting: none) {
+  .switchArea {
+    display: none;
+  }
+}
+
+/* tavola */
+.board {
+  position: relative;
+  container-type: size;
+  aspect-ratio: 10 / 19;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 24px;
+  background-color: rgb(var(--agria-white));
+  background-image: linear-gradient(rgb(var(--agria-border) / 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--agria-border) / 0.6) 1px, transparent 1px);
+  background-size: 28px 28px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .board {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.nodes {
+  position: absolute;
+  inset: 0;
+  list-style: none;
+}
+
+.node {
+  position: absolute;
+  left: calc(var(--nx) * 1%);
+  top: calc(var(--ny) * 1%);
+  width: min(72%, 260px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgb(var(--agria-border));
+  border-radius: 14px;
+  background: rgb(var(--agria-white));
+  text-align: center;
+  /* "Oggi": sparsi e ruotati */
+  transform: translate(-50%, -50%) translate(calc((var(--bnx) - var(--nx)) * 1cqw), calc((var(--bny) - var(--ny)) * 1cqh))
+    rotate(var(--brn));
+}
+
+@media (min-width: 768px) {
+  .node {
+    left: calc(var(--wx) * 1%);
+    top: calc(var(--wy) * 1%);
+    width: 26%;
+    transform: translate(-50%, -50%) translate(calc((var(--bwx) - var(--wx)) * 1cqw), calc((var(--bwy) - var(--wy)) * 1cqh))
+      rotate(var(--br));
+  }
+}
+
+.nodeLabel {
+  font-family: var(--font-agria-sans), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: rgb(var(--agria-graphite));
+}
+
+.nodeStep {
+  display: none; /* in "Oggi" la riga non c'è: compare con la sequenza */
+  font-family: var(--font-agria-mono), monospace;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: rgb(var(--agria-green-dark));
+  opacity: 0;
+}
+
+.links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.linksWide {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .linksWide {
+    display: block;
+  }
+  .linksNarrow {
+    display: none;
+  }
+}
+
+/* spessore in unità dell'SVG (circa 1,2 px): con vector-effect il trucco di
+   pathLength + dasharray per disegnare la linea non funziona */
+.link {
+  stroke: rgb(var(--agria-graphite) / 0.18);
+  stroke-width: 0.35;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.dot {
+  fill: rgb(var(--agria-green-bright));
+  stroke: rgb(var(--agria-green-dark));
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+}
+
+.hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(64%, 240px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgb(var(--agria-ink));
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0.92);
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .hub {
+    width: 30%;
+  }
+}
+
+.hub strong {
+  font-family: var(--font-agria-sans), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgb(var(--agria-white));
+}
+
+.hub span {
+  font-family: var(--font-agria-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: rgb(var(--agria-green-bright));
+}
+
+/* "Con Agria", fotogramma finale */
+/* verde chiaro pieno: le linee passano dietro i riquadri */
+.board[data-state='after'] .node {
+  transform: translate(-50%, -50%);
+  border-color: rgb(var(--agria-green-dark));
+  background: rgb(234 250 239);
+}
+
+.board[data-state='after'] .nodeStep {
+  display: block;
+  opacity: 1;
+}
+
+.board[data-state='after'] .link {
+  stroke: rgb(var(--agria-green-dark));
+  stroke-dashoffset: 0;
+}
+
+.board[data-state='after'] .hub {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .node {
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i) * 40ms);
+  }
+  .hub {
+    transition: transform 0.5s ease 0.3s, opacity 0.5s ease 0.3s;
+  }
+  .link {
+    transition: stroke-dashoffset 0.6s ease 0.4s;
+  }
+  .board[data-state='after'] .node {
+    animation: node-on 0.45s ease var(--light) both;
+  }
+  .board[data-state='after'] .nodeStep {
+    animation: step-on 0.45s ease var(--light) both;
+  }
+  .board[data-state='after'] .link {
+    animation: link-on 0.45s ease var(--light) both;
+  }
+  .board[data-state='after'] .dot {
+    animation: dot-run 0.7s cubic-bezier(0.4, 0, 0.2, 1) var(--start) both;
+  }
+}
+
+@keyframes node-on {
+  from {
+    border-color: rgb(var(--agria-border));
+    background-color: rgb(var(--agria-white));
+  }
+}
+
+@keyframes step-on {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes link-on {
+  from {
+    stroke: rgb(var(--agria-graphite) / 0.18);
+  }
+}
+
+@keyframes dot-run {
+  0% {
+    opacity: 0;
+    transform: translate(var(--x1), var(--y1));
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x2), var(--y2));
+  }
+}
+
+/* =====================================================================
+   L'assistente al lavoro (components/agria/home/AssistantSection.jsx): dentro
+   lo .stage di PlayOnView i messaggi compaiono uno alla volta (--m) e ogni
+   campo si riempie dopo il messaggio che fornisce il dato (--f). Finale: tutto
+   visibile, lo vede chi non ha JavaScript o ha prefers-reduced-motion.
+   ===================================================================== */
+
+.fieldEmpty {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage .msg,
+  .stage .fieldValue,
+  .stage .fieldEmpty {
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  .stage .msg {
+    animation-name: msg-in;
+    animation-delay: calc(0.4s + var(--m) * 1.1s);
+  }
+  .stage .fieldValue {
+    animation-name: field-in;
+    animation-delay: calc(0.9s + var(--f) * 1.1s);
+  }
+  .stage .fieldEmpty {
+    animation-name: field-empty;
+    animation-delay: calc(0.9s + var(--f) * 1.1s);
+  }
+  .stage[data-play] .msg,
+  .stage[data-play] .fieldValue,
+  .stage[data-play] .fieldEmpty {
+    animation-play-state: running;
+  }
+}
+
+@media (scripting: none) {
+  .stage .msg,
+  .stage .fieldValue,
+  .stage .fieldEmpty {
+    animation: none;
+  }
+}
+
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes field-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* il trattino del campo vuoto resta finché il dato non arriva */
+@keyframes field-empty {
+  from {
+    opacity: 1;
+  }
+}

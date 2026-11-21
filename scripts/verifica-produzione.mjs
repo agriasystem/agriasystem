@@ -126,6 +126,9 @@ const SECTIONS_28 = [
   ['home-glance-label', null],
   ['home-problemi-title', 'Contate quante ne riconoscete. Poi decidete se potete permettervele.'],
   ['home-piani-title', 'Si parte dal sito. Poi si sale.'],
+  ['come-funziona-titolo', 'Oggi ogni programma lavora per conto suo. Con Agria si parlano.'],
+  ['home-assistente-title', 'Risponde subito. Decide la reception.'],
+  ['home-reparti-title', 'Dove interveniamo, reparto per reparto.'],
   ['selezione-titolo', 'Scegliamo i progetti. E ve lo diciamo subito.'],
   ['come-lavoriamo-titolo', 'Quattro passi. Il primo dura tre minuti.'],
   ['home-team-title', 'Tre persone, a Perugia. Chi progetta è chi costruisce.'],
@@ -142,7 +145,10 @@ const still = goneSections.filter((t) => homeText.includes(t));
 check('Home: le sezioni uscite non ci sono più', still.length === 0, still.join(' · '));
 const labels = homeText.match(/\( [A-ZÀ-Ù0-9 ,·'-]+ \)/g) || [];
 check('Home: etichette tra parentesi su ogni sezione con etichetta (almeno 8)', labels.length >= 8, labels.join(' '));
-check('Home: ancora #come-funziona e #selezione nella pagina', home.includes('id="come-funziona"') && home.includes('id="selezione"'));
+check(
+  'Home: ancora #come-funziona sullo schema (sezione 5) e #selezione',
+  /<section[^>]*id="come-funziona"[^>]*aria-labelledby="come-funziona-titolo"/.test(home) && home.includes('id="selezione"')
+);
 const faqLd = [...home.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap((m) => {
   try {
     return JSON.parse(m[1])['@graph'] || [];
@@ -157,7 +163,11 @@ check(
 );
 const mainSections = [...(home.match(/<main[\s\S]*<\/main>/)?.[0] || '').matchAll(/<section[^>]*class="([^"]*)"[^>]*aria-labelledby="([^"]+)"/g)];
 const inkSections = mainSections.filter((m) => m[1].includes('bg-agria-ink')).map((m) => m[2]);
-check('Home: fondo ink solo nella chiusura, tra le sezioni a sfondo per classe (l\'apertura ha il suo)', inkSections.join() === 'home-chiusura-title', inkSections.join());
+check(
+  'Home: fondo ink solo in "L\'assistente al lavoro" e nella chiusura, tra le sezioni a sfondo per classe (l\'apertura ha il suo)',
+  inkSections.join() === 'home-assistente-title,home-chiusura-title',
+  inkSections.join()
+);
 const banned = ['passione', 'eccellenza', 'su misura', 'a 360 gradi', 'soluzioni innovative', 'partner ideale', 'giovani e dinamici', 'agenzia', 'la nostra società', 'il nostro staff', 'nessun impegno', 'preventivo gratuito'];
 const bannedFound = banned.filter((w) => homeText.toLowerCase().includes(w));
 check('Home: nessuna parola vietata', bannedFound.length === 0, bannedFound.join(', '));
@@ -182,6 +192,33 @@ check(
 );
 const buildings = (home.match(/<svg[^>]*viewBox="0 44 [0-9]+ 256"/g) || []).length;
 check('Home: l\'edificio nell\'apertura, nella sezione 4 e nella chiusura', buildings === 3, `${buildings} edifici`);
+check(
+  'Home: lista dei problemi con "le guardiamo insieme nella prima analisi" e il pulsante "Richiedete la prima analisi"',
+  homeText.includes('Segnate quelle che succedono da voi: le guardiamo insieme nella prima analisi.') && plain(problemForm).includes('Richiedete la prima analisi')
+);
+
+// Prompt 28, Fase C: schema, assistente, reparti
+const board = home.match(/<div[^>]*id="come-funziona-tavola"[\s\S]*?<\/ul>/)?.[0] || '';
+const nodeLabels = ['Sito', 'Portali di prenotazione', 'Fogli di calcolo', 'Pagamenti online', 'Gestionale', 'Email e messaggi'];
+check(
+  'Home: schema "Come funziona" con i sei riquadri, le righe della sequenza, il centro e la nota',
+  nodeLabels.every((t) => board.includes(`>${t}<`)) &&
+    board.includes('4 · conferma e promemoria') &&
+    homeText.includes('Un unico sistema') &&
+    homeText.includes('Ogni collegamento dipende da cosa permettono i programmi che usate')
+);
+check(
+  'Home: assistente con le due finestre, la riga di fantasia e le due card',
+  ['SITO DI ESEMPIO · AGRITURISMO DI FANTASIA', 'RICHIESTA PRONTA · DA CONFERMARE', 'laura.esempio@example.com', 'Esempio illustrativo: nomi e contenuti di fantasia.', 'Cosa non fanno, di proposito', 'Tre impegni'].every((t) =>
+    homeText.includes(t)
+  )
+);
+check(
+  'Home: reparti (Reception, Prenotazioni e vendita, Amministrazione, Ordini) e "Mappiamo insieme il vostro lavoro"',
+  ['Reception', 'Prenotazioni e vendita', 'Amministrazione', 'Ordini, per cantine e frantoi', 'Il report settimanale, che arriva da solo.', 'Mappiamo insieme il vostro lavoro'].every((t) =>
+    homeText.includes(t)
+  )
+);
 const blog = await page('/blog');
 check('/blog: chiusura con "Richiedete la prima analisi"', plain(blog.match(/<main[\s\S]*<\/main>/)?.[0] || '').includes('Richiedete la prima analisi'));
 

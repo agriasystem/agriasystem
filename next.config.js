@@ -17,15 +17,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Raggruppamento dei fogli di stile: in modalità "loose" (predefinita in
-  // Next 14.2) il risultato cambiava da una build all'altra a codice identico,
-  // e a volte metteva ContactForm e Contatti nel foglio di tutte le pagine
-  // (+1,9 KB di CSS bloccante sulla home, +3,5 KB su /azienda). "strict" unisce
-  // due moduli solo se nessuna pagina vede cambiare l'ordine dei suoi stili
-  // (Prompt 28, Fase B).
-  experimental: {
-    cssChunking: 'strict',
-  },
   // Redirect e 410 della migrazione: middleware.js con le regole di
   // lib/migration.js (serve il 410 e il vecchio dominio senza catene).
   // /soluzioni non ha una pagina indice (Prompt 23): rimanda a /servizi.

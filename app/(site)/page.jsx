@@ -3,6 +3,9 @@ import HomeHero from '@/components/agria/home/HomeHero';
 import GlanceStrip from '@/components/agria/home/GlanceStrip';
 import ProblemsSection from '@/components/agria/home/ProblemsSection';
 import FloorCards from '@/components/agria/home/FloorCards';
+import HowItWorks from '@/components/agria/home/HowItWorks';
+import AssistantSection from '@/components/agria/home/AssistantSection';
+import DepartmentsSection from '@/components/agria/home/DepartmentsSection';
 import SelectionSection from '@/components/agria/home/SelectionSection';
 import MethodSection from '@/components/agria/home/MethodSection';
 import TeamSection from '@/components/agria/home/TeamSection';
@@ -26,9 +29,8 @@ export const metadata = pageMetadata(PAGE);
 // domande frequenti (sezione 11).
 const jsonLdGraph = graph([webPageNode({ ...PAGE, breadcrumb: false, about: true }), faqNode(faq.items, PAGE.path)]);
 
-// Ordine del Prompt 28. Fase B: edificio (apertura, sezione 4, chiusura) e la
-// lista dei problemi (3); la 5 (schema), la 6 (assistente) e la 7 (reparti)
-// arrivano con la Fase C.
+// Ordine del Prompt 28: tutte e tredici le sezioni (Fase C: schema 5,
+// assistente 6, reparti 7).
 export default function Home() {
   return (
     <>
@@ -37,6 +39,9 @@ export default function Home() {
       <GlanceStrip />
       <ProblemsSection />
       <FloorCards />
+      <HowItWorks />
+      <AssistantSection />
+      <DepartmentsSection />
       <SelectionSection />
       <MethodSection />
       <TeamSection />

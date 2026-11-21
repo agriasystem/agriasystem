@@ -1,6 +1,6 @@
-import { Button, Container, Section } from '@/components/agria/ui';
+import { Button, Container } from '@/components/agria/ui';
 import { problems } from '@/content/agria/home';
-import { ArrowLabel, HomeIntro } from './parts';
+import { ArrowLabel, HomeIntro, HomeSection } from './parts';
 import ProblemCounter from './ProblemCounter';
 
 // 3. Quante ne riconoscete? Otto situazioni da spuntare (4×2 da lg, 2×4 da md,
@@ -12,7 +12,7 @@ import ProblemCounter from './ProblemCounter';
 export default function ProblemsSection() {
   const total = problems.items.length;
   return (
-    <Section background="offwhite" aria-labelledby="home-problemi-title">
+    <HomeSection background="offwhite" aria-labelledby="home-problemi-title">
       <Container>
         <HomeIntro eyebrow={problems.eyebrow} title={problems.title} intro={problems.intro} titleId="home-problemi-title" />
         <form action={problems.action} method="get" className="mt-10 md:mt-12">
@@ -70,6 +70,6 @@ export default function ProblemsSection() {
           </div>
         </form>
       </Container>
-    </Section>
+    </HomeSection>
   );
 }
