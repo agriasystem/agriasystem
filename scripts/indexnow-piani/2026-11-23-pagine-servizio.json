@@ -1,0 +1,28 @@
+{
+  "nota": "Prompt 29, Fasi A-C: le tre pagine area nella struttura nuova a otto sezioni (presence ee6691b, commerce 8175b7b, automation 0dc597b) e /servizi, che riprende titoli, testi e voci da servizi-aree.js. Confronto tra la build locale di fd62596 (produzione prima del Prompt 29, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a 0dc597b: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia. /soluzioni e /settori invariate (testo e dati strutturati identici); /crediti-immagini perde due crediti di foto non più pubblicate e il piano non la segna.",
+  "commit": "0dc597b854105a6e0e66dbb9fefd68da8da556ef",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/servizi",
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/servizi": {
+      "page": "a0a779fe201ffdcb6be5a6843ee760dd5512b46e914c910b55eb4b6fd8a59ecf"
+    },
+    "/servizi/digital-presence": {
+      "page": "442401813bc0fd33aa82eea83d935d5a241f1115e4ffbf5b19f61802faaa1e73"
+    },
+    "/servizi/digital-commerce": {
+      "page": "9d27ac03bd15171d8a3b4b3c85270a7e1e4fa417ab1c050f2b6025ec2fd9db11"
+    },
+    "/servizi/digital-automation": {
+      "page": "a2d4e52954d3a0dfd60777739e3d22eccc75b6f0186d6c9ee5f7afc20f40c468"
+    }
+  }
+}
