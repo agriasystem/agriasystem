@@ -1,7 +1,9 @@
 const post = {
     slug: 'degustazioni-cantina-trasformare-visite-vendite',
-    title: 'Degustazioni in Cantina: Come Trasformare le Visite in Vendite Dirette',
+    title: 'Degustazioni in cantina: come trasformare le visite in vendite dirette',
     seoTitle: 'Degustazioni cantina: trasformare le visite in vendite',
+    description:
+      'Molti visitatori assaggiano e non comprano: come strutturare la degustazione, cosa proporre alla fine e come far ripetere l’ordine dopo la visita.',
     excerpt:
       'Molti visitatori assaggiano il vino, chiacchierano, e se ne vanno senza comprare. Il problema raramente è il vino: è come è strutturata la degustazione.',
     date: '2026-08-04',

@@ -11,7 +11,7 @@ import { closing } from '@/content/agria/home';
 import { KEPT_POSTS } from '@/content/blog/kept';
 import { getPost } from '@/lib/data';
 import JsonLd from '@/components/agria/seo/JsonLd';
-import { AGRIA_BRAND, absoluteUrl, pageMetadata } from '@/lib/seo';
+import { absoluteUrl, pageMetadata } from '@/lib/seo';
 import { blogPostingNode, breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 import { RICH_TEXT_AGRIA, isBlockquote, renderRichText, stripBlockquoteMarker } from '@/lib/richtext';
 
@@ -68,7 +68,9 @@ export function generateMetadata({ params }) {
   const p = getPost(params.slug);
   if (!p) return {};
   return pageMetadata({
-    title: `${p.seoTitle || p.title} | ${AGRIA_BRAND}`,
+    // senza "| Agria System" (Prompt 31): Google taglia oltre i 60 caratteri e sul
+    // blog nessuno ci cerca per nome; l'indice /blog e le altre pagine lo tengono
+    title: p.seoTitle || p.title,
     description: p.description || p.excerpt,
     path: `/blog/${p.slug}`,
     type: 'article',

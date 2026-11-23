@@ -1,7 +1,7 @@
 const post = {
     slug: 'siti-web-per-cantine',
-    title: 'Siti Web per Cantine: Come Trasformare i Visitatori in Clienti',
-    seoTitle: 'Siti Web per Cantine: Guida per Vendere Vino Online',
+    title: 'Siti web per cantine: come trasformare i visitatori in clienti',
+    seoTitle: 'Siti web per cantine: guida per vendere vino online',
     description:
       'Cosa deve avere il sito di una cantina per generare contatti e vendite dirette, invece di restare una vetrina che nessuno usa per comprare.',
     excerpt:

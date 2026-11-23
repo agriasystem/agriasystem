@@ -1,6 +1,6 @@
 const post = {
     slug: 'agriturismo-booking-online-prenotazioni',
-    title: 'Agriturismi: Come il Booking Online Aumenta Prenotazioni e Riduce il Lavoro Amministrativo',
+    title: 'Agriturismi: come il booking online aumenta le prenotazioni e riduce il lavoro amministrativo',
     seoTitle: 'Agriturismo booking online: prenotazioni e gestione',
     description:
       'Come impostare la prenotazione diretta sul sito di un agriturismo: disponibilità allineata ai portali, comunicazioni automatiche e meno lavoro manuale.',

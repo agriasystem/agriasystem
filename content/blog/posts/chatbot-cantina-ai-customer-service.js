@@ -1,6 +1,6 @@
 const post = {
     slug: 'chatbot-cantina-ai-customer-service',
-    title: 'Chatbot per Cantine o Risposte Assistite? 5 Casi d’Uso Concreti',
+    title: 'Chatbot per cantine o risposte assistite? 5 casi d’uso concreti',
     seoTitle: 'Chatbot cantina o risposte assistite: 5 casi d’uso',
     description:
       'Cinque casi d’uso concreti per una cantina, dai primi contatti alle visite: l’AI prepara le risposte, una persona le rivede prima che partano.',

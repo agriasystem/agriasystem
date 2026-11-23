@@ -1,6 +1,6 @@
 const post = {
     slug: 'vendita-internazionale-vino-dtc-export-estero',
-    title: 'Vendere Vino all’Estero Online: Cosa Serve Davvero per l’Export Diretto',
+    title: 'Vendere vino all’estero online: cosa serve per l’export diretto',
     seoTitle: 'Export vino online: cosa serve per vendere all’estero',
     description:
       'Vendere vino online all’estero: dogana, corrieri, resi e assistenza cambiano rispetto all’Italia. Cosa serve prima di aprire un nuovo mercato.',

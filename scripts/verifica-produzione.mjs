@@ -115,6 +115,15 @@ check(
   'Home, title: "Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi"',
   home.includes('<title>Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi</title>')
 );
+// Prompt 31: gli articoli senza "| Agria System" nel titolo (la home e le altre pagine lo tengono)
+for (const [path, title] of [
+  ['/blog/ecommerce-per-frantoi', 'Vendere olio online: cosa serve a un frantoio'],
+  ['/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione', 'Vendere vino online: IVA, accise e fatturazione'],
+]) {
+  const html = await page(path);
+  const found = html.match(/<title>([^<]*)<\/title>/)?.[1];
+  check(`${path}, title: "${title}", senza marchio`, found === title, found);
+}
 check('Home, h1: "Il vostro sito, collegato a tutto il resto."', headingText(home, 'home-hero-title') === 'Il vostro sito, collegato a tutto il resto.', headingText(home, 'home-hero-title'));
 check(
   'Home: etichetta e lead dell\'apertura',

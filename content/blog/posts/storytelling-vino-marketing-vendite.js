@@ -1,6 +1,6 @@
 const post = {
     slug: 'storytelling-vino-marketing-vendite',
-    title: 'Storytelling del Vino: Come Raccontare la Vostra Cantina e Vendere di Più',
+    title: 'Storytelling del vino: come raccontare la vostra cantina e vendere di più',
     seoTitle: 'Storytelling del vino: raccontare la cantina e vendere',
     description:
       'Come raccontare una cantina in modo che aiuti a vendere: storia, territorio e dettagli verificabili sul sito e sugli altri canali, senza frasi fatte.',

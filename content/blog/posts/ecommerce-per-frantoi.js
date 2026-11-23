@@ -1,9 +1,9 @@
 const post = {
     slug: 'ecommerce-per-frantoi',
     title: 'Vendere olio online: come costruire l’e-commerce di un frantoio',
-    seoTitle: 'Vendere olio online: e-commerce per frantoi',
+    seoTitle: 'Vendere olio online: cosa serve a un frantoio',
     description:
-      'Cosa serve per vendere olio online: formati, listini per privati e ristorazione, spedizioni e campagna olearia. Guida per frantoi e aziende olivicole.',
+      'Spedizioni che non mangiano il margine, listini per privati e ristorazione, preordini dell’olio nuovo: come un frantoio imposta la vendita online.',
     excerpt:
       'Una guida per frantoi e aziende olivicole che vogliono vendere olio online: formati e spedizioni, listini per privati e ristorazione, preordini dell’olio nuovo.',
     date: '2026-08-05',

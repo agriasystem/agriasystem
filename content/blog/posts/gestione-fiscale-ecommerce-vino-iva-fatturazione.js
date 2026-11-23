@@ -1,9 +1,9 @@
 const post = {
     slug: 'gestione-fiscale-ecommerce-vino-iva-fatturazione',
     title: 'E-commerce di vino: IVA, accise e fatturazione, cosa sapere prima di partire',
-    seoTitle: 'E-commerce di vino: IVA, accise e fatturazione',
+    seoTitle: 'Vendere vino online: IVA, accise e fatturazione',
     description:
-      "Gli adempimenti da conoscere prima di aprire un e-commerce di vino: IVA, accise, documenti di trasporto, vendite in Italia e verso l'estero.",
+      'Cosa cambia per sito, checkout e documenti quando si vende vino: IVA, accise, trasporto, Italia ed estero. E cosa chiedere al commercialista.',
     excerpt:
       'Per le cantine che vogliono vendere vino online: cosa comportano IVA, accise e fatturazione per il sito, il checkout e i flussi di lavoro.',
     date: '2026-08-04',

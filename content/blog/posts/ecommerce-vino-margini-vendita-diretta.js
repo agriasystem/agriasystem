@@ -1,6 +1,6 @@
 const post = {
     slug: 'ecommerce-vino-margini-vendita-diretta',
-    title: 'E-commerce Vino: Come Calcolare i Margini Reali e Smettere di Dipendere dai Grossisti',
+    title: 'E-commerce di vino: come calcolare i margini reali e smettere di dipendere dai grossisti',
     seoTitle: 'E-commerce vino: margini reali e vendita diretta',
     description:
       'Vendere vino online conviene? Come calcolare il margine reale della vendita diretta, cosa serve all’e-commerce di una cantina e quali costi prevedere.',
