@@ -1,0 +1,75 @@
+{
+  "nota": "Prompt 31: titoli e descrizioni dei tredici articoli (titolo per Google senza marchio, seoTitle e description nuovi su due articoli, otto titoli con le maiuscole all'italiana, description nuova per le degustazioni). Confronto tra la build locale di b858ace (produzione prima del Prompt 31, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a 717ae03: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia. Il piano segnava anche le pagine in esclusi: cambiano solo perché mostrano i titoli degli articoli collegati (stesse frasi con le maiuscole nuove); escluse su indicazione, si inviano solo i tredici articoli di content/blog/kept.js.",
+  "commit": "717ae035cd18b5e39cf93a5570947bcdfdb1ec71",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/blog/ecommerce-per-frantoi",
+    "/blog/software-per-agriturismi",
+    "/blog/software-per-cantine",
+    "/blog/siti-web-per-agriturismi",
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione",
+    "/blog/siti-web-per-cantine",
+    "/blog/vendita-internazionale-vino-dtc-export-estero",
+    "/blog/agriturismo-booking-online-prenotazioni",
+    "/blog/degustazioni-cantina-trasformare-visite-vendite",
+    "/blog/ecommerce-vino-margini-vendita-diretta",
+    "/blog/storytelling-vino-marketing-vendite",
+    "/blog/chatbot-cantina-ai-customer-service",
+    "/blog/seo-locale-agroalimentare-google-maps"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/blog/ecommerce-per-frantoi": {
+      "page": "fca1658b36d78244a144175016fc7b32204ba85d3edef305506109ec6d0c3bbf"
+    },
+    "/blog/software-per-agriturismi": {
+      "page": "9269459f7f1ec1e5c7a0be2eb6c1e93802507f7b821dcfaefac5d691b8522f5b"
+    },
+    "/blog/software-per-cantine": {
+      "page": "01d27be27cfa81d9fba88554e49744b82c8c6bd77f6ad077c3bd27b7eb7c85fe"
+    },
+    "/blog/siti-web-per-agriturismi": {
+      "page": "d193c351c165bb0deb78b336209d09f482edbfabc6e23e0de15da3492e36c59a"
+    },
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione": {
+      "page": "aef9a734804461c6f47889edf3c81fba4f77f9142cd81dc418329cc9738ff3e0"
+    },
+    "/blog/siti-web-per-cantine": {
+      "page": "1ff425ed4b7637ab7d145b072f82b8e1b338ac812b7c47c723d93f6fb25b721c"
+    },
+    "/blog/vendita-internazionale-vino-dtc-export-estero": {
+      "page": "d9d549a8a1d34a134303569d49f3fdabca6994d0f807903ad9f363e57cf14b3b"
+    },
+    "/blog/agriturismo-booking-online-prenotazioni": {
+      "page": "23622967a87e44711c829f447b9c66b66f2916779e7ae60d7cbcb49d40571cbd"
+    },
+    "/blog/degustazioni-cantina-trasformare-visite-vendite": {
+      "page": "0d3ad5761189a4fc9f3cb2e29bf7f328194ca8215353e4c60df88d4ecca47aa3"
+    },
+    "/blog/ecommerce-vino-margini-vendita-diretta": {
+      "page": "f76f577c10e6a658d00e34588fb93c1c107f71157b17059f61192a2eeaf58e59"
+    },
+    "/blog/storytelling-vino-marketing-vendite": {
+      "page": "822c553a5f4c53149bbbeae6e1363b499e18b750247d961c36694fa600e5a7e3"
+    },
+    "/blog/chatbot-cantina-ai-customer-service": {
+      "page": "6e156fa1da3c276f2ade150bb95792b70d434b53d1c6d59dd88ee1dc52c81502"
+    },
+    "/blog/seo-locale-agroalimentare-google-maps": {
+      "page": "129829060aa3c1cee8284646fa8d04d4b2c9ebfbdffb09a06ee4a2c8d2e4fe0e"
+    }
+  },
+  "esclusi": [
+    "/",
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation",
+    "/soluzioni/assistente-ai",
+    "/settori/hospitality",
+    "/settori/cantine",
+    "/settori/frantoi",
+    "/blog"
+  ]
+}
