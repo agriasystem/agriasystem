@@ -211,6 +211,109 @@
   }
 }
 
+/* Base che sfuma (apertura, Prompt 30): niente linea di terra, gli ultimi 24 px
+   dell'edificio svaniscono nella griglia dei filari. */
+.fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
+}
+
+/* Edificio dell'apertura in ciclo (Prompt 30). Il colore di ogni piano è il
+   color del suo gruppo (data-floor), che linee, pareti ed etichetta usano come
+   currentColor: così l'etichetta si accende con il suo piano. Ciclo di 5 s: i
+   piani si accendono dal basso a 400 ms l'uno dall'altro (0, 8 e 16 %), tutti
+   accesi dal 22 all'82 % (3 s), spenti al 92 %, poi si ricomincia. PlayOnView
+   repeat mette data-play solo finché l'edificio è nello schermo: fuori,
+   l'animazione è in pausa. Senza animazioni (movimento ridotto, niente
+   JavaScript) tutto acceso. */
+.cycle [data-floor] {
+  color: var(--b-lit);
+}
+.cycle .face {
+  fill: currentColor;
+  fill-opacity: 0.13;
+  stroke: currentColor;
+}
+.cycle .detail,
+.cycle .leader {
+  stroke: currentColor;
+}
+.cycle .label {
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cycle [data-floor] {
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  .cycle [data-floor='0'] {
+    animation-name: floor-cycle-0;
+  }
+  .cycle [data-floor='1'] {
+    animation-name: floor-cycle-1;
+  }
+  .cycle [data-floor='2'] {
+    animation-name: floor-cycle-2;
+  }
+  .cycle[data-play] [data-floor] {
+    animation-play-state: running;
+  }
+}
+
+@media (scripting: none) {
+  .cycle [data-floor] {
+    animation: none;
+  }
+}
+
+@keyframes floor-cycle-0 {
+  0% {
+    color: var(--b-line);
+  }
+  6%,
+  82% {
+    color: var(--b-lit);
+  }
+  92%,
+  100% {
+    color: var(--b-line);
+  }
+}
+
+@keyframes floor-cycle-1 {
+  0%,
+  8% {
+    color: var(--b-line);
+  }
+  14%,
+  82% {
+    color: var(--b-lit);
+  }
+  92%,
+  100% {
+    color: var(--b-line);
+  }
+}
+
+@keyframes floor-cycle-2 {
+  0%,
+  16% {
+    color: var(--b-line);
+  }
+  22%,
+  82% {
+    color: var(--b-lit);
+  }
+  92%,
+  100% {
+    color: var(--b-line);
+  }
+}
+
 /* =====================================================================
    Edificio della sezione 4 in HTML e CSS (components/agria/home/FloorCards.jsx,
    da md): un piano per riga della griglia delle schede, alto quanto la sua

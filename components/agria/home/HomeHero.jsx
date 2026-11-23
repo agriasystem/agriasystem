@@ -3,14 +3,17 @@ import { Button, Container, Eyebrow, Heading, Text } from '@/components/agria/ui
 import { FieldScene, RotatingHeadline } from '@/components/agria/motion';
 import { hero } from '@/content/agria/home';
 import { ArrowLabel } from './parts';
-import Building, { buildingStage } from './Building';
+import Building, { buildingCycle } from './Building';
 import PlayOnView from './PlayOnView';
 import styles from './HomeHero.module.css';
 
 // Apertura (fascia ink, Prompt 28): griglia dei filari sullo sfondo, testo a
 // sinistra. Il titolo riscrive la parola: "Il vostro [sito], collegato a tutto
-// il resto." (RotatingHeadline con words). A destra l'edificio a tre piani in
-// versione compatta (lo stesso della sezione 4); sotto lg va sotto il testo.
+// il resto." (RotatingHeadline con words), in ciclo finché l'apertura è nello
+// schermo. A destra l'edificio a tre piani in versione compatta (lo stesso della
+// sezione 4): i piani si accendono dal basso in ciclo, la base sfuma nella
+// griglia. Tra md e lg va sotto il testo; sotto md non c'è (Prompt 30: resta
+// nella sezione dei tre piani e nella chiusura).
 export default function HomeHero() {
   const { before, words, after } = hero.title;
   return (
@@ -45,9 +48,9 @@ export default function HomeHero() {
           </div>
           <p className={`mt-6 font-agria-mono text-agria-sm text-agria-on-dark-muted ${styles.enter}`}>{hero.note}</p>
         </div>
-        {/* l'edificio, versione compatta: i piani si accendono dal basso */}
-        <PlayOnView className={`${buildingStage} mx-auto mt-14 w-full max-w-[380px] lg:mx-0 lg:mt-0 lg:max-w-[420px] lg:justify-self-end`}>
-          <Building tone="dark" />
+        {/* l'edificio, versione compatta: i piani si accendono dal basso, in ciclo */}
+        <PlayOnView repeat threshold={0} className={`${buildingCycle} mx-auto mt-14 hidden w-full max-w-[380px] md:block lg:mx-0 lg:mt-0 lg:max-w-[420px] lg:justify-self-end`}>
+          <Building tone="dark" base="fade" />
         </PlayOnView>
       </Container>
     </section>

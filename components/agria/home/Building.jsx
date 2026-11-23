@@ -8,8 +8,11 @@ import styles from './HomeHero.module.css';
 // assonometria: facciata, fianco e tetto.
 // - tone: "dark" su ink (verde #7AE098), "light" su offwhite
 // - labels: false per la versione piccola della chiusura
+// - base: "line" con la linea di terra; "fade" senza linea, con la base che
+//   sfuma negli ultimi 24 px (apertura, Prompt 30: l'edificio nasce dalla griglia)
 // Le classi .face/.detail/.label/.leader portano --floor (0 = piano terra):
-// dentro uno .stage di PlayOnView si accendono dal basso uno alla volta.
+// dentro uno .stage di PlayOnView si accendono dal basso uno alla volta; dentro
+// .cycle (apertura) in ciclo, con data-floor sul gruppo del piano.
 // È un'illustrazione: per i lettori di schermo i piani sono già nel testo.
 
 const W = 160; // larghezza della facciata
@@ -26,7 +29,7 @@ function Floor({ index, label, labels }) {
   const style = { '--floor': index };
   const mid = (yt + yb) / 2 - DY; // centro del bordo lontano del fianco
   return (
-    <g style={style}>
+    <g style={style} data-floor={index}>
       {/* facciata e fianco */}
       <rect className={styles.face} x={X0} y={yt} width={W} height={H} />
       <polygon className={styles.face} points={`${x1},${yt} ${x1 + DX},${yt - DY} ${x1 + DX},${yb - DY} ${x1},${yb}`} />
@@ -59,12 +62,18 @@ function Floor({ index, label, labels }) {
   );
 }
 
-export default function Building({ tone = 'dark', labels = true, className = '' }) {
+export default function Building({ tone = 'dark', labels = true, base = 'line', className = '' }) {
   const width = labels ? 410 : X0 + W + DX + 30;
+  const fade = base === 'fade';
   return (
     <div className={`${styles[tone]} ${className}`}>
-      <svg className={styles.svg} viewBox={`0 44 ${width} 256`} aria-hidden="true" focusable="false">
-        <line className={styles.ground} x1={10} y1={GROUND} x2={X0 + W + DX + 20} y2={GROUND} />
+      <svg
+        className={`${styles.svg} ${fade ? styles.fade : ''}`}
+        viewBox={`0 44 ${width} ${fade ? GROUND - 44 : 256}`}
+        aria-hidden="true"
+        focusable="false"
+      >
+        {!fade && <line className={styles.ground} x1={10} y1={GROUND} x2={X0 + W + DX + 20} y2={GROUND} />}
         {floors.items.map((floor, index) => (
           <Floor key={floor.key} index={index} label={floor.title} labels={labels} />
         ))}
@@ -75,4 +84,6 @@ export default function Building({ tone = 'dark', labels = true, className = '' 
 
 // classi per chi monta l'edificio dentro uno stage animato (PlayOnView)
 export const buildingStage = styles.stage;
+// apertura: piani in ciclo finché il blocco è nello schermo (PlayOnView repeat)
+export const buildingCycle = styles.cycle;
 export const floorCard = styles.card;

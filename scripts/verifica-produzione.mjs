@@ -124,7 +124,7 @@ check(
 const SECTIONS_28 = [
   ['home-hero-title', 'Il vostro sito, collegato a tutto il resto.'],
   ['home-glance-label', null],
-  ['home-problemi-title', 'Contate quante ne riconoscete. Poi decidete se potete permettervele.'],
+  ['home-problemi-title', 'Quante di queste succedono anche da voi?'],
   ['home-piani-title', 'Si parte dal sito. Poi si sale.'],
   ['come-funziona-titolo', 'Oggi ogni programma lavora per conto suo. Con Agria si parlano.'],
   ['home-assistente-title', 'Risponde subito. Decide la reception.'],
@@ -190,8 +190,29 @@ check(
   boxes.join() === 'prenotazioni,richieste,vendita,ordini,estero,pagamenti,stagione,fogli' && /0 su 8/.test(problemForm) && problemForm.includes('Segnate quelle che succedono da voi.'),
   boxes.join()
 );
-const buildings = (home.match(/<svg[^>]*viewBox="0 44 [0-9]+ 256"/g) || []).length;
+// l'edificio dell'apertura finisce alla base (248: Prompt 30, base che sfuma)
+const buildings = (home.match(/<svg[^>]*viewBox="0 44 [0-9]+ (?:256|248)"/g) || []).length;
 check('Home: l\'edificio nell\'apertura, nella sezione 4 e nella chiusura', buildings === 3, `${buildings} edifici`);
+
+// Prompt 30: edificio dell'apertura e lista dei problemi
+const heroHtml = home.match(/<section[^>]*aria-labelledby="home-hero-title"[\s\S]*?<\/section>/)?.[0] || '';
+const heroSvg = heroHtml.match(/<svg[^>]*viewBox="0 44 [0-9]+ 248"[\s\S]*?<\/svg>/)?.[0] || '';
+const heroWrap = heroHtml.match(/<div[^>]*data-play[^>]*class="([^"]*)"|<div class="([^"]*)"[^>]*>\s*<div[^>]*>\s*<svg[^>]*viewBox="0 44 [0-9]+ 248"/);
+const heroWrapClass = heroWrap ? heroWrap[1] || heroWrap[2] : '';
+check(
+  "Home: edificio dell'apertura senza linea di terra, a piani in ciclo, nascosto sotto md",
+  heroSvg !== '' &&
+    !/<line[^>]*y1="292"[^>]*y2="292"/.test(heroSvg) &&
+    (heroSvg.match(/data-floor="[0-2]"/g) || []).length === 3 &&
+    /(^| )hidden( |$)/.test(heroWrapClass) &&
+    /(^| )md:block( |$)/.test(heroWrapClass),
+  heroWrapClass
+);
+check(
+  'Home: istruzione sopra le schede (toccate / segnate), pulsante "Portiamo queste in analisi" con almeno una scelta, niente frase sui soldi',
+  ['( TOCCATE QUELLE CHE SUCCEDONO DA VOI )', '( SEGNATE QUELLE CHE SUCCEDONO DA VOI )', 'Portiamo queste in analisi'].every((t) => problemForm.includes(t)) &&
+    !home.includes('permettervele')
+);
 check(
   'Home: lista dei problemi con "le guardiamo insieme nella prima analisi" e il pulsante "Richiedete la prima analisi"',
   homeText.includes('Segnate quelle che succedono da voi: le guardiamo insieme nella prima analisi.') && plain(problemForm).includes('Richiedete la prima analisi')

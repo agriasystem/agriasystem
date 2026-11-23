@@ -7,7 +7,9 @@ import { useEffect, useRef, useState } from 'react';
 // animazioni stanno nel CSS, ferme sul primo fotogramma finché manca data-play
 // (solo con prefers-reduced-motion: no-preference e JavaScript attivo); senza
 // animazioni si vede il fotogramma finale. threshold: quota visibile per partire.
-export default function PlayOnView({ as: Tag = 'div', threshold = 0.35, className = '', children, ...props }) {
+// repeat: data-play solo finché il blocco è nello schermo (animazioni in ciclo,
+// in pausa quando esce: edificio dell'apertura, Prompt 30).
+export default function PlayOnView({ as: Tag = 'div', threshold = 0.35, repeat = false, className = '', children, ...props }) {
   const ref = useRef(null);
   const [play, setPlay] = useState(false);
 
@@ -20,7 +22,9 @@ export default function PlayOnView({ as: Tag = 'div', threshold = 0.35, classNam
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (repeat) {
+          setPlay(entry.isIntersecting);
+        } else if (entry.isIntersecting) {
           setPlay(true);
           observer.disconnect();
         }
@@ -29,7 +33,7 @@ export default function PlayOnView({ as: Tag = 'div', threshold = 0.35, classNam
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, repeat]);
 
   return (
     <Tag ref={ref} data-play={play ? '' : undefined} className={className} {...props}>

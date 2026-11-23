@@ -44,9 +44,11 @@ export const glance = {
 // (valori = id qui sotto); la pagina contatti ne mostra i titoli nel messaggio.
 export const problems = {
   eyebrow: '( DA DOVE SI PARTE )',
-  title: { text: 'Contate quante ne riconoscete.', accent: 'Poi decidete se potete permettervele.' },
+  title: { text: 'Quante di queste', accent: 'succedono anche da voi?' },
   intro:
     'Finché succedono, sembrano la normalità. Messe in fila costano tempo, soldi e qualche cliente. Segnate quelle che succedono da voi: le guardiamo insieme nella prima analisi.',
+  // istruzione sopra le schede (Prompt 30): "toccate" con il dito, "segnate" con il mouse
+  instruction: { touch: '( TOCCATE QUELLE CHE SUCCEDONO DA VOI )', pointer: '( SEGNATE QUELLE CHE SUCCEDONO DA VOI )' },
   param: 'problemi',
   action: '/contatti',
   items: [
@@ -103,6 +105,8 @@ export const problems = {
   count: '{n} su {total}',
   hint: 'Segnate quelle che succedono da voi.',
   cta: 'Richiedete la prima analisi →',
+  // il pulsante quando c'è almeno una scheda segnata
+  ctaChosen: 'Portiamo queste in analisi →',
 };
 
 // 4. Tre piani. links: le pagine del piano (etichette = nomi delle pagine nel menu)
