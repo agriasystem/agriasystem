@@ -1,35 +1,20 @@
 // =====================================================================
-//  PAGINE AREA AGRIA — copy approvato (Prompt 13, concept v6). Modificare
-//  qui i testi, non nei componenti. Nessun testo va aggiunto senza
-//  approvazione. Template: components/agria/service/ServiceAreaPage.jsx
+//  PAGINE AREA AGRIA — copy approvato (Prompt 29: otto sezioni, uguali per
+//  le tre aree). Modificare qui i testi, non nei componenti. Nessun testo va
+//  aggiunto senza approvazione. Template: components/agria/service/ServicePage.jsx
 //  icon: nome di un'icona del set (components/agria/icons/Icon.jsx).
+//  Titoli bicolore: { text, accent } come nella homepage.
 // =====================================================================
 
 import { agriaImage } from '@/lib/agria-images';
+import { assistantDemo } from './home';
 
 const CONTACT = '/contatti';
+// testi di prima del Prompt 29 che le pagine /soluzioni riprendono da Digital
+// Automation (automation.solutions)
 const WRITE = { label: 'Scriveteci in due righe', href: CONTACT };
-const METHOD = { label: 'Guardate il metodo', href: '#metodo' };
-// Due usi dell'AI, sempre distinti (stessa distinzione della pagina Azienda):
-// quella con cui lavoriamo, su ogni progetto, e quella che implementiamo nei
-// processi del cliente, solo in Digital Automation.
-// Presence e Commerce: la sezione tiene insieme l'AI del metodo, la misurazione e
-// la proprietà; il testo dice che l'AI è un metodo, non un servizio venduto
-const ON_EVERY_PROJECT_TITLE = "Su ogni progetto: l'AI con cui lavoriamo, la misurazione dal primo giorno, nessun vincolo tecnico.";
-const AI_IN_PROCESS_TITLE = "L'AI che implementiamo nei vostri processi: una componente dei sistemi che costruiamo, dove i dati la reggono.";
-const DELIVERABLES_TITLE = 'Alla consegna resta questo.';
 const CLOSING_TEXT =
   'Una prima analisi serve a capire se ha senso lavorare insieme. Rispondiamo con una valutazione concreta, non con un preventivo generico.';
-
-// "Camere · disponibilità sincronizzata" → { title: 'Camere', text: 'disponibilità sincronizzata' }
-// build.items[].icon: icona della voce (usata anche nei blocchi dell'indice /servizi)
-// build.items[].image: fotografia dell'anteprima (sezione 3), perché la pagina
-// abbia una foto reale ogni tre o quattro sezioni; foto già nel repository e
-// accreditate, in attesa delle foto dedicate (vedi report 13).
-const tiles = (...pairs) => pairs.map(([title, text]) => ({ title, text }));
-
-// foto del settore Hospitality dalla pipeline (settori/hospitality)
-const HOSPITALITY_PHOTO = agriaImage('settori/hospitality');
 
 export const SECTOR_LABELS = { hospitality: 'Hospitality', cantine: 'Cantine', frantoi: 'Frantoi' };
 
@@ -599,135 +584,224 @@ export const serviceAreas = {
       },
     },
   },
+  // Prompt 29, Fase C: struttura nuova in otto sezioni (components/agria/service/ServicePage.jsx).
   automation: {
     key: 'automation',
     name: 'Digital Automation',
     meta: {
-      title: 'Digital Automation — automazioni e AI per hospitality, cantine e frantoi | Agria System',
+      title: 'Digital Automation — automazioni e assistenti per agriturismi, hotel, cantine e frantoi | Agria System',
       description:
-        "Automazioni e integrazioni API tra gli strumenti che già usate, con l'AI dove i dati la reggono, per ridurre il lavoro manuale e tenere coerenti i dati.",
+        'Colleghiamo i programmi che usate già e mettiamo un assistente dove serve, per agriturismi, hotel, cantine e frantoi: richieste in un unico posto, dati scritti una volta, promemoria che partono da soli.',
       path: '/servizi/digital-automation',
     },
-    cta: { label: 'Automatizziamo un processo', href: CONTACT },
-    hero: {
-      eyebrow: '03 — Digital Automation',
-      title: 'Il lavoro ripetitivo esce dalla vostra giornata.',
-      lead: "Automazioni e integrazioni nei processi di strutture ricettive, cantine e frantoi, con l'AI come componente dove ha senso e i dati la reggono. Dove i sistemi lo permettono, i dati entrano una volta e arrivano dove servono.",
-      secondary: METHOD,
-      pills: ['Integrazioni API', 'Automazioni', 'AI sui processi', 'Sincronizzazione', 'Notifiche', 'Report'],
+    labels: {
+      problems: '( COSA VI COSTA )',
+      screens: '( COME LAVORA )',
+      build: '( COSA COSTRUIAMO )',
+      sectors: '( PER IL VOSTRO MESTIERE )',
+      method: '( DALLA RICHIESTA ALLA CONSEGNA )',
+      faq: '( DOMANDE FREQUENTI )',
     },
+    cta: { label: 'Richiedete la prima analisi →', href: CONTACT },
+    // 1. Apertura
+    hero: {
+      eyebrow: '( 03 · DIGITAL AUTOMATION )',
+      title: { text: 'Il lavoro che si rifà ogni giorno', accent: 'lo fa il sistema.' },
+      lead: 'Colleghiamo i programmi che usate già e mettiamo un assistente dove serve: le richieste trovano risposta subito, i dati si scrivono una volta sola, i promemoria partono da soli. Le decisioni restano a una persona.',
+      secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
+      pills: ['Collegamenti tra programmi', 'Assistenti', 'Richieste in un unico posto', 'Promemoria', 'Report'],
+    },
+    // 2. Tre problemi
     diagnosis: {
-      title: 'Il costo invisibile che pagate ogni giorno.',
+      title: { text: 'Il costo che pagate', accent: 'ogni giorno senza vederlo.' },
       items: [
         {
-          icon: 'copy',
-          title: 'Dati riscritti a mano',
-          text: 'Le stesse informazioni vengono copiate tra portali, email, fogli di lavoro e gestionale. Ogni passaggio è tempo e possibilità di errore.',
+          title: 'Lo stesso dato, scritto tre volte',
+          text: 'Una prenotazione passa dal portale al gestionale al foglio delle pulizie, a mano. Sono minuti ogni volta, e ogni tanto un errore che si paga caro.',
         },
         {
-          icon: 'inbox',
           title: 'Richieste che si perdono',
-          text: 'Messaggi, moduli e telefonate arrivano su canali diversi. Qualcosa resta senza risposta, e non lo scoprite subito.',
+          text: 'Arrivano da email, WhatsApp, telefono e dal sito. Chi risponde cambia, e qualcuna resta indietro senza che nessuno se ne accorga.',
         },
         {
-          icon: 'chart',
-          title: 'Nessun quadro settimanale',
-          text: 'Per sapere come sta andando bisogna costruire il dato a mano, quindi non si fa quasi mai.',
+          title: "Il lunedì non sapete com'è andata",
+          text: 'Per capire quanto avete incassato o quante camere avete venduto, qualcuno deve mettersi a contare. Così, spesso, non lo fa nessuno.',
         },
       ],
-      cta: { label: 'Mappiamo un vostro processo', href: CONTACT },
+      cta: { label: 'Raccontateci una vostra giornata →', href: CONTACT },
     },
+    // 3. La schermata (brochure, pagina 6). La chat riprende i messaggi della
+    // sezione 6 della home (assistantDemo in content/agria/home.js); l'agriturismo
+    // inventato è lo stesso di Digital Presence. Solo scenografia.
+    screens: [
+      {
+        key: 'assistente',
+        kind: 'assistant',
+        title: { text: 'Come lavora', accent: 'un assistente.' },
+        captions: [
+          'Le domande di sempre — orari, disponibilità, prezzi — trovano risposta subito, anche fuori orario.',
+          'Ogni conferma passa da una persona.',
+          'Promemoria e richiesta di recensione partono da soli.',
+        ],
+        mock: {
+          brand: 'Orvenna',
+          kind: 'Agriturismo',
+          status: 'Risponde subito',
+          time: '21:47',
+          messages: assistantDemo.chat.messages.slice(0, 4),
+          request: {
+            title: 'Richiesta pronta · da confermare',
+            text: 'Camera vista ulivi · 12–14 giugno, 2 ospiti · arrivo dopo le 21',
+            person: 'Giulia',
+            role: 'reception',
+          },
+          day: {
+            label: 'La giornata',
+            steps: [
+              { icon: 'chat', title: 'Richiesta', text: 'sito, chat, email' },
+              { icon: 'calendar', title: 'Agenda', text: 'con la conferma di chi risponde' },
+              { icon: 'bell', title: 'Promemoria', text: 'il giorno prima' },
+              { icon: 'badge-check', title: 'Recensione', text: 'dopo la visita' },
+            ],
+          },
+        },
+      },
+    ],
+    // 4. Cosa costruiamo (icon: per i blocchi dell'indice /servizi)
     build: {
-      title: 'Quattro automazioni che cambiano la settimana.',
+      title: { text: 'Quattro automazioni', accent: 'che cambiano la settimana.' },
       items: [
         {
           icon: 'inbox',
-          title: 'Richieste in un unico flusso',
-          image: { src: '/images/blog/pos-cassa-cantina-vendita-degustazione.jpg', alt: 'Mani su una cassa con schermo tattile e uno scontrino' },
-          text: 'Moduli, email, telefono e portali confluiscono in un solo ingresso tracciato.',
-          tiles: tiles(
-            ['Ingresso', 'un solo punto'],
-            ['Assegnazione', 'chi risponde'],
-            ['Tracciamento', 'ogni richiesta registrata'],
-          ),
+          title: 'Le richieste in un posto solo',
+          text: 'Email, WhatsApp, telefono, sito e portali arrivano in un unico ingresso, già ordinate per urgenza, con la bozza di risposta pronta.',
         },
         {
           icon: 'link',
-          title: 'Dati sincronizzati',
-          image: { src: '/images/blog/pos-cassa-cantina-vendita-degustazione.jpg', alt: 'Mani su una cassa con schermo tattile e uno scontrino' },
-          text: 'Anagrafiche, ordini e disponibilità allineati tra gli strumenti che usate.',
-          tiles: tiles(['Anagrafica', 'una sola versione'], ['Ordini', 'stato aggiornato'], ['Disponibilità', 'allineata tra gli strumenti']),
+          title: 'I programmi che si parlano',
+          text: 'Sito, gestionale, pagamenti e calendario si scambiano i dati da soli: ogni dato entra una volta e arriva dove serve.',
         },
         {
           icon: 'file-text',
-          title: 'Documenti trattati in automatico',
-          image: { src: '/images/blog/bandi-incentivi-digitalizzazione-agroalimentare.jpg', alt: 'Persona che legge documenti stampati a una scrivania' },
-          text: 'Fatture, ordini e allegati classificati ed estratti senza inserimento manuale.',
-          tiles: tiles(['Classificazione', 'per tipo'], ['Estrazione', 'dati chiave'], ['Archivio', 'ricercabile']),
+          title: 'I documenti letti da soli',
+          text: 'Fatture, bolle e ordini vengono letti, archiviati e registrati senza che qualcuno li ricopi. Quello che non torna si ferma e aspetta una persona.',
         },
         {
           icon: 'chart',
-          title: 'Report ricorrenti',
-          image: { src: '/images/blog/bandi-incentivi-digitalizzazione-agroalimentare.jpg', alt: 'Persona che legge documenti stampati a una scrivania' },
-          text: 'Lo stesso quadro ogni settimana, senza costruirlo.',
-          tiles: tiles(['Occupazione', 'e andamento'], ['Costi', 'per voce'], ['Anomalie', 'segnalate']),
+          title: 'Il report del lunedì',
+          text: 'Ogni settimana, senza chiederlo: quanto avete incassato, cosa avete venduto, quante richieste sono arrivate e quante sono diventate clienti.',
         },
       ],
     },
-    ai: {
-      title: AI_IN_PROCESS_TITLE,
-      text: "È diversa dall'AI con cui lavoriamo su ogni progetto: questa entra nei vostri processi, solo dove produce un risultato misurabile (capire, classificare, estrarre) e dove i dati la reggono. Mai dove serve una decisione che deve restare umana.",
+    // 5. Per il vostro mestiere
+    sectors: {
+      title: { text: 'Processi diversi,', accent: 'stesso principio.' },
       items: [
         {
-          icon: 'sort',
-          title: 'Classificazione e smistamento',
-          text: 'Richieste e documenti riconosciuti e indirizzati alla persona giusta.',
+          key: 'hospitality',
+          title: 'Agriturismi, hotel e strutture ricettive',
+          points: [
+            "Prenotazioni da portali, sito e telefono in un'unica agenda.",
+            "Conferme, istruzioni per l'arrivo e promemoria che partono da soli.",
+            'La lista delle camere da preparare, aggiornata senza che nessuno la scriva.',
+            'Quanto avete incassato e quanto avete speso, settimana per settimana.',
+          ],
         },
-        { icon: 'chat', title: 'Risposte assistite', text: 'Bozze pronte per le domande ricorrenti, riviste da chi risponde.' },
         {
-          icon: 'file-text',
-          title: 'Estrazione dati',
-          text: 'Numeri e informazioni prese da documenti e messaggi, senza trascrizione.',
+          key: 'cantine',
+          title: 'Nel settore vitivinicolo',
+          points: [
+            "I contatti raccolti in degustazione finiscono nell'elenco, non su un foglio.",
+            'Stato degli ordini e delle spedizioni senza rincorrere il corriere.',
+            'Fatture e bolle archiviate e registrate in automatico.',
+            "Comunicazioni ai clienti nei momenti giusti dell'anno, senza ricordarsele.",
+          ],
         },
         {
-          icon: 'user-check',
-          title: 'Controllo umano',
-          text: 'Nessuna automazione decide al posto vostro. Le regole sono vostre, e restano modificabili.',
+          key: 'frantoi',
+          title: 'Frantoi e aziende olivicole',
+          points: [
+            'Ordini da telefono, WhatsApp ed email raccolti in un unico ingresso.',
+            'Prenotazioni di molitura gestite senza agenda cartacea.',
+            'Il listino giusto applicato da solo, a seconda di chi ordina.',
+            'I clienti abituali riordinano con un messaggio.',
+          ],
         },
       ],
-      cta: { label: 'Parliamo dei vostri processi', href: CONTACT },
     },
+    // 6. Come lavoriamo: titolo e testo propri, poi i quattro passi della homepage
+    // (method in content/agria/home.js)
     method: {
-      title: 'Prima si misura, poi si automatizza.',
-      steps: [
+      title: { text: 'Prima si guarda,', accent: 'poi si automatizza.' },
+      text: 'Qui i quattro passi hanno una differenza, e vale la pena dirla: prima di automatizzare qualcosa stiamo a guardare come lo fate adesso. Spesso il modo migliore di risolvere un passaggio è toglierlo, non automatizzarlo.',
+    },
+    // 7. Domande frequenti
+    faq: [
+      {
+        q: "L'assistente risponde al posto nostro?",
+        a: 'Prepara. Raccoglie le informazioni, scrive la bozza e la passa a chi deve rispondere. Nessuna conferma e nessun prezzo partono da soli.',
+      },
+      {
+        q: 'E se dice una cosa sbagliata?',
+        a: 'Risponde solo su quello che gli avete dato: le vostre camere, i vostri prezzi, le vostre regole. Su quello che non sa, passa la mano a una persona invece di inventare.',
+      },
+      {
+        q: 'Funziona con il nostro gestionale?',
+        a: "Dipende da cosa permette il vostro. È la prima cosa che controlliamo nell'analisi, e ve lo diciamo prima di qualunque proposta.",
+      },
+      {
+        q: 'Dobbiamo cambiare programmi?',
+        a: 'No. Lavoriamo sopra quelli che avete: il nostro lavoro è farli parlare, non sostituirli.',
+      },
+      {
+        q: 'I nostri dati dove finiscono?',
+        a: "Restano nei vostri sistemi. L'assistente li legge per rispondere, non se li porta via, e vi lasciamo scritto cosa tocca e come.",
+      },
+      {
+        q: 'Se poi vogliamo spegnere tutto?',
+        a: 'Si spegne. Il lavoro torna a farsi come prima, e il sito e i dati restano vostri.',
+      },
+    ],
+    // 8. Chiusura (il secondo pulsante usa il link di QUICK_CONTACT.whatsapp)
+    closing: {
+      title: { text: 'Raccontateci', accent: 'una vostra giornata.' },
+      text: "Vi prepariamo una prima analisi e ve la mostriamo: cosa si può collegare, cosa può farsi da solo e cosa conviene lasciare com'è.",
+      secondary: { label: 'Scriveteci su WhatsApp' },
+    },
+    articles: [
+      { slug: 'software-per-agriturismi' },
+      { slug: 'software-per-cantine' },
+      { slug: 'chatbot-cantina-ai-customer-service' },
+    ],
+    // foto del blocco Digital Automation nell'indice /servizi (la pagina area non ha più fotografie)
+    indexImage: agriaImage('servizi/automation'),
+    // Testi della pagina area di prima del Prompt 29 che le pagine /soluzioni
+    // (content/agria/soluzioni.js) riprendono: restano identici lì.
+    solutions: {
+      aiCta: { label: 'Parliamo dei vostri processi', href: CONTACT },
+      diagnosisCta: { label: 'Mappiamo un vostro processo', href: CONTACT },
+      closing: { text: CLOSING_TEXT, secondary: WRITE },
+      faq: [
         {
-          title: 'Mappatura',
-          text: "Seguiamo un processo dall'inizio alla fine e contiamo i passaggi manuali e i punti di rottura.",
+          q: 'Dobbiamo cambiare gestionale?',
+          a: 'No. Lavoriamo sopra gli strumenti che avete: li colleghiamo, non li sostituiamo.',
         },
-        { title: 'Progetto', text: 'Definiamo cosa automatizzare, cosa resta umano e cosa va semplicemente eliminato.' },
         {
-          title: 'Implementazione',
-          text: 'Integrazioni e regole costruite in modo incrementale, con verifica a ogni passo.',
+          q: "E se l'automazione sbaglia?",
+          a: 'Ogni flusso ha una gestione degli errori e un percorso di ricaduta manuale. Le eccezioni vi vengono segnalate, non nascoste.',
         },
         {
-          title: 'Verifica',
-          text: 'Controlliamo il comportamento sui casi reali, compresi quelli anomali, prima di estendere.',
+          q: 'Funziona con il nostro PMS o con il nostro software?',
+          a: "Se espone un'interfaccia o consente esportazioni, quasi sempre sì. Lo verifichiamo prima di proporre qualcosa.",
+        },
+        {
+          q: 'I dati restano nostri?',
+          a: 'Sì, e restano dove sono. Le automazioni li fanno circolare, non li portano via.',
         },
       ],
     },
-    deliverables: {
-      title: DELIVERABLES_TITLE,
-      intro: 'Processi più corti e la documentazione per capirli, modificarli e affidarli a qualcun altro.',
-      items: [
-        { text: "Mappa del processo, prima e dopo l'intervento", category: 'Ricerca' },
-        { text: 'Schema delle integrazioni e dei flussi di dati', category: 'Architettura' },
-        { text: 'Regole e automazioni documentate, modificabili da voi', category: 'Delivery' },
-        { text: 'Gestione degli errori: cosa succede quando qualcosa non funziona', category: 'Affidabilità' },
-        { text: 'Formazione al team sulle operazioni ricorrenti', category: 'Delivery' },
-        { text: 'Report di collaudo sui casi reali, anche anomali', category: 'Delivery' },
-        { text: 'Registro delle automazioni attive, con responsabile e frequenza', category: 'Delivery' },
-      ],
-    },
+    // Verticali della pagina area di prima del Prompt 29: li usano le pagine
+    // /settori (content/agria/settori.js) e /soluzioni. Testi invariati.
     verticals: {
       title: 'Processi diversi, stesso principio.',
       sectors: {
@@ -783,44 +857,5 @@ export const serviceAreas = {
         ],
       },
     },
-    markets: {
-      eyebrow: 'Lavoro quotidiano',
-      title: 'Automatizzare non significa spersonalizzare.',
-      text: 'Il rapporto con il cliente resta vostro. Togliamo il lavoro che non aggiunge valore, così resta tempo per quello che ne aggiunge davvero.',
-      cta: { label: 'Raccontateci una giornata tipo', href: CONTACT },
-      image: agriaImage('servizi/automation'),
-    },
-    faq: [
-      {
-        q: 'Dobbiamo cambiare gestionale?',
-        a: 'No. Lavoriamo sopra gli strumenti che avete: li colleghiamo, non li sostituiamo.',
-      },
-      {
-        q: "E se l'automazione sbaglia?",
-        a: 'Ogni flusso ha una gestione degli errori e un percorso di ricaduta manuale. Le eccezioni vi vengono segnalate, non nascoste.',
-      },
-      {
-        q: 'Funziona con il nostro PMS o con il nostro software?',
-        a: "Se espone un'interfaccia o consente esportazioni, quasi sempre sì. Lo verifichiamo prima di proporre qualcosa.",
-      },
-      {
-        q: 'I dati restano nostri?',
-        a: 'Sì, e restano dove sono. Le automazioni li fanno circolare, non li portano via.',
-      },
-      {
-        q: 'Quanto tempo serve per vedere un risultato?',
-        a: "Il primo processo automatizzato è in genere il più corto: si parte da lì proprio per misurare l'effetto prima di estendere.",
-      },
-      {
-        q: 'Sviluppate gestionali, CRM, ERP o PMS su commessa?',
-        a: 'No. Non costruiamo gestionali, CRM, ERP o PMS: lavoriamo sopra gli strumenti che già usate, con automazioni e collegamenti tra quelli esistenti.',
-      },
-    ],
-    closing: { title: 'Raccontateci una vostra giornata.', text: CLOSING_TEXT, secondary: WRITE },
-    articles: [
-      { slug: 'software-per-agriturismi' },
-      { slug: 'software-per-cantine' },
-      { slug: 'chatbot-cantina-ai-customer-service' },
-    ],
   },
 };

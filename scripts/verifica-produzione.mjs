@@ -263,6 +263,23 @@ const NEW_AREAS = [
     screen: ['calvena.example/shop', 'calvena.example/buoni-regalo', 'Ordini, pagamenti e magazzino si aggiornano da soli.', "L'ordine arriva già registrato, pronto da preparare."],
     old: ["l'AI con cui lavoriamo", 'Alla consegna resta questo'],
   },
+  {
+    key: 'automation',
+    path: '/servizi/digital-automation',
+    title: 'Digital Automation — automazioni e assistenti per agriturismi, hotel, cantine e frantoi | Agria System',
+    h1: 'Il lavoro che si rifà ogni giorno lo fa il sistema.',
+    sections: [
+      ['problemi', 'Il costo che pagate ogni giorno senza vederlo.'],
+      ['schermata', 'Come lavora un assistente.'],
+      ['costruiamo', 'Quattro automazioni che cambiano la settimana.'],
+      ['mestiere', 'Processi diversi, stesso principio.'],
+    ],
+    closing: 'Raccontateci una vostra giornata.',
+    method: 'Prima si guarda, poi si automatizza.',
+    labels: ['( COSA VI COSTA )', '( COME LAVORA )', '( COSA COSTRUIAMO )', '( PER IL VOSTRO MESTIERE )', '( DALLA RICHIESTA ALLA CONSEGNA )', '( DOMANDE FREQUENTI )'],
+    screen: ['Orvenna · Agriturismo', 'Richiesta pronta · da confermare', 'La giornata', 'Ogni conferma passa da una persona.', 'Promemoria e richiesta di recensione partono da soli.'],
+    old: ['Automatizzare non significa spersonalizzare', "L'AI che implementiamo nei vostri processi", 'Alla consegna resta questo', 'Prima si misura, poi si automatizza'],
+  },
 ];
 const LABELS_29 = ['( COSA VI COSTA )', "( COM'È FATTO )", '( COSA COSTRUIAMO )', '( PER IL VOSTRO MESTIERE )', '( DALLA RICHIESTA ALLA CONSEGNA )', '( DOMANDE FREQUENTI )'];
 for (const a of NEW_AREAS) {
@@ -281,7 +298,7 @@ for (const a of NEW_AREAS) {
   const bad = a.sections.filter(([s, t]) => headingText(html, `${a.key}-${s}-title`) !== t).map(([s]) => `${s}: "${headingText(html, `${a.key}-${s}-title`)}"`);
   const order = ids.map((id) => html.indexOf(`id="${id}"`));
   check(`${a.path}: otto sezioni nell'ordine del Prompt 29, con i titoli nuovi`, bad.length === 0 && order.every((pos, i) => pos > 0 && (i === 0 || pos > order[i - 1])) && headingText(html, `${a.key}-cta-titolo`) === a.closing, bad.join(' · ') || JSON.stringify(order));
-  const missingLabels = LABELS_29.filter((l) => !text.includes(l));
+  const missingLabels = (a.labels ?? LABELS_29).filter((l) => !text.includes(l));
   check(`${a.path}: etichette tra parentesi sulle sei sezioni (la chiusura senza)`, missingLabels.length === 0, missingLabels.join(' '));
   check(`${a.path}: schermate con il sito inventato, le didascalie e la riga di fantasia`, [...a.screen, 'Esempio illustrativo: nomi e contenuti di fantasia.'].every((t) => text.includes(t)));
   check(
@@ -291,6 +308,7 @@ for (const a of NEW_AREAS) {
   const faqPos = html.indexOf(`id="${a.key}-faq-title"`);
   const whenPos = html.indexOf('href="/#selezione"');
   const ctaPos = html.indexOf(`id="${a.key}-cta-titolo"`);
+  if (a.method) check(`${a.path}: titolo proprio sopra i quattro passi: "${a.method}"`, headingText(html, 'come-lavoriamo-titolo') === a.method, headingText(html, 'come-lavoriamo-titolo'));
   check(`${a.path}: rimando a /#selezione tra le domande frequenti e la chiusura`, faqPos > 0 && whenPos > faqPos && ctaPos > whenPos);
   const old = a.old.filter((t) => text.includes(t));
   check(`${a.path}: nessun testo della pagina di prima`, old.length === 0, old.join(' · '));

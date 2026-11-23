@@ -17,6 +17,7 @@ import StickyCta from './StickyCta';
 import BookingScreen from './screens/BookingScreen';
 import ShopScreen from './screens/ShopScreen';
 import GiftScreen from './screens/GiftScreen';
+import AssistantScreen from './screens/AssistantScreen';
 
 // Pagina area del Prompt 29: otto sezioni, uguali per le tre aree, con l'aspetto
 // della homepage (base offwhite, etichette tra parentesi, titoli bicolore, card
@@ -32,7 +33,7 @@ import GiftScreen from './screens/GiftScreen';
 const FAQ_TITLE = 'Domande frequenti';
 const LINK_GROUPS = { services: 'Servizi', articles: 'Approfondimenti', index: 'Tutti i servizi' };
 const NOTE = 'Esempio illustrativo: nomi e contenuti di fantasia.';
-const SCREENS = { booking: BookingScreen, shop: ShopScreen, gift: GiftScreen };
+const SCREENS = { booking: BookingScreen, shop: ShopScreen, gift: GiftScreen, assistant: AssistantScreen };
 
 function Cards({ items, columns }) {
   return (

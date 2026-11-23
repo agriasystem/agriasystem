@@ -372,10 +372,13 @@
 
 /* ---------- CTA fissa ---------- */
 /* sotto md sta sopra la barra contatti (--contact-bar, app/(site)/layout.jsx) */
+/* max-width: lascia libero l'angolo dell'assistente (pulsante di 48 px a 16 px
+   dal bordo, più 12 px di stacco): su schermi stretti il testo va a capo. */
 .sticky {
   position: fixed;
   left: 16px;
   bottom: calc(16px + var(--contact-bar, 0px));
+  max-width: calc(100% - 92px);
   z-index: 40;
   opacity: 0;
   visibility: hidden;
@@ -386,6 +389,7 @@
   .sticky {
     left: 24px;
     bottom: calc(24px + var(--contact-bar, 0px));
+    max-width: calc(100% - 108px);
   }
 }
 
@@ -393,6 +397,20 @@
   opacity: 1;
   visibility: visible;
   transform: none;
+}
+
+/* con il riquadro dell'assistente aperto la CTA fissa si toglie: il riquadro
+   occupa quasi tutta la larghezza e le starebbe addosso */
+:global(body:has(#agria-concierge-root [role='dialog'])) .sticky {
+  display: none;
+}
+
+/* da 1024 px niente CTA fissa: l'invito è già nell'header e in fondo alle sezioni */
+@media (min-width: 1024px) {
+  .sticky,
+  .sticky[data-visible] {
+    display: none;
+  }
 }
 
 /* ---------- transizioni ---------- */

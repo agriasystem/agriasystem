@@ -73,21 +73,33 @@ export function Brand({ name, kind, small = false }) {
 // Schermata con didascalie: a sinistra la composizione (browser e telefono), a
 // destra le didascalie numerate con un filetto sopra ciascuna; sotto lg la
 // composizione sopra e le didascalie in fondo. aside: blocco sotto le didascalie
-// (per esempio il risultato di ricerca della pastiglia 3). La dissolvenza
+// (per esempio il risultato di ricerca della pastiglia 3). split: composizione
+// stretta a sinistra (il telefono) e a destra lead (lo schema della giornata)
+// con sotto le didascalie in tre colonne (brochure, pagina 6). La dissolvenza
 // leggera quando entra nello schermo è quella di Reveal (subito visibile con
 // prefers-reduced-motion e senza JavaScript).
-export function ScreenLayout({ title, titleId, captions, aside, note, children }) {
+export function ScreenLayout({ titleId, captions, aside, lead, split = false, note, children }) {
   return (
     <figure aria-labelledby={titleId} className="m-0">
-      <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,8fr)_minmax(0,3.6fr)] lg:items-center lg:gap-[clamp(28px,3.5vw,56px)]">
+      <Reveal
+        className={`grid grid-cols-1 gap-10 lg:gap-[clamp(28px,3.5vw,56px)] ${
+          split ? 'lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-start' : 'lg:grid-cols-[minmax(0,8fr)_minmax(0,3.6fr)] lg:items-center'
+        }`}
+      >
         {/* la composizione è scenografia: per i lettori di schermo parlano le didascalie */}
         <div className="min-w-0" aria-hidden="true">
           {children}
         </div>
-        <div>
-          <ol className="flex flex-col">
+        <div className={split ? 'flex flex-col gap-10 lg:pt-10' : undefined}>
+          {lead}
+          <ol className={split ? 'grid grid-cols-1 md:grid-cols-3 md:gap-8' : 'flex flex-col'}>
             {captions.map((caption, index) => (
-              <li key={caption} className="flex gap-4 border-t border-agria-border py-5 first:border-t-0 first:pt-0 lg:first:border-t lg:first:pt-5">
+              <li
+                key={caption}
+                className={`flex gap-4 border-t border-agria-border py-5 first:border-t-0 first:pt-0 ${
+                  split ? 'md:first:border-t md:first:pt-5' : 'lg:first:border-t lg:first:pt-5'
+                }`}
+              >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-agria-green-dark font-agria-sans text-sm font-medium text-agria-white">
                   {index + 1}
                 </span>

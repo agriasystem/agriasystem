@@ -7,9 +7,12 @@ import styles from './ServiceArea.module.css';
 
 const SHOW_AFTER = 160; // px di scorrimento
 
-// CTA fissa in basso a sinistra: compare dopo il primo scorrimento e si nasconde
-// quando la CTA finale (endId) entra nella finestra. Nascosta non è focalizzabile
-// (visibility: hidden). Senza JavaScript non compare: le CTA restano nella pagina.
+// CTA fissa in basso a sinistra, solo sotto i 1024 px (da lì in su la toglie il
+// CSS): compare dopo il primo scorrimento e si nasconde appena la sezione di
+// chiusura (endId) entra nella parte visibile della finestra, cioè sopra la barra
+// contatti (il body riserva in fondo lo spazio della barra, --contact-bar).
+// Nascosta non è focalizzabile (visibility: hidden). Senza JavaScript non
+// compare: le CTA restano nella pagina.
 export default function StickyCta({ label, href, endId }) {
   const [visible, setVisible] = useState(false);
 
@@ -18,7 +21,8 @@ export default function StickyCta({ label, href, endId }) {
     let frame = 0;
     function update() {
       frame = 0;
-      const reachedEnd = end ? end.getBoundingClientRect().top < window.innerHeight : false;
+      const bar = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+      const reachedEnd = end ? end.getBoundingClientRect().top < window.innerHeight - bar : false;
       setVisible(window.scrollY > SHOW_AFTER && !reachedEnd);
     }
     function onScroll() {
@@ -42,7 +46,7 @@ export default function StickyCta({ label, href, endId }) {
       >
         {/* la freccia la disegna già il pulsante (icona): via quella del testo */}
         {label.replace(/\s*→$/, '')}
-        <Icon name="arrow-right" size={16} />
+        <Icon name="arrow-right" size={16} className="shrink-0" />
       </Link>
     </div>
   );

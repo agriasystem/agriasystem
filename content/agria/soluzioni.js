@@ -17,8 +17,10 @@ import { sectors } from './home';
 import { SECTOR_LABELS, serviceAreas } from './servizi-aree';
 
 const automation = serviceAreas.automation;
-// risposte già approvate nelle FAQ di Digital Automation, riprese per domanda
-const automationAnswer = (q) => automation.faq.find((item) => item.q === q).a;
+// risposte già approvate nelle FAQ di Digital Automation di prima del Prompt 29,
+// riprese per domanda (automation.solutions: la pagina area ha FAQ nuove)
+const legacy = automation.solutions;
+const automationAnswer = (q) => legacy.faq.find((item) => item.q === q).a;
 
 const DOES_NOT = { title: 'Cosa non fa.', anchor: 'cosa-non-fa' };
 const SECONDARY = { label: 'Leggete cosa non fa', href: `#${DOES_NOT.anchor}` };
@@ -39,7 +41,7 @@ const solutions = [
         "Un chatbot risponde da solo. L'assistente AI che costruiamo prepara bozze per le domande ricorrenti, e chi risponde le rivede. Hospitality, cantine e frantoi.",
       path: '/soluzioni/assistente-ai',
     },
-    cta: automation.ai.cta,
+    cta: legacy.aiCta,
     hero: {
       eyebrow: EYEBROW,
       title: 'Serve un chatbot per rispondere ai clienti?',
@@ -159,7 +161,7 @@ const solutions = [
         'Richieste da email, WhatsApp, telefono e portali in un solo ingresso tracciato: ogni richiesta registrata e assegnata. Per hospitality, cantine e frantoi.',
       path: '/soluzioni/gestione-richieste',
     },
-    cta: automation.diagnosis.cta,
+    cta: legacy.diagnosisCta,
     hero: {
       eyebrow: EYEBROW,
       title: 'Email, WhatsApp, telefono, portali: chi raccoglie le richieste?',
@@ -270,7 +272,7 @@ const solutions = [
         'Gestionale, PMS, e-commerce e sito collegati perché un dato si inserisca una volta sola. Prima verifichiamo se si può: non tutti i sistemi lo permettono.',
       path: '/soluzioni/collegare-gestionale-e-sito',
     },
-    cta: automation.diagnosis.cta,
+    cta: legacy.diagnosisCta,
     hero: {
       eyebrow: EYEBROW,
       title: 'Si può collegare quello che usate già? Sì, se il sistema lo permette.',
@@ -385,8 +387,8 @@ function build(solution) {
       linkLabel: sectors.linkLabel,
       items: sectors.items.map(({ key, href }) => ({ key, name: SECTOR_LABELS[key], href, text: solution.sectors[key] })),
     },
-    start: { title: START_TITLE, text: solution.start.text, areas, contact: automation.closing.secondary },
-    closing: { title: solution.closing.title, text: automation.closing.text, secondary: automation.closing.secondary },
+    start: { title: START_TITLE, text: solution.start.text, areas, contact: legacy.closing.secondary },
+    closing: { title: solution.closing.title, text: legacy.closing.text, secondary: legacy.closing.secondary },
   };
 }
 
