@@ -1,0 +1,16 @@
+{
+  "nota": "Prompt 32: privacy policy riscritta sul nuovo processo commerciale (primo contatto per telefono, materiale solo a chi lo chiede, elenco di esclusione), data al 25 novembre 2026. Confronto tra la build locale di f4ef1bd (produzione prima del Prompt 32, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a 696d34c: l'impronta in expect viene dalla pagina pubblicata. before indica il sito su cui si invia. Nessun'altra pagina cambiata.",
+  "commit": "696d34cf98f2494ff68303a3bb32c2663e9c984a",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/privacy-policy"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/privacy-policy": {
+      "page": "72e93887464b65defffe8cac93027f86b74db23d1fd5b25df5a7785f5641e504"
+    }
+  }
+}
