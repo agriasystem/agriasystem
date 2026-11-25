@@ -35,7 +35,7 @@ export const legalPages = {
       path: '/privacy-policy',
     },
     // Speed Insights (Prompt 26)
-    updated: '2026-11-20',
+    updated: '2026-11-25',
     title: 'Privacy policy',
     lead: 'Come trattiamo i dati di chi visita il sito e di chi ci contatta, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).',
     sections: [
@@ -67,6 +67,7 @@ export const legalPages = {
         after2: [
           '**Dati di sicurezza del modulo.** Alla prima interazione con il riquadro del modulo contatti, il servizio Google reCAPTCHA raccoglie dati tecnici del dispositivo e di interazione con la pagina, per distinguere le persone dai sistemi automatici (si veda il punto 5).',
           '**Dati che ci inviate per altri canali.** Email, telefonate e messaggi WhatsApp contengono i dati che scegliete di condividere. Se prenotate una videocall, i dati che inserite nel calendario (nome, email, orario scelto) sono raccolti tramite HubSpot.',
+          '**Dati delle aziende che contattiamo per prime.** Lavoriamo con strutture ricettive, cantine e frantoi, e a volte siamo noi a farci vivi per primi. In quel caso raccogliamo quello che l\'azienda pubblica sul proprio sito: il nome dell\'azienda, il numero di telefono, un indirizzo email generico (come info@) e informazioni pubbliche come le lingue disponibili o la presenza di uno shop o di un sistema di prenotazione. Se poi parliamo al telefono, registriamo il nome e il ruolo di chi ci risponde, come ce li indica. Non acquistiamo elenchi di indirizzi.',
         ],
       },
       {
@@ -74,12 +75,14 @@ export const legalPages = {
         list: [
           '**Rispondere alla richiesta** e valutare con voi un possibile progetto. Base giuridica: misure precontrattuali adottate su vostra richiesta (art. 6, par. 1, lett. b GDPR).',
           '**Gestire la richiesta nel nostro CRM**: registrarla, assegnarla a un referente, ricordarci di ricontattarvi. Base giuridica: misure precontrattuali e nostro legittimo interesse a organizzare le richieste ricevute (art. 6, par. 1, lett. b e f).',
+          `**Chiamare per telefono aziende dei nostri settori** per presentare i nostri servizi, dopo aver guardato il loro sito pubblico. Chiamiamo il numero dell'azienda, con una persona e non con sistemi automatici. Per i recapiti dell'azienda e per il nome e il ruolo di chi ci risponde, la base giuridica è il nostro legittimo interesse a far conoscere la nostra attività ad altre imprese (art. 6, par. 1, lett. f GDPR). Potete chiederci di non essere più contattati in qualsiasi momento, dicendolo al telefono o scrivendo a ${MAIL}.`,
+          `**Inviare materiale a chi ce lo chiede**: una presentazione o una prima analisi, a chi durante la telefonata ci chiede di riceverla. Base giuridica: il vostro consenso (art. 6, par. 1, lett. a GDPR), raccolto durante la telefonata e registrato nel CRM con la data, il nome di chi ce l'ha chiesto e che cosa ha accettato di ricevere. Il consenso è revocabile in qualsiasi momento.`,
           '**Proteggere il sito e il modulo** da abusi e invii automatici, con reCAPTCHA, un limite alle richieste per indirizzo IP e i registri tecnici. Base giuridica: legittimo interesse alla sicurezza (art. 6, par. 1, lett. f).',
           '**Misurare la velocità del sito** e migliorare le pagine più lente, con misure anonime di Vercel Speed Insights. Base giuridica: legittimo interesse a offrire un sito veloce (art. 6, par. 1, lett. f).',
           '**Statistiche aggregate** sull\'uso del sito, per capire quali pagine e contenuti funzionano e migliorarli, con Google Analytics 4. Base giuridica: consenso (art. 6, par. 1, lett. a GDPR), espresso nell\'avviso sui cookie e revocabile in qualsiasi momento da "Preferenze cookie", senza conseguenze sulla navigazione. Senza consenso Google Analytics non viene caricato.',
           '**Adempiere a obblighi di legge**, per esempio fiscali, se nasce un rapporto commerciale. Base giuridica: obbligo legale (art. 6, par. 1, lett. c).',
         ],
-        after: ['Non inviamo newsletter né comunicazioni promozionali, e non cediamo i dati a terzi per finalità di marketing.'],
+        after: ['Non inviamo newsletter e non cediamo i dati a terzi per finalità di marketing. Non inviamo email promozionali a chi non ce le ha chieste: il primo contatto avviene per telefono, e il materiale parte solo dopo che ce lo avete chiesto.'],
       },
       {
         h2: '4. Conferimento dei dati',
@@ -115,6 +118,7 @@ export const legalPages = {
         h2: '7. Per quanto tempo conserviamo i dati',
         list: [
           '**Richieste di contatto** senza un rapporto commerciale: 24 mesi dall\'ultimo contatto, poi cancellate.',
+          '**Aziende che abbiamo contattato noi** e con cui non si va avanti: 24 mesi dall\'ultimo contatto, poi cancellate. Chi ci chiede di non essere più contattato resta solo in un elenco di esclusione, con il nome dell\'azienda e il recapito, per evitare di richiamarlo.',
           '**Clienti**: per la durata del rapporto e, dopo, per i termini previsti dalla legge (per la documentazione contabile e fiscale, di norma 10 anni).',
           '**Email interne di notifica**: con gli stessi tempi della richiesta a cui si riferiscono.',
           '**Indirizzo IP per il limite alle richieste**: solo in memoria, per 10 minuti.',
@@ -125,7 +129,7 @@ export const legalPages = {
       {
         h2: '8. I vostri diritti',
         paragraphs: [
-          `Potete chiedere in qualsiasi momento l'accesso ai vostri dati, la rettifica, la cancellazione, la limitazione del trattamento e la portabilità, e opporvi ai trattamenti basati sul legittimo interesse (articoli 15-21 GDPR). Basta scrivere a ${MAIL}: rispondiamo entro un mese. Il consenso alle statistiche si revoca da "Preferenze cookie" in fondo a ogni pagina.`,
+          `Potete chiedere in qualsiasi momento l'accesso ai vostri dati, la rettifica, la cancellazione, la limitazione del trattamento e la portabilità, e opporvi ai trattamenti basati sul legittimo interesse (articoli 15-21 GDPR). Basta scrivere a ${MAIL}: rispondiamo entro un mese. Il consenso alle statistiche si revoca da "Preferenze cookie" in fondo a ogni pagina. Se vi abbiamo chiamato e non volete più essere contattati, potete dirlo al telefono o scriverlo allo stesso indirizzo: vi mettiamo nell'elenco di esclusione e non vi ricontattiamo.`,
           `Se ritenete che il trattamento violi il GDPR, potete proporre reclamo al [Garante per la protezione dei dati personali](${GARANTE}).`,
         ],
       },

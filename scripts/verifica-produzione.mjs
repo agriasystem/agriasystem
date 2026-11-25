@@ -124,6 +124,13 @@ for (const [path, title] of [
   const found = html.match(/<title>([^<]*)<\/title>/)?.[1];
   check(`${path}, title: "${title}", senza marchio`, found === title, found);
 }
+
+// Prompt 32: privacy policy, il primo contatto avviene per telefono
+{
+  const html = await page('/privacy-policy');
+  const sentence = 'Non inviamo email promozionali a chi non ce le ha chieste';
+  check(`/privacy-policy: "${sentence}"`, html.includes(sentence));
+}
 check('Home, h1: "Il vostro sito, collegato a tutto il resto."', headingText(home, 'home-hero-title') === 'Il vostro sito, collegato a tutto il resto.', headingText(home, 'home-hero-title'));
 check(
   'Home: etichetta e lead dell\'apertura',
