@@ -30,7 +30,7 @@ export const site = {
   // nessun profilo personale: i profili Agria si aggiungono qui quando esistono
   social: {},
   // Prompt 28
-  tagline: 'siti, e-commerce e automazioni per hospitality, cantine e frantoi',
+  tagline: 'siti web, e-commerce e AI per agriturismi, hotel, cantine e frantoi',
   positioning:
     'Siti, e-commerce e automazioni per agriturismi, hotel, cantine e frantoi, collegati tra loro e ai programmi che usate già: gestionale, pagamenti, email.',
 };

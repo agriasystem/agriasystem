@@ -32,8 +32,11 @@ export const servicesIndex = {
       key,
       name: area.name,
       eyebrow: area.hero.eyebrow,
-      // titolo bicolore delle pagine nuove (Prompt 29): qui come frase unica
-      title: typeof area.hero.title === 'string' ? area.hero.title : `${area.hero.title.text} ${area.hero.title.accent}`,
+      // la frase d'effetto dell'area: dal Prompt 33 è subtitle (l'h1 della pagina è
+      // la frase cercata); prima il titolo bicolore (Prompt 29), qui come frase unica
+      title:
+        area.hero.subtitle ??
+        (typeof area.hero.title === 'string' ? area.hero.title : `${area.hero.title.text} ${area.hero.title.accent}`),
       text: area.hero.lead,
       items: area.build.items.slice(0, 3).map(({ icon, title, text }) => ({ icon, title, text })),
       href: area.meta.path,

@@ -58,6 +58,7 @@ export default function SectorPage({ sector, others }) {
       <PageHero
         eyebrow={sector.hero.eyebrow}
         title={sector.hero.title}
+        wide
         lead={sector.hero.lead}
         cta={sector.cta}
         titleId={id('title')}

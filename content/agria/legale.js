@@ -31,13 +31,13 @@ export const legalPages = {
   privacy: {
     meta: {
       title: 'Privacy policy | Agria System',
-      description: 'Come Agria System tratta i dati personali di chi visita il sito e di chi ci scrive: titolare, finalità, fornitori, conservazione e diritti.',
+      description: 'Come Agria System tratta i dati di chi visita il sito, di chi ci scrive e delle aziende che chiamiamo: finalità, fornitori, conservazione e diritti.',
       path: '/privacy-policy',
     },
     // Speed Insights (Prompt 26)
     updated: '2026-11-25',
     title: 'Privacy policy',
-    lead: 'Come trattiamo i dati di chi visita il sito e di chi ci contatta, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).',
+    lead: 'Come trattiamo i dati di chi visita il sito, di chi ci contatta e delle aziende che contattiamo noi, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).',
     sections: [
       {
         h2: '1. Titolare del trattamento',

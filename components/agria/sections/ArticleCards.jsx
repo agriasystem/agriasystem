@@ -10,7 +10,13 @@ const CARD =
 // titolo (h3, oppure headingLevel dove la pagina non ha h2 sopra le card).
 // Tutta la card porta all'articolo (link esteso sul titolo).
 // articles: [{ slug, alt }] — alt scritto da chi usa il componente.
-export default function ArticleCards({ articles, columns = 3, className = '', headingLevel = 'h3' }) {
+// keepEcommerce: solo in visualizzazione, il trattino di «e-commerce» diventa
+// unificatore (U+2011), così il titolo non va a capo dentro la parola («l’e- /
+// commerce», Prompt 33); il dato dell'articolo non cambia. Lo usa l'indice /blog.
+const NB_HYPHEN = String.fromCodePoint(0x2011);
+const NO_BREAK = (text) => text.replace(/(e)-(commerce)/gi, `$1${NB_HYPHEN}$2`);
+
+export default function ArticleCards({ articles, columns = 3, className = '', headingLevel = 'h3', keepEcommerce = false }) {
   const Title = headingLevel;
   const items = articles.map((article) => ({ ...article, post: getPost(article.slug) })).filter((a) => a.post);
   const grid = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3';
@@ -30,7 +36,7 @@ export default function ArticleCards({ articles, columns = 3, className = '', he
                     href={`/blog/${slug}`}
                     className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
                   >
-                    {post.title}
+                    {keepEcommerce ? NO_BREAK(post.title) : post.title}
                   </Link>
                 </Title>
               </div>

@@ -13,7 +13,7 @@ import { breadcrumbNode, graph, webPageNode } from '@/lib/schema';
 // mantenuti dalla migration map, dal più recente. Etichetta e titolo della
 // sezione Insights della homepage; meta nuovi, da approvare.
 const PAGE = {
-  title: 'Insights — siti, vendita diretta e automazioni per hospitality, cantine e frantoi | Agria System',
+  title: 'Guide su siti web, e-commerce e AI per hotel, cantine e frantoi | Blog Agria System',
   description:
     'Articoli su siti, e-commerce, prenotazioni e automazioni per hospitality, cantine e frantoi: cosa funziona, cosa evitare, da dove partire.',
   path: '/blog',
@@ -44,7 +44,7 @@ export default function Blog() {
       <PageHero eyebrow={INSIGHTS} title={news.title} titleId="blog-title" />
       <Section background="offwhite" aria-labelledby="blog-title">
         <Container>
-          <ArticleCards articles={articles} headingLevel="h2" />
+          <ArticleCards articles={articles} headingLevel="h2" keepEcommerce />
         </Container>
       </Section>
       <FinalCta

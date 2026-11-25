@@ -87,6 +87,16 @@ const headingText = (html, id) =>
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+// <title> e primo h1 con le entità decodificate (B&B, apostrofi), con decode() in cima
+const titleOf = (html) => decode(html.match(/<title>([^<]*)<\/title>/)?.[1] || '');
+const h1Text = (html) =>
+  decode(
+    (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+  );
 const h = (level, text, id) =>
   new RegExp(`<h${level}[^>]*${id ? `id="${id}"[^>]*` : ''}>${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</h${level}>`);
 
@@ -94,12 +104,13 @@ console.log(`Verifica di ${BASE}\n`);
 
 // Fase A
 const hospitality = await page('/settori/hospitality');
-check('Hospitality, h1: "Siti e prenotazioni dirette per agriturismi e hotel."', h(1, 'Siti e prenotazioni dirette per agriturismi e hotel.').test(hospitality));
+// Prompt 33: h1 con la frase cercata (prima «Siti e prenotazioni dirette per agriturismi e hotel.»)
+check('Hospitality, h1: "Siti web e prenotazioni dirette per agriturismi, hotel, B&B e strutture ricettive."', h1Text(hospitality) === 'Siti web e prenotazioni dirette per agriturismi, hotel, B&B e strutture ricettive.', h1Text(hospitality));
 
 const azienda = await page('/azienda');
 check(
-  'Azienda, title: "Azienda — Agria System, technology company per hospitality, cantine e frantoi"',
-  azienda.includes('<title>Azienda — Agria System, technology company per hospitality, cantine e frantoi</title>')
+  'Azienda, title: "Agria System: siti web, e-commerce e AI per strutture ricettive e aziende agricole"',
+  titleOf(azienda) === 'Agria System: siti web, e-commerce e AI per strutture ricettive e aziende agricole'
 );
 check(
   'Azienda, lead: "Agria System lavora in tre settori: hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi."',
@@ -112,8 +123,8 @@ const homeText = plain(home.match(/<main[\s\S]*<\/main>/)?.[0] || '');
 
 // Prompt 28, Fase A: la nuova home su base chiara
 check(
-  'Home, title: "Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi"',
-  home.includes('<title>Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi</title>')
+  'Home, title: "Siti web, e-commerce e AI per agriturismi, hotel, cantine e frantoi | Agria System"',
+  titleOf(home) === 'Siti web, e-commerce e AI per agriturismi, hotel, cantine e frantoi | Agria System'
 );
 // Prompt 31: gli articoli senza "| Agria System" nel titolo (la home e le altre pagine lo tengono)
 for (const [path, title] of [
@@ -130,6 +141,45 @@ for (const [path, title] of [
   const html = await page('/privacy-policy');
   const sentence = 'Non inviamo email promozionali a chi non ce le ha chieste';
   check(`/privacy-policy: "${sentence}"`, html.includes(sentence));
+  // Prompt 33: la frase introduttiva nomina anche le aziende che contattiamo noi
+  const lead =
+    'Come trattiamo i dati di chi visita il sito, di chi ci contatta e delle aziende che contattiamo noi, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).';
+  check('/privacy-policy: frase introduttiva con le aziende che contattiamo noi', decode(html).includes(lead));
+}
+
+// Prompt 33: titoli per Google con la frase cercata e le categorie (il marchio
+// solo dove indicato), mai più il nome del servizio in apertura
+{
+  const TITLES = [
+    ['/', 'Siti web, e-commerce e AI per agriturismi, hotel, cantine e frantoi | Agria System'],
+    ['/azienda', 'Agria System: siti web, e-commerce e AI per strutture ricettive e aziende agricole'],
+    ['/settori', 'Siti e software per agriturismi, hotel, cantine e frantoi'],
+    ['/settori/hospitality', 'Siti web e booking engine per agriturismi, hotel, B&B, resort, spa, masserie e relais'],
+    ['/settori/cantine', 'Siti web ed e-commerce per cantine e aziende vitivinicole'],
+    ['/settori/frantoi', 'Siti web ed e-commerce per frantoi e produttori di olio'],
+    ['/servizi/digital-presence', 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole'],
+    ['/servizi/digital-commerce', 'E-commerce per cantine, frantoi e aziende agricole: vendere vino e olio online'],
+    ['/servizi/digital-automation', 'Intelligenza artificiale per hotel, agriturismi, cantine e frantoi'],
+    ['/soluzioni/assistente-ai', 'Chatbot e assistente AI per hotel, agriturismi, B&B, cantine e strutture turistiche'],
+    ['/soluzioni/collegare-gestionale-e-sito', 'Integrare gestionale, PMS e sito web per hotel e agriturismi'],
+    ['/blog', 'Guide su siti web, e-commerce e AI per hotel, cantine e frantoi | Blog Agria System'],
+  ];
+  const old = [];
+  for (const [path, title] of TITLES) {
+    const html = await page(path);
+    const found = titleOf(html);
+    check(`${path}, title: "${title}"`, found === title, found);
+    if (/Digital (Presence|Commerce|Automation) —/.test(found)) old.push(path);
+    if (path === '/settori/cantine') {
+      const h1 = 'Siti web ed e-commerce per cantine e aziende vitivinicole.';
+      check(`Cantine, h1: "${h1}"`, h1Text(html) === h1, h1Text(html));
+    }
+    if (path === '/settori/frantoi') {
+      const h1 = 'Siti web ed e-commerce per frantoi e produttori di olio.';
+      check(`Frantoi, h1: "${h1}"`, h1Text(html) === h1, h1Text(html));
+    }
+  }
+  check('Nessuno dei dodici title apre più con "Digital Presence —", "Digital Commerce —" o "Digital Automation —"', old.length === 0, old.join(' '));
 }
 check('Home, h1: "Il vostro sito, collegato a tutto il resto."', headingText(home, 'home-hero-title') === 'Il vostro sito, collegato a tutto il resto.', headingText(home, 'home-hero-title'));
 check(
@@ -273,8 +323,9 @@ const NEW_AREAS = [
   {
     key: 'presence',
     path: '/servizi/digital-presence',
-    title: 'Digital Presence — siti per agriturismi, hotel, cantine e frantoi | Agria System',
-    h1: 'Il sito che porta clienti, non quello che fa bella figura.',
+    title: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole',
+    h1: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi.',
+    subtitle: 'Il sito che porta clienti, non quello che fa bella figura.',
     sections: [
       ['problemi', 'Tre cose che costano più di un sito nuovo.'],
       ['schermata', "Com'è fatto un sito che prenota."],
@@ -288,8 +339,9 @@ const NEW_AREAS = [
   {
     key: 'commerce',
     path: '/servizi/digital-commerce',
-    title: 'Digital Commerce — shop e prenotazioni dirette per agriturismi, hotel, cantine e frantoi | Agria System',
-    h1: 'Vendete voi, senza passare da nessuno.',
+    title: 'E-commerce per cantine, frantoi e aziende agricole: vendere vino e olio online',
+    h1: 'E-commerce e prenotazioni dirette per cantine, frantoi e strutture ricettive.',
+    subtitle: 'Vendete voi, senza passare da nessuno.',
     sections: [
       ['problemi', 'Il margine se ne va prima di arrivare a voi.'],
       ['schermata', "Com'è fatto un negozio che vende da solo."],
@@ -303,8 +355,9 @@ const NEW_AREAS = [
   {
     key: 'automation',
     path: '/servizi/digital-automation',
-    title: 'Digital Automation — automazioni e assistenti per agriturismi, hotel, cantine e frantoi | Agria System',
-    h1: 'Il lavoro che si rifà ogni giorno lo fa il sistema.',
+    title: 'Intelligenza artificiale per hotel, agriturismi, cantine e frantoi',
+    h1: 'Intelligenza artificiale e automazioni per hotel, agriturismi e cantine.',
+    subtitle: 'Il lavoro che si rifà ogni giorno lo fa il sistema.',
     sections: [
       ['problemi', 'Il costo che pagate ogni giorno senza vederlo.'],
       ['schermata', 'Come lavora un assistente.'],
@@ -323,8 +376,11 @@ for (const a of NEW_AREAS) {
   const html = await page(a.path);
   const main = html.match(/<main[\s\S]*<\/main>/)?.[0] || '';
   const text = plain(main);
-  check(`${a.path}, title per Google: "${a.title}"`, html.includes(`<title>${a.title.replace(/'/g, '&#x27;')}</title>`) || html.includes(`<title>${a.title}</title>`));
+  check(`${a.path}, title per Google: "${a.title}"`, titleOf(html) === a.title, titleOf(html));
   check(`${a.path}, h1: "${a.h1}"`, headingText(html, `${a.key}-title`) === a.h1, headingText(html, `${a.key}-title`));
+  // Prompt 33: la frase d'effetto di prima, subito sotto l'h1
+  const sub = html.match(new RegExp(`id="${a.key}-title"[^>]*>[\\s\\S]*?</h1>\\s*<p[^>]*>([^<]*)</p>`))?.[1];
+  check(`${a.path}, sottotitolo sotto l'h1: "${a.subtitle}"`, decode(sub || '') === a.subtitle, sub);
   const ids = [
     `${a.key}-title`,
     ...a.sections.map(([s]) => `${a.key}-${s}-title`),

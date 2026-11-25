@@ -25,9 +25,9 @@ export const serviceAreas = {
     key: 'presence',
     name: 'Digital Presence',
     meta: {
-      title: 'Digital Presence — siti per agriturismi, hotel, cantine e frantoi | Agria System',
+      title: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole',
       description:
-        'Siti nuovi o rifatti per agriturismi, hotel, cantine e frantoi: veloci, in italiano e inglese, con la prenotazione in primo piano e collegati ai programmi che usate già.',
+        'Realizzazione siti web per hotel, agriturismi, B&B, cantine e frantoi: veloci, in più lingue, ottimizzati per Google e collegati a prenotazioni e vendita.',
       path: '/servizi/digital-presence',
     },
     // etichette delle sezioni (la chiusura resta senza, come in home)
@@ -43,7 +43,8 @@ export const serviceAreas = {
     // 1. Apertura
     hero: {
       eyebrow: '( 01 · DIGITAL PRESENCE )',
-      title: { text: 'Il sito che porta clienti,', accent: 'non quello che fa bella figura.' },
+      title: { text: 'Realizzazione siti web', accent: 'per hotel, agriturismi, cantine e frantoi.' },
+      subtitle: 'Il sito che porta clienti, non quello che fa bella figura.',
       lead: 'Un sito nuovo, o quello che avete rifatto come si deve: veloce, in italiano e in inglese, facile da trovare su Google e da chi chiede consiglio agli assistenti AI. E con la prenotazione o la richiesta in primo piano, non nascosta in fondo.',
       secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
       pills: ['Sito nuovo o rifatto', 'Italiano e inglese', 'Google e assistenti AI', 'Prenotazione diretta', 'Velocità'],
@@ -293,9 +294,9 @@ export const serviceAreas = {
     key: 'commerce',
     name: 'Digital Commerce',
     meta: {
-      title: 'Digital Commerce — shop e prenotazioni dirette per agriturismi, hotel, cantine e frantoi | Agria System',
+      title: 'E-commerce per cantine, frantoi e aziende agricole: vendere vino e olio online',
       description:
-        'Shop, prenotazioni, buoni regalo e listini per i professionisti, per agriturismi, hotel, cantine e frantoi: pagamento online, ordini già registrati e il cliente che resta vostro.',
+        'E-commerce per cantine, frantoi e aziende agricole: vendita di vino e olio online, prenotazioni dirette senza commissioni dei portali e buoni regalo.',
       path: '/servizi/digital-commerce',
     },
     labels: {
@@ -310,7 +311,8 @@ export const serviceAreas = {
     // 1. Apertura
     hero: {
       eyebrow: '( 02 · DIGITAL COMMERCE )',
-      title: { text: 'Vendete voi,', accent: 'senza passare da nessuno.' },
+      title: { text: 'E-commerce e prenotazioni dirette', accent: 'per cantine, frantoi e strutture ricettive.' },
+      subtitle: 'Vendete voi, senza passare da nessuno.',
       lead: "Shop, prenotazioni, buoni regalo e listini per i professionisti, con il pagamento online. L'ordine arriva già registrato, il cliente resta vostro, e la commissione non la paga nessuno.",
       secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
       pills: ['Shop', 'Prenotazioni', 'Buoni regalo', 'Listini per professionisti', 'Pagamento online', 'Spedizioni'],
@@ -589,9 +591,9 @@ export const serviceAreas = {
     key: 'automation',
     name: 'Digital Automation',
     meta: {
-      title: 'Digital Automation — automazioni e assistenti per agriturismi, hotel, cantine e frantoi | Agria System',
+      title: 'Intelligenza artificiale per hotel, agriturismi, cantine e frantoi',
       description:
-        'Colleghiamo i programmi che usate già e mettiamo un assistente dove serve, per agriturismi, hotel, cantine e frantoi: richieste in un unico posto, dati scritti una volta, promemoria che partono da soli.',
+        'Chatbot, assistenti AI e automazioni per hotel, agriturismi, cantine e frantoi: risposte ai clienti, richieste e ordini senza ricopiare. Decidete voi.',
       path: '/servizi/digital-automation',
     },
     labels: {
@@ -606,7 +608,8 @@ export const serviceAreas = {
     // 1. Apertura
     hero: {
       eyebrow: '( 03 · DIGITAL AUTOMATION )',
-      title: { text: 'Il lavoro che si rifà ogni giorno', accent: 'lo fa il sistema.' },
+      title: { text: 'Intelligenza artificiale e automazioni', accent: 'per hotel, agriturismi e cantine.' },
+      subtitle: 'Il lavoro che si rifà ogni giorno lo fa il sistema.',
       lead: 'Colleghiamo i programmi che usate già e mettiamo un assistente dove serve: le richieste trovano risposta subito, i dati si scrivono una volta sola, i promemoria partono da soli. Le decisioni restano a una persona.',
       secondary: { label: 'Guardate come lavoriamo', href: '#come-lavoriamo' },
       pills: ['Collegamenti tra programmi', 'Assistenti', 'Richieste in un unico posto', 'Promemoria', 'Report'],

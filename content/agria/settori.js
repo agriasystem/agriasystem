@@ -33,30 +33,40 @@ const ARTICLES = {
 };
 
 // h1 e sottotitolo propri del settore, al posto di quelli dell'anteprima della
-// homepage (che parlano all'ospite, non a chi gestisce la struttura)
+// homepage (che parlano all'ospite, non a chi gestisce la struttura). Prompt 33:
+// l'h1 è la frase cercata, la frase d'effetto scende nel sottotitolo; titolo
+// largo nell'apertura (wide in SectorPage).
 const HEROES = {
   hospitality: {
-    title: 'Siti e prenotazioni dirette per agriturismi e hotel.',
-    lead: 'Sito, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive, collegati agli strumenti che già usate.',
+    title: 'Siti web e prenotazioni dirette per agriturismi, hotel, B&B e strutture ricettive.',
+    lead: 'Una prenotazione, inserita una volta sola. Anche per masserie, relais e strutture con spa.',
+  },
+  cantine: {
+    title: 'Siti web ed e-commerce per cantine e aziende vitivinicole.',
+    lead: 'Chi compra, chi visita e chi torna: lo stesso cliente.',
+  },
+  frantoi: {
+    title: 'Siti web ed e-commerce per frantoi e produttori di olio.',
+    lead: 'Gli ordini arrivano da quattro parti. Ne escono da una.',
   },
 };
 
-// meta: testi nuovi (da approvare)
+// meta: titolo e descrizione per Google (Prompt 33, approvati): la frase cercata e le categorie, senza marchio
 const META = {
   hospitality: {
-    title: 'Hospitality — siti e prenotazioni dirette per agriturismi, hotel e strutture ricettive | Agria System',
+    title: 'Siti web e booking engine per agriturismi, hotel, B&B, resort, spa, masserie e relais',
     description:
-      'Siti, prenotazione diretta e automazioni per agriturismi, hotel e strutture ricettive: disponibilità reali, canale diretto e messaggi agli ospiti.',
+      'Siti web con prenotazione diretta per agriturismi, hotel, B&B, resort, masserie, relais e strutture con spa: booking engine e portali collegati al gestionale.',
   },
   cantine: {
-    title: 'Cantine — siti, e-commerce e automazioni per aziende vitivinicole | Agria System',
+    title: 'Siti web ed e-commerce per cantine e aziende vitivinicole',
     description:
-      'Siti, vendita diretta, degustazioni prenotabili ed export per cantine e aziende vitivinicole: dalla visita al cliente, con i flussi collegati.',
+      'Realizziamo siti web ed e-commerce per cantine: vendita diretta del vino, degustazioni prenotabili online e clienti raccolti in un unico posto.',
   },
   frantoi: {
-    title: 'Frantoi — siti, e-commerce e gestione ordini per aziende olivicole | Agria System',
+    title: 'Siti web ed e-commerce per frantoi e produttori di olio',
     description:
-      'Siti, e-commerce e ordini in un unico ingresso per frantoi e aziende olivicole: listini per privati, ristorazione e B2B, ritmo della campagna.',
+      'Realizziamo siti web ed e-commerce per frantoi: vendita di olio online, listini per privati e ristorazione, ordini raccolti in un unico posto.',
   },
 };
 
@@ -93,9 +103,9 @@ export const sectorPages = Object.fromEntries(sectors.items.map((item) => [item.
 // Indice /settori
 export const sectorsIndex = {
   meta: {
-    title: 'Settori — hospitality, cantine e frantoi | Agria System',
+    title: 'Siti e software per agriturismi, hotel, cantine e frantoi',
     description:
-      'Agria System lavora con tre settori: hospitality (agriturismi, hotel e strutture ricettive), cantine e aziende vitivinicole, frantoi e aziende olivicole.',
+      'Siti web, e-commerce, prenotazioni dirette e automazioni AI per strutture ricettive, cantine e frantoi: scegliete il vostro settore.',
     path: '/settori',
   },
   // h1 (da approvare) e titolo della griglia (approvato, come in homepage)

@@ -10,9 +10,9 @@ import { agriaImage } from '@/lib/agria-images';
 const CONTACT = { label: 'Parliamo del progetto', href: '/contatti' };
 
 export const meta = {
-  title: 'Azienda — Agria System, technology company per hospitality, cantine e frantoi',
+  title: 'Agria System: siti web, e-commerce e AI per strutture ricettive e aziende agricole',
   description:
-    'Sistemi digitali sviluppati internamente per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi. Da Perugia, in tutta Italia.',
+    'Agria System progetta e sviluppa siti web, e-commerce, chatbot e automazioni AI per strutture ricettive, cantine, frantoi e aziende agricole in tutta Italia.',
   path: '/azienda',
 };
 

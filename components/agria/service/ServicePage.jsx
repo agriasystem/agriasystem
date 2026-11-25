@@ -103,6 +103,8 @@ export default function ServicePage({ area, others }) {
       <PageHero
         eyebrow={area.hero.eyebrow}
         title={<TwoTone title={area.hero.title} onDark />}
+        subtitle={area.hero.subtitle}
+        wide
         lead={area.hero.lead}
         cta={area.cta}
         secondaryCta={area.hero.secondary}

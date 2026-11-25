@@ -36,7 +36,7 @@ const solutions = [
     area: 'automation',
     also: [],
     meta: {
-      title: 'Chatbot e assistente AI per hotel e cantine | Agria System',
+      title: 'Chatbot e assistente AI per hotel, agriturismi, B&B, cantine e strutture turistiche',
       description:
         "Un chatbot risponde da solo. L'assistente AI che costruiamo prepara bozze per le domande ricorrenti, e chi risponde le rivede. Hospitality, cantine e frantoi.",
       path: '/soluzioni/assistente-ai',
@@ -267,7 +267,7 @@ const solutions = [
     area: 'automation',
     also: ['commerce'],
     meta: {
-      title: 'Collegare gestionale, PMS e sito: si può? | Agria System',
+      title: 'Integrare gestionale, PMS e sito web per hotel e agriturismi',
       description:
         'Gestionale, PMS, e-commerce e sito collegati perché un dato si inserisca una volta sola. Prima verifichiamo se si può: non tutti i sistemi lo permettono.',
       path: '/soluzioni/collegare-gestionale-e-sito',

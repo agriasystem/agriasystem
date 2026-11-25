@@ -18,8 +18,10 @@ import { pageMetadata } from '@/lib/seo';
 import { faqNode, graph, webPageNode } from '@/lib/schema';
 
 const PAGE = {
-  title: 'Agria System — siti, e-commerce e automazioni per hospitality, cantine e frantoi',
-  description: site.positioning,
+  title: 'Siti web, e-commerce e AI per agriturismi, hotel, cantine e frantoi | Agria System',
+  // descrizione propria della home (Prompt 33); site.positioning resta per dati strutturati e layout
+  description:
+    'Siti web, e-commerce, booking engine e chatbot AI per agriturismi, hotel, B&B, cantine e frantoi in tutta Italia, collegati agli strumenti che usate già.',
   path: '/',
 };
 
