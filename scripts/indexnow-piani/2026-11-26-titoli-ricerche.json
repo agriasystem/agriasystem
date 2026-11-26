@@ -1,0 +1,64 @@
+{
+  "nota": "Prompt 33: titoli per Google con la frase cercata e le categorie, descrizioni nuove, h1 con la frase cercata su servizi e settori (sottotitolo con la frase d'effetto), frase introduttiva e descrizione della privacy, trattino unificatore in «e-commerce» sull'indice /blog. Confronto tra la build locale di b83c859 (produzione prima del Prompt 33, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a 6dcc930: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia. Esattamente le tredici pagine attese, nessuna esclusa.",
+  "commit": "6dcc930701d30bf2037edd5f449a23912e22b8e0",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/",
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/servizi/digital-automation",
+    "/soluzioni/assistente-ai",
+    "/soluzioni/collegare-gestionale-e-sito",
+    "/settori",
+    "/settori/hospitality",
+    "/settori/cantine",
+    "/settori/frantoi",
+    "/azienda",
+    "/blog",
+    "/privacy-policy"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "933603bbc6207eceab5fbb95ea2c41e4e038548d0ffcae213af2327b88a343e5"
+    },
+    "/servizi/digital-presence": {
+      "page": "06e830196d45d9c84e189423c25d07d7f3467c3dc3f5d987d3dcb50083e0b5ed"
+    },
+    "/servizi/digital-commerce": {
+      "page": "51d2c645ccdff136b2059b2f6cd104c0d2f75882bcc84a33c7283e7e20ff1d65"
+    },
+    "/servizi/digital-automation": {
+      "page": "a30de88a250dddc563eec359db80d1c16da373d555c85ff81f7ed45652f8b343"
+    },
+    "/soluzioni/assistente-ai": {
+      "page": "9018a88b293b66fb0d771035bbf6b02f8988730d219261eaaf25f11e107d937d"
+    },
+    "/soluzioni/collegare-gestionale-e-sito": {
+      "page": "4207452c3c7f5b6d9ed408b50fb43bee1f66e9fd9ae43b1acaa74e52c6dfa9be"
+    },
+    "/settori": {
+      "page": "0587342dfcd0105ea72404d10ee5cb60856d28d20b76e78ee2799512f796dc0e"
+    },
+    "/settori/hospitality": {
+      "page": "0ff3e33f2f6cfba721c71d7137ed52bd1a5d1b8d1bf136059af132a4b200ce14"
+    },
+    "/settori/cantine": {
+      "page": "3f1ae44d275f4aba6192923d3693a865577a27b611c7369154674e0e5b7a8739"
+    },
+    "/settori/frantoi": {
+      "page": "3a83bb41a692582744de8bfd21c498c196a42319c6beb71b2b407c9401556ea5"
+    },
+    "/azienda": {
+      "page": "ef15b8edb019e6ea9d8a4fe52269a3cb09f584b5ffc5827f2ecde6c1ecd90bf3"
+    },
+    "/blog": {
+      "page": "1130d37f1c4805cdd7b9d8aca0861ddee3ce2898c68d502e8635e4433a9c4456"
+    },
+    "/privacy-policy": {
+      "page": "5536b36472d15733e8f6e831824dfc26d8b0e19105e7028865fd71b7fb2e94b1"
+    }
+  }
+}
