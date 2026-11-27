@@ -54,12 +54,12 @@ const solutions = [
     },
     does: {
       title: "Cosa fa l'assistente AI, concretamente.",
-      intro: 'Entra nei vostri processi solo dove produce un risultato misurabile (capire, classificare, estrarre) e dove i dati la reggono.',
+      intro: 'Entra nei vostri processi solo dove produce un risultato misurabile (capire, classificare, estrarre) e dove i dati lo reggono.',
       items: [
         {
           icon: 'sort',
           title: 'Classificazione e smistamento',
-          text: 'Richieste e documenti riconosciuti e indirizzati alla persona giusta. Quelle che escono dal perimetro vengono segnalate, non trattate.',
+          text: 'Richieste e documenti riconosciuti e indirizzati alla persona giusta. Quelli che escono dal perimetro vengono segnalate, non trattate.',
         },
         {
           icon: 'chat',
@@ -69,7 +69,7 @@ const solutions = [
         {
           icon: 'file-text',
           title: 'Estrazione dati',
-          text: 'Numeri e informazioni prese da documenti e messaggi, senza trascrizione. Chi risponde trova richiesta, dati utili e bozza nello stesso posto.',
+          text: 'Numeri e informazioni presi da documenti e messaggi, senza trascrizione. Chi risponde trova richiesta, dati utili e bozza nello stesso posto.',
         },
         {
           icon: 'user-check',

@@ -61,16 +61,16 @@ const post = {
       {
         h2: 'Fatturazione della vendita di vino online: privati e aziende nel checkout',
         paragraphs: [
-          'Un e-commerce di vino riceve in genere due tipi di clienti: privati e professionali (ristoranti, enoteche, aziende che fanno regali). Hanno esigenze diverse, e il checkout dovrebbe separarli fin dall\'inizio invece di chiedere tutto a tutti.',
+          'Un e-commerce di vino riceve in genere due tipi di clienti: privati e clienti professionali (ristoranti, enoteche, aziende che fanno regali). Hanno esigenze diverse, e il checkout dovrebbe separarli fin dall\'inizio invece di chiedere tutto a tutti.',
           'Anche le vendite online a privati in Italia hanno obblighi di registrazione e documentazione, e il cliente può chiedere la fattura. Quali siano nel vostro caso lo stabilisce il commercialista. Il sito deve rendere facile la richiesta e raccogliere i dati giusti al momento dell\'ordine:',
           '**Privato che chiede fattura:** nome, indirizzo di fatturazione e codice fiscale. **Azienda:** ragione sociale, partita IVA, codice destinatario o PEC per la fatturazione elettronica. Chiedere questi dati dopo, per email, significa rincorrere il cliente e ricopiare a mano.',
-          'Una casella "Serve la fattura?" che apre i campi giusti, con controlli sul formato, elimina la maggior parte dei solleciti. Se vendete anche a prezzi riservati ai professionali, conviene gestirli come listino separato, visibile solo agli account abilitati.',
+          'Una casella "Serve la fattura?" che apre i campi giusti, con controlli sul formato, elimina la maggior parte dei solleciti. Se vendete anche a prezzi riservati ai clienti professionali, conviene gestirli come listino separato, visibile solo agli account abilitati.',
         ],
       },
       {
         h2: 'Vendere all\'estero: dove l\'e-commerce deve saper dire di no',
         paragraphs: [
-          'Per le vendite a distanza a privati in altri Paesi UE, non solo l\'IVA ma anche **le accise seguono in genere le regole del Paese di destinazione**. In alcuni casi può servire un rappresentante fiscale nel Paese di arrivo. Fuori dall\'Unione Europea si aggiungono pratiche doganali e regole di importazione proprie di ciascun Paese.',
+          'Per le vendite a distanza a privati in altri Paesi UE, non solo l\'IVA ma anche **le accise seguono in genere le regole del Paese di destinazione**. In alcuni casi può servire un rappresentante fiscale nel Paese di arrivo. Fuori dall\'Unione europea si aggiungono pratiche doganali e regole di importazione proprie di ciascun Paese.',
           'La conseguenza per il sito è semplice: **i Paesi di spedizione vanno abilitati solo quando l\'azienda è attrezzata a gestirli**. Un negozio aperto a tutto il mondo per impostazione predefinita raccoglie ordini che poi non si possono evadere, o che si evadono in modo irregolare. Meglio partire dall\'Italia, aggiungere i Paesi uno alla volta e mostrare con chiarezza dove si spedisce.',
           'Se state valutando l\'estero, qui trovate come impostare la [vendita internazionale di vino e l\'export diretto](/blog/vendita-internazionale-vino-dtc-export-estero).',
         ],

@@ -39,7 +39,7 @@ export const principles = {
     {
       icon: 'code',
       title: 'Sviluppiamo internamente',
-      text: 'Nessun subappalto. Progettazione e sviluppo restano nelle stesse tre persone, e chi ha costruito il sistema è chi interviene quando qualcosa non funziona. È il motivo per cui di tempi e qualità rispondiamo noi.',
+      text: 'Nessun subappalto. Progettazione e sviluppo restano in mano alle stesse tre persone, e chi ha costruito il sistema è chi interviene quando qualcosa non funziona. È il motivo per cui di tempi e qualità rispondiamo noi.',
     },
     {
       icon: 'minus',

@@ -33,7 +33,7 @@ const post = {
       {
         h2: 'Come sta cambiando il modo in cui i clienti contattano una cantina',
         paragraphs: [
-          'Fino a pochi anni fa, chi voleva informazioni su una cantina telefonava o scriveva un’email, e accettava implicitamente di aspettare una risposta entro qualche giorno. Oggi quell’aspettativa è cambiata: un numero crescente di persone si aspetta un riscontro rapido, sullo stesso canale su cui ha scritto, che sia il sito, i social o una app di messaggistica.',
+          'Fino a pochi anni fa, chi voleva informazioni su una cantina telefonava o scriveva un’email, e accettava implicitamente di aspettare una risposta entro qualche giorno. Oggi quell’aspettativa è cambiata: un numero crescente di persone si aspetta un riscontro rapido, sullo stesso canale su cui ha scritto, che sia il sito, i social o un’app di messaggistica.',
           'Questo cambiamento non riguarda solo i settori digitali per natura: riguarda anche l’agroalimentare, un comparto che per anni ha comunicato soprattutto attraverso canali tradizionali. Chi visita oggi il sito di una cantina lo fa spesso da smartphone, magari fuori orario, e si aspetta di trovare le stesse risposte rapide che ottiene da qualsiasi altro sito che frequenta abitualmente.',
           'Nella maggior parte dei casi, le domande che arrivano a una cantina sono prevedibili e si ripetono quasi identiche nel tempo: orari di apertura, disponibilità di un vino, tempi e costi di spedizione, come funziona una degustazione. Sono esattamente il tipo di domande per cui un sistema ben impostato può preparare una bozza, lasciando a chi risponde il controllo, l’invio e il tempo per le conversazioni che richiedono davvero un giudizio umano.',
           'C’è anche un cambiamento meno visibile: una parte dei contatti arriva dall’estero, da un fuso orario diverso da quello italiano. Una cantina non può essere disponibile a ogni ora, ma può evitare che le richieste della notte vadano smaltite una per una: all’apertura, per le domande ricorrenti le bozze sono già pronte da rivedere.',
@@ -84,7 +84,7 @@ const post = {
       {
         h2: 'Caso d’uso 3: presentazione e iscrizione al wine club',
         paragraphs: [
-          'A chi chiede come funziona il wine club, il sistema prepara una risposta che spiega i tier disponibili e cosa include ciascuno, copre le domande più comuni — quanto costa, con che frequenza arrivano le spedizioni, come si disdice — e riporta il link alla pagina di iscrizione.',
+          'A chi chiede come funziona il wine club, il sistema prepara una risposta che spiega i livelli disponibili e cosa include ciascuno, copre le domande più comuni — quanto costa, con che frequenza arrivano le spedizioni, come si disdice — e riporta il link alla pagina di iscrizione.',
           'Se il contatto mostra un interesse concreto, la richiesta viene segnalata, insieme alle informazioni già raccolte, a chi segue il club, così che il seguito non dipenda dalla memoria di qualcuno.',
           'Questo caso d’uso si integra naturalmente con una strategia di wine club già avviata: una risposta già pronta parte appena qualcuno la rivede e intercetta l’interesse mentre è ancora vivo, invece di lasciarlo raffreddare nell’attesa di un messaggio scritto da zero.',
         ],

@@ -60,7 +60,7 @@ const post = {
         h2: 'Le storie che una cantina ha già, senza saperlo',
         paragraphs: [
           'Prima di pensare a "come" raccontare, vale la pena mappare "cosa" c’è già da raccontare. Nella maggior parte dei casi il materiale esiste, semplicemente non è mai stato messo per iscritto in modo organico.',
-          'La storia delle origini: come è nata la cantina, chi l’ha fondata, cosa l’ha spinta a partire proprio da quel terreno. Spesso c’è un momento preciso — una scelta di famiglia, un’eredità, una decisione controcorrente rispetto a quello che si faceva prima in quella zona — che da sola vale più di qualsiasi slogan.',
+          'La storia delle origini: come è nata la cantina, chi l’ha fondata, cosa l’ha spinta a partire proprio da quel terreno. Spesso c’è un momento preciso — una scelta di famiglia, un’eredità, una decisione controcorrente rispetto a quello che si faceva prima in quella zona — che da solo vale più di qualsiasi slogan.',
           'La storia della produzione: le scelte fatte — biologico, fermentazione naturale, un metodo tramandato, la decisione di lavorare solo con determinate varietà autoctone — e perché sono state fatte, non solo cosa sono tecnicamente. Il "perché" è quasi sempre più interessante del "cosa" per chi non è del settore.',
           'La storia di chi beve il vino: le occasioni in cui viene scelto, i clienti che tornano anno dopo anno, il tipo di persona a cui quella bottiglia parla di più. Anche piccoli dettagli — un ristorante che lo serve da anni, una richiesta ricorrente durante le vendemmie aperte al pubblico — sono materiale narrativo prezioso, spesso trascurato perché sembra "troppo piccolo" per meritare attenzione.',
         ],

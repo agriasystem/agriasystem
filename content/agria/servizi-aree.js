@@ -25,7 +25,7 @@ export const serviceAreas = {
     key: 'presence',
     name: 'Digital Presence',
     meta: {
-      title: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole',
+      title: 'Realizzazione siti web per hotel, agriturismi, B&B, cantine, frantoi e aziende agricole',
       description:
         'Realizzazione siti web per hotel, agriturismi, B&B, cantine e frantoi: veloci, in più lingue, ottimizzati per Google e collegati a prenotazioni e vendita.',
       path: '/servizi/digital-presence',
@@ -88,8 +88,8 @@ export const serviceAreas = {
           nav: ['Camere', 'Esperienze', 'Ristorante'],
           book: 'Prenota',
           eyebrow: 'Agriturismo in collina',
-          headline: ['Camere tra gli ulivi,', 'a mezz’ora dal lago.'],
-          sub: 'Sei camere, piscina e cene con quello che cresce nell’orto.',
+          headline: ['Camere tra gli ulivi,', 'a mezz\'ora dal lago.'],
+          sub: 'Sei camere, piscina e cene con quello che cresce nell\'orto.',
           rooms: [
             { name: 'Camera Ulivo', note: '2 persone · vista valle', state: '2 notti libere' },
             { name: 'Suite Fienile', note: '4 persone · terrazza', state: 'libera dal 12' },
@@ -271,7 +271,7 @@ export const serviceAreas = {
           {
             icon: 'users',
             title: 'Due pubblici, due percorsi',
-            text: 'Privati e professionali trovano prezzi, formati e condizioni diversi senza confusione.',
+            text: 'Privati e clienti professionali trovano prezzi, formati e condizioni diversi senza confusione.',
           },
           {
             icon: 'badge-check',
@@ -390,7 +390,7 @@ export const serviceAreas = {
         label: 'I buoni regalo e i pacchetti',
         captions: [
           'Buoni regalo pagati online, pronti da stampare o da inviare.',
-          'Pacchetti ed esperienze vendute direttamente da voi.',
+          'Pacchetti ed esperienze venduti direttamente da voi.',
           "L'ordine arriva già registrato, pronto da preparare.",
         ],
         mock: {

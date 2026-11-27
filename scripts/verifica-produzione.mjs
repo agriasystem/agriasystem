@@ -157,7 +157,7 @@ for (const [path, title] of [
     ['/settori/hospitality', 'Siti web e booking engine per agriturismi, hotel, B&B, resort, spa, masserie e relais'],
     ['/settori/cantine', 'Siti web ed e-commerce per cantine e aziende vitivinicole'],
     ['/settori/frantoi', 'Siti web ed e-commerce per frantoi e produttori di olio'],
-    ['/servizi/digital-presence', 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole'],
+    ['/servizi/digital-presence', 'Realizzazione siti web per hotel, agriturismi, B&B, cantine, frantoi e aziende agricole'],
     ['/servizi/digital-commerce', 'E-commerce per cantine, frantoi e aziende agricole: vendere vino e olio online'],
     ['/servizi/digital-automation', 'Intelligenza artificiale per hotel, agriturismi, cantine e frantoi'],
     ['/soluzioni/assistente-ai', 'Chatbot e assistente AI per hotel, agriturismi, B&B, cantine e strutture turistiche'],
@@ -328,7 +328,7 @@ const NEW_AREAS = [
   {
     key: 'presence',
     path: '/servizi/digital-presence',
-    title: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi, B&B e aziende agricole',
+    title: 'Realizzazione siti web per hotel, agriturismi, B&B, cantine, frantoi e aziende agricole',
     h1: 'Realizzazione siti web per hotel, agriturismi, cantine e frantoi.',
     subtitle: 'Il sito che porta clienti, non quello che fa bella figura.',
     sections: [

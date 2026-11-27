@@ -14,8 +14,8 @@
 export const assistant = {
   name: 'Assistente Agria',
   disclosure: 'Assistente automatico, non un operatore. Risposte preparate dal team.',
-  openLabel: "Aprite l'assistente",
-  closeLabel: "Chiudete l'assistente",
+  openLabel: 'Aprite l’assistente',
+  closeLabel: 'Chiudete l’assistente',
   pillText: 'Domande?',
   inputLabel: 'Scrivete una domanda',
   inputPlaceholder: 'Scrivete una domanda…',
@@ -145,7 +145,7 @@ export const answers = [
       'Questa chat non registra le conversazioni e non raccoglie dati personali. I dati inviati con il modulo contatti li usiamo solo per rispondere alla richiesta.',
       'Nei progetti, codice, contenuti, domini e dati restano di proprietà del cliente.',
     ],
-    links: [{ label: 'Informativa Privacy', href: '/privacy-policy' }],
+    links: [{ label: 'Informativa privacy', href: '/privacy-policy' }],
   },
   {
     id: 'persona',

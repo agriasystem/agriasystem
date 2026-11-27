@@ -85,7 +85,7 @@ const post = {
       {
         h2: 'Domande frequenti su come vendere olio online',
         paragraphs: [
-          '**Serve una piattaforma e-commerce diversa per privati e ristorazione?** No. Lo stesso negozio può gestire listini separati, accesso riservato ai clienti professionali e condizioni differenziate tra privati e professionali. Due siti separati significano due cataloghi e due magazzini da tenere allineati.',
+          '**Serve una piattaforma e-commerce diversa per privati e ristorazione?** No. Lo stesso negozio può gestire listini separati, accesso riservato ai clienti professionali e condizioni differenziate tra privati e clienti professionali. Due siti separati significano due cataloghi e due magazzini da tenere allineati.',
           '**Conviene vendere anche sui marketplace?** Possono dare visibilità e portare clienti nuovi, ma restano un canale complementare. Sul proprio e-commerce non si pagano commissioni al marketplace sul venduto e i dati dei clienti restano vostri.',
           '**Come si evita che le spedizioni mangino il margine?** Calcolando il costo per peso e formato, fissando una soglia per la spedizione gratuita coerente con i prezzi e proponendo confezioni multiple che rendono conveniente un ordine più grande.',
           '**Si possono vendere online i preordini dell’olio nuovo?** Sì, a patto di indicare chiaramente la data prevista di spedizione, le condizioni di pagamento e cosa succede se la campagna va diversamente dal previsto.',
@@ -95,7 +95,7 @@ const post = {
       {
         h2: 'Da dove partire',
         paragraphs: [
-          'Non serve costruire tutto insieme. **Il primo passo è scrivere su un foglio a chi vendete oggi, in quali formati e a quali prezzi**, separando privati e professionali. Da lì si capisce se il primo lavoro è il catalogo per i privati, l’area riservata per la ristorazione o i preordini per la prossima campagna.',
+          'Non serve costruire tutto insieme. **Il primo passo è scrivere su un foglio a chi vendete oggi, in quali formati e a quali prezzi**, separando privati e clienti professionali. Da lì si capisce se il primo lavoro è il catalogo per i privati, l’area riservata per la ristorazione o i preordini per la prossima campagna.',
           'Se volete un confronto su questo punto, trovate come lavoriamo nella pagina dedicata ai [frantoi](/settori/frantoi), oppure potete [scriverci](/contatti) direttamente.',
         ],
       },

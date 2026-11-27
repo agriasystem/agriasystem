@@ -24,7 +24,7 @@ const post = {
         h2: 'Perché il sito di una cantina non può essere un sito qualsiasi',
         paragraphs: [
           'Chi cerca online "siti web per cantine" di solito ha già un sito, e sospetta che qualcosa non funzioni. Non è un caso: un sito per un’azienda vitivinicola ha un compito diverso da quello di uno studio legale o di un consulente. Chi arriva sulla pagina di una cantina non vuole solo capire chi siete: vuole decidere, nel giro di pochi secondi, se il vostro vino merita fiducia e se vale la pena comprarlo senza averlo mai assaggiato.',
-          'Questo cambia la struttura del sito. **Non basta raccontare la storia della cantina**: serve mostrare i vini con foto e informazioni chiare, rendere possibile l’acquisto — o la prenotazione di una degustazione — senza dover scrivere una email, e dare al visitatore un motivo per tornare, non solo per comprare una volta.',
+          'Questo cambia la struttura del sito. **Non basta raccontare la storia della cantina**: serve mostrare i vini con foto e informazioni chiare, rendere possibile l’acquisto — o la prenotazione di una degustazione — senza dover scrivere un’email, e dare al visitatore un motivo per tornare, non solo per comprare una volta.',
           'Un sito generico, costruito da chi non ha mai lavorato nel settore vinicolo, tratta quasi sempre questi aspetti come dettagli estetici. Il risultato è quasi sempre lo stesso: bello da vedere, ma incapace di trasformare un visitatore in un cliente.',
         ],
       },
@@ -33,7 +33,7 @@ const post = {
         paragraphs: [
           'Il primo errore è pensare al sito come a una vetrina, non a un canale di vendita. Le bottiglie che si vendono bene offline avrebbero spesso un margine più alto vendute direttamente online, senza intermediari — ma solo se il sito permette davvero di comprare, e non si limita a un numero di telefono in fondo alla pagina.',
           'Il secondo è affidarsi a chi non ha mai gestito un catalogo vino, una spedizione fragile o le domande che si fa davvero chi compra online — annata, provenienza, note di degustazione. Il sito verrà bello. Raramente venderà.',
-          'Il terzo è ignorare cosa succede dopo la prima visita. **Chi guarda il vostro sito la domenica sera, con un bicchiere in mano, il lunedì ha già altre dieci cose in testa**: senza un follow-up, anche solo una email ben scritta, quella visita si perde.',
+          'Il terzo è ignorare cosa succede dopo la prima visita. **Chi guarda il vostro sito la domenica sera, con un bicchiere in mano, il lunedì ha già altre dieci cose in testa**: senza un follow-up, anche solo un’email ben scritta, quella visita si perde.',
           'Il quarto è scegliere la piattaforma più economica possibile, ignorando che un sito lento perde visitatori prima ancora che arrivino a vedere il catalogo. Il quinto è il fai-da-te senza le competenze per farlo bene: non è sbagliato in assoluto, ma richiede tempo e attenzione che chi gestisce una cantina spesso non ha.',
         ],
       },

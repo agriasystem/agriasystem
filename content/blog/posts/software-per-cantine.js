@@ -38,7 +38,7 @@ const post = {
       {
         h2: 'Perché scegliere un gestionale per cantine è più difficile che in altri settori',
         paragraphs: [
-          'Una cantina non fa un solo mestiere. Trasforma l’uva in vino, lo conserva per mesi o anni, lo imbottiglia in formati e annate diverse, lo vende a privati, ristoranti, enoteche e importatori, e spesso accoglie visitatori in azienda. Ognuna di queste attività ha regole, tempi e persone diverse.',
+          'Una cantina non fa un solo mestiere. Trasforma l’uva in vino, lo conserva per mesi o anni, lo imbottiglia in formati e annate diversi, lo vende a privati, ristoranti, enoteche e importatori, e spesso accoglie visitatori in azienda. Ognuna di queste attività ha regole, tempi e persone diverse.',
           'Per questo le esigenze sono frammentate. Chi segue la cantina ragiona per vasche e lotti. Chi segue la vendita ragiona per clienti e ordini. Chi segue l’accoglienza ragiona per date e posti disponibili. Chi segue gli adempimenti ragiona per registri e documenti. Un unico software che faccia bene tutto questo è raro, e quando esiste è spesso pensato per aziende molto più grandi.',
           'Il risultato, nella maggior parte delle cantine, è una combinazione di strumenti scelti in momenti diversi: un programma per il registro di cantina, un foglio di calcolo per le giacenze, un negozio online, un calendario per le degustazioni, una rubrica di contatti sparsa tra telefoni e caselle email. Ognuno funziona. Nessuno parla con gli altri.',
           'La domanda giusta quindi non è quale sia il miglior software per cantine. È **quali aree richiedono davvero uno strumento dedicato e quali si risolvono facendo lavorare insieme ciò che c’è già**.',
@@ -115,7 +115,7 @@ const post = {
       {
         h2: 'Export: listini in valuta, schede in inglese, importatori',
         paragraphs: [
-          'L’export aggiunge complessità a ogni area: listini in valuta diverse, condizioni diverse per importatore, schede tecniche e materiali in inglese o in altre lingue, campionature, documenti di spedizione, a volte vendita diretta a privati all’estero con regole proprie.',
+          'L’export aggiunge complessità a ogni area: listini in valute diverse, condizioni diverse per importatore, schede tecniche e materiali in inglese o in altre lingue, campionature, documenti di spedizione, a volte vendita diretta a privati all’estero con regole proprie.',
           'Anche qui il problema raramente è la mancanza di uno strumento. È che le informazioni sono sparse: il listino per l’importatore sta in un file, le schede tecniche in un altro, le giacenze disponibili per l’estero non si sanno con certezza. Preparare un’offerta richiede di mettere insieme pezzi da posti diversi.',
           'Collegare significa che listini, schede prodotto e disponibilità derivano dalla stessa fonte. La scheda in inglese si aggiorna quando si aggiorna quella in italiano. Il listino in valuta parte dal listino base. La disponibilità per un importatore è quella reale. Per chi valuta anche la vendita diretta all’estero, gli aspetti operativi sono trattati nell’articolo su [vendita internazionale del vino](/blog/vendita-internazionale-vino-dtc-export-estero); per quelli fiscali, il riferimento resta chi segue la contabilità dell’azienda.',
         ],

@@ -159,7 +159,7 @@ const post = {
         h2: 'Misurare i risultati e migliorare nel tempo',
         paragraphs: [
           'Una volta attivo, un sistema di prenotazione diretto genera dati che prima semplicemente non esistevano: da dove arrivano le richieste, quanto tempo passa tra la prima visita al sito e la prenotazione effettiva, quali servizi extra vengono scelti più spesso.',
-          'Questi dati permettono di aggiustare il tiro nel tempo: se un servizio extra viene scelto raramente, forse va comunicato meglio o proposto in un momento diverso del flusso di prenotazione; se un certo tipo di camera si riempie sempre per prima, forse merita un prezzo più alto nei periodi di punta.',
+          'Questi dati permettono di aggiustare il tiro nel tempo: se un servizio extra viene scelto raramente, forse va comunicato meglio o proposto in un momento diverso del flusso di prenotazione; se un certo tipo di camera si riempie sempre per primo, forse merita un prezzo più alto nei periodi di punta.',
           'Vale la pena rivedere periodicamente anche il tasso di conversione tra chi visita la pagina di prenotazione e chi la completa: un calo evidente in quel passaggio segnala quasi sempre un problema nel flusso — troppi campi da compilare, un prezzo poco chiaro, un passaggio tecnico che non funziona bene su mobile.',
           'Con il tempo, la quota di prenotazioni dirette rispetto a quelle arrivate dai portali esterni diventa un indicatore utile di quanto la struttura si stia rendendo indipendente dalle commissioni di terze parti — un numero che vale la pena tracciare stagione dopo stagione.',
         ],

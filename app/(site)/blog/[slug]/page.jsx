@@ -28,7 +28,7 @@ import { RICH_TEXT_AGRIA, isBlockquote, renderRichText, stripBlockquoteMarker } 
 // data-analytics-article sul contenitore, location sul collegamento.
 const CTA = closing.cta;
 // date 'AAAA-MM-GG' lette in UTC: stesso giorno su qualunque macchina di build
-const DATE = { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' };
+const DATE = { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' };
 const LABELS = {
   toc: 'In questo articolo',
   related: 'Continuate a leggere',

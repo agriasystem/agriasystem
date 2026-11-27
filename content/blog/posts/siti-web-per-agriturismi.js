@@ -66,7 +66,7 @@ const post = {
           'Poche pagine, ognuna con un compito chiaro. Il pulsante per prenotare deve essere visibile da ogni pagina, anche da telefono.',
           '**Home.** In una schermata: dove siete, cosa offrite, il pulsante per verificare le date. Sotto, il racconto breve di chi siete e cosa rende il posto diverso da quello a pochi chilometri.',
           '**Camere.** Una scheda per ogni camera o appartamento, con foto, posti letto, servizi, prezzo indicativo e disponibilità. L’ospite deve poter prenotare direttamente dalla scheda.',
-          '**Esperienze.** Ristorante, degustazioni, attività in azienda, trattate come prodotti veri: foto, descrizione, durata, prezzo, giorni disponibili. Meglio ancora se si possono aggiungere durante la prenotazione della camera.',
+          '**Esperienze.** Ristorante, degustazioni, attività in azienda, trattati come prodotti veri: foto, descrizione, durata, prezzo, giorni disponibili. Meglio ancora se si possono aggiungere durante la prenotazione della camera.',
           '**Territorio.** Cosa si visita nei dintorni, come arrivare, le distanze reali. Questa pagina serve all’ospite e serve anche alla visibilità locale, come vedremo sotto.',
           '**Prenota.** Calendario, prezzo finale, pagamento o caparra, conferma immediata. Nessun passaggio superfluo e nessuna uscita dal sito verso pagine esterne. Come si imposta un sistema di prenotazione diretta è spiegato nel dettaglio in [questo articolo sul booking online per agriturismi](/blog/agriturismo-booking-online-prenotazioni).',
         ],
