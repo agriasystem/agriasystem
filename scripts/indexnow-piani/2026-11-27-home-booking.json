@@ -1,0 +1,32 @@
+{
+  "nota": "Prompt 34: «booking» al posto di «prenotazioni» nel titolo della home, «una email» → «un'email» (home, Digital Presence, articolo sul booking per agriturismi; Digital Automation perché la sua schermata riprende la chat della home), title e titolo del metodo di /servizi. Il titolo a 27 px su telefono è solo dimensione e non conta. Confronto tra la build locale di 47686f9 (produzione prima del Prompt 34, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a c44b1fb: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia. /servizi/digital-automation inviata su indicazione.",
+  "commit": "c44b1fb96fd3f21cb143b4e9ededaa129166a87e",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/",
+    "/servizi",
+    "/servizi/digital-presence",
+    "/servizi/digital-automation",
+    "/blog/agriturismo-booking-online-prenotazioni"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/": {
+      "page": "d6c838a11a895d4280681baa1f933755fe3f17e25d01f6962b3e6cb7fa09c9f7"
+    },
+    "/servizi": {
+      "page": "18fa3613e298506176dcb24527f10902e84e2bfc305bd1c6bc72116430472473"
+    },
+    "/servizi/digital-presence": {
+      "page": "304e9da95e8f95848ea8e85bb8ad235c8b78b61847d6c843e072629781440f91"
+    },
+    "/servizi/digital-automation": {
+      "page": "d610c11c38fb6902169648c9d5af8198019728dbae5a1a0a2890fed4a442a91d"
+    },
+    "/blog/agriturismo-booking-online-prenotazioni": {
+      "page": "04f7a1253a30ea6c09610adc1e035bf748f8177da66c965b66abecd4ed0ae092"
+    }
+  }
+}
