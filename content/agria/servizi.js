@@ -14,7 +14,7 @@ const AREA_ORDER = ['presence', 'commerce', 'automation'];
 
 export const servicesIndex = {
   meta: {
-    title: 'Servizi — Agria System',
+    title: 'Servizi: realizzazione siti web, e-commerce, booking engine e chatbot AI | Agria System',
     description:
       'Digital Presence, Digital Commerce e Digital Automation per hospitality (agriturismi, hotel e strutture ricettive), cantine e frantoi.',
     path: '/servizi',
@@ -71,7 +71,7 @@ export const servicesIndex = {
   // i quattro passi comuni
   method: {
     eyebrow: 'Come lavoriamo',
-    title: 'Prima capire, poi costruire.',
+    title: 'Ogni sistema che funziona è partito da un\'analisi.',
     steps: [
       {
         title: 'Analisi',

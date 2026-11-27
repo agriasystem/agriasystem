@@ -163,6 +163,8 @@ for (const [path, title] of [
     ['/soluzioni/assistente-ai', 'Chatbot e assistente AI per hotel, agriturismi, B&B, cantine e strutture turistiche'],
     ['/soluzioni/collegare-gestionale-e-sito', 'Integrare gestionale, PMS e sito web per hotel e agriturismi'],
     ['/blog', 'Guide su siti web, e-commerce e AI per hotel, cantine e frantoi | Blog Agria System'],
+    // Prompt 34
+    ['/servizi', 'Servizi: realizzazione siti web, e-commerce, booking engine e chatbot AI | Agria System'],
   ];
   const old = [];
   for (const [path, title] of TITLES) {
@@ -179,7 +181,7 @@ for (const [path, title] of [
       check(`Frantoi, h1: "${h1}"`, h1Text(html) === h1, h1Text(html));
     }
   }
-  check('Nessuno dei dodici title apre più con "Digital Presence —", "Digital Commerce —" o "Digital Automation —"', old.length === 0, old.join(' '));
+  check('Nessuno di questi title apre più con "Digital Presence —", "Digital Commerce —" o "Digital Automation —"', old.length === 0, old.join(' '));
 }
 check('Home, h1: "Il vostro sito, collegato a tutto il resto."', headingText(home, 'home-hero-title') === 'Il vostro sito, collegato a tutto il resto.', headingText(home, 'home-hero-title'));
 check(
@@ -246,8 +248,11 @@ check('/contatti: card "Poi decidete voi", nessun "Nessun impegno"', contatti.in
 
 // Prompt 28, Fase B: lista dei problemi, edificio, correzioni della Fase A
 check(
-  'Home: parole del titolo (sito, e-commerce, gestionale, prenotazioni, calendario), nessun "sistema di prenotazione"',
-  ['sito,', 'e-commerce,', 'gestionale,', 'prenotazioni,', 'calendario,'].every((w) => home.includes(`data-text="${w}"`)) && !home.includes('sistema di prenotazione')
+  'Home: parole del titolo (sito, e-commerce, gestionale, booking, calendario), nessun "sistema di prenotazione"',
+  ['sito,', 'e-commerce,', 'gestionale,', 'booking,', 'calendario,'].every((w) => home.includes(`data-text="${w}"`)) &&
+    !home.includes('sistema di prenotazione') &&
+    // Prompt 34: «Il vostro prenotazioni» era un errore di concordanza
+    !(home.match(/<h1[^>]*id="home-hero-title"[\s\S]*?<\/h1>/)?.[0] || '').includes('prenotazioni,')
 );
 const problemForm = home.match(/<form[^>]*action="\/contatti"[^>]*method="get"[^>]*>[\s\S]*?<\/form>/)?.[0] || '';
 const boxes = [...problemForm.matchAll(/<input[^>]*type="checkbox"[^>]*name="problemi"[^>]*value="([^"]+)"/g)].map((m) => m[1]);
@@ -458,8 +463,10 @@ const paths = [...(await get('/sitemap.xml')).html.matchAll(/<loc>([^<]+)<\/loc>
 check('Sitemap: le tre pagine soluzione', SOLUTIONS.every(([path]) => paths.includes(path)));
 const sheets = new Map(); // foglio di stile (o stile in linea) -> { css, pages }
 const poppinsLinks = [];
+const oldMethod = []; // Prompt 34: il titolo del metodo di /servizi di prima
 for (const path of paths) {
   const html = await page(path);
+  if (html.includes('Prima capire, poi costruire')) oldMethod.push(path);
   for (const tag of html.match(/<link\b[^>]*>/g) || []) {
     const href = tag.match(/\bhref="([^"]*)"/)?.[1] || '';
     if (/poppins/i.test(href)) poppinsLinks.push(`${path}: ${href}`);
@@ -474,6 +481,7 @@ for (const path of paths) {
     sheets.set(`${path} (stile in linea)`, { css, pages: [path] });
   }
 }
+check(`Nessuna pagina della sitemap dice ancora "Prima capire, poi costruire" (${paths.length} pagine)`, paths.length > 0 && oldMethod.length === 0, oldMethod.join(' '));
 const where = (name, { pages }) => `${name} (${pages.length === 1 ? pages[0] : `${pages.length} pagine`})`;
 const unreadable = [...sheets].filter(([, s]) => s.css === null).map(([name, s]) => `${where(name, s)} non risponde 200`);
 const downloadable = [...sheets]

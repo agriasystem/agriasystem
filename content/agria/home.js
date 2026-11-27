@@ -16,7 +16,7 @@ export const hero = {
   eyebrow: '( SITI, E-COMMERCE E AUTOMAZIONI · AGRITURISMI, HOTEL, CANTINE E FRANTOI )',
   title: {
     before: 'Il vostro',
-    words: ['sito', 'e-commerce', 'gestionale', 'prenotazioni', 'calendario'],
+    words: ['sito', 'e-commerce', 'gestionale', 'booking', 'calendario'],
     after: ', collegato a tutto il resto.',
   },
   lead: 'Costruiamo siti ed e-commerce nuovi, o miglioriamo quelli che avete, e li colleghiamo ai programmi che usate già: gestionale, pagamenti, email, calendario. Un dato inserito una volta arriva ovunque serve.',
@@ -187,7 +187,7 @@ export const assistantDemo = {
         text: 'Sì: per quelle date abbiamo libera la camera con vista sugli ulivi. Preferite la colazione in camera o in sala?',
       },
       { from: 'ospite', text: 'In sala. Si può arrivare dopo le 21?' },
-      { from: 'assistente', text: 'Certo, basta avvisarci. Vi confermo tutto a breve con una email: a quale indirizzo?' },
+      { from: 'assistente', text: 'Certo, basta avvisarci. Vi confermo tutto a breve con un\'email: a quale indirizzo?' },
       { from: 'ospite', text: 'laura.esempio@example.com' },
     ],
   },

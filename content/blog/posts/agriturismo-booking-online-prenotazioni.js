@@ -34,7 +34,7 @@ const post = {
         h2: 'Come sta cambiando il modo di cercare e prenotare un soggiorno in campagna',
         paragraphs: [
           'Un numero crescente di persone pianifica le vacanze in agriturismo con settimane, a volte mesi, di anticipo, confrontando strutture diverse online prima ancora di contattarle direttamente.',
-          'La maggior parte di chi prenota oggi si aspetta di poter vedere calendario e prezzi senza dover scrivere una email e aspettare: è lo stesso comportamento ormai dato per scontato su qualsiasi altro tipo di alloggio, dall’hotel all’appartamento in affitto breve.',
+          'La maggior parte di chi prenota oggi si aspetta di poter vedere calendario e prezzi senza dover scrivere un’email e aspettare: è lo stesso comportamento ormai dato per scontato su qualsiasi altro tipo di alloggio, dall’hotel all’appartamento in affitto breve.',
           'Anche il profilo di chi sceglie un agriturismo si è ampliato: non più solo un pubblico di nicchia legato al turismo rurale tradizionale, ma famiglie, coppie, gruppi di amici e, in molti casi, ospiti stranieri che pianificano da un altro fuso orario e prenotano fuori dagli orari di ufficio italiani.',
           'Questo cambiamento riguarda anche il modo in cui un soggiorno viene scoperto: sempre più spesso attraverso ricerche online, mappe e portali di comparazione, prima ancora che attraverso il passaparola che per anni ha rappresentato il canale principale per molte strutture agricole.',
           'Anche le aspettative sulla velocità di risposta sono cambiate: un ospite che scrive oggi si aspetta un riscontro nel giro di poche ore, non di giorni, e considera un lungo silenzio come un segnale che la struttura potrebbe non essere organizzata quanto vorrebbe.',

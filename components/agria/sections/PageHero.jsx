@@ -14,7 +14,9 @@ import styles from './PageHero.module.css';
 // - wide: titolo largo per gli h1 lunghi con la frase cercata (pagine servizio e
 //   settore), che con 20ch andrebbero a capo quattro o cinque volte.
 const TITLE_WIDTH = 'max-w-[20ch]';
-const TITLE_WIDE = 'max-w-[30ch] text-balance';
+// sotto md il titolo largo scende a 27 px (Prompt 34): a 390 px tutte e sei le
+// aperture stanno in tre righe; resta più grande del sottotitolo (24) e del lead (20)
+const TITLE_WIDE = 'max-w-[30ch] text-balance max-md:text-[1.6875rem]';
 
 export default function PageHero({ eyebrow, title, subtitle, lead, cta, secondaryCta, pills, titleId = 'page-title', id, wide = false }) {
   return (

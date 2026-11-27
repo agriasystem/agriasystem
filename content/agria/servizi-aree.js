@@ -59,7 +59,7 @@ export const serviceAreas = {
         },
         {
           title: 'Chi arriva non prenota',
-          text: 'Il sito racconta bene chi siete, poi chi vorrebbe prenotare non trova disponibilità, prezzi o un pulsante: scrive una email, o lascia perdere.',
+          text: 'Il sito racconta bene chi siete, poi chi vorrebbe prenotare non trova disponibilità, prezzi o un pulsante: scrive un\'email, o lascia perdere.',
         },
         {
           title: 'Ogni richiesta diventa una telefonata',
