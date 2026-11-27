@@ -1,0 +1,92 @@
+{
+  "nota": "Prompt 35: revisione dei testi (errori, concordanze, costruzioni, «clienti professionali», title di Digital Presence, maiuscole e forme, apostrofi, etichetta del modulo contatti) e data degli articoli senza lo zero davanti (per questo cambiano tutti e tredici). /settori/frantoi cambia perché mostra «Privati e clienti professionali trovano prezzi». Confronto tra la build locale di a0627ad (produzione prima del Prompt 35, NEXT_PUBLIC_SITE_URL di produzione, su http://localhost:3300) e agriasystem.com a 78ce17c: le impronte in expect vengono dalle pagine pubblicate. before indica il sito su cui si invia.",
+  "commit": "78ce17c795437570d43e4daaded99107ce59f18a",
+  "before": "https://agriasystem.com",
+  "after": "https://agriasystem.com",
+  "changed": [
+    "/servizi/digital-presence",
+    "/servizi/digital-commerce",
+    "/soluzioni/assistente-ai",
+    "/settori/frantoi",
+    "/azienda",
+    "/contatti",
+    "/blog/ecommerce-per-frantoi",
+    "/blog/software-per-agriturismi",
+    "/blog/software-per-cantine",
+    "/blog/siti-web-per-agriturismi",
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione",
+    "/blog/siti-web-per-cantine",
+    "/blog/vendita-internazionale-vino-dtc-export-estero",
+    "/blog/agriturismo-booking-online-prenotazioni",
+    "/blog/degustazioni-cantina-trasformare-visite-vendite",
+    "/blog/ecommerce-vino-margini-vendita-diretta",
+    "/blog/storytelling-vino-marketing-vendite",
+    "/blog/chatbot-cantina-ai-customer-service",
+    "/blog/seo-locale-agroalimentare-google-maps",
+    "/privacy-policy"
+  ],
+  "added": [],
+  "removed": [],
+  "expect": {
+    "/servizi/digital-presence": {
+      "page": "50f7544f409b65bb1100bfa45c81f2dc1db21c860b2c73335caba93fc355eac8"
+    },
+    "/servizi/digital-commerce": {
+      "page": "ea073a8f09940829146af660310bdac0fbdb253fdc25f80f925f41e67335cb7a"
+    },
+    "/soluzioni/assistente-ai": {
+      "page": "acfecf251f9710481df06c4e1be8028c8d59630919ade5aafdb3909eb6d9e5d3"
+    },
+    "/settori/frantoi": {
+      "page": "a14f36027e9618e3694c7998ea74445b9bd6a3a96514427ccc590a08cbf8f44f"
+    },
+    "/azienda": {
+      "page": "da1ddd6b8e3edd684333b29783fcfd16ed6f58744a10f42b284a3452f9fcecf8"
+    },
+    "/contatti": {
+      "page": "c89e657a71ea12699f053fa31f314eddada6d1fac5e3a1ea3eba1dccaee7dae2"
+    },
+    "/blog/ecommerce-per-frantoi": {
+      "page": "f7ca523d775a1954fbd10ec40a7edc360fc9bb9a3de585429d1c4fd10f6d7df4"
+    },
+    "/blog/software-per-agriturismi": {
+      "page": "126a41bdb822d385ca3565d8d3b3958a5baf3778c812d824f76b4df24e9e1223"
+    },
+    "/blog/software-per-cantine": {
+      "page": "d84a2eeb7fa59522759c1e483cd82c0273e6f044c7a5713440365b7c948823c9"
+    },
+    "/blog/siti-web-per-agriturismi": {
+      "page": "912e5c99441a890340b38d6b8cc15d34c1d2a9cc40efac4f59ee3320d87fbeaf"
+    },
+    "/blog/gestione-fiscale-ecommerce-vino-iva-fatturazione": {
+      "page": "59464716d28cceb635c6931e629a1320540c6b01ca4bd4b678b5b7989b3002d9"
+    },
+    "/blog/siti-web-per-cantine": {
+      "page": "66e5cc3ba9089af874701dc84f274f56032c39444c27510572961ec957290471"
+    },
+    "/blog/vendita-internazionale-vino-dtc-export-estero": {
+      "page": "4e6f306207b773ed810f9d7468ea2fc69bdfd6fa10727b27faccd98446cdd194"
+    },
+    "/blog/agriturismo-booking-online-prenotazioni": {
+      "page": "27b11688b79fb7165c92e15d77ada0611310879b9dc030e8155854df148f8c0c"
+    },
+    "/blog/degustazioni-cantina-trasformare-visite-vendite": {
+      "page": "890c151f2e1dbfb589beac1b6d1084629911b5d071df7635ed156339990e3c5a"
+    },
+    "/blog/ecommerce-vino-margini-vendita-diretta": {
+      "page": "f06bc6a33a39c21a33b1e3eef5a2ecb99070e0b40ec29ad1e8459772adca6cce"
+    },
+    "/blog/storytelling-vino-marketing-vendite": {
+      "page": "9d5ce229dba51edef66c0ed7e986021952c9636335f805d586194c289fe0ba03"
+    },
+    "/blog/chatbot-cantina-ai-customer-service": {
+      "page": "fa7cd97ac51c54993ba2e1ac611d0dba5e283b1638c67e4c815b61e6183624de"
+    },
+    "/blog/seo-locale-agroalimentare-google-maps": {
+      "page": "ffbd7928f791ed33f813dd2fa79c927bbf72063e79af0459c9c0d74249e77095"
+    },
+    "/privacy-policy": {
+      "page": "e46c039aa7d0779de9b95723853748120ad1e8b0cd87c2b65ddd119c28c12bc5"
+    }
+  }
+}
